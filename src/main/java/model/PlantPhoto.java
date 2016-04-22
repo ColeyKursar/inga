@@ -1,18 +1,29 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 /**
  * Created by Zach Zundel on 14.04.2016.
  */
+
+@Entity
 public class PlantPhoto {
+    @Id
+    int id;
     String photoPath;
+    @ManyToOne
     Plant plant;
 
-    public PlantPhoto(String photoPath, Plant plant) {
+    public PlantPhoto(int id, String photoPath, Plant plant) {
+        this.id = id;
         this.photoPath = photoPath;
         this.plant = plant;
     }
 
     public PlantPhoto() {
+        this.id = 0;
         this.photoPath = null;
         this.plant = null;
     }

@@ -1,12 +1,14 @@
 package model;
 
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created by Zach Zundel on 14.04.2016.
  */
+@Entity
 public class Chlorophyll extends Trait {
-    Site site;
+
     int percentExposed;
     String size;
     String light;
@@ -15,8 +17,8 @@ public class Chlorophyll extends Trait {
     String notes;
 
     public Chlorophyll() {
+        id = 0;
         plant = null;
-        site = null;
         date = null;
         percentExposed = 0;
         size = null;
@@ -26,10 +28,10 @@ public class Chlorophyll extends Trait {
         notes = null;
     }
 
-    public Chlorophyll(Plant plant, Site site, Date date, int percentExposed, String size, String light,
+    public Chlorophyll(int id, Plant plant, Date date, int percentExposed, String size, String light,
                        int spadd, double chl_mg_dm2, String notes) {
+        this.id = id;
         this.plant = plant;
-        this.site = site;
         this.date = date;
         this.percentExposed = percentExposed;
         this.size = size;
@@ -39,12 +41,12 @@ public class Chlorophyll extends Trait {
         this.notes = notes;
     }
 
-    public Site getSite() {
-        return site;
+    public int getChlorophyllId() {
+        return id;
     }
 
-    public void setSite(Site site) {
-        this.site = site;
+    public void setChlorophyllId(int id) {
+        this.id = id;
     }
 
     public Date getDate() {

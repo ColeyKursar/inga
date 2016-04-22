@@ -1,15 +1,20 @@
 package model;
 
 import java.util.Date;
+import javax.persistence.*;
 
 /**
  * Created by Zach Zundel on 14.04.2016.
  */
+
+@Entity
 public class Herbivory {
+    @Id
     int id;
+    @ManyToOne
     PlantSpecies species;
-    Site site;
     Date date;
+    @ManyToOne
     Location location;
     int leavesLeaflets;
     int total;
@@ -18,12 +23,21 @@ public class Herbivory {
     public Herbivory(){
         this.id = 0;
         this.species = null;
-        this.site = null;
         this.date = null;
         this.location = null;
         this.leavesLeaflets = 0;
         this.total = 0;
         this.xHerbivory = 0;
+    }
+
+    public Herbivory(int id, PlantSpecies species, Date date, Location location, int leavesLeaflets, int total, float xHerbivory) {
+        this.id = id;
+        this.species = species;
+        this.date = date;
+        this.location = location;
+        this.leavesLeaflets = leavesLeaflets;
+        this.total = total;
+        this.xHerbivory = xHerbivory;
     }
 
     public PlantSpecies getSpecies() {
@@ -42,13 +56,6 @@ public class Herbivory {
         this.species = species;
     }
 
-    public Site getSite() {
-        return site;
-    }
-
-    public void setSite(Site site) {
-        this.site = site;
-    }
 
     public Date getDate() {
         return date;

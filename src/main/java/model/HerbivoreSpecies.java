@@ -1,9 +1,15 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Created by Zach Zundel on 19.04.2016.
  */
+@Entity
 public class HerbivoreSpecies {
+    @Id
+    int id;
     String motu;
     String analysis;
     String sequence;
@@ -16,9 +22,10 @@ public class HerbivoreSpecies {
     String notesOnHost;
     String notes;
 
-    public HerbivoreSpecies(String motu, String analysis, String sequence, String laMotu, String blastingFamily,
+    public HerbivoreSpecies(int id, String motu, String analysis, String sequence, String laMotu, String blastingFamily,
                             String blastingSubfamily, String blastingGenus, int percentage, String bin,
                             String notesOnHost, String notes) {
+        this.id = id;
         this.motu = motu;
         this.analysis = analysis;
         this.sequence = sequence;
@@ -33,6 +40,7 @@ public class HerbivoreSpecies {
     }
 
     public HerbivoreSpecies() {
+        this.id = 0;
         this.motu = null;
         this.analysis = null;
         this.sequence = null;
@@ -44,6 +52,14 @@ public class HerbivoreSpecies {
         this.bin = null;
         this.notesOnHost = null;
         this.notes = null;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getMotu() {

@@ -1,26 +1,34 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.nio.file.Path;
 
 /**
  * Created by Zach Zundel on 14.04.2016.
  */
+@Entity
 public class RAW {
-    Path rawFilePath;
+    @Id
+    int id;
+    String rawFilePath;
 
     public RAW() {
+        this.id = 0;
         rawFilePath = null;
     }
 
-    public RAW(Path path) {
+    public RAW(int id, String path) {
+        this.id = id;
         this.rawFilePath = path;
     }
 
-    public Path getRawFilePath() {
+
+    public String getRawFilePath() {
         return rawFilePath;
     }
 
-    public void setRawFilePath(Path rawFilePath) {
+    public void setRawFilePath(String rawFilePath) {
         this.rawFilePath = rawFilePath;
     }
 }

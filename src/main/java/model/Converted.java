@@ -1,26 +1,44 @@
 package model;
 
+import javax.annotation.Generated;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.nio.file.Path;
 
 /**
  * Created by Zach Zundel on 14.04.2016.
  */
+
+@Entity
 public class Converted {
-    Path convertedFilePath;
+
+    @Id
+    int id;
+    String convertedFilePath;
 
     public Converted() {
+        id = 0;
         convertedFilePath = null;
     }
 
-    public Converted(Path path) {
+    public Converted(int id, String path) {
+        this.id = id;
         this.convertedFilePath = path;
     }
 
-    public Path getConvertedFilePath() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getConvertedFilePath() {
         return convertedFilePath;
     }
 
-    public void setConvertedFilePath(Path convertedFilePath) {
+    public void setConvertedFilePath(String convertedFilePath) {
         this.convertedFilePath = convertedFilePath;
     }
 }

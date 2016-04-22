@@ -1,24 +1,35 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
 /**
  * Created by Zach Zundel on 14.04.2016.
  */
+
+@Entity
 public class UPLC_Result {
+    @Id
+    int id;
+    @ManyToOne
     RAW raw;
+    @ManyToOne
     Converted converted;
     String diva;
     Date date;
     String mode;
     String sampleType;
     String sampleId;
+    @ManyToOne
     Extraction extraction;
     String tunePage;
     String projectName;
     String msMethod;
     String uplcMethod;
     int msMode;
+    @ManyToOne
     RTI_QC rti;
     String isTest;
     int isPPM;
@@ -30,10 +41,11 @@ public class UPLC_Result {
     String allInga;
     String chemocoding;
 
-    public UPLC_Result(RAW raw, Converted converted, String diva, Date date, String mode, String sampleType,
+    public UPLC_Result(int id, RAW raw, Converted converted, String diva, Date date, String mode, String sampleType,
                        String sampleId, Extraction extraction, String tunePage, String projectName, String msMethod,
                        String uplcMethod, int msMode, RTI_QC rti, String isTest, int isPPM, int isRT, int rtShift,
                        int isTIC, int isSN, String notes, String allInga, String chemocoding) {
+        this.id = id;
         this.raw = raw;
         this.converted = converted;
         this.diva = diva;
@@ -60,6 +72,7 @@ public class UPLC_Result {
     }
 
     public UPLC_Result() {
+        this.id = 0;
         this.raw = null;
         this.converted = null;
         this.diva = null;
@@ -83,6 +96,14 @@ public class UPLC_Result {
         this.notes = null;
         this.allInga = null;
         this.chemocoding = null;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public RAW getRaw() {

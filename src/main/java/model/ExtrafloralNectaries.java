@@ -1,8 +1,13 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Created by Zach Zundel on 14.04.2016.
  */
+
+@Entity
 public class ExtrafloralNectaries extends Trait {
     double basalmm;
     double midmm;
@@ -14,8 +19,9 @@ public class ExtrafloralNectaries extends Trait {
     String notes1;
     String notes2;
 
-    public ExtrafloralNectaries(double basalmm, double midmm, double apicalmm, String color, String shape,
+    public ExtrafloralNectaries(int id, double basalmm, double midmm, double apicalmm, String color, String shape,
                                 String type, double xEFNmm, String notes1, String notes2) {
+        this.id = id;
         this.basalmm = basalmm;
         this.midmm = midmm;
         this.apicalmm = apicalmm;
@@ -28,6 +34,7 @@ public class ExtrafloralNectaries extends Trait {
     }
 
     public ExtrafloralNectaries() {
+        this.id = 0;
         this.basalmm = 0;
         this.midmm = 0;
         this.apicalmm = 0;
@@ -37,6 +44,14 @@ public class ExtrafloralNectaries extends Trait {
         this.xEFNmm = 0;
         this.notes1 = null;
         this.notes2 = null;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getBasalmm() {

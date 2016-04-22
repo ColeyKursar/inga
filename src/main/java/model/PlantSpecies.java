@@ -1,9 +1,14 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Created by Zach Zundel on 14.04.2016.
  */
+@Entity
 public class PlantSpecies{
+    @Id
     int id;
     String oldSpeciesNumber;
     String speciesCode;

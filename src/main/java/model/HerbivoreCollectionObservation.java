@@ -1,15 +1,24 @@
 package model;
 
+import javax.persistence.*;
+
 /**
  * Created by Zach Zundel on 20.04.2016.
  */
+
+@Entity
 public class HerbivoreCollectionObservation {
+    @Id
+    int id;
+
+    @ManyToOne
     HerbivoreVoucher voucher;
     int herbivores;
     int herbivoresTotal;
     String family;
 
-    public HerbivoreCollectionObservation(HerbivoreVoucher voucher, int herbivores, int herbivoresTotal, String family) {
+    public HerbivoreCollectionObservation(int id, HerbivoreVoucher voucher, int herbivores, int herbivoresTotal, String family) {
+        this.id = id;
         this.voucher = voucher;
         this.herbivores = herbivores;
         this.herbivoresTotal = herbivoresTotal;
@@ -17,10 +26,19 @@ public class HerbivoreCollectionObservation {
     }
 
     public HerbivoreCollectionObservation() {
+        this.id = 0;
         this.voucher = null;
         this.herbivores = 0;
         this.herbivoresTotal = 0;
         this.family = null;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public HerbivoreVoucher getVoucher() {

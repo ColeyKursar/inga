@@ -1,17 +1,26 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Zach Zundel on 14.04.2016.
  */
+@Entity
 public class RTI_QC {
+    @Id
+    int id;
     String rti;
-    ArrayList<RTI_QCMember> members;
+    @ManyToMany
+    List<RTI_QCMember> members;
     boolean pass;
     String notes;
 
-    public RTI_QC(String rti, ArrayList<RTI_QCMember> members, boolean pass, String notes) {
+    public RTI_QC(int id, String rti, List<RTI_QCMember> members, boolean pass, String notes) {
+        this.id = id;
         this.rti = rti;
         this.members = members;
         this.pass = pass;
@@ -19,10 +28,19 @@ public class RTI_QC {
     }
 
     public RTI_QC() {
+        this.id = 0;
         this.rti = null;
         this.members = null;
         this.pass = false;
         this.notes = null;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getRti() {
@@ -33,11 +51,11 @@ public class RTI_QC {
         this.rti = rti;
     }
 
-    public ArrayList<RTI_QCMember> getMembers() {
+    public List<RTI_QCMember> getMembers() {
         return members;
     }
 
-    public void setMembers(ArrayList<RTI_QCMember> members) {
+    public void setMembers(List<RTI_QCMember> members) {
         this.members = members;
     }
 

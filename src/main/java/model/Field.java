@@ -1,13 +1,24 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Zach Zundel on 14.04.2016.
  */
+
+@Entity
 public class Field {
+    @Id
+    int id;
     Date date;
+
+    @ManyToOne
     Plant plant;
     int origID;
     String evm;
@@ -18,14 +29,19 @@ public class Field {
     double antsEFN;
     String antCollection;
     int totalHerbivores;
-    ArrayList<HerbivoreSpeciesObservation> herbivoreSpeciesObservation;
-    ArrayList<HerbivoreCollectionObservation> herbiforeCollectionObservation;
+
+    @ManyToMany
+    List<HerbivoreSpeciesObservation> herbivoreSpeciesObservation;
+
+    @ManyToMany
+    List<HerbivoreCollectionObservation> herbivoreCollectionObservation;
     String notes;
 
-    public Field(Date date, Plant plant, int origID, String evm, String expMin, String expMax, int efn, int ants,
+    public Field(int id, Date date, Plant plant, int origID, String evm, String expMin, String expMax, int efn, int ants,
                  double antsEFN, String antCollection, int totalHerbivores,
                  ArrayList<HerbivoreSpeciesObservation> herbivoreSpeciesObservation,
                  ArrayList<HerbivoreCollectionObservation> herbiforeCollectionObservation, String notes) {
+        this.id = id;
         this.date = date;
         this.plant = plant;
         this.origID = origID;
@@ -38,11 +54,12 @@ public class Field {
         this.antCollection = antCollection;
         this.totalHerbivores = totalHerbivores;
         this.herbivoreSpeciesObservation = herbivoreSpeciesObservation;
-        this.herbiforeCollectionObservation = herbiforeCollectionObservation;
+        this.herbivoreCollectionObservation = herbiforeCollectionObservation;
         this.notes = notes;
     }
 
     public Field() {
+        this.id = 0;
         this.date = null;
         this.plant = null;
         this.origID = 0;
@@ -55,8 +72,16 @@ public class Field {
         this.antCollection = null;
         this.totalHerbivores = 0;
         this.herbivoreSpeciesObservation = null;
-        this.herbiforeCollectionObservation = null;
+        this.herbivoreCollectionObservation = null;
         this.notes = null;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Date getDate() {
@@ -147,20 +172,20 @@ public class Field {
         this.totalHerbivores = totalHerbivores;
     }
 
-    public ArrayList<HerbivoreSpeciesObservation> getHerbivoreSpeciesObservation() {
+    public List<HerbivoreSpeciesObservation> getHerbivoreSpeciesObservation() {
         return herbivoreSpeciesObservation;
     }
 
-    public void setHerbivoreSpeciesObservation(ArrayList<HerbivoreSpeciesObservation> herbivoreSpeciesObservation) {
+    public void setHerbivoreSpeciesObservation(List<HerbivoreSpeciesObservation> herbivoreSpeciesObservation) {
         this.herbivoreSpeciesObservation = herbivoreSpeciesObservation;
     }
 
-    public ArrayList<HerbivoreCollectionObservation> getHerbiforeCollectionObservation() {
-        return herbiforeCollectionObservation;
+    public List<HerbivoreCollectionObservation> getHerbiforeCollectionObservation() {
+        return herbivoreCollectionObservation;
     }
 
-    public void setHerbiforeCollectionObservation(ArrayList<HerbivoreCollectionObservation> herbiforeCollectionObservation) {
-        this.herbiforeCollectionObservation = herbiforeCollectionObservation;
+    public void setHerbiforeCollectionObservation(ArrayList<HerbivoreCollectionObservation> herbivoreCollectionObservation) {
+        this.herbivoreCollectionObservation = herbivoreCollectionObservation;
     }
 
     public String getNotes() {

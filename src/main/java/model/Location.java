@@ -1,9 +1,17 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 /**
  * Created by Zach Zundel on 14.04.2016.
  */
+@Entity
 public class Location {
+    @Id
+    int id;
+    @ManyToOne
     Plant plant;
     int gps;
     int trail;
@@ -11,7 +19,8 @@ public class Location {
     int offset;
     int side;
 
-    public Location(Plant plant, int gps, int trail, int measure, int offset, int side) {
+    public Location(int id, Plant plant, int gps, int trail, int measure, int offset, int side) {
+        this.id = id;
         this.plant = plant;
         this.gps = gps;
         this.trail = trail;
@@ -21,12 +30,21 @@ public class Location {
     }
 
     public Location() {
+        this.id = 0;
         this.plant = null;
         this.gps = 0;
         this.trail = 0;
         this.measure = 0;
         this.offset = 0;
         this.side = 0;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Plant getPlant() {

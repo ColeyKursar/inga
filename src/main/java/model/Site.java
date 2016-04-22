@@ -1,10 +1,15 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Created by Zach Zundel on 14.04.2016.
  */
+@Entity
 public class Site {
-    Site site;
+    @Id
+    int siteId;
     String country;
     String latitudeDegrees;
     int latitudeMinutes;
@@ -18,10 +23,11 @@ public class Site {
     String soils;
     String soildPDFS;
 
-    public Site(Site site, String country, String latitudeDegrees, int latitudeMinutes, String longitudeDegrees,
+
+    public Site(int siteId, String country, String latitudeDegrees, int latitudeMinutes, String longitudeDegrees,
                 int longitudeMinutes, int altitude, double temp, int annualRainfall, String ranfallSeasonality,
                 String rainfallSeasonalityPDFS, String soils, String soildPDFS) {
-        this.site = site;
+        this.siteId = siteId;
         this.country = country;
         this.latitudeDegrees = latitudeDegrees;
         this.latitudeMinutes = latitudeMinutes;
@@ -37,7 +43,7 @@ public class Site {
     }
 
     public Site() {
-        this.site = null;
+        this.siteId = 0;
         this.country = null;
         this.latitudeDegrees = null;
         this.latitudeMinutes = 0;
@@ -52,12 +58,12 @@ public class Site {
         this.soildPDFS = null;
     }
 
-    public Site getSite() {
-        return site;
+    public int getSiteId() {
+        return siteId;
     }
 
-    public void setSite(Site site) {
-        this.site = site;
+    public void setSiteId(int siteId) {
+        this.siteId = siteId;
     }
 
     public String getCountry() {

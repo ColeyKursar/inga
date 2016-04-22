@@ -1,8 +1,13 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * Created by Zach Zundel on 14.04.2016.
  */
+
+@Entity
 public class LeafMassArea extends Trait {
     String age;
     String size;
@@ -13,8 +18,9 @@ public class LeafMassArea extends Trait {
     double dw_area_g;
     String dryingMethod;
 
-    public LeafMassArea(String age, String size, String light, double inches, double area,
+    public LeafMassArea(int id, String age, String size, String light, double inches, double area,
                         double dw_g, double dw_area_g, String dryingMethod) {
+        this.id = id;
         this.age = age;
         this.size = size;
         this.light = light;
@@ -26,6 +32,7 @@ public class LeafMassArea extends Trait {
     }
 
     public LeafMassArea() {
+        this.id = 0;
         this.age = null;
         this.size = null;
         this.light = null;

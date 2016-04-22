@@ -1,15 +1,20 @@
 package model;
 
+import javax.persistence.*;
 import java.util.Date;
 
 /**
  * Created by Zach Zundel on 14.04.2016.
  */
+
+@Entity
 public class Chemistry {
-    Plant plant;
+    @Id
+    int id;
     String chemistryNumber;
+    @ManyToOne
+    Plant plant;
     Date date;
-    Site site;
     String size;
     String light;
     String expMin;
@@ -18,7 +23,7 @@ public class Chemistry {
     String DBH;
     String FWg;
     String age;
-    String use;
+    String useField;
     double cur_w;
     double vial_w;
     double unusedMaterial;
@@ -29,10 +34,10 @@ public class Chemistry {
     String extracted;
 
     public Chemistry() {
+        id = 0;
         plant = null;
         chemistryNumber = null;
         date = null;
-        site = null;
         size = null;
         light = null;
         expMin = null;
@@ -41,7 +46,7 @@ public class Chemistry {
         DBH = null;
         FWg = null;
         age = null;
-        use = null;
+        useField = null;
         cur_w = 0.0;
         vial_w = 0.0;
         unusedMaterial = 0.0;
@@ -52,15 +57,15 @@ public class Chemistry {
         extracted = null;
     }
 
-    public Chemistry(Plant plant, String chemistryNumber, Date date, Site site, String size,
+    public Chemistry(int id, Plant plant, String chemistryNumber, Date date, String size,
                      String light, String expMin, String expMax, Double height, String DBH,
                      String FWg, String age, String use, double cur_w, double vial_w,
                      double unusedMaterial, String boxNumber, String numberPlants, String notes,
                      String status, String extracted) {
+        this.id = id;
         this.plant = plant;
         this.chemistryNumber = chemistryNumber;
         this.date = date;
-        this.site = site;
         this.size = size;
         this.light = light;
         this.expMin = expMin;
@@ -69,7 +74,7 @@ public class Chemistry {
         this.DBH = DBH;
         this.FWg = FWg;
         this.age = age;
-        this.use = use;
+        this.useField = use;
         this.cur_w = cur_w;
         this.vial_w = vial_w;
         this.unusedMaterial = unusedMaterial;
@@ -78,6 +83,14 @@ public class Chemistry {
         this.notes = notes;
         this.status = status;
         this.extracted = extracted;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Plant getPlant() {
@@ -102,14 +115,6 @@ public class Chemistry {
 
     public void setDate(Date date) {
         this.date = date;
-    }
-
-    public Site getSite() {
-        return site;
-    }
-
-    public void setSite(Site site) {
-        this.site = site;
     }
 
     public String getSize() {
@@ -177,11 +182,11 @@ public class Chemistry {
     }
 
     public String getUse() {
-        return use;
+        return useField;
     }
 
     public void setUse(String use) {
-        this.use = use;
+        this.useField = use;
     }
 
     public double getCur_w() {

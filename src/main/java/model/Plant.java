@@ -1,16 +1,28 @@
 package model;
 
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 /**
  * Created by Zach Zundel on 14.04.2016.
  */
+
+@Entity
 public class Plant {
+
+    @Id
+    int id;
     int plantNumber;
+
+    @ManyToMany (cascade = CascadeType.ALL)
     List<Collector> collectors;
+
+    @ManyToOne
     Site site;
     Date date;
+
+    @ManyToOne
     PlantSpecies species;
     String size;
     String light;
@@ -19,6 +31,8 @@ public class Plant {
     String LH;
     String DNA;
     Date dateDNASent;
+
+    @ManyToMany
     List<Voucher> vouchers;
     String herbariumSample;
     String flowerColor;
@@ -27,6 +41,7 @@ public class Plant {
     int code;
 
     public Plant() {
+        this.id = 0;
         this.plantNumber = 0;
         this.collectors = null;
         this.site = null;
@@ -45,6 +60,14 @@ public class Plant {
         this.description = null;
         this.newLeaves = 0;
         this.code = 0;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getPlantNumber() {

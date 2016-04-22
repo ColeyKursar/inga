@@ -1,9 +1,16 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
 /**
  * Created by Zach Zundel on 14.04.2016.
  */
+
+@Entity
 public class Nitrogen extends Trait {
+    @ManyToOne
     Chemistry chemistry;
     String age;
     float weightBeforeGrounding;
@@ -14,9 +21,10 @@ public class Nitrogen extends Trait {
     float percentNitrogen;
     String notes;
 
-    public Nitrogen(Chemistry chemistry, String age, float weightBeforeGrounding, String percentageOfExpansion,
+    public Nitrogen(int id, Chemistry chemistry, String age, float weightBeforeGrounding, String percentageOfExpansion,
                     float weightAfterGrounding, String sampleNumberForNitrogenAnalysis, float subsampleWeight,
                     float percentNitrogen, String notes) {
+        this.id = id;
         this.chemistry = chemistry;
         this.age = age;
         this.weightBeforeGrounding = weightBeforeGrounding;
@@ -29,6 +37,7 @@ public class Nitrogen extends Trait {
     }
 
     public Nitrogen() {
+        this.id = 0;
         this.chemistry = null;
         this.age = null;
         this.weightBeforeGrounding = 0;
@@ -38,6 +47,14 @@ public class Nitrogen extends Trait {
         this.subsampleWeight = 0;
         this.percentNitrogen = 0;
         this.notes = null;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Chemistry getChemistry() {

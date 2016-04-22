@@ -1,12 +1,20 @@
 package model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.util.Date;
 
 /**
  * Created by Zach Zundel on 14.04.2016.
  */
+
+@Entity
 public class Extraction {
+    @Id
     int extractionNumber;
+
+    @ManyToOne
     Chemistry chemistry;
     Date date;
     float method;
@@ -14,7 +22,9 @@ public class Extraction {
     int notebookNumber;
     int extractionNotebookNumber;
     int pageNumber;
+    @ManyToOne
     Extraction parentExtraction;
+    @ManyToOne
     Chemistry otherChemistry;
     String box;
     String comments;
