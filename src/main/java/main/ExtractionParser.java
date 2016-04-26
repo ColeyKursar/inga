@@ -14,6 +14,7 @@ import java.util.HashMap;
  * Created by Zach Zundel on 4/24/2016.
  */
 public class ExtractionParser {
+    /*
     public static HashMap<Integer, Extraction> parse(File input, Date date) throws ImportException{
         Iterable<CSVRecord> records = new ArrayList<>();
         HashMap<Integer, ExtractionRecord> result = new HashMap<>();
@@ -34,5 +35,5 @@ public class ExtractionParser {
         }
 
         return result;
-    }
+    }*/
 }

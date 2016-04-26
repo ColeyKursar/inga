@@ -16,24 +16,14 @@ public class MainFrame {
     private JTabbedPane mainPane;
     private JPanel Extraction;
     private JPanel mainPanel;
+    private JTextField YYYYTextField;
+    private JTextField MMTextField;
+    private JTextField DDTextField;
+    private JTextField textField1;
+    private JTextField textField2;
     private JButton extractionUploadButton;
 
-    public MainFrame() {
-        extractionUploadButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser fc = new JFileChooser();
-                int fileCode = fc.showOpenDialog(mainPane);
-                if (fileCode == JFileChooser.APPROVE_OPTION) {
-                    try {
-                        ExtractionParser.parse(fc.getSelectedFile());
-                    } catch (ImportException ie) {
-                        JOptionPane.showMessageDialog(mainPane, ie.getMessage(), "Import Error Occured", JOptionPane.ERROR_MESSAGE);
-                    }
-                }
-            }
-        });
-    }
+    public MainFrame() {}
 
     public static void main(String[] args) {
         try {
