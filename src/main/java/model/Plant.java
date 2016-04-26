@@ -14,15 +14,12 @@ public class Plant {
     @Id
     int id;
     int plantNumber;
-
-    @ManyToMany (cascade = CascadeType.ALL)
-    List<Collector> collectors;
-
-    @ManyToOne
+    String collectors;
+    @ManyToOne(cascade = CascadeType.ALL)
     Site site;
     Date date;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     PlantSpecies species;
     String size;
     String light;
@@ -32,7 +29,7 @@ public class Plant {
     String DNA;
     Date dateDNASent;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     List<Voucher> vouchers;
     String herbariumSample;
     String flowerColor;
@@ -78,11 +75,11 @@ public class Plant {
         this.plantNumber = plantNumber;
     }
 
-    public List<Collector> getCollectors() {
+    public String getCollectors() {
         return collectors;
     }
 
-    public void setCollectors(List<Collector> collectors) {
+    public void setCollectors(String collectors) {
         this.collectors = collectors;
     }
 

@@ -1,6 +1,7 @@
 package main;
 
 import model.Plant;
+import model.PlantSpecies;
 import model.Site;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
+import java.util.stream.Collector;
 
 import static java.util.logging.Level.OFF;
 
@@ -21,33 +23,61 @@ public class SQLAdapter {
     private static Session session;
 
     public static void main(String[] args) {
+        java.util.logging.Logger.getLogger("org.hibernate").setLevel(OFF);
         session = HibernateUtil.getSessionFactory().openSession();
         readPlants();
+        session.flush();
         session.close();
         HibernateUtil.closeSessionFactory();
     }
 
     private static void readPlants() {
         java.util.logging.Logger.getLogger("org.hibernate").setLevel(OFF);
-        ArrayList<Plant> plants = new ArrayList<>();
-        ResultSet rs = SQLReader.connectToAndQueryDatabase("SELECT * FROM plant_table LIMIT 10");
+        ResultSet rs = SQLReader.connectToAndQueryDatabase("SELECT * FROM plant_table");
         try {
             while (rs.next()) {
                 Plant plant = new Plant();
                 plant.setId(rs.getInt("id"));
-                plant.setDate(parseDate(rs));
+                plant.setCollectors(rs.getString("collectors"));
                 plant.setPlantNumber(rs.getInt("Plant#"));
-                plants.add(plant);
+                plant.setSpecies(parseSpecies(rs.getString("Species_code")));
+                Transaction tx = session.beginTransaction();
+                session.saveOrUpdate(plant);
+                tx.commit();
             }
         } catch(SQLException e) {
             e.printStackTrace(System.out);
         }
+    }
 
-        for(Plant plant : plants) {
+    private static PlantSpecies parseSpecies(String species_code) {
+
+        ResultSet rs = SQLReader.connectToAndQueryDatabase("SELECT * FROM species WHERE species_code = \"" + species_code + "\";");
+        PlantSpecies species;
+        try{
+            rs.next();
             Transaction tx = session.beginTransaction();
-            session.save(plant);
+            species = session.get(PlantSpecies.class, rs.getInt("id"));
             tx.commit();
+            if(species != null) {
+                return species;
+            }
+            else {
+                species = new PlantSpecies();
+                species.setId(rs.getInt("id"));
+                species.setOldSpeciesNumber(rs.getString("Old_Species_Number"));
+                species.setSpeciesCode(species_code);
+                species.setGenus(rs.getString("Genus"));
+                species.setSpeciesName(rs.getString("Species_name"));
+                species.setComment(rs.getString("comment"));
+                species.setAuthority(rs.getString("authority"));
+                species.setNoteChemAnal(rs.getString("Note_Chem_Anal"));
+                return species;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+        return null;
     }
 
     private static Date parseDate(ResultSet rs) {

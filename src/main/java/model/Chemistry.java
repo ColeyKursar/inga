@@ -12,7 +12,7 @@ public class Chemistry {
     @Id
     int id;
     String chemistryNumber;
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.ALL)
     Plant plant;
     Date date;
     String size;
