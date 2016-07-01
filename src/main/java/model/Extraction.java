@@ -9,6 +9,13 @@ import java.util.Date;
  * Created by Zach Zundel on 14.04.2016.
  */
 
+
+/*
+Marc = final - vial
+Mass Extracted = dry weight - marc
+Percent Extracted = (masse / dry weight) * 100
+ */
+
 @Entity
 public class Extraction {
     @Id

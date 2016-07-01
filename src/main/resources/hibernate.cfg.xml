@@ -9,7 +9,7 @@
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
-    <property name="hbm2ddl.auto">create</property>
+    <property name="hbm2ddl.auto">validate</property>
     <mapping class="model.Chemistry" />
     <mapping class="model.Chlorophyll" />
     <mapping class="model.Collector"/>

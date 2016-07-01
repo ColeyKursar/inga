@@ -1,6 +1,9 @@
 package model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -11,15 +14,16 @@ import javax.persistence.ManyToOne;
 @Entity
 public class ExtractionWeight {
     @Id
+    @GenericGenerator(name="generator", strategy="increment")
+    @GeneratedValue(generator="generator")
     int id;
 
     @ManyToOne
     Extraction extraction;
     String attribute;
-    float weight;
+    double weight;
 
-    public ExtractionWeight(int id, Extraction extraction, String attribute, float weight) {
-        this.id = id;
+    public ExtractionWeight(Extraction extraction, String attribute, double weight) {
         this.extraction = extraction;
         this.attribute = attribute;
         this.weight = weight;
@@ -30,6 +34,10 @@ public class ExtractionWeight {
         this.extraction = null;
         this.attribute = null;
         this.weight = 0;
+    }
+
+    public ExtractionWeight(String attribute) {
+        this.attribute = attribute;
     }
 
     public int getId() {
@@ -56,11 +64,11 @@ public class ExtractionWeight {
         this.attribute = attribute;
     }
 
-    public float getWeight() {
+    public double getWeight() {
         return weight;
     }
 
-    public void setWeight(float weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 }
