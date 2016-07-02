@@ -23,7 +23,8 @@ class Chemistry(models.Model):
     extracted = models.TextField()
 
 class Chlorophyll(models.Model):
-    # TRAIT
+    plant = models.ForeignKey("Plant")
+    date = models.DateField()
     percent_exposed = models.IntegerField()
     size = models.TextField()
     light = models.TextField()
@@ -38,7 +39,8 @@ class DNA(models.Model):
     sequence = models.TextField()
 
 class Expansion(models.Model):
-    # TRAIT
+    plant = models.ForeignKey("Plant")
+    date = models.DateField()
     pass
 
 class Extraction(models.Model):
@@ -91,8 +93,8 @@ class HPLCResult(models.Model):
     tyrosine = models.IntegerField()
 
 class Hairs(models.Model):
-    # TRAIT
-    pass
+    plant = models.ForeignKey("Plant")
+    date = models.DateField()
 
 class HerbivoreCollectionObservation(models.Model):
     voucher = models.ForeignKey("HerbivoreVoucher")
@@ -241,8 +243,8 @@ class Site(models.Model):
     solid_pdfs = models.TextField()
 
 class Toughness(models.Model):
-    # Trait
-    pass
+    plant = models.ForeignKey("Plant")
+    date = models.DateField()
 
 class UPLCResult(models.Model):
     raw = models.ForeignKey("RAW")
