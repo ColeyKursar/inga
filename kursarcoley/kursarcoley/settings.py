@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'ingaapi',
     'inga',
+    'ingaweb',
 ]
 
 MIDDLEWARE_CLASSES = [
