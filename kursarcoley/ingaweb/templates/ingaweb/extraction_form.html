@@ -1,4 +1,174 @@
-<form action="" method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Send message" />
-</form>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/south-street/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <style>
+            label {
+                font-size: 10px
+            }
+             .container {
+                width: 700px;
+            }
+        </style>
+        <script>
+            $(function() {
+                $( "#id_date" ).datepicker();
+            });
+        </script>
+        <title>Extraction Form</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <h3 class="text-center">Extraction</h3>
+            </div>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form.date.errors }}
+                            {{ form.date.label_tag }}
+                            {{ form.date }}
+                        </div>
+                    </div>
+                    <div class="col-md-8"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form.chemist.errors }}
+                            {{ form.chemist.label_tag }}
+                            {{ form.chemist }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form.extraction_number.errors }}
+                            {{ form.extraction_number.label_tag }}
+                            {{ form.extraction_number }}
+                        </div>
+                    </div>
+                    <div class="col-md-4"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form.chemistry.errors }}
+                            {{ form.chemistry.label_tag }}
+                            {{ form.chemistry }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form.species.errors }}
+                            {{ form.species.label_tag }}
+                            {{ form.species }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form.method.errors }}
+                            {{ form.method.label_tag }}
+                            {{ form.method }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form.dry_weight.errors }}
+                            {{ form.dry_weight.label_tag }}
+                            {{ form.dry_weight }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form.plant.errors }}
+                            {{ form.plant.label_tag }}
+                            {{ form.plant }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form.box_number.errors }}
+                            {{ form.box_number.label_tag }}
+                            {{ form.box_number }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form.empty_vial_weight.errors }}
+                            {{ form.empty_vial_weight.label_tag }}
+                            {{ form.empty_vial_weight }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form.final_weight.errors }}
+                            {{ form.final_weight.label_tag }}
+                            {{ form.final_weight }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form.dry_marc_weight.errors }}
+                            {{ form.dry_marc_weight.label_tag }}
+                            {{ form.dry_marc_weight }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form.mass_extracted.errors }}
+                            {{ form.mass_extracted.label_tag }}
+                            {{ form.mass_extracted }}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            {{ form.proportion_remaining.errors }}
+                            {{ form.proportion_remaining.label_tag }}
+                            {{ form.proportion_remaining }}
+                        </div>
+                    </div>
+                    <div class="col-md-4"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"> </div>
+                    <div class="col-md-4">
+                            {{ form.percent_extracted.errors }}
+                            {{ form.percent_extracted.label_tag }}
+                            {{ form.percent_extracted }}
+                    </div>
+                    <div class="col-md-4"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{ form.comments.errors }}
+                            {{ form.comments.label_tag }}
+                            {{ form.comments }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8"> </div>
+                    <div class="col-md-2">
+                        <input type="submit" class="btn btn-primary" name="retrieve" value="Retrieve" />
+                    </div>
+                    <div class="col-md-2">
+                        <input type="submit" class="btn btn-success" name="save" value="Save" />
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

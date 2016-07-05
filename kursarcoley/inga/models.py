@@ -54,13 +54,22 @@ class Extraction(models.Model):
     page_number = models.IntegerField()
     parent_extraction = models.ForeignKey("Extraction")
     other_chemistry = models.ManyToManyField("Chemistry", related_name="other_chemistry")
+    dry_weight = models.FloatField(default=0)
+    empty_vial_weight = models.FloatField(default=0)
+    final_weight = models.FloatField(default=0)
+    dry_marc_weight = models.FloatField(default=0)
+    mass_extracted = models.FloatField(default=0)
+    proportion_remaining = models.FloatField(default=0)
+    percent_extracted = models.FloatField(default=0)
     box = models.CharField(max_length=20)
     comments = models.TextField()
 
-class ExtractionWeight(models.Model):
-    extraction = models.ForeignKey("Extraction")
-    attribute = models.CharField(max_length=20)
-    weight = models.FloatField()
+    def save(self):
+        dry_marc_weight = final_weight - empty_vial_weight
+        mass_extracted = dry_weight - dry_marc_weight
+        percent_extracted = (mass_extracted / dry_weight) * 100
+        super(self)
+
 
 class ExtrafloralNectaries(models.Model):
     basal_mm = models.FloatField()
