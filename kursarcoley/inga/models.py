@@ -47,28 +47,29 @@ class Extraction(models.Model):
     extraction_number = models.IntegerField(primary_key=True)
     chemistry = models.ForeignKey("Chemistry")
     date = models.DateField()
-    method = models.FloatField()
-    chemist = models.CharField(max_length=20)
-    notebook_number = models.IntegerField()
-    extraction_notebook_number = models.IntegerField()
-    page_number = models.IntegerField()
-    parent_extraction = models.ForeignKey("Extraction")
-    other_chemistry = models.ManyToManyField("Chemistry", related_name="other_chemistry")
-    dry_weight = models.FloatField(default=0)
-    empty_vial_weight = models.FloatField(default=0)
-    final_weight = models.FloatField(default=0)
-    dry_marc_weight = models.FloatField(default=0)
-    mass_extracted = models.FloatField(default=0)
-    proportion_remaining = models.FloatField(default=0)
-    percent_extracted = models.FloatField(default=0)
-    box = models.CharField(max_length=20)
+    method = models.FloatField(blank=True, null=True)
+    chemist = models.CharField(blank=True, null=True, max_length=20)
+    notebook_number = models.IntegerField(blank=True, null=True)
+    extraction_notebook_number = models.IntegerField(blank=True, null=True)
+    page_number = models.IntegerField(blank=True, null=True)
+    parent_extraction = models.ForeignKey("Extraction", null=True, blank=True)
+    other_chemistry = models.ManyToManyField("Chemistry", related_name="other_chemistry", blank=True)
+    dry_weight = models.FloatField(default=0, null=True, blank=True)
+    empty_vial_weight = models.FloatField(default=0, null=True, blank=True)
+    final_weight = models.FloatField(default=0, null=True, blank=True)
+    dry_marc_weight = models.FloatField(default=0, null=True, blank=True)
+    mass_extracted = models.FloatField(default=0, null=True, blank=True)
+    proportion_remaining = models.FloatField(default=0, null=True, blank=True)
+    percent_extracted = models.FloatField(default=0, null=True, blank=True)
+    box = models.CharField(max_length=20, null=True, blank=True)
     comments = models.TextField()
 
     def save(self):
-        dry_marc_weight = final_weight - empty_vial_weight
-        mass_extracted = dry_weight - dry_marc_weight
-        percent_extracted = (mass_extracted / dry_weight) * 100
-        super(self)
+        if self.final_weight and self.empty_vial_weight and self.dry_weight:
+            self.dry_marc_weight = self.final_weight - self.empty_vial_weight
+            self.mass_extracted = self.dry_weight - self.dry_marc_weight
+            self.percent_extracted = (self.mass_extracted / self.dry_weight) * 100
+        super(Extraction, self).save()
 
 
 class ExtrafloralNectaries(models.Model):

@@ -25,7 +25,7 @@
             <div class="row">
                 <h3 class="text-center">Extraction</h3>
             </div>
-            <form action="" method="post">
+            <form action="{{ request.path }}" method="post">
                 {% csrf_token %}
                 {{ form.non_field_errors }}
                 <div class="row">
@@ -162,10 +162,10 @@
                 <div class="row">
                     <div class="col-md-8"> </div>
                     <div class="col-md-2">
-                        <input type="submit" class="btn btn-primary" name="retrieve" value="Retrieve" />
+                        <input type="reset" class="btn btn-primary" name="clear" value="Clear" onClick="window.location.reload()"/>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="btn btn-success" name="save" value="Save" />
+                        <input type="submit" class="btn btn-success" name="save" value="Save/Retrieve" />
                     </div>
                 </div>
             </form>

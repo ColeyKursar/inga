@@ -12,14 +12,30 @@ class ExtractionForm(BootstrapForm):
     method = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control'}))
     chemist = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     chemistry = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    plant = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    species = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    dry_weight = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control'}))
-    empty_vial_weight = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control'}))
-    final_weight = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control'}))
-    dry_marc_weight = forms.FloatField(disabled=True, widget=forms.NumberInput(attrs={'class': 'form-control'}))
-    mass_extracted = forms.FloatField(disabled=True, widget=forms.NumberInput(attrs={'class': 'form-control'}))
-    proportion_remaining = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control'}))
-    percent_extracted = forms.FloatField(disabled=True, widget=forms.NumberInput(attrs={'class': 'form-control'}))
-    box = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
-    comments = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 2}))
+    plant = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), required=False)
+    species = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), required=False)
+    dry_weight = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control'}), required=False)
+    empty_vial_weight = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control'}), required=False)
+    final_weight = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control'}), required=False)
+    dry_marc_weight = forms.FloatField(disabled=True, widget=forms.NumberInput(attrs={'class': 'form-control'}), required=False)
+    mass_extracted = forms.FloatField(disabled=True, widget=forms.NumberInput(attrs={'class': 'form-control'}), required=False)
+    proportion_remaining = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control'}), required=False)
+    percent_extracted = forms.FloatField(disabled=True, widget=forms.NumberInput(attrs={'class': 'form-control'}), required=False)
+    box = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), required=False)
+    comments = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 2}), required=False)
+
+    def clean(self):
+        cleaned_data = super(ExtractionForm, self).clean()
+        chemistry_number = cleaned_data.get("chemistry")
+        plant_number = cleaned_data.get("plant")
+        species_code = cleaned_data.get("species")
+
+        try: 
+            chemistry = Chemistry.objects.get(chemistry_number=chemistry_number)
+            plant = chemistry.plant
+            species = plant.species
+
+            if (plant_number != "" and plant_number != plant.plant_number) and (species_code != "" and species_code != species.species_code):
+                self.add_error(None, "There is an mismatch between the given chemistry number, plant number, and species code.")
+        except Chemistry.DoesNotExist:
+            self.add_error('chemistry', 'Chemistry number does not match any known chemistry.')
