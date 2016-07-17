@@ -17,10 +17,10 @@ class ExtractionForm(BootstrapForm):
     dry_weight = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control'}), required=False)
     empty_vial_weight = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control'}), required=False)
     final_weight = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control'}), required=False)
-    dry_marc_weight = forms.FloatField(disabled=True, widget=forms.NumberInput(attrs={'class': 'form-control'}), required=False)
-    mass_extracted = forms.FloatField(disabled=True, widget=forms.NumberInput(attrs={'class': 'form-control'}), required=False)
+    dry_marc_weight = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control', 'disabled': 'true'}), required=False)
+    mass_extracted = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control', 'disabled': 'true'}), required=False)
     proportion_remaining = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control'}), required=False)
-    percent_extracted = forms.FloatField(disabled=True, widget=forms.NumberInput(attrs={'class': 'form-control'}), required=False)
+    percent_extracted = forms.FloatField(widget=forms.NumberInput(attrs={'class': 'form-control', 'disabled': 'true'}), required=False)
     box = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}), required=False)
     comments = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 2}), required=False)
 

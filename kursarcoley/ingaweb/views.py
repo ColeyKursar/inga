@@ -20,6 +20,7 @@ def ExtractionFormView(request):
                 try:
                     extraction = Extraction.objects.get(extraction_number = extraction)
                     data = build_extraction_form(extraction)
+                    print(data)
                     form = ExtractionForm(data)
                 except Extraction.DoesNotExist:
                     pass
