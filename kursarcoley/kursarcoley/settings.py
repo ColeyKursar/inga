@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'ingaapi',
     'inga',
     'ingaweb',
+    'oldinga',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -81,9 +82,20 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+    'oldinga': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'inga_basic',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
     }
 }
 
+DATABASE_ROUTERS = [
+    'oldinga.routers.OldIngaRouter',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

@@ -30,5 +30,8 @@ def build_extraction_form(extraction):
     data["final_weight"] = extraction.final_weight
     data["box"] = extraction.box
     data["comments"] = extraction.comments
+    data["dry_marc_weight"] = extraction.dry_marc_weight
+    data["mass_extracted"] = extraction.mass_extracted
+    data["percent_extracted"] = extraction.percent_extracted
 
     return data
