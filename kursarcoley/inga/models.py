@@ -1,7 +1,9 @@
 from django.db import models
 
+class IngaBase(models.Model):
+    updated = models.DateField(auto_now=True)
 
-class Chemistry(models.Model):
+class Chemistry(IngaBase):
     chemistry_number = models.CharField(max_length=100)
     plant = models.ForeignKey("Plant")
     date = models.DateField(blank=True, null=True)
@@ -21,33 +23,32 @@ class Chemistry(models.Model):
     number_plants = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
     status = models.TextField(blank=True, null=True)
-    extracted = models.TextField(blank=True, null=True)
+    extracted = models.BooleanField(default=False)
 
-class Chlorophyll(models.Model):
+class Chlorophyll(IngaBase):
     plant = models.ForeignKey("Plant")
-    date = models.DateField()
-    percent_exposed = models.IntegerField()
-    size = models.TextField()
-    light = models.TextField()
-    spadd = models.IntegerField()
-    chl_mg_dm2 = models.FloatField()
-    notes = models.TextField()
+    date = models.DateField(blank=True, null=True)
+    percent_exposed = models.IntegerField(blank=True, null=True)
+    size = models.TextField(blank=True, null=True)
+    light = models.TextField(blank=True, null=True)
+    spadd = models.IntegerField(blank=True, null=True)
+    chl_mg_dm2 = models.FloatField(blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
 
-class Converted(models.Model):
+class Converted(IngaBase):
     converted_file = models.FileField()
 
-class DNA(models.Model):
+class DNA(IngaBase):
     sequence = models.TextField()
 
-class Expansion(models.Model):
+class Expansion(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField()
-    pass
 
-class Extraction(models.Model):
+class Extraction(IngaBase):
     extraction_number = models.IntegerField(primary_key=True)
     chemistry = models.ForeignKey("Chemistry")
-    date = models.DateField()
+    date = models.DateField(blank=True, null=True)
     method = models.FloatField(blank=True, null=True)
     chemist = models.CharField(blank=True, null=True, max_length=20)
     notebook_number = models.IntegerField(blank=True, null=True)
@@ -63,7 +64,7 @@ class Extraction(models.Model):
     proportion_remaining = models.FloatField(default=0, null=True, blank=True)
     percent_extracted = models.FloatField(default=0, null=True, blank=True)
     box = models.CharField(max_length=20, null=True, blank=True)
-    comments = models.TextField()
+    comments = models.TextField(null=True, blank=True)
 
     def save(self):
         if self.final_weight and self.empty_vial_weight and self.dry_weight:
@@ -72,25 +73,32 @@ class Extraction(models.Model):
             self.percent_extracted = (self.mass_extracted / self.dry_weight) * 100
         super(Extraction, self).save()
 
-class ExtractionResultWeight(models.Model):
+class ExtractionResultWeight(IngaBase):
     extraction = models.ForeignKey("Extraction")
     trait = models.CharField(max_length=100)
     measurement = models.FloatField(default=0, null=True, blank=True)
+    # Build long tabe
 
-class ExtrafloralNectaries(models.Model):
-    basal_mm = models.FloatField()
-    mid_mm = models.FloatField()
-    apical_mm = models.FloatField()
-    color = models.CharField(max_length=20)
-    shape = models.TextField()
-    efn_type = models.TextField()
-    xEFN_mm = models.FloatField()
-    notes = models.TextField()
+class ExtrafloralNectaries(IngaBase):
+    date = models.DateField(blank=True, null=True)
+    plant = models.ForeignKey("Plant")
+    basal_mm = models.FloatField(blank=True, null=True)
+    mid_mm = models.FloatField(blank=True, null=True)
+    apical_mm = models.FloatField(blank=True, null=True)
+    color = models.CharField(max_length=20, blank=True, null=True)
+    shape = models.TextField(blank=True, null=True)
+    efn_type = models.TextField(blank=True, null=True)
+    xEFN_mm = models.FloatField(blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
 
-class Field(models.Model):
+class Expansion(IngaBase):
+    pass
+    #Database>AllTables>Traits>Expansion>...INDB
+
+class Field(IngaBase):
     date = models.DateField()
     plant = models.ForeignKey("Plant")
-    original_id = models.IntegerField()
+    original_id = models.CharField(max_length=20)
     evm = models.TextField()
     exp_min = models.TextField()
     exp_max = models.TextField()
@@ -99,33 +107,35 @@ class Field(models.Model):
     ants_efn = models.FloatField()
     ant_collection = models.TextField()
     total_herbivores = models.IntegerField()
-    herbivore_species_observation = models.ManyToManyField("HerbivoreSpeciesObservation")
+    #herbivore_species_observation = models.ManyToManyField("HerbivoreSpeciesObservation")
     herbivore_collection_observation = models.ManyToManyField("HerbivoreCollectionObservation")
     notes = models.TextField()
 
-class HPLCResult(models.Model):
+class HPLCResult(IngaBase):
     extraction = models.ForeignKey("Extraction")
     tyrosine = models.IntegerField()
 
-class Hairs(models.Model):
+class Hairs(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField()
+    # hairs
 
-class HerbivoreCollectionObservation(models.Model):
+class HerbivoreCollectionObservation(IngaBase):
     voucher = models.ForeignKey("HerbivoreVoucher")
+    species_code = models.CharField(max_length=20)
     herbivores = models.IntegerField()
     herbivores_total = models.IntegerField()
     family = models.CharField(max_length=20)
 
-class HerbivoreDNA(models.Model):
+class HerbivoreDNA(IngaBase):
     dna = models.TextField()
     voucher = models.ForeignKey("HerbivoreVoucher")
 
-class HerbivorePhotos(models.Model):
+class HerbivorePhotos(IngaBase):
     photo = models.FileField()
     voucher = models.ForeignKey("HerbivoreVoucher")
 
-class HerbivoreSpecies(models.Model):
+class HerbivoreSpecies(IngaBase):
     motu = models.TextField()
     analysis = models.TextField()
     sequence = models.TextField()
@@ -138,14 +148,15 @@ class HerbivoreSpecies(models.Model):
     notes_on_host = models.TextField()
     notes = models.TextField()
 
-class HerbivoreSpeciesObservation(models.Model):
-    species = models.ForeignKey("HerbivoreSpecies")
+class HerbivoreSpeciesObservation(IngaBase):
+    species = models.CharField(max_length=20, null=True, blank=True)
     number_herbivores = models.IntegerField()
 
-class HerbivoreVoucher(models.Model):
+class HerbivoreVoucher(IngaBase):
+    voucher = models.CharField(max_length=20)
     species = models.ForeignKey("HerbivoreSpecies")
 
-class Herbivory(models.Model):
+class Herbivory(IngaBase):
     species = models.ForeignKey("PlantSpecies")
     date = models.DateField()
     location = models.ForeignKey("Location")
@@ -153,7 +164,13 @@ class Herbivory(models.Model):
     total = models.IntegerField()
     x_herbivory = models.FloatField()
 
-class LeafMassArea(models.Model):
+    def save(self):
+        x_herbivory = self.total / self.leaves_leaflets;
+        super(Herbivory, self).save()
+
+class LeafMassArea(IngaBase):
+    plant = models.ForeignKey("Plant")
+    date = models.DateField()
     age = models.TextField()
     size = models.TextField()
     light = models.TextField()
@@ -163,7 +180,7 @@ class LeafMassArea(models.Model):
     dw_area_g = models.FloatField()
     drying_method = models.TextField()
 
-class Location(models.Model):
+class Location(IngaBase):
     plant = models.ForeignKey("Plant")
     gps = models.IntegerField()
     trail = models.IntegerField()
@@ -171,32 +188,33 @@ class Location(models.Model):
     offset = models.IntegerField()
     side = models.IntegerField()
 
-class Method(models.Model):
+class Method(IngaBase):
     method_number = models.IntegerField()
     description = models.TextField()
 
-class MethodResult(models.Model):
+class MethodResult(IngaBase):
     method = models.ForeignKey("Method")
     metric = models.TextField()
     measurement = models.FloatField()
 
-class Nitrogen(models.Model):
+class Nitrogen(IngaBase):
     chemistry = models.ForeignKey("Chemistry")
     age = models.TextField()
     weight_before_grounding = models.FloatField()
-    precentage_of_expansion = models.TextField()
+    percentage_of_expansion = models.TextField()
     weight_after_grounding = models.FloatField()
     sample_number_for_nitrogen_analysis = models.TextField()
     subsample_weight = models.FloatField()
     percent_nitrogen = models.FloatField()
     notes = models.TextField()
 
-class Plant(models.Model):
+class Plant(IngaBase):
     plant_number = models.IntegerField()
     collectors = models.TextField(blank=True, null=True)
     site = models.ForeignKey("Site", blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)
     species = models.ForeignKey("PlantSpecies", blank=True, null=True)
+    location = models.CharField(max_length=20)
     size = models.CharField(max_length=20, blank=True, null=True)
     height = models.CharField(max_length=20, blank=True, null=True)
     light = models.CharField(max_length=20, blank=True, null=True)
@@ -210,16 +228,18 @@ class Plant(models.Model):
     description = models.TextField(blank=True, null=True)
     new_leaves = models.IntegerField(blank=True, null=True)
     code = models.IntegerField(blank=True, null=True)
+    #add in photo booleans
+    #check if flower color is white, if not, drop it
 
-class PlantDNA(models.Model):
+class PlantDNA(IngaBase):
     dna = models.TextField()
     plant = models.ForeignKey("Plant")
 
-class PlantPhoto(models.Model):
+class PlantPhoto(IngaBase):
     photo = models.FileField()
     plant = models.ForeignKey("Plant")
 
-class PlantSpecies(models.Model):
+class PlantSpecies(IngaBase):
     old_species_number = models.TextField(blank=True, null=True)
     species_code = models.TextField(blank=True, null=True)
     genus = models.TextField(blank=True, null=True)
@@ -227,26 +247,18 @@ class PlantSpecies(models.Model):
     comment = models.TextField(blank=True, null=True)
     authority = models.TextField(blank=True, null=True)
     note_chemistry_analysis = models.TextField(blank=True, null=True)
+    #get new nots
 
-class PlantVoucher(models.Model):
+class PlantVoucher(IngaBase):
     plant = models.ForeignKey("Plant")
     voucher = models.CharField(max_length=10)
 
-class RAW(models.Model):
+class RAW(IngaBase):
     raw_file_path = models.FileField()
 
-class RTIQC(models.Model):
-    rti = models.TextField()
-    members = models.ManyToManyField("RTIQCMember")
-    passing = models.BooleanField()
+#rebuild rtiqc
 
-class RTIQCMember(models.Model):
-    rt = models.IntegerField()
-    ppm = models.IntegerField()
-    sn = models.IntegerField()
-    pk_wd = models.IntegerField()
-
-class Site(models.Model):
+class Site(IngaBase):
     site = models.CharField(max_length=12, blank=True, null=True)
     country = models.TextField(blank=True, null=True)
     latitude_degrees = models.TextField(blank=True, null=True)
@@ -261,11 +273,11 @@ class Site(models.Model):
     soils = models.TextField(blank=True, null=True)
     solid_pdfs = models.TextField(blank=True, null=True)
 
-class Toughness(models.Model):
+class Toughness(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField()
 
-class UPLCResult(models.Model):
+class UPLCResult(IngaBase):
     raw = models.ForeignKey("RAW")
     converted = models.ForeignKey("Converted")
     diva = models.TextField()
@@ -280,15 +292,14 @@ class UPLCResult(models.Model):
     uplc_method = models.TextField()
     ms_mode = models.IntegerField()
     rti = models.ForeignKey("RTIQC")
-    is_text = models.TextField()
-    is_ppm = models.IntegerField()
-    is_rt = models.IntegerField()
-    rt_shift = models.IntegerField()
-    is_tic = models.IntegerField()
-    is_sn = models.IntegerField()
     notes = models.TextField()
     all_inga = models.TextField()
     chemocoding = models.TextField()
 
-class Voucher(models.Model):
+class Voucher(IngaBase):
     pass
+
+# add in rti_neg and rti_pos and samplepaths
+# add in tyrosine and tyrosine_calibration
+# alert about zeros
+# alert about charfields exactly at length

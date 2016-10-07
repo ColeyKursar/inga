@@ -26,10 +26,7 @@ def build_extraction_form(extraction):
     data["method"] = extraction.method
     data["chemist"] = extraction.chemist
     data["dry_weight"] = extraction.dry_weight
-    data["empty_vial_weight"] = extraction.empty_vial_weight
-    data["final_weight"] = extraction.final_weight
-    data["box"] = extraction.box
-    data["comments"] = extraction.comments
+    data["empty_vial_weight
     data["dry_marc_weight"] = extraction.dry_marc_weight
     data["mass_extracted"] = extraction.mass_extracted
     data["percent_extracted"] = extraction.percent_extracted
