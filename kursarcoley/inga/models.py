@@ -2,6 +2,9 @@ from django.db import models
 
 class IngaBase(models.Model):
     updated = models.DateField(auto_now=True)
+    
+    class Meta:
+        abstract = True
 
 class Chemistry(IngaBase):
     chemistry_number = models.CharField(max_length=100)
@@ -40,10 +43,6 @@ class Converted(IngaBase):
 
 class DNA(IngaBase):
     sequence = models.TextField()
-
-class Expansion(IngaBase):
-    plant = models.ForeignKey("Plant")
-    date = models.DateField()
 
 class Extraction(IngaBase):
     extraction_number = models.IntegerField(primary_key=True)
@@ -181,7 +180,7 @@ class LeafMassArea(IngaBase):
     drying_method = models.TextField()
 
 class Location(IngaBase):
-    plant = models.ForeignKey("Plant")
+    plant = models.ForeignKey("Plant", related_name="plant_num")
     gps = models.IntegerField()
     trail = models.IntegerField()
     measure = models.IntegerField()
@@ -291,7 +290,7 @@ class UPLCResult(IngaBase):
     ms_method = models.TextField()
     uplc_method = models.TextField()
     ms_mode = models.IntegerField()
-    rti = models.ForeignKey("RTIQC")
+    #rti = models.ForeignKey("RTIQC")
     notes = models.TextField()
     all_inga = models.TextField()
     chemocoding = models.TextField()

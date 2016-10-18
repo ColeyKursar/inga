@@ -149,8 +149,6 @@ class BuildUtil:
             new.notebook_number = extraction.notebook_number
             new.extraction_notebook_number = extraction.extraction_notebook_number
             new.page_number = extraction.page_number
-            #new.parent_extraction = self.wire(inga.Extraction, extraction_number=extraction.parent_extractionnum)
-            #new.other_chemistry = self.wire(inga.Chemistry, chemistry_number=extraction.other_chem_used)
             new.box = extraction.box_number
             new.comments = extraction.comments
             new.save()
