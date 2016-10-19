@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'inga',
     'ingaweb',
     'oldinga',
+    'csvimport',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -84,12 +85,14 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
     'oldinga': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'inga_basic',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'inga_basic',
+        # 'USER': 'root',
+        # 'PASSWORD': '',
+        # 'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
+        # 'PORT': '3306',
     }
 }
 
@@ -134,3 +137,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Settings for csvimport application
+CSV_IMPORT_APPLICATION = 'inga'

@@ -1,4 +1,5 @@
 from django.db import models
+import datetime
 
 class IngaBase(models.Model):
     updated = models.DateField(auto_now=True)
@@ -80,7 +81,7 @@ class ExtractionResultWeight(IngaBase):
 
 class ExtrafloralNectaries(IngaBase):
     date = models.DateField(blank=True, null=True)
-    plant = models.ForeignKey("Plant")
+    plant = models.ForeignKey("Plant", default=0)
     basal_mm = models.FloatField(blank=True, null=True)
     mid_mm = models.FloatField(blank=True, null=True)
     apical_mm = models.FloatField(blank=True, null=True)
@@ -121,7 +122,7 @@ class Hairs(IngaBase):
 
 class HerbivoreCollectionObservation(IngaBase):
     voucher = models.ForeignKey("HerbivoreVoucher")
-    species_code = models.CharField(max_length=20)
+    species_code = models.CharField(max_length=20, default="")
     herbivores = models.IntegerField()
     herbivores_total = models.IntegerField()
     family = models.CharField(max_length=20)
@@ -132,7 +133,7 @@ class HerbivoreDNA(IngaBase):
 
 class HerbivorePhotos(IngaBase):
     photo = models.FileField()
-    voucher = models.ForeignKey("HerbivoreVoucher")
+    voucher = models.ForeignKey("HerbivoreVoucher", default=0)
 
 class HerbivoreSpecies(IngaBase):
     motu = models.TextField()
@@ -152,7 +153,7 @@ class HerbivoreSpeciesObservation(IngaBase):
     number_herbivores = models.IntegerField()
 
 class HerbivoreVoucher(IngaBase):
-    voucher = models.CharField(max_length=20)
+    voucher = models.CharField(max_length=20, default="")
     species = models.ForeignKey("HerbivoreSpecies")
 
 class Herbivory(IngaBase):
@@ -168,8 +169,8 @@ class Herbivory(IngaBase):
         super(Herbivory, self).save()
 
 class LeafMassArea(IngaBase):
-    plant = models.ForeignKey("Plant")
-    date = models.DateField()
+    plant = models.ForeignKey("Plant", default=0)
+    date = models.DateField(default=datetime.datetime.now)
     age = models.TextField()
     size = models.TextField()
     light = models.TextField()
@@ -213,7 +214,7 @@ class Plant(IngaBase):
     site = models.ForeignKey("Site", blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)
     species = models.ForeignKey("PlantSpecies", blank=True, null=True)
-    location = models.CharField(max_length=20)
+    location = models.CharField(max_length=20, blank=True, null=True)
     size = models.CharField(max_length=20, blank=True, null=True)
     height = models.CharField(max_length=20, blank=True, null=True)
     light = models.CharField(max_length=20, blank=True, null=True)
