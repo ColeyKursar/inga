@@ -299,6 +299,16 @@ class UPLCResult(IngaBase):
 class Voucher(IngaBase):
     pass
 
+class FeatureTableRawData(IngaBase):
+  sample = models.ForeignKey("UPLCResult")
+  species_code_sample = models.CharField(max_length=30)
+  RT = models.FloatField()
+  MZ = models.FloatField()
+  PC_ID = models.CharField(max_length=30)
+  TIC = models.FloatField()
+  Date_Update = models.DateField()
+
+
 # add in rti_neg and rti_pos and samplepaths
 # add in tyrosine and tyrosine_calibration
 # alert about zeros
