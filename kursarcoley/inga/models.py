@@ -308,6 +308,12 @@ class FeatureTableRawData(IngaBase):
   TIC = models.FloatField()
   Date_Update = models.DateField()
 
+class PC_ID(IngaBase):
+    PC_ID = models.ForeignKey("FeatureTableRawData")
+    MZ_RT = models.TextField()
+    Percent_TIC = models.Float()
+    
+
 
 # add in rti_neg and rti_pos and samplepaths
 # add in tyrosine and tyrosine_calibration
