@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from updater.views import UpdateView
+from update.views import UpdateView
 
 urlpatterns = [
     url(r'^/', UpdateView),
