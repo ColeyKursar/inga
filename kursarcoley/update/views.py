@@ -5,7 +5,7 @@ import subprocess
 
 def UpdateView(request):
     git_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-    git_pull = "git pull"
+    git_pull = "sudo git pull"
 
     identity = subprocess.check_output("whoami", cwd=git_dir, stderr=subprocess.STDOUT, universal_newlines=True, shell=True)
 
