@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from ingaweb.views import ExtractionFormView
+from updater.views import UpdateView
 
 urlpatterns = [
     url(r'^update/', UpdateView),
