@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'inga',
     'ingaweb',
     'oldinga',
-    'csvimport',
 ]
 
 MIDDLEWARE_CLASSES = [
