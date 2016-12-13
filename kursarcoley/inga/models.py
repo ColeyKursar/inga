@@ -300,19 +300,49 @@ class Voucher(IngaBase):
     pass
 
 class FeatureTableRawData(IngaBase):
-  sample = models.ForeignKey("UPLCResult")
-  species_code_sample = models.CharField(max_length=30)
-  RT = models.FloatField()
-  MZ = models.FloatField()
-  PC_ID = models.CharField(max_length=30)
-  TIC = models.FloatField()
-  Date_Update = models.DateField()
+    sample = models.ForeignKey("UPLCResult")
+    species_code_sample = models.CharField(max_length=30)
+    RT = models.FloatField()
+    MZ = models.FloatField()
+    PC_ID = models.CharField(max_length=30)
+    TIC = models.FloatField()
+    Date_Update = models.DateField()
 
 class PC_ID(IngaBase):
     PC_ID = models.ForeignKey("FeatureTableRawData")
     MZ_RT = models.TextField()
     Percent_TIC = models.Float()
-    
+
+class CompoundTable(IngaBase):
+    compound_number = models.IntegerField()
+    PC_ID = models.ForeignKey("PC_ID")
+
+class AnnotationTable(IngaBase):
+    compound_number = models.ForeignKey("CompoundTable")
+    molecular_weight = models.FloatField()
+    elemental_formula = models.TextField()
+    compound_name = models.TextField()
+
+# insert table 5 for compound DB here
+
+class DDATable(IngaBase):
+    cluster_index = models.IntegerField()
+    all_files = models.TextField()
+    sum_precursor_intensity = models.FloatField()
+    RT_mean = models.FloatField()
+    RT_std_err = models.FloatField()
+    parent_mass = models.FloatField()
+    scan_number = models.IntegerField()
+    proteosafe_file_path = models.TextField()
+    original_path = models.TextField()
+    internal_filename = models.TextField()
+
+class DDAOrganized(IngaBase):
+    cluster_index = models.ForeignKey("DDATable")
+    species = models.CharField(max_length=30)
+    RT = models.FloatField()
+    MZ = models.FloatField()
+    PC_ID = models.ForeignKey("PC_ID")
 
 
 # add in rti_neg and rti_pos and samplepaths
