@@ -197,7 +197,14 @@ class BuildUtil:
             new.shape = efn.shape
             new.efn_type = efn.efn_type
             new.xEFN_mm = efn.xefnmm
-            new.notes = efn.notes1 + efn.notes2
+            if efn.notes1 is None and efn.notes2 is None:
+                new.notes = ""
+            elif efn.notes1 is None:
+                new.notes = efn.notes2
+            elif efn.notes2 is None:
+                new.notes = efn.notes1
+            else:
+                new.notes = efn.notes1 + efn.notes2
             new.save()
 
     def build_herbivore_species(self):
