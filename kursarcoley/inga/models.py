@@ -160,7 +160,7 @@ class HerbivoreVoucher(IngaBase):
 class Herbivory(IngaBase):
     species = models.ForeignKey("PlantSpecies")
     date = models.DateField()
-    location = models.ForeignKey("Location")
+    location = models.ForeignKey("Location", blank=True, null=True)
     leaves_leaflets = models.IntegerField()
     total = models.IntegerField()
     x_herbivory = models.FloatField()
