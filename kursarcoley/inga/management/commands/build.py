@@ -18,10 +18,16 @@ class Command(BaseCommand):
         # util.build_chemistries()
         # print("Building extractions")
         # util.build_extractions()
-        print("Building extrafloral nectaries")
-        util.build_extrafloralnectaries()
+        # print("Building extrafloral nectaries")
+        # util.build_extrafloralnectaries()
         # print("Building herbivore species")
         # util.build_herbivore_species()
+
+        print("Building herbivories")
+        util.build_herbivory()
+        print("Building LMA")
+        util.build_lma()
+
         print("Building herbivore species observations")
         util.build_herbivore_species_observation()
         print("Build chlorophylls")

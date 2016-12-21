@@ -252,9 +252,37 @@ class BuildUtil:
 
     def build_location(self):
         pass
-    
+
     def build_herbivory(self):
-        pass
+        herbivories = old.Herbivory.objects.all()
+        for idx, herbivory in enumerate(herbivories):
+            if idx % 100 == 0:
+                print(str(idx) + " built")
+            new = inga.Herbivory()
+            new.species = self.wire(inga.PlantSpecies, species_code=herbivory.species_code)
+            new.date = self.build_date("1", herbivory.month, herbivory.year)
+            new.location = herbivory.location()
+            new.leaves_leaflets = herbivory.leaves_leaflets
+            new.total = herbivory.total
+
+            new.save()
+    
+    def build_lma(self):
+        lmas = old.Lma.objects.all()
+        for idx, lma in enumerate(lmas):
+            if idx % 100 == 0:
+                print(str(idx) + " built")
+            new = inga.LeafMassArea()
+            new.plant = self.wire(inga.Plant, plant_number=lma.plant_field)
+            new.date = self.build_date(lma.day, lma.month, lma.year)
+            new.age = lma.age
+            new.size = lma.size
+            new.light = lma.light
+            new.inches = lma.inches
+            new.area = lma.area
+            new.dw_g = lma.dw_g
+            new.dw_area_g = lma.dw_area_g_cm2
+            new.drying_method = lma.drying_method
 
 ## All traits data:
 ## Create dummy plants with site and species given

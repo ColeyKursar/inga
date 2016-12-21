@@ -172,14 +172,14 @@ class Herbivory(IngaBase):
 class LeafMassArea(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField(default=datetime.datetime.now)
-    age = models.TextField()
-    size = models.TextField()
-    light = models.TextField()
-    inches = models.FloatField()
-    area = models.FloatField()
-    dw_g = models.FloatField()
-    dw_area_g = models.FloatField()
-    drying_method = models.TextField()
+    age = models.TextField(null=True, blank=True)
+    size = models.TextField(null=True, blank=True)
+    light = models.TextField(null=True, blank=True)
+    inches = models.FloatField(null=True, blank=True)
+    area = models.FloatField(null=True, blank=True)
+    dw_g = models.FloatField(null=True, blank=True)
+    dw_area_g = models.FloatField(null=True, blank=True)
+    drying_method = models.TextField(null=True, blank=True)
 
 class Location(IngaBase):
     plant = models.ForeignKey("Plant", related_name="plant_num")
