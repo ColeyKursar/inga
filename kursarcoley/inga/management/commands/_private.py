@@ -6,7 +6,7 @@ import pytz
 
 class BuildUtil:
     def build_voucher(self, plant, voucher):
-        new = inga.Voucher()
+        new = inga.PlantVoucher()
         new.plant = plant
         new.voucher = voucher
         new.save()
