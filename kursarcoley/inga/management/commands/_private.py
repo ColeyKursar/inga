@@ -260,7 +260,10 @@ class BuildUtil:
             if idx % 100 == 0:
                 print(str(idx) + " built")
             new = inga.Nitrogen()
-            new.chemistry = self.wire(inga.Chemistry, chemistry_number=nitrogen.chemistry_field)
+            if nitrogen.chemistry_field[0] != 'c':
+                new.chemistry = self.wire(inga.Chemistry, chemistry_number='c' + nitrogen.chemistry_field)    
+            else:
+                new.chemistry = self.wire(inga.Chemistry, chemistry_number=nitrogen.chemistry_field)
             new.age = nitrogen.age
             new.weight_before_grounding = nitrogen.weight_before_grounding_g
             new.percentage_of_expansion = nitrogen.percentage_of_expansion
