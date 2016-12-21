@@ -6,10 +6,10 @@ import pytz
 
 class BuildUtil:
     def build_plant_voucher(self, plant, voucher):
-        if voucher is None or voucher.strip():
+        if voucher is None or voucher.strip() != "":
             new = inga.PlantVoucher()
             new.plant = plant
-            new.voucher = voucher
+            new.voucher = voucher.strip()
             new.save()
 
     def build_date(self, day, month, year):
