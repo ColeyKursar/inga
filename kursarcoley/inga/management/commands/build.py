@@ -28,11 +28,11 @@ class Command(BaseCommand):
         # util.build_lma()
         # print("Building nitrogen")
         # util.build_nitrogen()
+        # print("Building toughness")
+        # util.build_toughness()
         print("Build chlorophylls")
         util.build_chlorophylls()
 
-        print("Building toughness")
-        util.build_toughness()
 
         print("Building herbivore species observations")
         util.build_herbivore_species_observation()

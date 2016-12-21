@@ -254,6 +254,9 @@ class BuildUtil:
     def build_location(self):
         pass
 
+    def build_uplc_result(self):
+        pass
+
     def build_nitrogen(self):
         nitrogens = old.Nitrogen.objects.all()
         for idx, nitrogen in enumerate(nitrogens):
