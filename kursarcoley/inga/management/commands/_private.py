@@ -170,7 +170,7 @@ class BuildUtil:
 
     def build_chlorophylls(self):
         cs = old.Chlorophyll.objects.all()
-        print(cs.query)
+        print(cs.__dict__)
         for idx, chlorophyll in enumerate(cs):
             if idx % 100 == 0:
                 print(str(idx) + " built")
