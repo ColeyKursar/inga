@@ -262,11 +262,11 @@ class BuildUtil:
             new.species = self.wire(inga.PlantSpecies, species_code=herbivory.species_code)
             new.date = self.build_date("1", herbivory.month, herbivory.year)
             new.location = herbivory.location
-            new.leaves_leaflets = herbivory.leaves_leaflets
+            new.leaves_leaflets = herbivory.leaves_leaflests
             new.total = herbivory.total
 
             new.save()
-    
+
     def build_lma(self):
         lmas = old.Lma.objects.all()
         for idx, lma in enumerate(lmas):
