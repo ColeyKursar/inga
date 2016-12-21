@@ -30,8 +30,8 @@ class Command(BaseCommand):
         # util.build_nitrogen()
         # print("Building toughness")
         # util.build_toughness()
-        print("Build chlorophylls")
-        util.build_chlorophylls()
+        # print("Build chlorophylls")
+        # util.build_chlorophylls()
         print("Building tyrosines")
         util.build_tyrosine()
 
