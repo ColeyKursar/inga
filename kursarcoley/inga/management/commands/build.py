@@ -22,17 +22,17 @@ class Command(BaseCommand):
         # util.build_extrafloralnectaries()
         # print("Building herbivore species")
         # util.build_herbivore_species()
-
         # print("Building herbivories")
         # util.build_herbivory()
         # print("Building LMA")
         # util.build_lma()
-        print("Building nitrogen")
-        util.build_nitrogen()
+        # print("Building nitrogen")
+        # util.build_nitrogen()
+        print("Build chlorophylls")
+        util.build_chlorophylls()
+
         print("Building toughness")
         util.build_toughness()
 
         print("Building herbivore species observations")
         util.build_herbivore_species_observation()
-        print("Build chlorophylls")
-        util.build_chlorophylls()
