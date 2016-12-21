@@ -193,7 +193,7 @@ class BuildUtil:
             new.date = self.build_date(1, efn.month, efn.year)
             new.basal_mm = efn.basalmm
             new.mid_mm = efn.midmm
-            new.apicalmm = efn.apicalmm
+            new.apical_mm = efn.apicalmm
             new.color = efn.color
             new.shape = efn.shape
             new.efn_type = efn.efn_type
@@ -229,7 +229,7 @@ class BuildUtil:
 
     def build_herbivore_species_observation(self):
         observations = old.Field.objects.all()
-        for observation, idx in enumerate(observations):
+        for idx, observation in enumerate(observations):
             if idx % 100 == 0:
                 print(str(idx) + " built")
             new = inga.HerbivoreSpeciesObservation()
@@ -240,10 +240,10 @@ class BuildUtil:
             }
 
             for species, count in species_observations.items():
-                new.species = self.wire(inga.HerbivoreSpecies, motu=species) #TODO
+                new.species = self.wire(inga.HerbivoreSpecies, motu=species)
                 new.count = count
-                new.save();
-    
+                new.save()
+
     def build_herbivore_collection_observation(self):
         pass
 
