@@ -6,7 +6,7 @@ import pytz
 
 class BuildUtil:
     def build_plant_voucher(self, plant, voucher):
-        if voucher.strip() != "":
+        if voucher is None or voucher.strip():
             new = inga.PlantVoucher()
             new.plant = plant
             new.voucher = voucher
