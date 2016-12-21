@@ -86,7 +86,7 @@ class ExtrafloralNectaries(IngaBase):
     basal_mm = models.FloatField(blank=True, null=True)
     mid_mm = models.FloatField(blank=True, null=True)
     apical_mm = models.FloatField(blank=True, null=True)
-    color = models.CharField(max_length=20, blank=True, null=True)
+    color = models.CharField(max_length=25, blank=True, null=True)
     shape = models.TextField(blank=True, null=True)
     efn_type = models.TextField(blank=True, null=True)
     xEFN_mm = models.FloatField(blank=True, null=True)
