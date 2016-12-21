@@ -286,12 +286,13 @@ class BuildUtil:
 
             toughs = [toughness.toughness1, toughness.toughness2, toughness.toughness3, toughness.toughness4, toughness.toughness5, toughness.toughness6, toughness.toughness7]
             for tough in toughs:
-                new = inga.Toughness()
-                new.plant = plant
-                new.date = date
-                new.toughness = tough
-                new.notes = toughness.notes
-                new.save()
+                if tough != 0:
+                    new = inga.Toughness()
+                    new.plant = plant
+                    new.date = date
+                    new.toughness = tough
+                    new.notes = toughness.notes
+                    new.save()
 
 
 
