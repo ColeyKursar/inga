@@ -284,6 +284,7 @@ class BuildUtil:
             new.dw_area_g = lma.dw_area_g_cm2
             new.drying_method = lma.drying_method
             print(new.__dict__)
+            print(lma.__dict__)
             new.save()
 
 ## All traits data:
