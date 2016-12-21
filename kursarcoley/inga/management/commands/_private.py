@@ -169,8 +169,9 @@ class BuildUtil:
             new.save()
 
     def build_chlorophylls(self):
-        chlorophylls = old.Chlorophyll.objects.all()
-        for idx, chlorophyll in enumerate(chlorophylls):
+        cs = old.Chlorophyll.objects.all()
+        print(cs.query)
+        for idx, chlorophyll in enumerate(cs):
             if idx % 100 == 0:
                 print(str(idx) + " built")
             new = inga.Chlorophyll()
