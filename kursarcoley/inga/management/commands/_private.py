@@ -26,7 +26,7 @@ class BuildUtil:
                 new = model()
                 new.save()
                 return new
-        
+
         try:
             return model.objects.get(**inexact_kwargs)
         except model.MultipleObjectsReturned:
@@ -45,9 +45,9 @@ class BuildUtil:
 
     def build_sites(self):
         sites = old.Site.objects.all()
-        for idx,site in enumerate(sites):
+        for idx, site in enumerate(sites):
             if idx % 100 == 0:
-                print(str(idx) + " built") 
+                print(str(idx) + " built")
             new = inga.Site()
             new.site_id = site.pk
             new.site = site.site
@@ -67,9 +67,9 @@ class BuildUtil:
 
     def build_plant_species(self):
         species = old.Species.objects.all()
-        for idx,specie in enumerate(species):
+        for idx, specie in enumerate(species):
             if idx % 100 == 0:
-                print(str(idx) + " built") 
+                print(str(idx) + " built")
             new = inga.PlantSpecies()
             new.old_species_number = specie.old_species_number
             new.species_code = specie.species_code
@@ -82,9 +82,9 @@ class BuildUtil:
 
     def build_plants(self):
         plants = old.PlantTable.objects.all()
-        for idx,plant in enumerate(plants):
+        for idx, plant in enumerate(plants):
             if idx % 100 == 0:
-                print(str(idx) + " built") 
+                print(str(idx) + " built")
             new = inga.Plant()
             new.plant_number = plant.plant_field
             new.site = self.wire(inga.Site, site=plant.site)
@@ -106,12 +106,12 @@ class BuildUtil:
             new.new_leaves = plant.new_leaves
             new.code = plant.code
             new.save()
-        
+
     def build_chemistries(self):
         chemistries = old.Chemistry.objects.all()
-        for idx,chemistry in enumerate(chemistries):
+        for idx, chemistry in enumerate(chemistries):
             if idx % 100 == 0:
-                print(str(idx) + " built") 
+                print(str(idx) + " built")
             new = inga.Chemistry()
             new.chemistry_number = chemistry.chem_field
             new.plant = self.wire(inga.Plant, plant_number=chemistry.plant_field)
@@ -134,10 +134,10 @@ class BuildUtil:
             new.status = chemistry.status
             new.extracted = chemistry.extracted
             new.save()
-    
+
     def build_extractions(self):
         extractions = old.Extraction.objects.all()
-        for idx,extraction in enumerate(extractions):
+        for idx, extraction in enumerate(extractions):
             if idx % 100 == 0:
                 print(str(idx) + " built")
             new = inga.Extraction()
@@ -155,7 +155,7 @@ class BuildUtil:
 
     def build_chlorophylls(self):
         chlorophylls = old.Chlorophyll.objects.all()
-        for idx,chlorophyll in enumerate(extractions):
+        for idx, chlorophyll in enumerate(chlorophylls):
             if idx % 100 == 0:
                 print(str(idx) + " built")
             new = inga.Chlorophyll()
@@ -168,14 +168,14 @@ class BuildUtil:
             new.chl_mg_dm2 = chlorophyll.chl_mg_dm2
             new.notes = chlorophyll.notes
             new.save()
-    
+
     def build_extrafloralnectaries(self):
         efns = old.Efn.objects.all()
-        for idx,efn in enumerate(efns):
+        for idx, efn in enumerate(efns):
             if idx % 100 == 0:
                 print(str(idx) + " built")
             new = inga.ExtrafloralNectaries()
-            new.date = build_date(1, efn.month, efn.year)
+            new.date = self.build_date(1, efn.month, efn.year)
             new.basal_mm = efn.basaslmm
             new.mid_mm = efn.midmm
             new.apicalmm = efn.apical_mm
@@ -192,7 +192,7 @@ class BuildUtil:
             if idx % 100 == 0:
                 print(str(idx) + " built")
             new = inga.HerbivoreSpecies()
-            new.motu = specie.motu;
+            new.motu = specie.motu
             new.analysis = specie.analysis
             new.sequence = specie.sequence
             new.la_motu = specie.la_motu
@@ -207,17 +207,17 @@ class BuildUtil:
 
     def build_herbivore_species_observation(self):
         observations = old.Field.objects.all()
-        for observation,idx in enumerate(observations):
+        for observation, idx in enumerate(observations):
             if idx % 100 == 0:
                 print(str(idx) + " built")
             new = inga.HerbivoreSpeciesObservation()
-            speciesObservations = {
+            species_observations = {
                 observation.a_herbivore_species_code : observation.a_herbivores,
                 observation.b_herbivore_species_code : observation.b_herbivores,
                 observation.c_herbivore_species_code : observation.c_herbivores
             }
 
-            for species,count in speciesObservations.items():
+            for species, count in species_observations.items():
                 new.species = self.wire(inga.HerbivoreSpecies, motu=species) #TODO
                 new.count = count
                 new.save();
