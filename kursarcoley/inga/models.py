@@ -318,6 +318,14 @@ class PC_ID(IngaBase):
     ms_ms_spec = models.TextField(blank=True, null=True)
     ms_ms_spec_id = models.IntegerField(blank=True, null=True)
 
+class Tyrosine(IngaBase):
+    extraction = models.ForeignKey("Extraction")
+    percent_tyrosine = models.IntegerField()
+    file = models.TextField()
+    calibration = models.IntegerField()
+    date = models.DateField(null=True, blank=True)
+
+
 
 # add in rti_neg and rti_pos and samplepaths
 # add in tyrosine and tyrosine_calibration

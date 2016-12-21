@@ -246,6 +246,21 @@ class BuildUtil:
                 new.count = count
                 new.save()
 
+    def build_tyrosine(self):
+        tyrosines = old.Tyrosine.objects.all()
+        for idx, tyrosine in enumerate(tyrosines):
+            if idx % 100 == 0:
+                print(str(idx) + " built")
+            new = inga.Tyrosine()
+            new.extraction = self.wire(inga.Extraction, extraction_number=tyrosine.extraction_number)
+            new.percent_tyrosine = tyrosine.percent_tyrosine
+            new.file = tyrosine.link_to_file
+            new.calibration = tyrosine.calibration_number
+            new.date = self.build_date(tyrosine.day, tyrosine.month, tyrosine.year)
+
+            new.save()
+            
+
     def build_herbivore_collection_observation(self):
         pass
 

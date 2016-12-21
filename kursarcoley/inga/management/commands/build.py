@@ -32,6 +32,8 @@ class Command(BaseCommand):
         # util.build_toughness()
         print("Build chlorophylls")
         util.build_chlorophylls()
+        print("Building tyrosines")
+        util.build_tyrosine()
 
 
         print("Building herbivore species observations")

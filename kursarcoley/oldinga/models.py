@@ -46,7 +46,7 @@ class Chlorophyll(models.Model):
     month = models.CharField(max_length=5, blank=True, null=True)
     day = models.CharField(max_length=3, blank=True, null=True)
     plant_field = models.IntegerField(db_column='Plant#', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    field_exp = models.IntegerField(db_column='%exp', blank=True, null=True)  # Field renamed to remove unsuitable characters. Field renamed because it started with '_'.
+    field_exp = models.IntegerField(db_column='percent_exp', blank=True, null=True)  # Field renamed to remove unsuitable characters. Field renamed because it started with '_'.
     size = models.CharField(max_length=12, blank=True, null=True)
     light = models.CharField(max_length=5, blank=True, null=True)
     spadd = models.IntegerField(db_column='Spadd')  # Field name made lowercase.
@@ -654,6 +654,20 @@ class Toughness(models.Model):
         managed = False
         db_table = 'toughness'
 
+class Tyrosine(models.Model):
+    id = models.IntegerField()
+    extraction_number = models.IntegerField(db_column='Extraction_Number', blank=True, null=True)  # Field name made lowercase.
+    percent_tyrosine = models.IntegerField(db_column='Percent_Tyrosine')  # Field name made lowercase.
+    link_to_file = models.CharField(db_column='Link_to_File', max_length=155)  # Field name made lowercase.
+    calibration_number = models.IntegerField(db_column='Calibration_Number')  # Field name made lowercase.
+    month = models.CharField(db_column='Month', max_length=11, blank=True, null=True)  # Field name made lowercase.
+    day = models.IntegerField(db_column='Day', blank=True, null=True)  # Field name made lowercase.
+    year = models.IntegerField(db_column='Year', blank=True, null=True)  # Field name made lowercase.
+    updated = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'tyrosine'
 
 class UplcResults(models.Model):
     diva_field = models.CharField(db_column='Diva#', max_length=11)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
