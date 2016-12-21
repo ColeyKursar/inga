@@ -8,10 +8,10 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         util = BuildUtil()
 
-        print("Building sites")
-        util.build_sites()
-        print("Building species")
-        util.build_plant_species()
+        # print("Building sites")
+        # util.build_sites()
+        # print("Building species")
+        # util.build_plant_species()
         print("Building plants")
         util.build_plants()
         print("Building chemistries")

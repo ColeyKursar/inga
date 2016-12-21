@@ -5,11 +5,12 @@ import pytz
 
 
 class BuildUtil:
-    def build_voucher(self, plant, voucher):
-        new = inga.PlantVoucher()
-        new.plant = plant
-        new.voucher = voucher
-        new.save()
+    def build_plant_voucher(self, plant, voucher):
+        if voucher.strip() != "":
+            new = inga.PlantVoucher()
+            new.plant = plant
+            new.voucher = voucher
+            new.save()
 
     def build_date(self, day, month, year):
         return datetime.datetime.utcnow().replace(tzinfo=pytz.utc)
@@ -102,11 +103,11 @@ class BuildUtil:
             new.new_leaves = plant.new_leaves
             new.code = plant.code
             new.save()
-            
-            self.build_voucher(new, plant.voucher1)
-            self.build_voucher(new, plant.voucher2)
-            self.build_voucher(new, plant.voucher3)
-            self.build_voucher(new, plant.voucher4)
+
+            self.build_plant_voucher(new, plant.voucher1)
+            self.build_plant_voucher(new, plant.voucher2)
+            self.build_plant_voucher(new, plant.voucher3)
+            self.build_plant_voucher(new, plant.voucher4)
 
     def build_chemistries(self):
         chemistries = old.Chemistry.objects.all()
