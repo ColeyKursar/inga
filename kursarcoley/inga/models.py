@@ -210,7 +210,7 @@ class Nitrogen(IngaBase):
     notes = models.TextField()
 
 class Plant(IngaBase):
-    plant_number = models.IntegerField()
+    plant_number = models.IntegerField(blank=True, null=True)
     collectors = models.TextField(blank=True, null=True)
     site = models.ForeignKey("Site", blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)
