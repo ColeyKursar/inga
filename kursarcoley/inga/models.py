@@ -166,7 +166,7 @@ class Herbivory(IngaBase):
     x_herbivory = models.FloatField()
 
     def save(self):
-        x_herbivory = self.total / self.leaves_leaflets;
+        self.x_herbivory = self.total / self.leaves_leaflets;
         super(Herbivory, self).save()
 
 class LeafMassArea(IngaBase):
