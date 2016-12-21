@@ -261,7 +261,7 @@ class BuildUtil:
             new = inga.Herbivory()
             new.species = self.wire(inga.PlantSpecies, species_code=herbivory.species_code)
             new.date = self.build_date("1", herbivory.month, herbivory.year)
-            new.location = herbivory.location()
+            new.location = herbivory.location
             new.leaves_leaflets = herbivory.leaves_leaflets
             new.total = herbivory.total
 
