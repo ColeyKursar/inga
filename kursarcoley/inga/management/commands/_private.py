@@ -134,7 +134,10 @@ class BuildUtil:
             new.number_plants = chemistry.field_of_plants
             new.notes = str(chemistry.notes10) + ", " + str(chemistry.notes12) + ", " + str(chemistry.notes13)
             new.status = chemistry.status
-            new.extracted = chemistry.extracted
+            if new.extracted == "Null":
+                new.extracted = None
+            else:
+                new.extracted = chemistry.extracted
             new.save()
 
     def build_extractions(self):
