@@ -23,8 +23,8 @@ class Command(BaseCommand):
         # print("Building herbivore species")
         # util.build_herbivore_species()
 
-        print("Building herbivories")
-        util.build_herbivory()
+        # print("Building herbivories")
+        # util.build_herbivory()
         print("Building LMA")
         util.build_lma()
 

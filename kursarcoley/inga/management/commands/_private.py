@@ -283,6 +283,7 @@ class BuildUtil:
             new.dw_g = lma.dw_g
             new.dw_area_g = lma.dw_area_g_cm2
             new.drying_method = lma.drying_method
+            new.save()
 
 ## All traits data:
 ## Create dummy plants with site and species given
