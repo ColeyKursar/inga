@@ -23,7 +23,16 @@ class BuildUtil:
 
         for key, value in kwargs.items():
             inexact_kwargs[key + "__iexact"] = str(value).strip()
-            if inexact_kwargs[key + "__iexact"] == "":
+            if inexact_kwargs[key + "__iexact"] == "Null" or inexact_kwargs[key + "__iexact"] == "None":
+                try:
+                    generic = model.objects.get(generic=True)
+                except model.DoesNotExist:
+                    generic = model()
+                    generic.generic = True
+                    generic.save()
+
+                return generic
+            elif inexact_kwargs[key + "__iexact"] == "":
                 new = model()
                 new.save()
                 return new

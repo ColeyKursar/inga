@@ -3,6 +3,7 @@ import datetime
 
 class IngaBase(models.Model):
     updated = models.DateField(auto_now=True)
+    generic = models.BooleanField(default=False)
     
     class Meta:
         abstract = True
