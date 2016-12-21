@@ -253,6 +253,44 @@ class BuildUtil:
     def build_location(self):
         pass
 
+    def build_nitrogen(self):
+        nitrogens = old.Nitrogen.objects.all()
+        for idx, nitrogen in enumerate(nitrogens):
+            if idx % 100 == 0:
+                print(str(idx) + " built")
+            new = inga.Nitrogen()
+            new.chemistry = self.wire(inga.Chemistry, chemistry_number=nitrogen.chemistry_field)
+            new.age = nitrogen.age
+            new.weight_before_grounding = nitrogen.weight_before_grounding_g
+            new.percentage_of_expansion = nitrogen.percentage_of_expansion
+            new.weight_after_grounding = nitrogen.weight_after_grounding_g
+            new.sample_number_for_nitrogen_analysis = nitrogen.sample_number_for_n2_analysis
+            new.subsample_weight = nitrogen.subsample_weight_g
+            new.percent_nitrogen = nitrogen.percent_n
+            new.notes = nitrogen.notes
+
+            new.save()
+
+    def build_toughness(self):
+        toughnesses = old.Toughness.objects.all()
+        for idx, toughness in enumerate(toughnesses):
+            if idx % 100 == 0:
+                print(str(idx) + " built")
+
+            plant = self.wire(inga.Plant, plant_number=toughness.plant_field)
+            date = self.build_date("1", "1", toughness.year)
+
+            toughs = [toughness.toughness1, toughness.toughness2, toughness.toughness3, toughness.toughness4, toughness.toughness5, toughness.toughness6, toughness.toughness7]
+            for tough in toughs:
+                new = inga.Toughness()
+                new.plant = plant
+                new.date = date
+                new.toughness = tough
+                new.notes = toughness.notes
+                new.save()
+
+
+
     def build_herbivory(self):
         herbivories = old.Herbivory.objects.all()
         for idx, herbivory in enumerate(herbivories):

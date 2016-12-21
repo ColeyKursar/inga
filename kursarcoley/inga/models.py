@@ -200,14 +200,14 @@ class MethodResult(IngaBase):
 
 class Nitrogen(IngaBase):
     chemistry = models.ForeignKey("Chemistry")
-    age = models.TextField()
-    weight_before_grounding = models.FloatField()
-    percentage_of_expansion = models.TextField()
-    weight_after_grounding = models.FloatField()
-    sample_number_for_nitrogen_analysis = models.TextField()
-    subsample_weight = models.FloatField()
-    percent_nitrogen = models.FloatField()
-    notes = models.TextField()
+    age = models.TextField(null=True, blank=True)
+    weight_before_grounding = models.FloatField(null=True, blank=True)
+    percentage_of_expansion = models.TextField(null=True, blank=True)
+    weight_after_grounding = models.FloatField(null=True, blank=True)
+    sample_number_for_nitrogen_analysis = models.TextField(null=True, blank=True)
+    subsample_weight = models.FloatField(null=True, blank=True)
+    percent_nitrogen = models.FloatField(null=True, blank=True)
+    notes = models.TextField(null=True, blank=True)
 
 class Plant(IngaBase):
     plant_number = models.IntegerField(blank=True, null=True)
@@ -277,6 +277,8 @@ class Site(IngaBase):
 class Toughness(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField()
+    toughness = models.FloatField(blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
 
 class UPLCResult(IngaBase):
     raw = models.ForeignKey("RAW")
@@ -311,8 +313,10 @@ class FeatureTableRawData(IngaBase):
 
 class PC_ID(IngaBase):
     PC_ID = models.ForeignKey("FeatureTableRawData")
-    MZ_RT = models.TextField()
-    Percent_TIC = models.FloatField()
+    MZ_RT = models.TextField(blank=True, null=True)
+    Percent_TIC = models.FloatField(blank=True, null=True)
+    ms_ms_spec = models.TextField(blank=True, null=True)
+    ms_ms_spec_id = models.IntegerField(blank=True, null=True)
 
 
 # add in rti_neg and rti_pos and samplepaths

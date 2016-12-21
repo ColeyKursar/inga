@@ -25,8 +25,12 @@ class Command(BaseCommand):
 
         # print("Building herbivories")
         # util.build_herbivory()
-        print("Building LMA")
-        util.build_lma()
+        # print("Building LMA")
+        # util.build_lma()
+        print("Building nitrogen")
+        util.build_nitrogen()
+        print("Building toughness")
+        util.build_toughness()
 
         print("Building herbivore species observations")
         util.build_herbivore_species_observation()
