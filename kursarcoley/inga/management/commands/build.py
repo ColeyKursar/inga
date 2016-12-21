@@ -7,8 +7,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         util = BuildUtil()
-        print("Clearing existing data")
-        util.clear()
+
         print("Building sites")
         util.build_sites()
         print("Building species")

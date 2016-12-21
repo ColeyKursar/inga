@@ -81,7 +81,7 @@ class ExtractionResultWeight(IngaBase):
 
 class ExtrafloralNectaries(IngaBase):
     date = models.DateField(blank=True, null=True)
-    plant = models.ForeignKey("Plant", default=0)
+    plant = models.ForeignKey("Plant")
     basal_mm = models.FloatField(blank=True, null=True)
     mid_mm = models.FloatField(blank=True, null=True)
     apical_mm = models.FloatField(blank=True, null=True)
@@ -133,7 +133,7 @@ class HerbivoreDNA(IngaBase):
 
 class HerbivorePhotos(IngaBase):
     photo = models.FileField()
-    voucher = models.ForeignKey("HerbivoreVoucher", default=0)
+    voucher = models.ForeignKey("HerbivoreVoucher")
 
 class HerbivoreSpecies(IngaBase):
     motu = models.TextField()
@@ -169,7 +169,7 @@ class Herbivory(IngaBase):
         super(Herbivory, self).save()
 
 class LeafMassArea(IngaBase):
-    plant = models.ForeignKey("Plant", default=0)
+    plant = models.ForeignKey("Plant")
     date = models.DateField(default=datetime.datetime.now)
     age = models.TextField()
     size = models.TextField()
