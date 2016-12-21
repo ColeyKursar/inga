@@ -159,7 +159,7 @@ class BuildUtil:
             if idx % 100 == 0:
                 print(str(idx) + " built")
             new = inga.Chlorophyll()
-            new.plant = self.wire(inga.Plant plant_number=chlorophyll.plant_field)
+            new.plant = self.wire(inga.Plant, plant_number=chlorophyll.plant_field)
             new.date = self.build_date(chlorophyll.day, chlorophyll.month, chlorophyll.year)
             new.percent_exposed = chlorophyll.field_exp
             new.size = chlorophyll.size
@@ -218,7 +218,7 @@ class BuildUtil:
             }
 
             for species,count in speciesObservations.items():
-                new.species = self.wire("HerbivoreSpecies", motu=species) #TODO
+                new.species = self.wire(inga.HerbivoreSpecies, motu=species) #TODO
                 new.count = count
                 new.save();
     
