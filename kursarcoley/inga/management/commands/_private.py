@@ -189,6 +189,7 @@ class BuildUtil:
             if idx % 100 == 0:
                 print(str(idx) + " built")
             new = inga.ExtrafloralNectaries()
+            new.plant = self.wire(inga.Plant, plant_number=efn.plant_field)
             new.date = self.build_date(1, efn.month, efn.year)
             new.basal_mm = efn.basalmm
             new.mid_mm = efn.midmm
