@@ -190,9 +190,9 @@ class BuildUtil:
                 print(str(idx) + " built")
             new = inga.ExtrafloralNectaries()
             new.date = self.build_date(1, efn.month, efn.year)
-            new.basal_mm = efn.basaslmm
+            new.basal_mm = efn.basalmm
             new.mid_mm = efn.midmm
-            new.apicalmm = efn.apical_mm
+            new.apicalmm = efn.apicalmm
             new.color = efn.color
             new.shape = efn.shape
             new.efn_type = efn.efn_type
