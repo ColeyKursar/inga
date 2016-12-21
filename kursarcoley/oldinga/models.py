@@ -655,7 +655,7 @@ class Toughness(models.Model):
         db_table = 'toughness'
 
 class Tyrosine(models.Model):
-    id = models.IntegerField()
+    id = models.IntegerField(primary_key=True)
     extraction_number = models.IntegerField(db_column='Extraction_Number', blank=True, null=True)  # Field name made lowercase.
     percent_tyrosine = models.IntegerField(db_column='Percent_Tyrosine')  # Field name made lowercase.
     link_to_file = models.CharField(db_column='Link_to_File', max_length=155)  # Field name made lowercase.
