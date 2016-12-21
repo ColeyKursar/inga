@@ -27,7 +27,7 @@ class Chemistry(IngaBase):
     number_plants = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
     status = models.TextField(blank=True, null=True)
-    extracted = models.BooleanField(default=False)
+    extracted = models.NullBooleanField(default=False)
 
 class Chlorophyll(IngaBase):
     plant = models.ForeignKey("Plant")
