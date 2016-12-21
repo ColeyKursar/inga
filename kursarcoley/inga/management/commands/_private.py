@@ -279,7 +279,7 @@ class BuildUtil:
             new.size = lma.size
             new.light = lma.light
             new.inches = lma.inches
-            new.area = lma.area
+            new.area = lma.area_cm2
             new.dw_g = lma.dw_g
             new.dw_area_g = lma.dw_area_g_cm2
             new.drying_method = lma.drying_method
