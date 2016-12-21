@@ -96,16 +96,17 @@ class BuildUtil:
             new.dbh = plant.dbh
             new.lh = plant.lh
             new.date_dna_sent = self.build_date_from_single(plant.date_dna_sent)
-            self.build_voucher(new, plant.voucher1)
-            self.build_voucher(new, plant.voucher2)
-            self.build_voucher(new, plant.voucher3)
-            self.build_voucher(new, plant.voucher4)
             new.herbarium_sample = plant.herbarium_sample
             new.flower_color = plant.flower_color
             new.description = plant.description
             new.new_leaves = plant.new_leaves
             new.code = plant.code
             new.save()
+            
+            self.build_voucher(new, plant.voucher1)
+            self.build_voucher(new, plant.voucher2)
+            self.build_voucher(new, plant.voucher3)
+            self.build_voucher(new, plant.voucher4)
 
     def build_chemistries(self):
         chemistries = old.Chemistry.objects.all()
