@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/south-street/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <style>
+            label {
+                font-size: 10px
+            }
+             .container {
+                width: 700px;
+            }
+        </style>
+        <title>Extraction Form</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <h3 class="text-center">Create upload batch</h3>
+            </div>
+            <form action="{% url 'BatchDefineView' %}" enctype="multipart/form-data" method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="row">
+                    <div class="col-md-3"> </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.input_file.errors }}
+                            {{ form.input_file.label_tag }}
+                            {{ form.input_file }}
+                        </div>
+                    </div>
+                    <div class="col-md-3"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"> </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.table.errors }}
+                            {{ form.table.label_tag }}
+                            {{ form.table }}
+                        </div>
+                    </div>
+                    <div class="col-md-3"> </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8"> </div>
+                    <div class="col-md-1">
+                        <input type="submit" class="btn btn-success" name="save" value="Submit" />
+                    </div>
+                    <div class="col-md-3"> </div>
+            </form>
+        </div>
+    </body>
+</html>

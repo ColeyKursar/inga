@@ -4,7 +4,22 @@ import datetime
 class IngaBase(models.Model):
     updated = models.DateField(auto_now=True)
     generic = models.BooleanField(default=False)
-    
+
+    @classmethod
+    def names(self):
+        names = ()
+
+        for field in self._meta.get_fields():
+            if isinstance(field, models.ForeignKey):
+                model = field.rel.to
+                fieldstring = field.name + ":"
+                names += tuple((fieldstring + name[0], fieldstring + name[1]) for name in model.names())
+            else:
+                model = self
+                names += ((model.__name__ + "." + field.name, model.__name__ + "." + field.name),)
+
+        return tuple(sorted(names, key=lambda tup: tup[1]))
+
     class Meta:
         abstract = True
 
@@ -55,7 +70,7 @@ class Extraction(IngaBase):
     notebook_number = models.IntegerField(blank=True, null=True)
     extraction_notebook_number = models.IntegerField(blank=True, null=True)
     page_number = models.IntegerField(blank=True, null=True)
-    parent_extraction = models.ForeignKey("Extraction", null=True, blank=True)
+    # parent_extraction = models.ForeignKey("Extraction", null=True, blank=True)
     other_chemistry = models.ManyToManyField("Chemistry", related_name="other_chemistry", blank=True)
     dry_weight = models.FloatField(default=0, null=True, blank=True)
     empty_vial_weight = models.FloatField(default=0, null=True, blank=True)
