@@ -27,20 +27,20 @@ class Chemistry(IngaBase):
     chemistry_number = models.CharField(max_length=100)
     plant = models.ForeignKey("Plant")
     date = models.DateField(blank=True, null=True)
-    size = models.TextField(blank=True, null=True)
-    light = models.TextField(blank=True, null=True)
+    
+    
     exp_min = models.TextField(blank=True, null=True)
     exp_max = models.TextField(blank=True, null=True)
-    height = models.FloatField(blank=True, null=True)
-    dbh = models.TextField(blank=True, null=True)
+    
+    
     fwg = models.TextField(blank=True, null=True)
-    age = models.TextField(blank=True, null=True)
+    exp_vs_mat = models.TextField(blank=True, null=True)
     use_field = models.TextField(blank=True, null=True)
     cur_w = models.FloatField(blank=True, null=True)
     vial_w = models.FloatField(blank=True, null=True)
     unused_material = models.FloatField(blank=True, null=True)
     box_number = models.TextField(blank=True, null=True)
-    number_plants = models.TextField(blank=True, null=True)
+    
     notes = models.TextField(blank=True, null=True)
     status = models.TextField(blank=True, null=True)
     extracted = models.NullBooleanField(default=False)
@@ -70,7 +70,7 @@ class Extraction(IngaBase):
     notebook_number = models.IntegerField(blank=True, null=True)
     extraction_notebook_number = models.IntegerField(blank=True, null=True)
     page_number = models.IntegerField(blank=True, null=True)
-    # parent_extraction = models.ForeignKey("Extraction", null=True, blank=True)
+    parent_extraction = models.ForeignKey("Extraction", null=True, blank=True)
     other_chemistry = models.ManyToManyField("Chemistry", related_name="other_chemistry", blank=True)
     dry_weight = models.FloatField(default=0, null=True, blank=True)
     empty_vial_weight = models.FloatField(default=0, null=True, blank=True)
@@ -115,21 +115,21 @@ class Field(IngaBase):
     date = models.DateField()
     plant = models.ForeignKey("Plant")
     original_id = models.CharField(max_length=20)
-    evm = models.TextField()
+    exp_vs_mat = models.TextField()
     exp_min = models.TextField()
     exp_max = models.TextField()
     efn = models.IntegerField()
     ants = models.IntegerField()
     ants_efn = models.FloatField()
-    ant_collection = models.TextField()
-    total_herbivores = models.IntegerField()
-    #herbivore_species_observation = models.ManyToManyField("HerbivoreSpeciesObservation")
+    ant_collection_number = models.TextField()
+    herbivores_present = models.BooleanField()
+    herbivore_species_observation = models.ManyToManyField("HerbivoreSpeciesObservation")
     herbivore_collection_observation = models.ManyToManyField("HerbivoreCollectionObservation")
     notes = models.TextField()
 
-class HPLCResult(IngaBase):
-    extraction = models.ForeignKey("Extraction")
-    tyrosine = models.IntegerField()
+class HPLCResult(IngaBase): 
+    extraction = models.ForeignKey("Extraction") # sample_type = models.CharField() # file_path = models.FileField() # project = models.CharField # date = models.DateField() # method = models.CharField() # column_used = models.CharField()
+    #tyrosine = models.IntegerField()
 
 class Hairs(IngaBase):
     plant = models.ForeignKey("Plant")
@@ -137,40 +137,39 @@ class Hairs(IngaBase):
     # hairs
 
 class HerbivoreCollectionObservation(IngaBase):
-    voucher = models.ForeignKey("HerbivoreVoucher")
-    species_code = models.CharField(max_length=20, default="")
-    herbivores = models.IntegerField()
+    collection_number = models.ForeignKey("HerbivoreVoucher") # field = models.ForeignKey("Field")
+    herbivores_collected = models.IntegerField()
     herbivores_total = models.IntegerField()
-    family = models.CharField(max_length=20)
+    preliminary_family = models.CharField(max_length=20)
 
 class HerbivoreDNA(IngaBase):
-    dna = models.TextField()
+    marker_gene = models.TextField() # fasta = models.FileField() # genbank = models.URLField()
     voucher = models.ForeignKey("HerbivoreVoucher")
 
-class HerbivorePhotos(IngaBase):
+class HerbivorePhoto(IngaBase): # Fold into herbivore voucher / collection
     photo = models.FileField()
     voucher = models.ForeignKey("HerbivoreVoucher")
 
 class HerbivoreSpecies(IngaBase):
-    motu = models.TextField()
-    analysis = models.TextField()
-    sequence = models.TextField()
+    motu = models.ForeignKey('HerbivoreVoucher');
+
     la_motu = models.TextField()
+    consensus_sequence = models.TextField()
     blasting_family = models.TextField()
     blasting_subfamily = models.TextField()
     blasting_genus = models.TextField()
-    percentage = models.IntegerField()
+    percentage_match_on_BOLD = models.IntegerField()
     bin = models.TextField()
     notes_on_host = models.TextField()
-    notes = models.TextField()
+    notes = models.TextField() # ibol = models.TextField()
 
 class HerbivoreSpeciesObservation(IngaBase):
     species = models.CharField(max_length=20, null=True, blank=True)
     number_herbivores = models.IntegerField()
 
-class HerbivoreVoucher(IngaBase):
-    voucher = models.CharField(max_length=20, default="")
-    species = models.ForeignKey("HerbivoreSpecies")
+class HerbivoreCollection(IngaBase):
+    collection_number = models.ForeignKey('HerbivoreCollectionObservation')
+    motu = models.TextField()
 
 class Herbivory(IngaBase):
     species = models.ForeignKey("PlantSpecies")
