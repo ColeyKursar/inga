@@ -163,12 +163,12 @@ class HerbivoreSpecies(IngaBase):
     notes_on_host = models.TextField()
     notes = models.TextField() # ibol = models.TextField()
 
-class HerbivoreSpeciesObservation(IngaBase):
-    species = models.CharField(max_length=20, null=True, blank=True)
-    number_herbivores = models.IntegerField()
+#class HerbivoreSpeciesObservation(IngaBase):
+ #   species = models.CharField(max_length=20, null=True, blank=True)
+  #  number_herbivores = models.IntegerField()
 
 class HerbivoreCollection(IngaBase):
-    collection_number = models.ForeignKey('HerbivoreCollectionObservation')
+    collection_number = models.ForeignKey('HerbivoreCollectionObservation') # analysis = models.CharField()
     motu = models.TextField()
 
 class Herbivory(IngaBase):
@@ -183,12 +183,13 @@ class Herbivory(IngaBase):
         self.x_herbivory = self.total / self.leaves_leaflets;
         super(Herbivory, self).save()
 
+        
 class LeafMassArea(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField(default=datetime.datetime.now)
-    age = models.TextField(null=True, blank=True)
-    size = models.TextField(null=True, blank=True)
-    light = models.TextField(null=True, blank=True)
+
+
+
     inches = models.FloatField(null=True, blank=True)
     area = models.FloatField(null=True, blank=True)
     dw_g = models.FloatField(null=True, blank=True)
@@ -207,14 +208,14 @@ class Method(IngaBase):
     method_number = models.IntegerField()
     description = models.TextField()
 
-class MethodResult(IngaBase):
-    method = models.ForeignKey("Method")
-    metric = models.TextField()
-    measurement = models.FloatField()
+#class MethodResult(IngaBase):
+  #  method = models.ForeignKey("Method")
+   # metric = models.TextField()
+   # measurement = models.FloatField()
 
 class Nitrogen(IngaBase):
     chemistry = models.ForeignKey("Chemistry")
-    age = models.TextField(null=True, blank=True)
+    exp_vs_mat = models.TextField(null=True, blank=True)
     weight_before_grounding = models.FloatField(null=True, blank=True)
     percentage_of_expansion = models.TextField(null=True, blank=True)
     weight_after_grounding = models.FloatField(null=True, blank=True)
@@ -228,13 +229,13 @@ class Plant(IngaBase):
     collectors = models.TextField(blank=True, null=True)
     site = models.ForeignKey("Site", blank=True, null=True)
     date = models.DateTimeField(blank=True, null=True)
-    species = models.ForeignKey("PlantSpecies", blank=True, null=True)
+    species_code = models.ForeignKey("PlantSpecies", blank=True, null=True)
     location = models.CharField(max_length=20, blank=True, null=True)
     size = models.CharField(max_length=20, blank=True, null=True)
     height = models.CharField(max_length=20, blank=True, null=True)
     light = models.CharField(max_length=20, blank=True, null=True)
     dbh = models.TextField(blank=True, null=True)
-    lh = models.TextField(blank=True, null=True)
+    living_herbarium = models.TextField(blank=True, null=True)
     dna = models.TextField(blank=True, null=True)
     date_dna_sent = models.DateTimeField(blank=True, null=True)
     vouchers = models.ManyToManyField("Voucher", blank=True)
