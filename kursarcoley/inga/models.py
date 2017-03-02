@@ -93,7 +93,6 @@ class ExtractionResultWeight(IngaBase):
     extraction = models.ForeignKey("Extraction")
     trait = models.CharField(max_length=100)
     measurement = models.FloatField(default=0, null=True, blank=True)
-    # Build long tabe
 
 class ExtrafloralNectaries(IngaBase):
     date = models.DateField(blank=True, null=True)
@@ -106,10 +105,6 @@ class ExtrafloralNectaries(IngaBase):
     efn_type = models.TextField(blank=True, null=True)
     xEFN_mm = models.FloatField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
-
-class Expansion(IngaBase):
-    pass
-    #Database>AllTables>Traits>Expansion>...INDB
 
 class Field(IngaBase):
     date = models.DateField()
@@ -128,8 +123,14 @@ class Field(IngaBase):
     notes = models.TextField()
 
 class HPLCResult(IngaBase): 
-    extraction = models.ForeignKey("Extraction") # sample_type = models.CharField() # file_path = models.FileField() # project = models.CharField # date = models.DateField() # method = models.CharField() # column_used = models.CharField()
-    #tyrosine = models.IntegerField()
+    extraction = models.ForeignKey("Extraction") 
+    sample_type = models.CharField() 
+    file_path = models.FileField() 
+    project = models.CharField 
+    date = models.DateField() 
+    method = models.CharField() 
+    column_used = models.CharField()
+    tyrosine = models.IntegerField()
 
 class Hairs(IngaBase):
     plant = models.ForeignKey("Plant")
@@ -137,13 +138,16 @@ class Hairs(IngaBase):
     # hairs
 
 class HerbivoreCollectionObservation(IngaBase):
-    collection_number = models.ForeignKey("HerbivoreVoucher") # field = models.ForeignKey("Field")
+    collection_number = models.ForeignKey("HerbivoreVoucher") 
+    field = models.ForeignKey("Field")
     herbivores_collected = models.IntegerField()
     herbivores_total = models.IntegerField()
     preliminary_family = models.CharField(max_length=20)
 
 class HerbivoreDNA(IngaBase):
-    marker_gene = models.TextField() # fasta = models.FileField() # genbank = models.URLField()
+    marker_gene = models.TextField() 
+    fasta = models.FileField() 
+    genbank = models.URLField()
     voucher = models.ForeignKey("HerbivoreVoucher")
 
 class HerbivorePhoto(IngaBase): # Fold into herbivore voucher / collection
@@ -152,7 +156,6 @@ class HerbivorePhoto(IngaBase): # Fold into herbivore voucher / collection
 
 class HerbivoreSpecies(IngaBase):
     motu = models.ForeignKey('HerbivoreVoucher');
-
     la_motu = models.TextField()
     consensus_sequence = models.TextField()
     blasting_family = models.TextField()
@@ -161,14 +164,13 @@ class HerbivoreSpecies(IngaBase):
     percentage_match_on_BOLD = models.IntegerField()
     bin = models.TextField()
     notes_on_host = models.TextField()
-    notes = models.TextField() # ibol = models.TextField()
+    notes = models.TextField() 
+    ibol = models.TextField()
 
-#class HerbivoreSpeciesObservation(IngaBase):
- #   species = models.CharField(max_length=20, null=True, blank=True)
-  #  number_herbivores = models.IntegerField()
 
 class HerbivoreCollection(IngaBase):
-    collection_number = models.ForeignKey('HerbivoreCollectionObservation') # analysis = models.CharField()
+    collection_number = models.ForeignKey('HerbivoreCollectionObservation') 
+    analysis = models.CharField()
     motu = models.TextField()
 
 class Herbivory(IngaBase):
@@ -187,9 +189,6 @@ class Herbivory(IngaBase):
 class LeafMassArea(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField(default=datetime.datetime.now)
-
-
-
     inches = models.FloatField(null=True, blank=True)
     area = models.FloatField(null=True, blank=True)
     dw_g = models.FloatField(null=True, blank=True)
@@ -207,11 +206,6 @@ class Location(IngaBase):
 class Method(IngaBase):
     method_number = models.IntegerField()
     description = models.TextField()
-
-#class MethodResult(IngaBase):
-  #  method = models.ForeignKey("Method")
-   # metric = models.TextField()
-   # measurement = models.FloatField()
 
 class Nitrogen(IngaBase):
     chemistry = models.ForeignKey("Chemistry")
@@ -244,8 +238,6 @@ class Plant(IngaBase):
     description = models.TextField(blank=True, null=True)
     new_leaves = models.IntegerField(blank=True, null=True)
     code = models.IntegerField(blank=True, null=True)
-    #add in photo booleans
-    #check if flower color is white, if not, drop it
 
 class PlantDNA(IngaBase):
     dna = models.TextField()
@@ -263,7 +255,6 @@ class PlantSpecies(IngaBase):
     comment = models.TextField(blank=True, null=True)
     authority = models.TextField(blank=True, null=True)
     note_chemistry_analysis = models.TextField(blank=True, null=True)
-    #get new nots
 
 class PlantVoucher(IngaBase):
     plant = models.ForeignKey("Plant")
@@ -271,8 +262,6 @@ class PlantVoucher(IngaBase):
 
 class RAW(IngaBase):
     raw_file_path = models.FileField()
-
-#rebuild rtiqc
 
 class Site(IngaBase):
     site = models.CharField(max_length=12, blank=True, null=True)
@@ -309,7 +298,6 @@ class UPLCResult(IngaBase):
     ms_method = models.TextField()
     uplc_method = models.TextField()
     ms_mode = models.IntegerField()
-    #rti = models.ForeignKey("RTIQC")
     notes = models.TextField()
     all_inga = models.TextField()
     chemocoding = models.TextField()
@@ -339,10 +327,3 @@ class Tyrosine(IngaBase):
     file = models.TextField()
     calibration = models.IntegerField()
     date = models.DateField(null=True, blank=True)
-
-
-
-# add in rti_neg and rti_pos and samplepaths
-# add in tyrosine and tyrosine_calibration
-# alert about zeros
-# alert about charfields exactly at length
