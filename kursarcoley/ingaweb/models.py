@@ -1,6 +1,7 @@
 import csv
 from io import TextIOWrapper
 import json
+import traceback
 from django.db import models
 import inga.models as inga
 
@@ -32,13 +33,14 @@ class Batch(models.Model):
                         if row[column] != "NULL":
                             setattr(new, field, row[column])
                     else:
-                        local, table = table.split(':')
+                        local, table = table.split(':', maxsplit=1)
                         external = getattr(inga, table)
                         params = {field: row[column]}
                         external = external.objects.get(**params)
                         setattr(new, local, external)
                 new.save()
             except Exception as e:
+                print(traceback.print_tb(e.__traceback__))
                 message = e.__class__.__name__ + ": " + str(e)
                 problem = row
                 problem["error"] = message
