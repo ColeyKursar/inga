@@ -94,6 +94,7 @@ class ExtractionResultWeight(IngaBase):
     trait = models.CharField(max_length=100)
     measurement = models.FloatField(default=0, null=True, blank=True)
 
+
 class ExtrafloralNectaries(IngaBase):
     date = models.DateField(blank=True, null=True)
     plant = models.ForeignKey("Plant")
@@ -105,6 +106,15 @@ class ExtrafloralNectaries(IngaBase):
     efn_type = models.TextField(blank=True, null=True)
     xEFN_mm = models.FloatField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
+
+class FeatureTableRawData(IngaBase):
+    sample = models.ForeignKey("UPLCResult")
+    species_code_sample = models.CharField(max_length=30)
+    RT = models.FloatField()
+    MZ = models.FloatField()
+    PC_ID = models.CharField(max_length=30)
+    TIC = models.FloatField()
+    Date_Update = models.DateField()
 
 class Field(IngaBase):
     date = models.DateField()
@@ -121,16 +131,6 @@ class Field(IngaBase):
     herbivore_species_observation = models.ManyToManyField("HerbivoreSpeciesObservation")
     herbivore_collection_observation = models.ManyToManyField("HerbivoreCollectionObservation")
     notes = models.TextField()
-
-class HPLCResult(IngaBase): 
-    extraction = models.ForeignKey("Extraction") 
-    sample_type = models.CharField() 
-    file_path = models.FileField() 
-    project = models.CharField 
-    date = models.DateField() 
-    method = models.CharField() 
-    column_used = models.CharField()
-    tyrosine = models.IntegerField()
 
 class Hairs(IngaBase):
     plant = models.ForeignKey("Plant")
@@ -150,9 +150,6 @@ class HerbivoreDNA(IngaBase):
     genbank = models.URLField()
     voucher = models.ForeignKey("HerbivoreVoucher")
 
-class HerbivorePhoto(IngaBase): # Fold into herbivore voucher / collection
-    photo = models.FileField()
-    voucher = models.ForeignKey("HerbivoreVoucher")
 
 class HerbivoreSpecies(IngaBase):
     motu = models.ForeignKey('HerbivoreVoucher');
@@ -170,6 +167,7 @@ class HerbivoreSpecies(IngaBase):
 
 class HerbivoreCollection(IngaBase):
     collection_number = models.ForeignKey('HerbivoreCollectionObservation') 
+    photo = models.FileField()
     analysis = models.CharField()
     motu = models.TextField()
 
@@ -185,7 +183,16 @@ class Herbivory(IngaBase):
         self.x_herbivory = self.total / self.leaves_leaflets;
         super(Herbivory, self).save()
 
-        
+class HPLCResult(IngaBase): 
+    extraction = models.ForeignKey("Extraction") 
+    sample_type = models.CharField() 
+    file_path = models.FileField() 
+    project = models.CharField 
+    date = models.DateField() 
+    method = models.CharField() 
+    column_used = models.CharField()
+    tyrosine = models.IntegerField()
+
 class LeafMassArea(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField(default=datetime.datetime.now)
@@ -304,15 +311,6 @@ class UPLCResult(IngaBase):
 
 class Voucher(IngaBase):
     pass
-
-class FeatureTableRawData(IngaBase):
-    sample = models.ForeignKey("UPLCResult")
-    species_code_sample = models.CharField(max_length=30)
-    RT = models.FloatField()
-    MZ = models.FloatField()
-    PC_ID = models.CharField(max_length=30)
-    TIC = models.FloatField()
-    Date_Update = models.DateField()
 
 class PC_ID(IngaBase):
     PC_ID = models.ForeignKey("FeatureTableRawData")
