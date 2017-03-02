@@ -27,20 +27,6 @@ class Chemistry(IngaBase):
     chemistry_number = models.CharField(max_length=100)
     plant = models.ForeignKey("Plant")
     date = models.DateField(blank=True, null=True)
-<<<<<<< HEAD
-
-    light = models.TextField(blank=True, null=True)
-    exp_min = models.TextField(blank=True, null=True)
-    exp_max = models.TextField(blank=True, null=True)
-
-
-    fwg = models.TextField(blank=True, null=True)
-    age = models.TextField(blank=True, null=True)
-    use_field = models.TextField(blank=True, null=True) # CHEM or NITROGEN or ELSE - but not numbers
-    # TODO have convertor check to make sure that this is numbers
-=======
-    
-    
     exp_min = models.TextField(blank=True, null=True)
     exp_max = models.TextField(blank=True, null=True)
     
@@ -48,7 +34,6 @@ class Chemistry(IngaBase):
     fwg = models.TextField(blank=True, null=True)
     exp_vs_mat = models.TextField(blank=True, null=True)
     use_field = models.TextField(blank=True, null=True)
->>>>>>> 195ec099ff23d374b764f9efc6f25932906bf30e
     cur_w = models.FloatField(blank=True, null=True)
     vial_w = models.FloatField(blank=True, null=True)
     
@@ -228,12 +213,7 @@ class Method(IngaBase):
 
 class Nitrogen(IngaBase):
     chemistry = models.ForeignKey("Chemistry")
-<<<<<<< HEAD
-    # maybe get rid of age because it's in chemistry
-    # age = models.TextField(null=True, blank=True)
-=======
     exp_vs_mat = models.TextField(null=True, blank=True)
->>>>>>> 195ec099ff23d374b764f9efc6f25932906bf30e
     weight_before_grounding = models.FloatField(null=True, blank=True)
     percentage_of_expansion = models.TextField(null=True, blank=True)
     weight_after_grounding = models.FloatField(null=True, blank=True)
