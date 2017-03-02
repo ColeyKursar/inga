@@ -27,8 +27,6 @@ class Chemistry(IngaBase):
     chemistry_number = models.CharField(max_length=100)
     plant = models.ForeignKey("Plant")
     date = models.DateField(blank=True, null=True)
-    
-    
     exp_min = models.TextField(blank=True, null=True)
     exp_max = models.TextField(blank=True, null=True)
     
@@ -38,7 +36,7 @@ class Chemistry(IngaBase):
     use_field = models.TextField(blank=True, null=True)
     cur_w = models.FloatField(blank=True, null=True)
     vial_w = models.FloatField(blank=True, null=True)
-    unused_material = models.FloatField(blank=True, null=True)
+    
     box_number = models.TextField(blank=True, null=True)
     
     notes = models.TextField(blank=True, null=True)
@@ -48,9 +46,9 @@ class Chemistry(IngaBase):
 class Chlorophyll(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField(blank=True, null=True)
-    percent_exposed = models.IntegerField(blank=True, null=True)
-    size = models.TextField(blank=True, null=True)
-    light = models.TextField(blank=True, null=True)
+    percent_expansion = models.IntegerField(blank=True, null=True)
+    
+    
     spadd = models.IntegerField(blank=True, null=True)
     chl_mg_dm2 = models.FloatField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
@@ -202,7 +200,7 @@ class LeafMassArea(IngaBase):
     drying_method = models.TextField(null=True, blank=True)
 
 class Location(IngaBase):
-    plant = models.ForeignKey("Plant", related_name="plant_num")
+    plant = models.ForeignKey("Plant", related_name="the_plant")
     gps = models.IntegerField()
     trail = models.IntegerField()
     measure = models.IntegerField()
