@@ -135,7 +135,6 @@ class Field(IngaBase):
 class Hairs(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField()
-    # hairs
 
 class HerbivoreCollectionObservation(IngaBase):
     collection_number = models.ForeignKey("HerbivoreVoucher") 
