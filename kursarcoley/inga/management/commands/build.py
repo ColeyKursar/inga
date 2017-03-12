@@ -1,40 +1,20 @@
 from django.core.management.base import BaseCommand, CommandError
-from ._private import BuildUtil
-
+from os.path import abspath, dirname, join
+from _private import BuildUtil
+import json
 
 class Command(BaseCommand):
     help = 'Migrates from old inga tables'
 
     def handle(self, *args, **options):
         util = BuildUtil()
+        toplevel_dir = dirname(dirname(dirname(dirname(dirname(abspath(__file__))))))
+        mapping_file = join(toplevel_dir, "mapping.json")
 
-        # print("Building sites")
-        # util.build_sites()
-        # print("Building species")
-        # util.build_plant_species()
-        # print("Building plants")
-        # util.build_plants()
-        # print("Building chemistries")
-        # util.build_chemistries()
-        # print("Building extractions")
-        # util.build_extractions()
-        # print("Building extrafloral nectaries")
-        # util.build_extrafloralnectaries()
-        # print("Building herbivore species")
-        # util.build_herbivore_species()
-        # print("Building herbivories")
-        # util.build_herbivory()
-        # print("Building LMA")
-        # util.build_lma()
-        # print("Building nitrogen")
-        # util.build_nitrogen()
-        # print("Building toughness")
-        # util.build_toughness()
-        # print("Build chlorophylls")
-        # util.build_chlorophylls()
-        print("Building tyrosines")
-        util.build_tyrosine()
+        with open(mapping_file) as f:
+            mappings = json.loads(f.read())
 
-
-        print("Building herbivore species observations")
-        util.build_herbivore_species_observation()
+        for model in mappings:
+            print("Building " + model)
+            util.build(model, mappings[model])
+            print("Done! \n")
