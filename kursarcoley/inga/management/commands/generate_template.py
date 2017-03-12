@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.contrib.admin.sites import AlreadyRegistered
 from django.core.management.base import BaseCommand, CommandError
 from django.db.models.fields.related import RelatedField as Related
+from django.db.models import DateField
 import json
 
 
@@ -16,6 +17,12 @@ VALUE_TEMPLATE = {"type": "value",
                   "destination_field": "",
                   "field_name": ""}
 
+DATE_TEMPLATE = {"type": "date",
+                 "destination_field": "",
+                 "year_field": "",
+                 "month_field": "",
+                 "day_field": ""}
+
 class Command(BaseCommand):
     help = 'Generates template for conversion'
 
@@ -26,18 +33,19 @@ class Command(BaseCommand):
         for model in app_models:
             try:
                 mapping = {"origin": ""}
-                fields = []
+                fields = {}
 
                 for field in model._meta.get_fields():
                     field_mapping = {}
                     if issubclass(field.__class__, Related):
                         field_mapping = REFERENCE_TEMPLATE
+                    elif isinstance(field, DateField):
+                        field_mapping = DATE_TEMPLATE
                     else:
                         field_mapping = VALUE_TEMPLATE
 
-                    field_mapping["destination_field"] = field.name
+                    fields[field.name] = field_mapping
 
-                    fields.append(dict(field_mapping))
 
 
                 mapping["fields"] = fields
