@@ -10,15 +10,12 @@ import json
 REFERENCE_TEMPLATE = {"type": "reference",
                       "reference_model": "",
                       "remote_field_name": "",
-                      "local_field_name": "",
-                      "destination_field": ""}
+                      "local_field_name": ""}
 
 VALUE_TEMPLATE = {"type": "value",
-                  "destination_field": "",
                   "field_name": ""}
 
 DATE_TEMPLATE = {"type": "date",
-                 "destination_field": "",
                  "year_field": "",
                  "month_field": "",
                  "day_field": ""}
