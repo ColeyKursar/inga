@@ -25,30 +25,24 @@ class IngaBase(models.Model):
 
 class Chemistry(IngaBase):
     chemistry_number = models.CharField(max_length=100)
-    plant = models.ForeignKey("Plant")
+    plant = models.ForeignKey("Plant", blank=True, null=True)
     date = models.DateField(blank=True, null=True)
     exp_min = models.TextField(blank=True, null=True)
     exp_max = models.TextField(blank=True, null=True)
-    
-    
     fwg = models.TextField(blank=True, null=True)
     exp_vs_mat = models.TextField(blank=True, null=True)
     use_field = models.TextField(blank=True, null=True)
     cur_w = models.FloatField(blank=True, null=True)
     vial_w = models.FloatField(blank=True, null=True)
-    
     box_number = models.TextField(blank=True, null=True)
-    
     notes = models.TextField(blank=True, null=True)
     status = models.TextField(blank=True, null=True)
     extracted = models.NullBooleanField(default=False)
 
 class Chlorophyll(IngaBase):
-    plant = models.ForeignKey("Plant")
+    plant = models.ForeignKey("Plant", blank=True, null=True)
     date = models.DateField(blank=True, null=True)
     percent_expansion = models.IntegerField(blank=True, null=True)
-    
-    
     spadd = models.IntegerField(blank=True, null=True)
     chl_mg_dm2 = models.FloatField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
@@ -60,7 +54,7 @@ class DNA(IngaBase):
     sequence = models.TextField()
 
 class Extraction(IngaBase):
-    extraction_number = models.IntegerField(primary_key=True)
+    extraction_number = models.IntegerField(blank=True, null=True)
     chemistry = models.ForeignKey("Chemistry")
     date = models.DateField(blank=True, null=True)
     method = models.FloatField(blank=True, null=True)
@@ -69,7 +63,7 @@ class Extraction(IngaBase):
     extraction_notebook_number = models.IntegerField(blank=True, null=True)
     page_number = models.IntegerField(blank=True, null=True)
     parent_extraction = models.ForeignKey("Extraction", null=True, blank=True)
-    other_chemistry = models.ManyToManyField("Chemistry", related_name="other_chemistry", blank=True)
+    other_chemistry = models.ManyToManyField("Chemistry", related_name="other_chemistry", db_constraint=False, blank=True)
     dry_weight = models.FloatField(default=0, null=True, blank=True)
     empty_vial_weight = models.FloatField(default=0, null=True, blank=True)
     final_weight = models.FloatField(default=0, null=True, blank=True)
@@ -77,7 +71,7 @@ class Extraction(IngaBase):
     mass_extracted = models.FloatField(default=0, null=True, blank=True)
     proportion_remaining = models.FloatField(default=0, null=True, blank=True)
     percent_extracted = models.FloatField(default=0, null=True, blank=True)
-    box = models.CharField(max_length=20, null=True, blank=True)
+    box = models.TextField(null=True, blank=True)
     comments = models.TextField(null=True, blank=True)
 
     def save(self):
@@ -133,21 +127,21 @@ class Hairs(IngaBase):
     date = models.DateField()
 
 class HerbivoreCollectionObservation(IngaBase):
-    collection_number = models.ForeignKey("HerbivoreCollection") 
+    collection_number = models.ForeignKey("HerbivoreCollection")
     field = models.ForeignKey("Field")
     herbivores_collected = models.IntegerField()
     herbivores_total = models.IntegerField()
     preliminary_family = models.CharField(max_length=20)
 
 class HerbivoreDNA(IngaBase):
-    marker_gene = models.TextField() 
-    fasta = models.FileField() 
+    marker_gene = models.TextField()
+    fasta = models.FileField()
     genbank = models.URLField()
     voucher = models.ForeignKey("HerbivoreCollection")
 
 
 class HerbivoreSpecies(IngaBase):
-    motu = models.ForeignKey('HerbivoreCollection');
+    motu = models.ForeignKey('HerbivoreCollection')
     la_motu = models.TextField()
     consensus_sequence = models.TextField()
     blasting_family = models.TextField()
@@ -156,7 +150,7 @@ class HerbivoreSpecies(IngaBase):
     percentage_match_on_BOLD = models.IntegerField()
     bin = models.TextField()
     notes_on_host = models.TextField()
-    notes = models.TextField() 
+    notes = models.TextField()
     ibol = models.TextField()
 
 
@@ -174,6 +168,12 @@ class Herbivory(IngaBase):
     x_herbivory = models.FloatField()
 
     def save(self):
+        if self.total is None:
+            self.total = 0
+        
+        if self.leaves_leaflets is None:
+            self.leaves_leaflets = 0
+
         self.x_herbivory = self.total / self.leaves_leaflets;
         super(Herbivory, self).save()
 
@@ -209,7 +209,7 @@ class Method(IngaBase):
     description = models.TextField()
 
 class Nitrogen(IngaBase):
-    chemistry = models.ForeignKey("Chemistry")
+    chemistry = models.ForeignKey("Chemistry", null=True, blank=True)
     exp_vs_mat = models.TextField(null=True, blank=True)
     weight_before_grounding = models.FloatField(null=True, blank=True)
     percentage_of_expansion = models.TextField(null=True, blank=True)
@@ -225,10 +225,10 @@ class Plant(IngaBase):
     site = models.ForeignKey("Site", blank=True, null=True)
     date = models.DateField(blank=True, null=True)
     species_code = models.ForeignKey("PlantSpecies", blank=True, null=True)
-    location = models.CharField(max_length=20, blank=True, null=True)
-    size = models.CharField(max_length=20, blank=True, null=True)
-    height = models.CharField(max_length=20, blank=True, null=True)
-    light = models.CharField(max_length=20, blank=True, null=True)
+    location = models.TextField(blank=True, null=True)
+    size = models.TextField(blank=True, null=True)
+    height = models.TextField(blank=True, null=True)
+    light = models.TextField(blank=True, null=True)
     dbh = models.TextField(blank=True, null=True)
     living_herbarium = models.TextField(blank=True, null=True)
     dna = models.TextField(blank=True, null=True)
@@ -315,7 +315,7 @@ class PC_ID(IngaBase):
 
 class Tyrosine(IngaBase):
     extraction = models.ForeignKey("Extraction")
-    percent_tyrosine = models.IntegerField()
+    percent_tyrosine = models.FloatField()
     file = models.TextField()
     calibration = models.IntegerField()
     date = models.DateField(null=True, blank=True)

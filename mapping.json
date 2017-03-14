@@ -16,7 +16,7 @@
             "cur_w": {
                 "type": "value",
                 "field_name": [
-                    "cur_W"
+                    "cur_w"
                 ]
             },
             "date": {
@@ -44,7 +44,7 @@
                 ]
             },
             "extracted": {
-                "type": "value",
+                "type": "boolean",
                 "field_name": [
                     "extracted"
                 ]
@@ -113,14 +113,14 @@
             "percent_expansion": {
                 "type": "value",
                 "field_name": [
-                    "field_exp"
+                    "percent_expansion"
                 ]
             },
             "plant": {
                 "type": "reference",
                 "local_field_name": "plant_field",
                 "reference_model": "Plant",
-                "remote_field_name": ""
+                "remote_field_name": "plant_number"
             },
             "spadd": {
                 "type": "value",
@@ -182,7 +182,7 @@
                 ]
             },
             "other_chemistry": {
-                "type": "reference",
+                "type": "multireference",
                 "local_field_name": "other_chem_used",
                 "reference_model": "Chemistry",
                 "remote_field_name": "chemistry_number"
@@ -225,7 +225,7 @@
             "efn_type": {
                 "type": "value",
                 "field_name": [
-                    "efn_type"
+                    "type"
                 ]
             },
             "mid_mm": {
@@ -290,7 +290,7 @@
             "blasting_family": {
                 "type": "value",
                 "field_name": [
-                    "blasting_familiy"
+                    "blasting_family"
                 ]
             },
             "blasting_genus": {
@@ -320,7 +320,7 @@
             "motu": {
                 "type": "reference",
                 "local_field_name": "motu",
-                "reference_model": "HerbivoreVoucher",
+                "reference_model": "HerbivoreCollection",
                 "remote_field_name": "motu"
             },
             "notes": {
@@ -414,7 +414,7 @@
             "inches": {
                 "type": "value",
                 "field_name": [
-                    "iches"
+                    "inches"
                 ]
             },
             "plant": {
@@ -547,10 +547,10 @@
                 "year_field": "year"
             },
             "date_dna_sent": {
-                "type": "value",
-                "field_name": [
-                    "date_dna_sent"
-                ]
+                "type": "date",
+                "day_field": "day",
+                "month_field": "month",
+                "year_field": "year"
             },
             "dbh": {
                 "type": "value",
@@ -573,7 +573,7 @@
             "flower_color": {
                 "type": "value",
                 "field_name": [
-                    "flower_Color"
+                    "flower_color"
                 ]
             },
             "height": {
@@ -684,7 +684,7 @@
                 ]
             }
         },
-        "origin": "PlantSpecies"
+        "origin": "Species"
     },
     "Site": {
         "fields": {

@@ -1,7 +1,25 @@
 from django.core.management.base import BaseCommand, CommandError
 from os.path import abspath, dirname, join
-from _private import BuildUtil
+from ._private import BuildUtil
 import json
+
+
+BUILD_ORDER = [
+    "Site",
+    "PlantSpecies",
+    "Plant",
+    "Chemistry",
+    "Nitrogen",
+    "Chlorophyll",
+    "Extraction",
+    "ExtrafloralNectaries",
+    "Hairs",
+    "HerbivoreSpecies",
+    "Herbivory",
+    "LeafMassArea",
+    "Location",
+    "Tyrosine"
+]
 
 class Command(BaseCommand):
     help = 'Migrates from old inga tables'
@@ -14,7 +32,7 @@ class Command(BaseCommand):
         with open(mapping_file) as f:
             mappings = json.loads(f.read())
 
-        for model in mappings:
+        for model in BUILD_ORDER:
             print("Building " + model)
             util.build(model, mappings[model])
             print("Done! \n")
