@@ -126,8 +126,6 @@ class Field(IngaBase):
     ants_efn = models.FloatField()
     ant_collection_number = models.TextField()
     herbivores_present = models.BooleanField()
-    herbivore_species_observation = models.ManyToManyField("HerbivoreSpeciesObservation")
-    herbivore_collection_observation = models.ManyToManyField("HerbivoreCollectionObservation")
     notes = models.TextField()
 
 class Hairs(IngaBase):
@@ -135,21 +133,20 @@ class Hairs(IngaBase):
     date = models.DateField()
 
 class HerbivoreCollectionObservation(IngaBase):
-    collection_number = models.ForeignKey("HerbivoreVoucher") 
+    collection_number = models.ForeignKey("HerbivoreCollection")
     field = models.ForeignKey("Field")
     herbivores_collected = models.IntegerField()
     herbivores_total = models.IntegerField()
     preliminary_family = models.CharField(max_length=20)
 
 class HerbivoreDNA(IngaBase):
-    marker_gene = models.TextField() 
-    fasta = models.FileField() 
+    marker_gene = models.TextField()
+    fasta = models.FileField()
     genbank = models.URLField()
-    voucher = models.ForeignKey("HerbivoreVoucher")
-
+    voucher = models.ForeignKey("HerbivoreCollection")
 
 class HerbivoreSpecies(IngaBase):
-    motu = models.ForeignKey('HerbivoreVoucher');
+    motu = models.ForeignKey('HerbivoreCollection')
     la_motu = models.TextField()
     consensus_sequence = models.TextField()
     blasting_family = models.TextField()
@@ -158,14 +155,13 @@ class HerbivoreSpecies(IngaBase):
     percentage_match_on_BOLD = models.IntegerField()
     bin = models.TextField()
     notes_on_host = models.TextField()
-    notes = models.TextField() 
+    notes = models.TextField()
     ibol = models.TextField()
 
-
 class HerbivoreCollection(IngaBase):
-    collection_number = models.ForeignKey('HerbivoreCollectionObservation') 
+    collection_number = models.ForeignKey('HerbivoreCollectionObservation')
     photo = models.FileField()
-    analysis = models.CharField()
+    analysis = models.CharField(max_length=100)
     motu = models.TextField()
 
 class Herbivory(IngaBase):
@@ -177,17 +173,17 @@ class Herbivory(IngaBase):
     x_herbivory = models.FloatField()
 
     def save(self):
-        self.x_herbivory = self.total / self.leaves_leaflets;
+        self.x_herbivory = self.total / self.leaves_leaflets
         super(Herbivory, self).save()
 
-class HPLCResult(IngaBase): 
-    extraction = models.ForeignKey("Extraction") 
-    sample_type = models.CharField() 
-    file_path = models.FileField() 
-    project = models.CharField 
-    date = models.DateField() 
-    method = models.CharField() 
-    column_used = models.CharField()
+class HPLCResult(IngaBase):
+    extraction = models.ForeignKey("Extraction")
+    sample_type = models.CharField(max_length=100)
+    file_path = models.FileField()
+    project = models.CharField(max_length=100)
+    date = models.DateField()
+    method = models.CharField(max_length=100)
+    column_used = models.CharField(max_length=100)
     tyrosine = models.IntegerField()
 
 class LeafMassArea(IngaBase):

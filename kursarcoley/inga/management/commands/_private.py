@@ -258,7 +258,6 @@ class BuildUtil:
             new.date = self.build_date(tyrosine.day, tyrosine.month, tyrosine.year)
 
             new.save()
-            
 
     def build_herbivore_collection_observation(self):
         pass
@@ -345,8 +344,3 @@ class BuildUtil:
             new.dw_area_g = lma.dw_area_g_cm2
             new.drying_method = lma.drying_method
             new.save()
-
-## All traits data:
-## Create dummy plants with site and species given
-## make sure that the site and species information is intact
-## add note to traits where dummy plant # used
