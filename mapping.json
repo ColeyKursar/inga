@@ -1,6 +1,6 @@
 {
     "Chemistry": {
-        "fields": {
+        "fields": [{
             "box_number": {
                 "type": "value",
                 "field_name": [
@@ -87,11 +87,11 @@
                     "vial_w"
                 ]
             }
-        },
+        }],
         "origin": "Chemistry"
     },
     "Chlorophyll": {
-        "fields": {
+        "fields": [{
             "chl_mg_dm2": {
                 "type": "value",
                 "field_name": [
@@ -128,11 +128,11 @@
                     "spadd"
                 ]
             }
-        },
+        }],
         "origin": "Chlorophyll"
     },
     "Extraction": {
-        "fields": {
+        "fields": [{
             "box": {
                 "type": "value",
                 "field_name": [
@@ -193,11 +193,11 @@
                     "page_number"
                 ]
             }
-        },
+        }],
         "origin": "Extraction"
     },
     "ExtrafloralNectaries": {
-        "fields": {
+        "fields": [{
             "apical_mm": {
                 "type": "value",
                 "field_name": [
@@ -259,11 +259,11 @@
                     "xefnmm"
                 ]
             }
-        },
+        }],
         "origin": "Efn"
     },
     "Hairs": {
-        "fields": {
+        "fields": [{
             "date": {
                 "type": "date",
                 "day_field": false,
@@ -276,11 +276,11 @@
                 "reference_model": "Plant",
                 "remote_field_name": "plant_number"
             }
-        },
+        }],
         "origin": "Hairs"
     },
     "HerbivoreSpecies": {
-        "fields": {
+        "fields": [{
             "bin": {
                 "type": "value",
                 "field_name": [
@@ -341,11 +341,11 @@
                     "percentage"
                 ]
             }
-        },
+        }],
         "origin": "Motu"
     },
     "Herbivory": {
-        "fields": {
+        "fields": [{
             "date": {
                 "type": "date",
                 "day_field": false,
@@ -376,11 +376,11 @@
                     "x_herbivory"
                 ]
             }
-        },
+        }],
         "origin": "Herbivory"
     },
     "LeafMassArea": {
-        "fields": {
+        "fields": [{
             "area": {
                 "type": "value",
                 "field_name": [
@@ -423,11 +423,11 @@
                 "reference_model": "Plant",
                 "remote_field_name": "plant_number"
             }
-        },
+        }],
         "origin": "Lma"
     },
     "Location": {
-        "fields": {
+        "fields": [{
             "gps": {
                 "type": "value",
                 "field_name": [
@@ -464,11 +464,11 @@
                     "trail"
                 ]
             }
-        },
+        }],
         "origin": "Location"
     },
     "Nitrogen": {
-        "fields": {
+        "fields": [{
             "chemistry": {
                 "type": "reference",
                 "local_field_name": "chemistry_field",
@@ -523,11 +523,11 @@
                     "weight_before_grounding_g"
                 ]
             }
-        },
+        }],
         "origin": "Nitrogen"
     },
     "Plant": {
-        "fields": {
+        "fields": [{
             "code": {
                 "type": "value",
                 "field_name": [
@@ -636,11 +636,11 @@
                 "reference_model": "PlantSpecies",
                 "remote_field_name": "species_code"
             }
-        },
+        }],
         "origin": "PlantTable"
     },
     "PlantSpecies": {
-        "fields": {
+        "fields": [{
             "authority": {
                 "type": "value",
                 "field_name": [
@@ -683,11 +683,11 @@
                     "species_name"
                 ]
             }
-        },
+        }],
         "origin": "Species"
     },
     "Site": {
-        "fields": {
+        "fields": [{
             "altitude": {
                 "type": "value",
                 "field_name": [
@@ -766,11 +766,11 @@
                     "temp"
                 ]
             }
-        },
+        }],
         "origin": "Site"
     },
     "Tyrosine": {
-        "fields": {
+        "fields": [{
             "calibration": {
                 "type": "value",
                 "field_name": [
@@ -801,7 +801,138 @@
                     "percent_tyrosine"
                 ]
             }
-        },
+        }],
         "origin": "Tyrosine"
+    },
+    "FeatureTableRawData": {
+        "fields": [{
+            "Date_Update": {
+                "type": "value",
+                "field_name": [
+                    "date_update"
+                ]
+            },
+            "MZ": {
+                "type": "value",
+                "field_name": [
+                    "mz"
+                ]
+            },
+            "PC_ID": {
+                "type": "value",
+                "field_name": [
+                    "pc_id"
+                ]
+            },
+            "RT": {
+                "type": "value",
+                "field_name": [
+                    "rt"
+                ]
+            },
+            "TIC": {
+                "type": "value",
+                "field_name": [
+                    "tic"
+                ]
+            },
+            "sample": {
+                "local_field_name": "sample",
+                "reference_model": "UPLCResult",
+                "remote_field_name": "diva",
+                "type": "reference"
+            },
+            "species_code_sample": {
+                "type": "value",
+                "field_name": [
+                    "species_code_sample"
+                ]
+            }
+        }],
+        "origin": "FeatureTableRawData"
+    },
+    "Field": {
+        "fields": [{
+            "ant_collection_number": {
+                "type": "value",
+                "field_name": [
+                    "ant_collection_field"
+                ]
+            },
+            "ants": {
+                "type": "value",
+                "field_name": [
+                    "field_ants"
+                ]
+            },
+            "ants_efn": {
+                "type": "value",
+                "field_name": [
+                    "ants_efn"
+                ]
+            },
+            "date": {
+                "type": "date",
+                "day_field": "day",
+                "month_field": "month",
+                "year_field": "year"
+            },
+            "efn": {
+                "type": "value",
+                "field_name": [
+                    "field_efn"
+                ]
+            },
+            "exp_max": {
+                "type": "value",
+                "field_name": [
+                    "exp_max"
+                ]
+            },
+            "exp_min": {
+                "type": "value",
+                "field_name": [
+                    "exp_min"
+                ]
+            },
+            "exp_vs_mat": {
+                "type": "value",
+                "field_name": [
+                    "evm"
+                ]
+            },
+            "herbivores_present": {
+                "type": "value",
+                "field_name": [
+                    "total_herb"
+                ]
+            },
+            "notes": {
+                "type": "value",
+                "field_name": [
+                    "notes1",
+                    "notes2",
+                    "notes3",
+                    "notes4",
+                    "notes5",
+                    "notes6",
+                    "notes7",
+                    "notes8"
+                ]
+            },
+            "original_id": {
+                "type": "value",
+                "field_name": [
+                    "orig_id"
+                ]
+            },
+            "plant": {
+                "local_field_name": "plant_field",
+                "reference_model": "Plant",
+                "remote_field_name": "plant_number",
+                "type": "reference"
+            }
+        }],
+        "origin": "Field"
     }
 }
