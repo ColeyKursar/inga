@@ -1,84 +1,320 @@
+# This is an auto-generated Django model module.
+# You'll have to do the following manually to clean this up:
+#   * Rearrange models' order
+#   * Make sure each model has one field with primary_key=True
+#   * Make sure each ForeignKey has `on_delete` set to the desired behavior.
+#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
+# Feel free to rename the models, but don't rename db_table values or field names.
 from __future__ import unicode_literals
+
 from django.db import models
 
 
-class Chemistry(models.Model):
-    chem_field = models.CharField(db_column='Chem#', unique=True, max_length=25, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    site = models.CharField(db_column='Site', max_length=12, blank=True, null=True)  # Field name made lowercase.
-    year = models.IntegerField(blank=True, null=True)
-    month = models.CharField(max_length=5, blank=True, null=True)
-    day = models.IntegerField(blank=True, null=True)
-    plant_field = models.IntegerField(db_column='Plant#', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    species_code = models.CharField(db_column='Species_code', max_length=11, blank=True, null=True)  # Field name made lowercase.
-    species_field = models.CharField(db_column='Species#', max_length=25, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    species_name = models.CharField(db_column='Species_name', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    size = models.CharField(max_length=8, blank=True, null=True)
-    light = models.CharField(max_length=8, blank=True, null=True)
-    exp_min = models.CharField(db_column='Exp_Min', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    exp_max = models.CharField(db_column='Exp_Max', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    height = models.DecimalField(db_column='Height', max_digits=4, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
-    dbh = models.CharField(db_column='DBH', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    fwg = models.CharField(db_column='FWg', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    age = models.CharField(db_column='Age', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    use = models.CharField(db_column='Use', max_length=12, blank=True, null=True)  # Field name made lowercase.
-    cur_w = models.DecimalField(max_digits=6, decimal_places=4, blank=True, null=True)
-    vial_w = models.DecimalField(max_digits=6, decimal_places=4, blank=True, null=True)
-    unused_materialg = models.DecimalField(db_column='Unnused_Materialg', max_digits=6, decimal_places=5, blank=True, null=True)  # Field name made lowercase.
-    box_field = models.CharField(db_column='Box#', max_length=25, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    field_of_plants = models.CharField(db_column='#_of_plants', max_length=255, blank=True, null=True)  # Field renamed to remove unsuitable characters. Field renamed because it started with '_'.
-    notes10 = models.CharField(db_column='Notes10', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    status = models.CharField(db_column='Status', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    extracted = models.TextField(db_column='Extracted')  # Field name made lowercase.
-    notes12 = models.CharField(db_column='Notes12', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    notes13 = models.CharField(db_column='Notes13', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    oldspecies_field = models.CharField(db_column='OldSpecies#', max_length=45, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+class AnnotationTable(models.Model):
+    compound_number = models.IntegerField(db_column='Compound_Number')  # Field name made lowercase.
+    elemental_form = models.CharField(db_column='Elemental_Form', max_length=25)  # Field name made lowercase.
+    name = models.CharField(db_column='Name', max_length=250)  # Field name made lowercase.
 
     class Meta:
         managed = False
-        db_table = 'chemistry'
+        db_table = 'Annotation_Table'
 
 
-class Chlorophyll(models.Model):
-    site = models.CharField(max_length=12, blank=True, null=True)
-    species_code = models.CharField(max_length=11)
-    year = models.IntegerField(blank=True, null=True)
-    month = models.CharField(max_length=5, blank=True, null=True)
-    day = models.CharField(max_length=3, blank=True, null=True)
-    plant_field = models.IntegerField(db_column='Plant#', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    field_exp = models.IntegerField(db_column='percent_exp', blank=True, null=True)  # Field renamed to remove unsuitable characters. Field renamed because it started with '_'.
-    size = models.CharField(max_length=12, blank=True, null=True)
-    light = models.CharField(max_length=5, blank=True, null=True)
-    spadd = models.IntegerField(db_column='Spadd')  # Field name made lowercase.
-    chl_mg_dm2 = models.DecimalField(db_column='Chl_mg/dm2', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    notes = models.CharField(db_column='Notes', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+class BciIngaFeb2(models.Model):
+    ft_id = models.IntegerField(blank=True, null=True)
+    iteration = models.IntegerField(blank=True, null=True)
+    census = models.IntegerField(blank=True, null=True)
+    sp = models.TextField(blank=True, null=True)
+    quadrat = models.IntegerField(blank=True, null=True)
+    gx = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    gy = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    life_event = models.TextField(blank=True, null=True)
+    dbh = models.IntegerField(blank=True, null=True)
+    sc = models.IntegerField(blank=True, null=True)
+    norm_agb = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    norm_grth = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    an = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    dbht = models.FloatField(blank=True, null=True)
+    dbdhcs = models.FloatField(blank=True, null=True)
+    cs = models.FloatField(blank=True, null=True)
+    dbhcg = models.FloatField(blank=True, null=True)
+    cg = models.FloatField(blank=True, null=True)
+    dbhcgp = models.FloatField()
+    cgp = models.FloatField(blank=True, null=True)
+    dbhhetp = models.FloatField()
+    hetp = models.FloatField(blank=True, null=True)
+    dbhcgd = models.FloatField()
+    cgd = models.FloatField(blank=True, null=True)
+    dbhcg_chem = models.FloatField(blank=True, null=True)
+    cg_chem = models.FloatField(blank=True, null=True)
+    dbhcg_dev = models.FloatField(blank=True, null=True)
+    cg_dev = models.FloatField(blank=True, null=True)
+    dbhcg_ants = models.FloatField(blank=True, null=True)
+    cg_ants = models.FloatField(blank=True, null=True)
+    dbhcg_hair = models.FloatField(blank=True, null=True)
+    cg_hair = models.FloatField(blank=True, null=True)
+    dbhcg_phen = models.FloatField(blank=True, null=True)
+    cg_phen = models.FloatField(blank=True, null=True)
+    dbhcgnd = models.FloatField()
+    cg_nd = models.FloatField(blank=True, null=True)
+    dbhcg_element = models.FloatField(blank=True, null=True)
+    cg_element = models.FloatField(blank=True, null=True)
+    dbhcg_leaf = models.FloatField(blank=True, null=True)
+    cg_leaf = models.FloatField(blank=True, null=True)
+    dbhcg_wood = models.FloatField(blank=True, null=True)
+    cg_wood = models.FloatField(blank=True, null=True)
+    dbhcg_height = models.FloatField(blank=True, null=True)
+    cg_height = models.FloatField(blank=True, null=True)
+    grow = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    grow_sap = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    agb = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    max_sc = models.FloatField(blank=True, null=True)
+    mort = models.FloatField(blank=True, null=True)
+    rec = models.FloatField(blank=True, null=True)
+    update = models.DateTimeField()
 
     class Meta:
         managed = False
-        db_table = 'chlorophyll'
+        db_table = 'BCI_INGA_Feb_2'
 
 
-class Efn(models.Model):
-    year = models.IntegerField(db_column='Year', blank=True, null=True)  # Field name made lowercase.
-    month = models.CharField(db_column='Month', max_length=5, blank=True, null=True)  # Field name made lowercase.
-    site = models.CharField(db_column='Site', max_length=12)  # Field name made lowercase.
-    plant_field = models.IntegerField(db_column='Plant#', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    species_code = models.CharField(max_length=11)
-    basalmm = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
-    midmm = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
-    apicalmm = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
-    color = models.CharField(db_column='Color', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    shape = models.CharField(db_column='Shape', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    efn_type = models.CharField(db_column='Type', max_length=12, blank=True, null=True)  # Field name made lowercase.
-    xefnmm = models.DecimalField(db_column='xEFNmm', max_digits=5, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
-    notes1 = models.CharField(db_column='Notes1', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    notes2 = models.CharField(db_column='Notes2', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+class BciIngaJan11(models.Model):
+    ft_id = models.IntegerField(blank=True, null=True)
+    iteration = models.IntegerField(blank=True, null=True)
+    census = models.IntegerField(blank=True, null=True)
+    sp = models.TextField(blank=True, null=True)
+    quadrat = models.IntegerField(blank=True, null=True)
+    gx = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    gy = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    life_event = models.TextField(blank=True, null=True)
+    dbh = models.IntegerField(blank=True, null=True)
+    sc = models.IntegerField(blank=True, null=True)
+    norm_agb = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    norm_grth = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    an = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    dbht = models.IntegerField(blank=True, null=True)
+    dbdhcs = models.IntegerField(blank=True, null=True)
+    dbhcg = models.IntegerField(blank=True, null=True)
+    dbhcgp = models.IntegerField()
+    dbhhetp = models.IntegerField()
+    dbhcgd = models.IntegerField()
+    dbhcgnd = models.IntegerField()
+    grow = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    grow_sap = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    agb = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    max_sc = models.IntegerField(blank=True, null=True)
+    mort = models.IntegerField(blank=True, null=True)
+    rec = models.IntegerField(blank=True, null=True)
+    update = models.DateTimeField()
 
     class Meta:
         managed = False
-        db_table = 'efn'
+        db_table = 'BCI_INGA_JAN_11'
+
+
+class BciIngaNullFeb2(models.Model):
+    ft_id = models.IntegerField(blank=True, null=True)
+    iteration = models.IntegerField(blank=True, null=True)
+    census = models.IntegerField(blank=True, null=True)
+    sp = models.TextField(blank=True, null=True)
+    quadrat = models.IntegerField(blank=True, null=True)
+    gx = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    gy = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    life_event = models.TextField(blank=True, null=True)
+    dbh = models.IntegerField(blank=True, null=True)
+    sc = models.IntegerField(blank=True, null=True)
+    norm_agb = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    norm_grth = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    an = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    dbht = models.FloatField(blank=True, null=True)
+    dbdhcs = models.FloatField(blank=True, null=True)
+    cs = models.FloatField(blank=True, null=True)
+    dbhcg = models.FloatField(blank=True, null=True)
+    cg = models.FloatField(blank=True, null=True)
+    dbhcgp = models.FloatField()
+    cgp = models.FloatField(blank=True, null=True)
+    dbhhetp = models.FloatField()
+    hetp = models.FloatField(blank=True, null=True)
+    dbhcgd = models.FloatField()
+    cgd = models.FloatField(blank=True, null=True)
+    dbhcg_chem = models.FloatField(blank=True, null=True)
+    cg_chem = models.FloatField(blank=True, null=True)
+    dbhcg_dev = models.FloatField(blank=True, null=True)
+    cg_dev = models.FloatField(blank=True, null=True)
+    dbhcg_ants = models.FloatField(blank=True, null=True)
+    cg_ants = models.FloatField(blank=True, null=True)
+    dbhcg_hair = models.FloatField(blank=True, null=True)
+    cg_hair = models.FloatField(blank=True, null=True)
+    dbhcg_phen = models.FloatField(blank=True, null=True)
+    cg_phen = models.FloatField(blank=True, null=True)
+    dbhcgnd = models.FloatField()
+    cg_nd = models.FloatField(blank=True, null=True)
+    dbhcg_element = models.FloatField(blank=True, null=True)
+    cg_element = models.FloatField(blank=True, null=True)
+    dbhcg_leaf = models.FloatField(blank=True, null=True)
+    cg_leaf = models.FloatField(blank=True, null=True)
+    dbhcg_wood = models.FloatField(blank=True, null=True)
+    cg_wood = models.FloatField(blank=True, null=True)
+    dbhcg_height = models.FloatField(blank=True, null=True)
+    cg_height = models.FloatField(blank=True, null=True)
+    grow = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    grow_sap = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    agb = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    max_sc = models.FloatField(blank=True, null=True)
+    mort = models.FloatField(blank=True, null=True)
+    rec = models.FloatField(blank=True, null=True)
+    update = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'BCI_INGA_NULL_Feb_2'
+
+
+class BciIngaNullJan11(models.Model):
+    ft_id = models.IntegerField(blank=True, null=True)
+    iteration = models.IntegerField(blank=True, null=True)
+    census = models.IntegerField(blank=True, null=True)
+    sp = models.TextField(blank=True, null=True)
+    quadrat = models.IntegerField(blank=True, null=True)
+    gx = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    gy = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    life_event = models.TextField(blank=True, null=True)
+    dbh = models.IntegerField(blank=True, null=True)
+    sc = models.IntegerField(blank=True, null=True)
+    norm_agb = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    norm_grth = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    an = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    dbht = models.IntegerField(blank=True, null=True)
+    dbdhcs = models.IntegerField(blank=True, null=True)
+    dbhcg = models.IntegerField(blank=True, null=True)
+    dbhcgp = models.IntegerField()
+    dbhhetp = models.IntegerField()
+    dbhcgd = models.IntegerField()
+    dbhcgnd = models.IntegerField()
+    grow = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    grow_sap = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    agb = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    max_sc = models.IntegerField(blank=True, null=True)
+    mort = models.IntegerField(blank=True, null=True)
+    rec = models.IntegerField(blank=True, null=True)
+    update = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'BCI_INGA_NULL_JAN_11'
+
+
+class BciCongenConspecPlotAnal(models.Model):
+    ft_id = models.IntegerField(blank=True, null=True)
+    iteration = models.IntegerField(blank=True, null=True)
+    census = models.IntegerField(blank=True, null=True)
+    sp = models.TextField(blank=True, null=True)
+    quadrat = models.IntegerField(blank=True, null=True)
+    gx = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    gy = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    life_event = models.TextField(blank=True, null=True)
+    dbh = models.IntegerField(blank=True, null=True)
+    sc = models.IntegerField(blank=True, null=True)
+    norm_agb = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    norm_grth = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    an = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    ba_tot = models.IntegerField(blank=True, null=True)
+    ba_cs = models.IntegerField(blank=True, null=True)
+    ba_cg = models.IntegerField(blank=True, null=True)
+    grow = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    grow_sap = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    agb = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    max_sc = models.IntegerField(blank=True, null=True)
+    mort = models.IntegerField(blank=True, null=True)
+    rec = models.IntegerField(blank=True, null=True)
+    update = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'BCI_congen_conspec_plot_anal'
+
+
+class BciCongenConspecPlotAnalBackup(models.Model):
+    ft_id = models.IntegerField(blank=True, null=True)
+    iteration = models.IntegerField(blank=True, null=True)
+    census = models.IntegerField(blank=True, null=True)
+    sp = models.TextField(blank=True, null=True)
+    genus = models.TextField(blank=True, null=True)
+    quadrat = models.IntegerField(blank=True, null=True)
+    gx = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    gy = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    life_event = models.TextField(blank=True, null=True)
+    dbh = models.IntegerField(blank=True, null=True)
+    sc = models.IntegerField(blank=True, null=True)
+    norm_agb = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    norm_grth = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    an = models.DecimalField(max_digits=8, decimal_places=4, blank=True, null=True)
+    ba_tot = models.IntegerField(blank=True, null=True)
+    ba_cs = models.IntegerField(blank=True, null=True)
+    ba_cg = models.IntegerField(blank=True, null=True)
+    grow = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    grow_sap = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    agb = models.DecimalField(max_digits=7, decimal_places=4, blank=True, null=True)
+    max_sc = models.IntegerField(blank=True, null=True)
+    mort = models.IntegerField(blank=True, null=True)
+    rec = models.IntegerField(blank=True, null=True)
+    update = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'BCI_congen_conspec_plot_anal_backup'
+
+
+class CompoundTable(models.Model):
+    compound_number = models.IntegerField(db_column='Compound_Number')  # Field name made lowercase.
+    pc_id = models.CharField(db_column='PC_ID', unique=True, max_length=25)  # Field name made lowercase.
+    updated = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'Compound_table'
+
+
+class CompoundTableBci(models.Model):
+    compound_number = models.IntegerField(db_column='Compound_Number')  # Field name made lowercase.
+    pc_id = models.CharField(db_column='PC_ID', unique=True, max_length=25)  # Field name made lowercase.
+    updated = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'Compound_table_BCI'
+
+
+class CompoundTicTable(models.Model):
+    ct_id = models.AutoField(primary_key=True)
+    ct_compound_number = models.IntegerField()
+    ct_compound_sample = models.CharField(max_length=25)
+    ct_tic = models.FloatField()
+
+    class Meta:
+        managed = False
+        db_table = 'Compound_tic_table'
+
+
+class CompoundTicTableBci(models.Model):
+    ct_id = models.AutoField(primary_key=True)
+    ct_compound_number = models.IntegerField()
+    ct_compound_sample = models.CharField(max_length=25)
+    ct_tic = models.FloatField()
+
+    class Meta:
+        managed = False
+        db_table = 'Compound_tic_table_BCI'
+
+
+class ConvertedPaths(models.Model):
+    conv_dn = models.CharField(db_column='conv.dn', unique=True, max_length=100)  # Field renamed to remove unsuitable characters.
+    filename = models.CharField(max_length=100)
+    filepath = models.CharField(max_length=250)
+
+    class Meta:
+        managed = False
+        db_table = 'Converted_paths'
 
 
 class Expansion(models.Model):
@@ -127,7 +363,7 @@ class Expansion(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'expansion'
+        db_table = 'Expansion'
 
 
 class Extraction(models.Model):
@@ -155,79 +391,10 @@ class Extraction(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'extraction'
-
-
-class ExtractionWeight(models.Model):
-    chem_field = models.CharField(db_column='Chem#', max_length=25, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    species_code = models.CharField(max_length=11)
-    extraction_number = models.IntegerField(db_column='Extraction_Number', blank=True, null=True)  # Field name made lowercase.
-    pre_vacuum_dry_weight_g = models.CharField(db_column='Pre-vacuum_dry_weight_g', max_length=12, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    post_vacuum_dry_weight_g = models.DecimalField(db_column='Post-vacuum_dry_weight_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    sample_dry_weight_g = models.DecimalField(db_column='Sample_dry_weight_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    processed_fresh_weight_g = models.DecimalField(db_column='Processed_fresh_weight_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    empty_vial_wt = models.DecimalField(db_column='Empty_Vial_Wt', max_digits=6, decimal_places=4, blank=True, null=True)  # Field name made lowercase.
-    dry_marc_vial_wt = models.DecimalField(db_column='Dry_Marc+Vial_wt', max_digits=6, decimal_places=4, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    final_marc_weight_g = models.DecimalField(db_column='Final_marc_weight_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    total_extract_mass_g = models.DecimalField(db_column='Total_extract_mass_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    prop_sample_remainging = models.DecimalField(db_column='Prop_Sample_Remainging', max_digits=8, decimal_places=4)  # Field name made lowercase.
-    percent_extracted = models.DecimalField(db_column='Percent_Extracted', max_digits=8, decimal_places=4)  # Field name made lowercase.
-    date_dried = models.DateField(db_column='Date_Dried', blank=True, null=True)  # Field name made lowercase.
-    date_stored = models.DateField(db_column='Date_Stored', blank=True, null=True)  # Field name made lowercase.
-    filter_paper_weight_g = models.DecimalField(db_column='Filter_Paper_Weight_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    number_70c_h2o_extract_fraction_g = models.DecimalField(db_column='70C_H2O_extract_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
-    organic_extractable_split_fraction_g = models.DecimalField(db_column='Organic_Extractable_Split_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    percent_of_volume_that_was_fractionated = models.CharField(db_column='Percent_of_Volume_that_was_fractionated', max_length=5, blank=True, null=True)  # Field name made lowercase.
-    lipid_fraction_g = models.DecimalField(db_column='Lipid_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    post_defat_organic_extractable_split_fraction_g = models.DecimalField(db_column='Post_Defat;_Organic_Extractable_Split_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    percent_of_volume_that_was_fractionated_1 = models.CharField(db_column='Percent_of_Volume_that_was_fractionated_1', max_length=5, blank=True, null=True)  # Field name made lowercase.
-    dowex50h_org_acids_neut_frac_neutralized_w_naoh_g = models.DecimalField(db_column='Dowex50H_Org_acids_neut_frac_Neutralized_w_NaOH_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    dowex50h_organic_acid_plus_neutral_fraction_g = models.DecimalField(db_column='Dowex50H_organic_acid_plus_neutral_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    dowex50h_npaa_fraction_g = models.DecimalField(db_column='Dowex50H_NPAA_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    phenolics_and_saponins_fraction_g = models.DecimalField(db_column='Phenolics_and_Saponins_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    hoh_insoluble_g = models.DecimalField(db_column='HOH_Insoluble_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    ods_100_hoh_fraction_g = models.DecimalField(db_column='ODS:_100%_HOH_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_100_hoh_fraction_blank_hoh_5_g = models.DecimalField(db_column='ODS:_100%_HOH_Fraction_Blank_HOH-5_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_25_meoh_fraction_g = models.DecimalField(db_column='ODS_25%_MeOH_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_35_meoh_fraction_g = models.DecimalField(db_column='ODS_35%_MeOH_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_60_meoh_fraction_g = models.DecimalField(db_column='ODS:_60%_MeOH_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_60_meoh_fraction_blank_60_4_g = models.DecimalField(db_column='ODS:_60%_MeOH_Fraction_Blank_60-4_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_50_meoh_fraction_g = models.DecimalField(db_column='ODS_50%_MeOH_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_100_meoh_fractiong = models.DecimalField(db_column='ODS:_100%_MeOH_Fractiong', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_100_meoh_fraction_blank_100_4_g = models.DecimalField(db_column='ODS:_100%_MeOH_Fraction_Blank_100-4_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_100_acetone_fraction_g = models.DecimalField(db_column='ODS:_100%_Acetone_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    marc_70_acetone_fraction_g = models.DecimalField(db_column='Marc:_70%_Acetone_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    marc_80_etoh_g = models.DecimalField(db_column='Marc:_80%_EtOH_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    marc_70_acetonitrile_g = models.CharField(db_column='Marc:_70%_Acetonitrile_g', max_length=255, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_2_5_acetonitrile_fraction_g = models.DecimalField(db_column='ODS:_2.5%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_5_acetonitrile_fraction_g = models.DecimalField(db_column='ODS:_5%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_7_5_acetonitrile_fraction_g = models.DecimalField(db_column='ODS:_7.5%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_10_acetonitrile_fraction_g = models.DecimalField(db_column='ODS:_10%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_15_acetonitrile_fraction_g = models.DecimalField(db_column='ODS:_15%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_20_acetonitrile_fraction_g = models.DecimalField(db_column='ODS:_20%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_50_acetonitrile_fraction_g = models.DecimalField(db_column='ODS:_50%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_50_acetonitrile_fraction_blank_50_4_g = models.DecimalField(db_column='ODS:_50%_Acetonitrile_Fraction_Blank_50-4_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_60_acetonitrile_fraction_g = models.DecimalField(db_column='ODS_60%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_100_acetonitrile_fraction_g = models.DecimalField(db_column='ODS:_100%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    ods_100_acetonitrile_fraction_blank_100_4_g = models.DecimalField(db_column='ODS:_100%_Acetonitrile_Fraction_Blank_100-4_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    flavonoid_i_fraction_g = models.DecimalField(db_column='Flavonoid_I_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    flavonoid_ii_fraction_g = models.DecimalField(db_column='Flavonoid_II_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    saponins_fraction_g = models.DecimalField(db_column='Saponins_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    protein_i_fraction_g = models.DecimalField(db_column='Protein_I_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    protein_ii_fraction_g = models.DecimalField(db_column='Protein_II_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    other_insolubles_g = models.DecimalField(db_column='Other_insolubles_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    total_dry_weight_g = models.DecimalField(max_digits=12, decimal_places=8, blank=True, null=True)
-    tyrosine_content_dry_weight = models.DecimalField(db_column='Tyrosine_Content:_%_Dry_Weight', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
-    percent_recovery = models.DecimalField(db_column='Percent_recovery', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
-    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'extraction_weight'
+        db_table = 'Extraction'
 
 
 class Field(models.Model):
-    id = models.IntegerField(primary_key=True)
     year = models.IntegerField(db_column='Year', blank=True, null=True)  # Field name made lowercase.
     month = models.CharField(db_column='Month', max_length=4, blank=True, null=True)  # Field name made lowercase.
     day = models.IntegerField(blank=True, null=True)
@@ -384,7 +551,720 @@ class Field(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'field'
+        db_table = 'Field'
+
+
+class Ident1(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    id1_grupo1 = models.CharField(db_column='Id1_Grupo1', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    id1_grupo2 = models.CharField(db_column='Id1_Grupo2', max_length=25, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'Ident_1'
+
+
+class Ident2(models.Model):
+    id2_id = models.AutoField(db_column='Id2_ID', primary_key=True)  # Field name made lowercase.
+    id2_grupo1 = models.CharField(db_column='Id2_grupo1', max_length=25)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'Ident_2'
+
+
+class Location(models.Model):
+    plant_field = models.IntegerField(db_column='Plant#', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    species_code = models.CharField(db_column='Species_code', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    gps = models.IntegerField(db_column='GPS')  # Field name made lowercase.
+    trail = models.IntegerField(db_column='Trail')  # Field name made lowercase.
+    measure = models.IntegerField(db_column='Measure')  # Field name made lowercase.
+    offset = models.IntegerField(db_column='Offset')  # Field name made lowercase.
+    side = models.IntegerField(db_column='Side')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'Location'
+
+
+class Motu(models.Model):
+    motu = models.CharField(db_column='MOTU', max_length=25)  # Field name made lowercase.
+    analysis = models.CharField(db_column='Analysis', max_length=50)  # Field name made lowercase.
+    voucher = models.CharField(db_column='Voucher', unique=True, max_length=25, blank=True, null=True)  # Field name made lowercase.
+    sequence = models.CharField(db_column='Sequence', max_length=30, blank=True, null=True)  # Field name made lowercase.
+    la_motu = models.CharField(db_column='LA_MOTU', max_length=30)  # Field name made lowercase.
+    blasting_family = models.TextField(db_column='Blasting_Family')  # Field name made lowercase.
+    blasting_subfamily = models.TextField(db_column='Blasting_Subfamily')  # Field name made lowercase.
+    blasting_genus = models.TextField(db_column='Blasting_Genus')  # Field name made lowercase.
+    percentage = models.IntegerField(db_column='Percentage')  # Field name made lowercase.
+    bin = models.CharField(db_column='BIN', max_length=250)  # Field name made lowercase.
+    notes_on_host = models.CharField(db_column='Notes_on_host', max_length=300)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=300)  # Field name made lowercase.
+    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'MOTU'
+
+
+class PcId(models.Model):
+    pc_id = models.CharField(db_column='PC_ID', max_length=25)  # Field name made lowercase.
+    mz_rt = models.CharField(db_column='MZ_RT', max_length=25)  # Field name made lowercase.
+    percent_tic = models.DecimalField(db_column='Percent_TIC', max_digits=20, decimal_places=6)  # Field name made lowercase.
+    average_tic = models.FloatField(db_column='Average_Tic')  # Field name made lowercase.
+    ms_ms_spec = models.TextField(db_column='MS_MS_Spec', blank=True, null=True)  # Field name made lowercase.
+    ms_ms_spec_id = models.IntegerField(db_column='MS_MS_Spec_ID', blank=True, null=True)  # Field name made lowercase.
+    updated = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'PC_ID'
+        unique_together = (('pc_id', 'mz_rt'),)
+
+
+class PcIdBci(models.Model):
+    pc_id = models.CharField(db_column='PC_ID', max_length=25)  # Field name made lowercase.
+    mz_rt = models.CharField(db_column='MZ_RT', max_length=25)  # Field name made lowercase.
+    percent_tic = models.DecimalField(db_column='Percent_TIC', max_digits=20, decimal_places=6)  # Field name made lowercase.
+    average_tic = models.FloatField(db_column='Average_Tic')  # Field name made lowercase.
+    ms_ms_spec = models.TextField(db_column='MS_MS_Spec', blank=True, null=True)  # Field name made lowercase.
+    ms_ms_spec_id = models.IntegerField(db_column='MS_MS_Spec_ID', blank=True, null=True)  # Field name made lowercase.
+    updated = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'PC_ID_BCI'
+        unique_together = (('pc_id', 'mz_rt'),)
+
+
+class PeakTableV1(models.Model):
+    mz_rt = models.CharField(db_column='MZ_RT', max_length=20)  # Field name made lowercase.
+    mz = models.IntegerField(db_column='MZ')  # Field name made lowercase.
+    rt = models.IntegerField(db_column='RT')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'Peak_Table_V1'
+
+
+class PlantTable(models.Model):
+    collectors = models.CharField(db_column='Collectors', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    site = models.CharField(db_column='Site', max_length=12, blank=True, null=True)  # Field name made lowercase.
+    date = models.DateField(db_column='Date', blank=True, null=True)  # Field name made lowercase.
+    year = models.IntegerField(db_column='Year')  # Field name made lowercase.
+    month = models.CharField(db_column='Month', max_length=4)  # Field name made lowercase.
+    day = models.IntegerField(db_column='Day')  # Field name made lowercase.
+    plant_field = models.IntegerField(db_column='Plant#')  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    species_code = models.CharField(db_column='Species_code', max_length=11, blank=True, null=True)  # Field name made lowercase.
+    location = models.CharField(db_column='Location', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    size = models.CharField(max_length=6, blank=True, null=True)
+    light = models.CharField(max_length=8, blank=True, null=True)
+    height = models.CharField(max_length=25, blank=True, null=True)
+    dbh = models.CharField(db_column='DBH', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    lh = models.CharField(db_column='LH', max_length=15, blank=True, null=True)  # Field name made lowercase.
+    dna = models.CharField(db_column='DNA', max_length=15, blank=True, null=True)  # Field name made lowercase.
+    date_dna_sent = models.CharField(db_column='Date_DNA_SENT', max_length=11, blank=True, null=True)  # Field name made lowercase.
+    notes_plant = models.CharField(db_column='Notes_Plant', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    photo_live = models.CharField(max_length=25, blank=True, null=True)
+    photo_dry = models.CharField(max_length=25, blank=True, null=True)
+    voucher1 = models.CharField(max_length=5, blank=True, null=True)
+    voucher2 = models.CharField(max_length=5, blank=True, null=True)
+    voucher3 = models.CharField(max_length=10, blank=True, null=True)
+    voucher4 = models.CharField(max_length=10, blank=True, null=True)
+    herbarium_sample = models.CharField(max_length=25, blank=True, null=True)
+    flower_color = models.CharField(max_length=25, blank=True, null=True)
+    description = models.CharField(max_length=25, blank=True, null=True)
+    new_leaves = models.IntegerField(db_column='New_Leaves', blank=True, null=True)  # Field name made lowercase.
+    code = models.IntegerField(blank=True, null=True)
+    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'Plant_Table'
+        unique_together = (('site', 'plant_field'),)
+
+
+class PreliminaryPeakTableBci(models.Model):
+    id = models.AutoField(db_column='ID', primary_key=True)  # Field name made lowercase.
+    archivo = models.CharField(max_length=20)
+    mz_rt = models.CharField(max_length=20)
+    rt_round = models.CharField(max_length=20)
+    mz_round = models.CharField(max_length=20)
+    mz = models.CharField(max_length=20)
+    mzmin = models.CharField(max_length=20)
+    mzmax = models.CharField(max_length=20)
+    rt = models.CharField(max_length=20)
+    rtmin = models.CharField(max_length=20)
+    rtmax = models.CharField(max_length=20)
+    npeaks = models.CharField(max_length=20)
+    blank = models.CharField(db_column='Blank', max_length=20)  # Field name made lowercase.
+    ing = models.CharField(db_column='Ing', max_length=20)  # Field name made lowercase.
+    bn_1 = models.CharField(db_column='BN_1', max_length=20)  # Field name made lowercase.
+    bn_2 = models.CharField(db_column='BN_2', max_length=20)  # Field name made lowercase.
+    bn_3 = models.CharField(db_column='BN_3', max_length=20)  # Field name made lowercase.
+    ing_1 = models.CharField(db_column='Ing_1', max_length=20)  # Field name made lowercase.
+    ing_2 = models.CharField(db_column='Ing_2', max_length=20)  # Field name made lowercase.
+    ing_3 = models.CharField(db_column='Ing_3', max_length=20)  # Field name made lowercase.
+    ing_4 = models.CharField(db_column='Ing_4', max_length=20)  # Field name made lowercase.
+    ing_5 = models.CharField(db_column='Ing_5', max_length=20)  # Field name made lowercase.
+    isotopes = models.CharField(max_length=20)
+    adduct = models.CharField(max_length=20)
+    pcgroup = models.CharField(max_length=20)
+    tic_average = models.CharField(db_column='TIC_Average', max_length=20)  # Field name made lowercase.
+    tic_average2 = models.CharField(db_column='TIC_Average2', max_length=20)  # Field name made lowercase.
+    db_match = models.CharField(db_column='DB_Match', max_length=500)  # Field name made lowercase.
+    pc_group_identifier = models.CharField(db_column='PC_Group_Identifier', max_length=20)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'Preliminary_peak_table_bci'
+
+
+class ProccessedRtiNeg(models.Model):
+    rti = models.CharField(db_column='RTI', max_length=50)  # Field name made lowercase.
+    file = models.CharField(db_column='FILE', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    batch = models.CharField(db_column='Batch', max_length=6, blank=True, null=True)  # Field name made lowercase.
+    injection = models.IntegerField(db_column='Injection', blank=True, null=True)  # Field name made lowercase.
+    npeaks = models.IntegerField(blank=True, null=True)
+    avg_ppm_abs = models.FloatField(blank=True, null=True)
+    avg_ppm = models.FloatField(blank=True, null=True)
+    avg_rerror_abs = models.FloatField(blank=True, null=True)
+    avg_rerror = models.FloatField(blank=True, null=True)
+    avg_tic_int = models.IntegerField(db_column='avg_TIC_int', blank=True, null=True)  # Field name made lowercase.
+    avg_sn = models.IntegerField(db_column='avg_SN', blank=True, null=True)  # Field name made lowercase.
+    avg_pkwidth = models.FloatField(blank=True, null=True)
+    cat_co2 = models.DecimalField(db_column='cat_Co2', max_digits=10, decimal_places=0, blank=True, null=True)  # Field name made lowercase.
+    cat_1 = models.DecimalField(db_column='Cat_1', max_digits=10, decimal_places=0, blank=True, null=True)  # Field name made lowercase.
+    cat_2 = models.DecimalField(db_column='Cat_2', max_digits=10, decimal_places=0, blank=True, null=True)  # Field name made lowercase.
+    cat_3 = models.DecimalField(db_column='Cat_3', max_digits=10, decimal_places=0, blank=True, null=True)  # Field name made lowercase.
+    mor_1 = models.DecimalField(db_column='Mor_1', max_digits=10, decimal_places=0, blank=True, null=True)  # Field name made lowercase.
+    mor_2 = models.DecimalField(db_column='Mor_2', max_digits=10, decimal_places=0, blank=True, null=True)  # Field name made lowercase.
+    mor_3 = models.DecimalField(db_column='Mor_3', max_digits=10, decimal_places=0, blank=True, null=True)  # Field name made lowercase.
+    mor_4 = models.DecimalField(db_column='Mor_4', max_digits=10, decimal_places=0, blank=True, null=True)  # Field name made lowercase.
+    trypt_1 = models.DecimalField(db_column='Trypt_1', max_digits=10, decimal_places=0, blank=True, null=True)  # Field name made lowercase.
+    notes = models.TextField(db_column='NOTES', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'Proccessed_RTI_NEG'
+
+
+class RtiQc(models.Model):
+    rti = models.CharField(db_column='RTI', max_length=25)  # Field name made lowercase.
+    batch = models.CharField(db_column='Batch', max_length=5)  # Field name made lowercase.
+    injection = models.IntegerField(db_column='Injection', blank=True, null=True)  # Field name made lowercase.
+    standard = models.CharField(db_column='Standard', max_length=35)  # Field name made lowercase.
+    ion_type = models.CharField(max_length=5)
+    mz = models.FloatField()
+    ppm_abs = models.FloatField()
+    ppm = models.FloatField()
+    mda_abs = models.FloatField()
+    mda = models.FloatField()
+    rt_in_min = models.FloatField()
+    rerror_abs = models.FloatField()
+    rerror = models.FloatField()
+    tic_into = models.IntegerField(db_column='TIC_into')  # Field name made lowercase.
+    tic_intb = models.IntegerField(db_column='TIC_intb')  # Field name made lowercase.
+    tic_maxo = models.IntegerField(db_column='TIC_maxo')  # Field name made lowercase.
+    sn = models.IntegerField()
+    pkwidth = models.DecimalField(max_digits=5, decimal_places=3)
+    file = models.CharField(db_column='FILE', max_length=50)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=255)  # Field name made lowercase.
+    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'RTI_QC'
+
+
+class RtiQcV5Backup(models.Model):
+    rti = models.CharField(db_column='RTI', max_length=25)  # Field name made lowercase.
+    standard = models.CharField(db_column='Standard', max_length=35)  # Field name made lowercase.
+    ion_type = models.CharField(max_length=5)
+    mz = models.FloatField()
+    ppm_abs = models.FloatField()
+    ppm = models.FloatField()
+    mda_abs = models.FloatField()
+    mda = models.FloatField()
+    rt_in_min = models.FloatField()
+    rerror_abs = models.FloatField()
+    rerror = models.FloatField()
+    tic_into = models.IntegerField(db_column='TIC_into')  # Field name made lowercase.
+    tic_intb = models.IntegerField(db_column='TIC_intb')  # Field name made lowercase.
+    tic_maxo = models.IntegerField(db_column='TIC_maxo')  # Field name made lowercase.
+    sn = models.IntegerField()
+    file = models.CharField(db_column='FILE', max_length=50)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=255)  # Field name made lowercase.
+    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'RTI_QC_V5_backup'
+
+
+class RtiQcV6Backup(models.Model):
+    rti = models.CharField(db_column='RTI', max_length=25)  # Field name made lowercase.
+    batch = models.CharField(db_column='Batch', max_length=5)  # Field name made lowercase.
+    injection = models.IntegerField(db_column='Injection', blank=True, null=True)  # Field name made lowercase.
+    standard = models.CharField(db_column='Standard', max_length=35)  # Field name made lowercase.
+    ion_type = models.CharField(max_length=5)
+    mz = models.FloatField()
+    ppm_abs = models.FloatField()
+    ppm = models.FloatField()
+    mda_abs = models.FloatField()
+    mda = models.FloatField()
+    rt_in_min = models.FloatField()
+    rerror_abs = models.FloatField()
+    rerror = models.FloatField()
+    tic_into = models.IntegerField(db_column='TIC_into')  # Field name made lowercase.
+    tic_intb = models.IntegerField(db_column='TIC_intb')  # Field name made lowercase.
+    tic_maxo = models.IntegerField(db_column='TIC_maxo')  # Field name made lowercase.
+    sn = models.IntegerField()
+    pkwidth = models.DecimalField(max_digits=5, decimal_places=3)
+    file = models.CharField(db_column='FILE', max_length=50)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=255)  # Field name made lowercase.
+    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'RTI_QC_V6_backup'
+
+
+class RtiReports(models.Model):
+    rti = models.CharField(db_column='RTI', primary_key=True, max_length=50)  # Field name made lowercase.
+    report_link = models.CharField(max_length=400)
+
+    class Meta:
+        managed = False
+        db_table = 'RTI_REPORTS'
+
+
+class SamplePaths(models.Model):
+    raw_dn = models.CharField(db_column='raw.dn', unique=True, max_length=100)  # Field renamed to remove unsuitable characters.
+    raw_filename = models.CharField(db_column='raw.filename', max_length=100)  # Field renamed to remove unsuitable characters.
+    raw_path = models.CharField(db_column='raw.path', max_length=250)  # Field renamed to remove unsuitable characters.
+
+    class Meta:
+        managed = False
+        db_table = 'Sample_Paths'
+
+
+class Species(models.Model):
+    site = models.CharField(max_length=12, blank=True, null=True)
+    old_species_number = models.CharField(db_column='Old_Species_Number', max_length=7, blank=True, null=True)  # Field name made lowercase.
+    species_code = models.CharField(max_length=11)
+    genus = models.CharField(db_column='Genus', max_length=12, blank=True, null=True)  # Field name made lowercase.
+    species_name = models.CharField(db_column='Species_name', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    comment = models.CharField(max_length=45, blank=True, null=True)
+    authority = models.CharField(max_length=25, blank=True, null=True)
+    note_chem_anal = models.TextField(db_column='Note_Chem_Anal', blank=True, null=True)  # Field name made lowercase.
+    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'Species'
+
+
+class TempDbname(models.Model):
+    td_id = models.AutoField(db_column='Td_id', primary_key=True)  # Field name made lowercase.
+    td_number = models.IntegerField(db_column='Td_Number')  # Field name made lowercase.
+    td_group = models.CharField(db_column='Td_Group', max_length=25)  # Field name made lowercase.
+    td_name = models.CharField(db_column='Td_Name', max_length=100)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'Temp_DBName'
+
+
+class TotalTempDiv(models.Model):
+    tt_pc_id = models.CharField(max_length=25, blank=True, null=True)
+    tt_total = models.FloatField(blank=True, null=True)
+    tt_average = models.FloatField()
+
+    class Meta:
+        managed = False
+        db_table = 'Total_temp_div'
+
+
+class Tyrosine(models.Model):
+    extraction_number = models.IntegerField(db_column='Extraction_Number', unique=True, blank=True, null=True)  # Field name made lowercase.
+    percent_tyrosine = models.CharField(db_column='Percent_Tyrosine', max_length=6)  # Field name made lowercase.
+    link_to_file = models.CharField(db_column='Link_to_File', max_length=155)  # Field name made lowercase.
+    calibration_number = models.IntegerField(db_column='Calibration_Number')  # Field name made lowercase.
+    month = models.CharField(db_column='Month', max_length=11, blank=True, null=True)  # Field name made lowercase.
+    day = models.IntegerField(db_column='Day', blank=True, null=True)  # Field name made lowercase.
+    year = models.IntegerField(db_column='Year', blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='NOTES', max_length=1000)  # Field name made lowercase.
+    updated = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'Tyrosine'
+
+
+class TyrosineCalibration(models.Model):
+    calibration_number = models.IntegerField(db_column='Calibration_Number')  # Field name made lowercase.
+    month = models.CharField(db_column='Month', max_length=11)  # Field name made lowercase.
+    day = models.IntegerField(db_column='Day')  # Field name made lowercase.
+    year = models.IntegerField(db_column='Year')  # Field name made lowercase.
+    concentration = models.IntegerField(db_column='Concentration')  # Field name made lowercase.
+    area = models.IntegerField(db_column='Area')  # Field name made lowercase.
+    m_slope = models.IntegerField()
+    b_intercept = models.IntegerField()
+    r_squared = models.CharField(db_column='R_squared', max_length=5)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=155)  # Field name made lowercase.
+    updated = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'Tyrosine_Calibration'
+
+
+class UplcResults(models.Model):
+    diva_field = models.CharField(db_column='Diva#', max_length=50)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    file_name = models.CharField(db_column='File_Name', max_length=50)  # Field name made lowercase.
+    year = models.IntegerField(db_column='Year', blank=True, null=True)  # Field name made lowercase.
+    month = models.CharField(db_column='Month', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    day = models.IntegerField(db_column='Day', blank=True, null=True)  # Field name made lowercase.
+    mode = models.TextField(db_column='Mode', blank=True, null=True)  # Field name made lowercase.
+    sample_type = models.CharField(db_column='Sample_Type', max_length=15)  # Field name made lowercase.
+    sample_id = models.CharField(db_column='Sample_ID', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    en_field = models.IntegerField(db_column='EN#', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    chem_field = models.CharField(db_column='Chem#', max_length=25, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    plant_field = models.CharField(db_column='Plant#', max_length=15, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    species_code = models.CharField(max_length=11)
+    tune_page = models.CharField(db_column='Tune_Page', max_length=55)  # Field name made lowercase.
+    project_name = models.CharField(db_column='Project_Name', max_length=55)  # Field name made lowercase.
+    ms_method = models.CharField(db_column='MS_Method', max_length=55)  # Field name made lowercase.
+    uplc_method = models.CharField(db_column='UPLC_Method', max_length=55)  # Field name made lowercase.
+    ms_mode = models.IntegerField(db_column='MS_Mode', blank=True, null=True)  # Field name made lowercase.
+    asoc_blank = models.CharField(db_column='Asoc_Blank', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    asoc_rti = models.CharField(db_column='Asoc_RTI', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    rti_pass = models.TextField(db_column='RTI_PASS', blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=155, blank=True, null=True)  # Field name made lowercase.
+    all_inga = models.CharField(db_column='All_Inga', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    chemocoding = models.CharField(db_column='Chemocoding', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    raw_check = models.TextField(db_column='Raw_Check')  # Field name made lowercase.
+    mzxml = models.TextField(db_column='mzXML')  # Field name made lowercase.
+    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'UPLC_Results'
+
+
+class UplcResultsBackup(models.Model):
+    diva_field = models.CharField(db_column='Diva#', max_length=50)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    file_name = models.CharField(db_column='File_Name', max_length=50)  # Field name made lowercase.
+    year = models.IntegerField(db_column='Year', blank=True, null=True)  # Field name made lowercase.
+    month = models.CharField(db_column='Month', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    day = models.IntegerField(db_column='Day', blank=True, null=True)  # Field name made lowercase.
+    mode = models.TextField(db_column='Mode', blank=True, null=True)  # Field name made lowercase.
+    sample_type = models.CharField(db_column='Sample_Type', max_length=15)  # Field name made lowercase.
+    sample_id = models.CharField(db_column='Sample_ID', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    en_field = models.IntegerField(db_column='EN#', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    chem_field = models.CharField(db_column='Chem#', max_length=25, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    plant_field = models.CharField(db_column='Plant#', max_length=15, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    species_code = models.CharField(max_length=11)
+    tune_page = models.CharField(db_column='Tune_Page', max_length=55)  # Field name made lowercase.
+    project_name = models.CharField(db_column='Project_Name', max_length=55)  # Field name made lowercase.
+    ms_method = models.CharField(db_column='MS_Method', max_length=55)  # Field name made lowercase.
+    uplc_method = models.CharField(db_column='UPLC_Method', max_length=55)  # Field name made lowercase.
+    ms_mode = models.IntegerField(db_column='MS_Mode', blank=True, null=True)  # Field name made lowercase.
+    asoc_blank = models.CharField(db_column='Asoc_Blank', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    asoc_rti = models.CharField(db_column='Asoc_RTI', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    rti_pass = models.TextField(db_column='RTI_PASS', blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=155, blank=True, null=True)  # Field name made lowercase.
+    all_inga = models.CharField(db_column='All_Inga', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    chemocoding = models.CharField(db_column='Chemocoding', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    raw_check = models.TextField(db_column='Raw_Check')  # Field name made lowercase.
+    mzxml = models.TextField(db_column='mzXML')  # Field name made lowercase.
+    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'UPLC_Results_backup'
+
+
+class UplcResultsBackup2(models.Model):
+    diva_field = models.CharField(db_column='Diva#', max_length=30)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    file_name = models.CharField(db_column='File_Name', max_length=30)  # Field name made lowercase.
+    year = models.IntegerField(db_column='Year', blank=True, null=True)  # Field name made lowercase.
+    month = models.CharField(db_column='Month', max_length=10, blank=True, null=True)  # Field name made lowercase.
+    day = models.IntegerField(db_column='Day', blank=True, null=True)  # Field name made lowercase.
+    mode = models.TextField(db_column='Mode', blank=True, null=True)  # Field name made lowercase.
+    sample_type = models.CharField(db_column='Sample_Type', max_length=15)  # Field name made lowercase.
+    sample_id = models.CharField(db_column='Sample_ID', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    en_field = models.IntegerField(db_column='EN#')  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    chem_field = models.CharField(db_column='Chem#', max_length=25, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    plant_field = models.CharField(db_column='Plant#', max_length=15, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    species_code = models.CharField(max_length=11)
+    tune_page = models.CharField(db_column='Tune_Page', max_length=55)  # Field name made lowercase.
+    project_name = models.CharField(db_column='Project_Name', max_length=55)  # Field name made lowercase.
+    ms_method = models.CharField(db_column='MS_Method', max_length=55)  # Field name made lowercase.
+    uplc_method = models.CharField(db_column='UPLC_Method', max_length=55)  # Field name made lowercase.
+    ms_mode = models.IntegerField(db_column='MS_Mode', blank=True, null=True)  # Field name made lowercase.
+    asoc_blank = models.CharField(db_column='Asoc_Blank', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    asoc_rti = models.CharField(db_column='Asoc_RTI', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    rti_pass = models.TextField(db_column='RTI_PASS', blank=True, null=True)  # Field name made lowercase.
+    notes = models.CharField(db_column='Notes', max_length=155, blank=True, null=True)  # Field name made lowercase.
+    all_inga = models.CharField(db_column='All_Inga', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    chemocoding = models.CharField(db_column='Chemocoding', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    raw_check = models.TextField(db_column='Raw_Check')  # Field name made lowercase.
+    mzxml = models.TextField(db_column='mzXML')  # Field name made lowercase.
+    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'UPLC_Results_backup2'
+
+
+class UplcPressure(models.Model):
+    sample_name = models.CharField(max_length=30)
+    max_pressure = models.DecimalField(max_digits=10, decimal_places=0)
+    date = models.DateField()
+
+    class Meta:
+        managed = False
+        db_table = 'UPLC_pressure'
+
+
+class UmbAnalysis(models.Model):
+    compound_number = models.CharField(db_column='Compound_Number', max_length=10)  # Field name made lowercase.
+    mz_rt = models.CharField(db_column='MZ_RT', max_length=20)  # Field name made lowercase.
+    mz_round = models.IntegerField(db_column='MZ_Round')  # Field name made lowercase.
+    rt_round = models.IntegerField(db_column='RT_ROUND')  # Field name made lowercase.
+    tic_average = models.IntegerField(db_column='TIC_Average')  # Field name made lowercase.
+    isotopes = models.CharField(db_column='Isotopes', max_length=100)  # Field name made lowercase.
+    adduct = models.CharField(max_length=100)
+    pcgroup = models.IntegerField()
+    isotope_number = models.IntegerField()
+    notes = models.CharField(db_column='Notes', max_length=155)  # Field name made lowercase.
+    primary_peak = models.IntegerField(db_column='Primary_Peak')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'Umb_Analysis'
+
+
+class Chemistry(models.Model):
+    chem_field = models.CharField(db_column='Chem#', unique=True, max_length=25, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    site = models.CharField(db_column='Site', max_length=12, blank=True, null=True)  # Field name made lowercase.
+    year = models.IntegerField(blank=True, null=True)
+    month = models.CharField(max_length=5, blank=True, null=True)
+    day = models.IntegerField(blank=True, null=True)
+    plant_field = models.IntegerField(db_column='Plant#', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    species_code = models.CharField(db_column='Species_code', max_length=11, blank=True, null=True)  # Field name made lowercase.
+    species_field = models.CharField(db_column='Species#', max_length=25, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    species_name = models.CharField(db_column='Species_name', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    size = models.CharField(max_length=8, blank=True, null=True)
+    light = models.CharField(max_length=8, blank=True, null=True)
+    exp_min = models.CharField(db_column='Exp_Min', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    exp_max = models.CharField(db_column='Exp_Max', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    height = models.DecimalField(db_column='Height', max_digits=4, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
+    dbh = models.CharField(db_column='DBH', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    fwg = models.CharField(db_column='FWg', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    age = models.CharField(db_column='Age', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    use = models.CharField(db_column='Use', max_length=12, blank=True, null=True)  # Field name made lowercase.
+    cur_w = models.DecimalField(max_digits=6, decimal_places=4, blank=True, null=True)
+    vial_w = models.DecimalField(max_digits=6, decimal_places=4, blank=True, null=True)
+    unnused_materialg = models.DecimalField(db_column='Unnused_Materialg', max_digits=6, decimal_places=5, blank=True, null=True)  # Field name made lowercase.
+    box_field = models.CharField(db_column='Box#', max_length=25, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    field_of_plants = models.CharField(db_column='#_of_plants', max_length=255, blank=True, null=True)  # Field renamed to remove unsuitable characters. Field renamed because it started with '_'.
+    notes10 = models.CharField(db_column='Notes10', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    status = models.CharField(db_column='Status', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    extracted = models.TextField(db_column='Extracted')  # Field name made lowercase.
+    notes12 = models.CharField(db_column='Notes12', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    notes13 = models.CharField(db_column='Notes13', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    oldspecies_field = models.CharField(db_column='OldSpecies#', max_length=45, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'chemistry'
+
+
+class Chlorophyll(models.Model):
+    site = models.CharField(max_length=12, blank=True, null=True)
+    species_code = models.CharField(max_length=11)
+    year = models.IntegerField(blank=True, null=True)
+    month = models.CharField(max_length=5, blank=True, null=True)
+    day = models.CharField(max_length=3, blank=True, null=True)
+    plant_field = models.IntegerField(db_column='Plant#', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    percent_expansion = models.IntegerField(blank=True, null=True)
+    size = models.CharField(max_length=12, blank=True, null=True)
+    light = models.CharField(max_length=5, blank=True, null=True)
+    spadd = models.IntegerField(db_column='Spadd')  # Field name made lowercase.
+    chl_mg_dm2 = models.DecimalField(db_column='Chl_mg/dm2', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    notes = models.CharField(db_column='Notes', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'chlorophyll'
+
+
+class DeleteValue(models.Model):
+    dv_id = models.IntegerField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'delete_value'
+
+
+class Efn(models.Model):
+    year = models.IntegerField(db_column='Year', blank=True, null=True)  # Field name made lowercase.
+    month = models.CharField(db_column='Month', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    site = models.CharField(db_column='Site', max_length=12)  # Field name made lowercase.
+    plant_field = models.IntegerField(db_column='Plant#', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    species_code = models.CharField(max_length=11)
+    basalmm = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+    midmm = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+    apicalmm = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+    color = models.CharField(db_column='Color', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    shape = models.CharField(db_column='Shape', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    type = models.CharField(db_column='Type', max_length=12, blank=True, null=True)  # Field name made lowercase.
+    xefnmm = models.DecimalField(db_column='xEFNmm', max_digits=5, decimal_places=2, blank=True, null=True)  # Field name made lowercase.
+    notes1 = models.CharField(db_column='Notes1', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    notes2 = models.CharField(db_column='Notes2', max_length=100, blank=True, null=True)  # Field name made lowercase.
+    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'efn'
+
+
+class ExtractionWeight(models.Model):
+    chem_field = models.CharField(db_column='Chem#', max_length=25, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    species_code = models.CharField(max_length=11)
+    extraction_number = models.IntegerField(db_column='Extraction_Number', blank=True, null=True)  # Field name made lowercase.
+    pre_vacuum_dry_weight_g = models.CharField(db_column='Pre-vacuum_dry_weight_g', max_length=12, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    post_vacuum_dry_weight_g = models.DecimalField(db_column='Post-vacuum_dry_weight_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    sample_dry_weight_g = models.DecimalField(db_column='Sample_dry_weight_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    processed_fresh_weight_g = models.DecimalField(db_column='Processed_fresh_weight_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    empty_vial_wt = models.DecimalField(db_column='Empty_Vial_Wt', max_digits=6, decimal_places=4, blank=True, null=True)  # Field name made lowercase.
+    dry_marc_vial_wt = models.DecimalField(db_column='Dry_Marc+Vial_wt', max_digits=6, decimal_places=4, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    final_marc_weight_g = models.DecimalField(db_column='Final_marc_weight_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    total_extract_mass_g = models.DecimalField(db_column='Total_extract_mass_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    prop_sample_remainging = models.DecimalField(db_column='Prop_Sample_Remainging', max_digits=8, decimal_places=4)  # Field name made lowercase.
+    percent_extracted = models.DecimalField(db_column='Percent_Extracted', max_digits=8, decimal_places=4)  # Field name made lowercase.
+    date_dried = models.DateField(db_column='Date_Dried', blank=True, null=True)  # Field name made lowercase.
+    date_stored = models.DateField(db_column='Date_Stored', blank=True, null=True)  # Field name made lowercase.
+    filter_paper_weight_g = models.DecimalField(db_column='Filter_Paper_Weight_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    number_70c_h2o_extract_fraction_g = models.DecimalField(db_column='70C_H2O_extract_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed because it wasn't a valid Python identifier.
+    organic_extractable_split_fraction_g = models.DecimalField(db_column='Organic_Extractable_Split_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    percent_of_volume_that_was_fractionated = models.CharField(db_column='Percent_of_Volume_that_was_fractionated', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    lipid_fraction_g = models.DecimalField(db_column='Lipid_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    post_defat_organic_extractable_split_fraction_g = models.DecimalField(db_column='Post_Defat;_Organic_Extractable_Split_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    percent_of_volume_that_was_fractionated_1 = models.CharField(db_column='Percent_of_Volume_that_was_fractionated_1', max_length=5, blank=True, null=True)  # Field name made lowercase.
+    dowex50h_org_acids_neut_frac_neutralized_w_naoh_g = models.DecimalField(db_column='Dowex50H_Org_acids_neut_frac_Neutralized_w_NaOH_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    dowex50h_organic_acid_plus_neutral_fraction_g = models.DecimalField(db_column='Dowex50H_organic_acid_plus_neutral_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    dowex50h_npaa_fraction_g = models.DecimalField(db_column='Dowex50H_NPAA_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    phenolics_and_saponins_fraction_g = models.DecimalField(db_column='Phenolics_and_Saponins_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    hoh_insoluble_g = models.DecimalField(db_column='HOH_Insoluble_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    ods_100_hoh_fraction_g = models.DecimalField(db_column='ODS:_100%_HOH_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_100_hoh_fraction_blank_hoh_5_g = models.DecimalField(db_column='ODS:_100%_HOH_Fraction_Blank_HOH-5_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_25_meoh_fraction_g = models.DecimalField(db_column='ODS_25%_MeOH_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_35_meoh_fraction_g = models.DecimalField(db_column='ODS_35%_MeOH_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_60_meoh_fraction_g = models.DecimalField(db_column='ODS:_60%_MeOH_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_60_meoh_fraction_blank_60_4_g = models.DecimalField(db_column='ODS:_60%_MeOH_Fraction_Blank_60-4_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_50_meoh_fraction_g = models.DecimalField(db_column='ODS_50%_MeOH_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_100_meoh_fractiong = models.DecimalField(db_column='ODS:_100%_MeOH_Fractiong', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_100_meoh_fraction_blank_100_4_g = models.DecimalField(db_column='ODS:_100%_MeOH_Fraction_Blank_100-4_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_100_acetone_fraction_g = models.DecimalField(db_column='ODS:_100%_Acetone_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    marc_70_acetone_fraction_g = models.DecimalField(db_column='Marc:_70%_Acetone_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    marc_80_etoh_g = models.DecimalField(db_column='Marc:_80%_EtOH_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    marc_70_acetonitrile_g = models.CharField(db_column='Marc:_70%_Acetonitrile_g', max_length=255, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_2_5_acetonitrile_fraction_g = models.DecimalField(db_column='ODS:_2.5%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_5_acetonitrile_fraction_g = models.DecimalField(db_column='ODS:_5%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_7_5_acetonitrile_fraction_g = models.DecimalField(db_column='ODS:_7.5%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_10_acetonitrile_fraction_g = models.DecimalField(db_column='ODS:_10%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_15_acetonitrile_fraction_g = models.DecimalField(db_column='ODS:_15%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_20_acetonitrile_fraction_g = models.DecimalField(db_column='ODS:_20%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_50_acetonitrile_fraction_g = models.DecimalField(db_column='ODS:_50%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_50_acetonitrile_fraction_blank_50_4_g = models.DecimalField(db_column='ODS:_50%_Acetonitrile_Fraction_Blank_50-4_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_60_acetonitrile_fraction_g = models.DecimalField(db_column='ODS_60%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_100_acetonitrile_fraction_g = models.DecimalField(db_column='ODS:_100%_Acetonitrile_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    ods_100_acetonitrile_fraction_blank_100_4_g = models.DecimalField(db_column='ODS:_100%_Acetonitrile_Fraction_Blank_100-4_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    flavonoid_i_fraction_g = models.DecimalField(db_column='Flavonoid_I_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    flavonoid_ii_fraction_g = models.DecimalField(db_column='Flavonoid_II_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    saponins_fraction_g = models.DecimalField(db_column='Saponins_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    protein_i_fraction_g = models.DecimalField(db_column='Protein_I_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    protein_ii_fraction_g = models.DecimalField(db_column='Protein_II_Fraction_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    other_insolubles_g = models.DecimalField(db_column='Other_insolubles_g', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    total_dry_weight_g = models.DecimalField(max_digits=12, decimal_places=8, blank=True, null=True)
+    tyrosine_content_dry_weight = models.DecimalField(db_column='Tyrosine_Content:_%_Dry_Weight', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    percent_recovery = models.DecimalField(db_column='Percent_recovery', max_digits=12, decimal_places=8, blank=True, null=True)  # Field name made lowercase.
+    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'extraction_weight'
+
+
+class FeatureTableRawData(models.Model):
+    sample = models.CharField(max_length=25)
+    species_code_sample = models.CharField(db_column='Species_code_sample', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    rt = models.DecimalField(db_column='RT', max_digits=11, decimal_places=4)  # Field name made lowercase.
+    mz = models.DecimalField(db_column='MZ', max_digits=11, decimal_places=4)  # Field name made lowercase.
+    pc_id = models.CharField(db_column='PC_ID', max_length=25)  # Field name made lowercase.
+    tic = models.DecimalField(db_column='TIC', max_digits=11, decimal_places=4)  # Field name made lowercase.
+    date_update = models.DateTimeField(db_column='Date_Update', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'feature_table_raw_data'
+
+
+class FeatureTableRawDataAllBci(models.Model):
+    sample = models.CharField(max_length=25)
+    species_code_sample = models.CharField(db_column='Species_code_sample', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    rt = models.DecimalField(db_column='RT', max_digits=11, decimal_places=4)  # Field name made lowercase.
+    mz = models.DecimalField(db_column='MZ', max_digits=11, decimal_places=4)  # Field name made lowercase.
+    pc_id = models.CharField(db_column='PC_ID', max_length=25)  # Field name made lowercase.
+    tic = models.DecimalField(db_column='TIC', max_digits=11, decimal_places=4)  # Field name made lowercase.
+    date_update = models.DateTimeField(db_column='Date_Update', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'feature_table_raw_data_all_BCI'
+
+
+class FeatureTableRawDataJohanna(models.Model):
+    sample = models.CharField(max_length=25)
+    species_code_sample = models.CharField(db_column='Species_code_sample', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    rt = models.DecimalField(db_column='RT', max_digits=11, decimal_places=4)  # Field name made lowercase.
+    mz = models.DecimalField(db_column='MZ', max_digits=11, decimal_places=4)  # Field name made lowercase.
+    pc_id = models.CharField(db_column='PC_ID', max_length=25)  # Field name made lowercase.
+    tic = models.DecimalField(db_column='TIC', max_digits=11, decimal_places=4)  # Field name made lowercase.
+    date_update = models.DateTimeField(db_column='Date_Update', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'feature_table_raw_data_johanna'
+
+
+class FeatureTableRawDataUmbellifera(models.Model):
+    sample = models.CharField(max_length=25)
+    species_code_sample = models.CharField(db_column='Species_code_sample', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    rt = models.DecimalField(db_column='RT', max_digits=11, decimal_places=4)  # Field name made lowercase.
+    mz = models.DecimalField(db_column='MZ', max_digits=11, decimal_places=4)  # Field name made lowercase.
+    pc_id = models.CharField(db_column='PC_ID', max_length=25)  # Field name made lowercase.
+    tic = models.DecimalField(db_column='TIC', max_digits=11, decimal_places=4)  # Field name made lowercase.
+    date_update = models.DateTimeField(db_column='Date_Update', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'feature_table_raw_data_umbellifera'
+
+
+class FinalMul(models.Model):
+    fid_orig = models.IntegerField(db_column='FId_orig', blank=True, null=True)  # Field name made lowercase.
+    fid_dest = models.IntegerField(db_column='FId_dest', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'final_mul'
 
 
 class Hairs(models.Model):
@@ -438,6 +1318,23 @@ class Herbivory(models.Model):
         db_table = 'herbivory'
 
 
+class InsertValue(models.Model):
+    iv_group = models.CharField(max_length=25, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'insert_value'
+
+
+class InsertValueDet(models.Model):
+    iv_group1 = models.CharField(max_length=25, blank=True, null=True)
+    iv_group2 = models.CharField(max_length=25, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'insert_value_det'
+
+
 class Lma(models.Model):
     site = models.CharField(max_length=12, blank=True, null=True)
     year = models.IntegerField(blank=True, null=True)
@@ -460,38 +1357,37 @@ class Lma(models.Model):
         db_table = 'lma'
 
 
-class Location(models.Model):
-    plant_field = models.IntegerField(db_column='Plant#', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    species_code = models.CharField(db_column='Species_code', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    gps = models.IntegerField(db_column='GPS')  # Field name made lowercase.
-    trail = models.IntegerField(db_column='Trail')  # Field name made lowercase.
-    measure = models.IntegerField(db_column='Measure')  # Field name made lowercase.
-    offset = models.IntegerField(db_column='Offset')  # Field name made lowercase.
-    side = models.IntegerField(db_column='Side')  # Field name made lowercase.
+class Multiple(models.Model):
+    mul_id_orig = models.IntegerField(blank=True, null=True)
+    mul_id_destino = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'location'
+        db_table = 'multiple'
 
 
-class Motu(models.Model):
-    motu = models.CharField(db_column='MOTU', max_length=25)  # Field name made lowercase.
-    analysis = models.CharField(db_column='Analysis', max_length=50)  # Field name made lowercase.
-    voucher = models.CharField(db_column='Voucher', unique=True, max_length=25, blank=True, null=True)  # Field name made lowercase.
-    sequence = models.CharField(db_column='Sequence', max_length=30, blank=True, null=True)  # Field name made lowercase.
-    la_motu = models.CharField(db_column='LA_MOTU', max_length=30)  # Field name made lowercase.
-    blasting_family = models.TextField(db_column='Blasting_Family')  # Field name made lowercase.
-    blasting_subfamily = models.TextField(db_column='Blasting_Subfamily')  # Field name made lowercase.
-    blasting_genus = models.TextField(db_column='Blasting_Genus')  # Field name made lowercase.
-    percentage = models.IntegerField(db_column='Percentage')  # Field name made lowercase.
-    bin = models.CharField(db_column='BIN', max_length=250)  # Field name made lowercase.
-    notes_on_host = models.CharField(db_column='Notes_on_host', max_length=300)  # Field name made lowercase.
-    notes = models.CharField(db_column='Notes', max_length=300)  # Field name made lowercase.
-    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+class MultipleValue(models.Model):
+    id_orig = models.IntegerField()
+    id_destino = models.IntegerField()
+    min_rt_dest = models.FloatField()
+    rt_orig = models.FloatField()
+    max_rt_dest = models.FloatField()
 
     class Meta:
         managed = False
-        db_table = 'motu'
+        db_table = 'multiple_value'
+
+
+class MultipleValueMz(models.Model):
+    m_id_orig = models.IntegerField()
+    m_id_destino = models.IntegerField()
+    m_min_mz_dest = models.FloatField(blank=True, null=True)
+    m_mz_orig = models.FloatField(blank=True, null=True)
+    m_max_mz_dest = models.FloatField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'multiple_value_mz'
 
 
 class Nitrogen(models.Model):
@@ -517,84 +1413,6 @@ class Nitrogen(models.Model):
         db_table = 'nitrogen'
 
 
-class PlantTable(models.Model):
-    collectors = models.CharField(db_column='Collectors', max_length=100, blank=True, null=True)  # Field name made lowercase.
-    site = models.CharField(db_column='Site', max_length=12, blank=True, null=True)  # Field name made lowercase.
-    date = models.DateField(db_column='Date', blank=True, null=True)  # Field name made lowercase.
-    year = models.IntegerField(db_column='Year')  # Field name made lowercase.
-    month = models.CharField(db_column='Month', max_length=4)  # Field name made lowercase.
-    day = models.IntegerField(db_column='Day')  # Field name made lowercase.
-    plant_field = models.IntegerField(db_column='Plant#')  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    species_code = models.CharField(db_column='Species_code', max_length=11, blank=True, null=True)  # Field name made lowercase.
-    location = models.CharField(db_column='Location', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    size = models.CharField(max_length=6, blank=True, null=True)
-    light = models.CharField(max_length=8, blank=True, null=True)
-    height = models.CharField(max_length=25, blank=True, null=True)
-    dbh = models.CharField(db_column='DBH', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    lh = models.CharField(db_column='LH', max_length=15, blank=True, null=True)  # Field name made lowercase.
-    dna = models.CharField(db_column='DNA', max_length=15, blank=True, null=True)  # Field name made lowercase.
-    date_dna_sent = models.CharField(db_column='Date_DNA_SENT', max_length=11, blank=True, null=True)  # Field name made lowercase.
-    notes_plant = models.CharField(db_column='Notes_Plant', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    photo_live = models.CharField(max_length=25, blank=True, null=True)
-    photo_dry = models.CharField(max_length=25, blank=True, null=True)
-    voucher1 = models.CharField(max_length=5, blank=True, null=True)
-    voucher2 = models.CharField(max_length=5, blank=True, null=True)
-    voucher3 = models.CharField(max_length=10, blank=True, null=True)
-    voucher4 = models.CharField(max_length=10, blank=True, null=True)
-    herbarium_sample = models.CharField(max_length=25, blank=True, null=True)
-    flower_color = models.CharField(max_length=25, blank=True, null=True)
-    description = models.CharField(max_length=25, blank=True, null=True)
-    new_leaves = models.IntegerField(db_column='New_Leaves', blank=True, null=True)  # Field name made lowercase.
-    code = models.IntegerField(blank=True, null=True)
-    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'plant_table'
-        unique_together = (('site', 'plant_field'),)
-
-
-class RtiQc(models.Model):
-    rti = models.CharField(db_column='RTI', max_length=11)  # Field name made lowercase.
-    rt_1 = models.IntegerField(db_column='RT_1')  # Field name made lowercase.
-    ppm_1 = models.IntegerField(db_column='PPM_1')  # Field name made lowercase.
-    sn_1 = models.IntegerField(db_column='SN_1')  # Field name made lowercase.
-    pk_wd_1 = models.IntegerField(db_column='PK_wd_1')  # Field name made lowercase.
-    rt_2 = models.IntegerField(db_column='RT_2')  # Field name made lowercase.
-    ppm_2 = models.IntegerField(db_column='PPM_2')  # Field name made lowercase.
-    sn_2 = models.IntegerField(db_column='SN_2')  # Field name made lowercase.
-    pk_wd_2 = models.IntegerField(db_column='PK_wd_2')  # Field name made lowercase.
-    rt_3 = models.IntegerField(db_column='RT_3')  # Field name made lowercase.
-    pk_wd_3 = models.IntegerField(db_column='PK_Wd_3')  # Field name made lowercase.
-    rt_4 = models.IntegerField(db_column='RT_4')  # Field name made lowercase.
-    ppm_4 = models.IntegerField(db_column='PPM_4')  # Field name made lowercase.
-    sn_4 = models.IntegerField(db_column='SN_4')  # Field name made lowercase.
-    pk_wd_4 = models.IntegerField(db_column='PK_wd_4')  # Field name made lowercase.
-    rt_5 = models.IntegerField(db_column='RT_5')  # Field name made lowercase.
-    ppm_5 = models.IntegerField(db_column='PPM_5')  # Field name made lowercase.
-    sn_5 = models.IntegerField(db_column='SN_5')  # Field name made lowercase.
-    pk_wd_5 = models.IntegerField(db_column='PK_wd_5')  # Field name made lowercase.
-    rt_6 = models.IntegerField(db_column='RT_6')  # Field name made lowercase.
-    ppm_6 = models.IntegerField(db_column='PPM_6')  # Field name made lowercase.
-    sn_6 = models.IntegerField(db_column='SN_6')  # Field name made lowercase.
-    pk_wd_6 = models.IntegerField(db_column='PK_WD_6')  # Field name made lowercase.
-    rt_7 = models.IntegerField(db_column='RT_7')  # Field name made lowercase.
-    ppm_7 = models.IntegerField(db_column='PPM_7')  # Field name made lowercase.
-    sn_7 = models.IntegerField(db_column='SN_7')  # Field name made lowercase.
-    pk_wd_7 = models.IntegerField(db_column='PK_WD_7')  # Field name made lowercase.
-    rt_8 = models.IntegerField(db_column='RT_8')  # Field name made lowercase.
-    ppm_8 = models.IntegerField(db_column='PPM_8')  # Field name made lowercase.
-    sn_8 = models.IntegerField(db_column='SN_8')  # Field name made lowercase.
-    pk_wd_8 = models.IntegerField(db_column='Pk_Wd_8')  # Field name made lowercase.
-    pass_y_n_field = models.TextField(db_column='Pass(Y/N)')  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    notes = models.CharField(db_column='Notes', max_length=255)  # Field name made lowercase.
-    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'rti_qc'
-
-
 class Site(models.Model):
     site = models.CharField(db_column='Site', max_length=12, blank=True, null=True)  # Field name made lowercase.
     country = models.CharField(db_column='Country', max_length=25, blank=True, null=True)  # Field name made lowercase.
@@ -614,23 +1432,6 @@ class Site(models.Model):
     class Meta:
         managed = False
         db_table = 'site'
-
-
-class Species(models.Model):
-    site = models.CharField(max_length=12, blank=True, null=True)
-    old_species_number = models.CharField(db_column='Old_Species_Number', max_length=7, blank=True, null=True)  # Field name made lowercase.
-    species_code = models.CharField(max_length=11)
-    genus = models.CharField(db_column='Genus', max_length=12, blank=True, null=True)  # Field name made lowercase.
-    species_name = models.CharField(db_column='Species_name', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    comment = models.CharField(max_length=45, blank=True, null=True)
-    authority = models.CharField(max_length=25, blank=True, null=True)
-    note_chem_anal = models.TextField(db_column='Note_Chem_Anal', blank=True, null=True)  # Field name made lowercase.
-    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'species'
-        unique_together = (('old_species_number', 'species_code'),)
 
 
 class Toughness(models.Model):
@@ -654,53 +1455,17 @@ class Toughness(models.Model):
         managed = False
         db_table = 'toughness'
 
-class Tyrosine(models.Model):
-    id = models.IntegerField(primary_key=True)
-    extraction_number = models.IntegerField(db_column='Extraction_Number', blank=True, null=True)  # Field name made lowercase.
-    percent_tyrosine = models.IntegerField(db_column='Percent_Tyrosine')  # Field name made lowercase.
-    link_to_file = models.CharField(db_column='Link_to_File', max_length=155)  # Field name made lowercase.
-    calibration_number = models.IntegerField(db_column='Calibration_Number')  # Field name made lowercase.
-    month = models.CharField(db_column='Month', max_length=11, blank=True, null=True)  # Field name made lowercase.
-    day = models.IntegerField(db_column='Day', blank=True, null=True)  # Field name made lowercase.
-    year = models.IntegerField(db_column='Year', blank=True, null=True)  # Field name made lowercase.
-    updated = models.DateTimeField()
+
+class UniqueValue(models.Model):
+    uv_identidad = models.IntegerField()
+    uv_grupo = models.CharField(max_length=20, blank=True, null=True)
+    uv_min_rt = models.FloatField(blank=True, null=True)
+    uv_rt = models.FloatField(blank=True, null=True)
+    uv_max_rt = models.FloatField(blank=True, null=True)
+    uv_min_mz = models.FloatField(blank=True, null=True)
+    uv_mz = models.FloatField(blank=True, null=True)
+    uv_max_mz = models.FloatField(blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'tyrosine'
-
-class UplcResults(models.Model):
-    diva_field = models.CharField(db_column='Diva#', max_length=11)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    file_name = models.CharField(db_column='File_Name', max_length=15)  # Field name made lowercase.
-    year = models.IntegerField(db_column='Year', blank=True, null=True)  # Field name made lowercase.
-    month = models.IntegerField(db_column='Month', blank=True, null=True)  # Field name made lowercase.
-    day = models.IntegerField(db_column='Day', blank=True, null=True)  # Field name made lowercase.
-    mode = models.TextField(db_column='Mode', blank=True, null=True)  # Field name made lowercase.
-    sample_type = models.TextField(db_column='Sample_Type')  # Field name made lowercase.
-    sample_id = models.CharField(db_column='Sample_ID', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    en_field = models.IntegerField(db_column='EN#')  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    chem_field = models.CharField(db_column='Chem#', max_length=25, blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    plant_field = models.IntegerField(db_column='Plant#', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    species_code = models.CharField(max_length=11)
-    tune_page = models.CharField(db_column='Tune_Page', max_length=25)  # Field name made lowercase.
-    project_name = models.CharField(db_column='Project_Name', max_length=22)  # Field name made lowercase.
-    ms_method = models.CharField(db_column='MS_Method', max_length=30)  # Field name made lowercase.
-    uplc_method = models.CharField(db_column='UPLC_Method', max_length=30)  # Field name made lowercase.
-    ms_mode = models.IntegerField(db_column='MS_Mode', blank=True, null=True)  # Field name made lowercase.
-    asoc_rti = models.CharField(db_column='Asoc_RTI', max_length=11, blank=True, null=True)  # Field name made lowercase.
-    rti_pass = models.TextField(db_column='RTI_PASS', blank=True, null=True)  # Field name made lowercase.
-    is_test = models.TextField(db_column='IS_Test', blank=True, null=True)  # Field name made lowercase.
-    is_ppm = models.IntegerField(db_column='IS_PPM', blank=True, null=True)  # Field name made lowercase.
-    is_rt = models.IntegerField(db_column='IS_RT', blank=True, null=True)  # Field name made lowercase.
-    rt_shift = models.IntegerField(db_column='RT_Shift', blank=True, null=True)  # Field name made lowercase.
-    is_tic = models.IntegerField(db_column='IS_TIC', blank=True, null=True)  # Field name made lowercase.
-    is_sn = models.IntegerField(db_column='IS_SN', blank=True, null=True)  # Field name made lowercase.
-    notes = models.CharField(db_column='Notes', max_length=155, blank=True, null=True)  # Field name made lowercase.
-    all_inga = models.CharField(db_column='All_Inga', max_length=5, blank=True, null=True)  # Field name made lowercase.
-    chemocoding = models.CharField(db_column='Chemocoding', max_length=5, blank=True, null=True)  # Field name made lowercase.
-    file_path = models.IntegerField(db_column='File_Path', blank=True, null=True)  # Field name made lowercase.
-    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'uplc_results'
+        db_table = 'unique_value'
