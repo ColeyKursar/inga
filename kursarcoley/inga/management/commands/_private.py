@@ -62,22 +62,26 @@ class BuildUtil:
         for idx, origin in enumerate(origins):
             if idx % 1000 == 0 or idx == len(origins) - 1:
                 print(str(idx) + " objects converted")
+            
 
-            destination = destination_model()
-            multireference_fields = []
+            for instance in mapping["fields"]:
+                destination = destination_model()
+                multireference_fields = []
 
-            for field in mapping["fields"]:
-                source_value = self.get_source(mapping["fields"][field], origin)
+                for field in instance:
+                    source_value = self.get_source(instance[field], origin)
 
-                if source_value == "multireference-field":
-                    multireference_fields.append(field);
-                else:
-                    setattr(destination, field, source_value)
+                    if source_value == "multireference-field":
+                        multireference_fields.append(field);
+                    else:
+                        setattr(destination, field, source_value)
 
-            destination.save()
+                destination.save()
 
-            for field in multireference_fields:
-                source_value = self.get_multireference(mapping["fields"][field], origin)
+                for field in multireference_fields:
+                    source_value = self.get_multireference(instance[field], origin)
+
+                destination.save()
 
             
 

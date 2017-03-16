@@ -50,4 +50,4 @@ class Command(BaseCommand):
             except AlreadyRegistered:
                 pass
 
-        print json.dumps(mappings)
+        print(json.dumps(mappings))

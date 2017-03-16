@@ -286,6 +286,7 @@ class Toughness(IngaBase):
     notes = models.TextField(blank=True, null=True)
 
 class UPLCResult(IngaBase):
+    # Move converted and raw to their own tables
     raw = models.ForeignKey("RAW")
     converted = models.ForeignKey("Converted")
     diva = models.TextField()
@@ -302,9 +303,6 @@ class UPLCResult(IngaBase):
     notes = models.TextField()
     all_inga = models.TextField()
     chemocoding = models.TextField()
-
-class Voucher(IngaBase):
-    pass
 
 class PC_ID(IngaBase):
     PC_ID = models.ForeignKey("FeatureTableRawData")
