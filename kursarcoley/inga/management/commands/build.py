@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand, CommandError
 from os.path import abspath, dirname, join
-from ._private import BuildUtil
+from ._private import *
 import json
 
 
@@ -25,7 +25,6 @@ class Command(BaseCommand):
     help = 'Migrates from old inga tables'
 
     def handle(self, *args, **options):
-        util = BuildUtil()
         toplevel_dir = dirname(dirname(dirname(dirname(dirname(abspath(__file__))))))
         mapping_file = join(toplevel_dir, "mapping.json")
 
@@ -34,5 +33,5 @@ class Command(BaseCommand):
 
         for model in BUILD_ORDER:
             print("Building " + model)
-            util.build(model, mappings[model])
+            build(model, mappings[model])
             print("Done! \n")

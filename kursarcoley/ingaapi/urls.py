@@ -33,7 +33,6 @@ router.register(r'raw', views.RAWViewSet)
 router.register(r'site', views.SiteViewSet)
 router.register(r'toughness', views.ToughnessViewSet)
 router.register(r'uplcresult', views.UPLCResultViewSet)
-router.register(r'voucher', views.VoucherViewSet)
 router.register(r'pc_id', views.PC_IDViewSet)
 router.register(r'tyrosine', views.TyrosineViewSet)
 

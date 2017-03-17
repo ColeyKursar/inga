@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from inga.models import Chemistry, Chlorophyll, Converted, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, HerbivoreCollectionObservation, HerbivoreDNA, HerbivoreSpecies, HerbivoreCollection, Herbivory, HPLCResult, LeafMassArea, Location, Method, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, Voucher, PC_ID, Tyrosine
+from inga.models import Chemistry, Chlorophyll, Converted, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, HerbivoreCollectionObservation, HerbivoreDNA, HerbivoreSpecies, HerbivoreCollection, Herbivory, HPLCResult, LeafMassArea, Location, Method, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, PC_ID, Tyrosine
 
 
 class ChemistrySerializer(ModelSerializer):
@@ -202,13 +202,6 @@ class UPLCResultSerializer(ModelSerializer):
 
     class Meta:
         model = UPLCResult
-        fields = '__all__'
-
-
-class VoucherSerializer(ModelSerializer):
-
-    class Meta:
-        model = Voucher
         fields = '__all__'
 
 
