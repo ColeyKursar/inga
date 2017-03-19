@@ -1,84 +1,4 @@
-{  
-   "Converted":{  
-      "fields":[  
-         {  
-            "converted_file":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            },
-            "uplcresult":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            }
-         }
-      ],
-      "origin":""
-   },
-   "FeatureTableRawData":{  
-      "fields":[  
-         {  
-            "Date_Update":{  
-               "type":"date",
-               "day_field":"",
-               "month_field":"",
-               "year_field":""
-            },
-            "MZ":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            },
-            "PC_ID":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            },
-            "RT":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            },
-            "TIC":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            },
-            "pc_id":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            },
-            "sample":{  
-               "local_field_name":"",
-               "reference_model":"",
-               "remote_field_name":"",
-               "type":"reference"
-            },
-            "species_code_sample":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            },
-            "updated":{  
-               "type":"date",
-               "day_field":"",
-               "month_field":"",
-               "year_field":""
-            }
-         }
-      ],
-      "origin":""
-   },
+{ 
    "Field":{  
       "fields":[  
          {  
@@ -161,61 +81,6 @@
                "type":"reference"
             },
             "updated":{  
-               "type":"date",
-               "day_field":"",
-               "month_field":"",
-               "year_field":""
-            }
-         }
-      ],
-      "origin":""
-   },
-   "HPLCResult":{  
-      "fields":[  
-         {  
-            "column_used":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            },
-            "date":{  
-               "type":"date",
-               "year_field":""
-            },
-            "extraction":{  
-               "local_field_name":"",
-               "reference_model":"",
-               "remote_field_name":"",
-               "type":"reference"
-            },
-            "file_path":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            },
-            "method":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            },
-            "sample_type":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            },
-            "tyrosine":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            },
-            "updated":{  
-               "day_field":"",
-               "month_field":"",
                "type":"date",
                "day_field":"",
                "month_field":"",
@@ -317,104 +182,192 @@
       ],
       "origin":""
    },
-   "PC_ID":{  
-      "fields":[  
-         {  
-            "MZ_RT":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            },
-            "PC_ID":{  
-               "local_field_name":"",
-               "reference_model":"",
-               "remote_field_name":"",
-               "type":"reference"
-            },
-            "Percent_TIC":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            },
-            "ms_ms_spec":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            },
-            "ms_ms_spec_id":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            },
-            "updated":{  
-               "type":"date",
-               "day_field":"",
-               "month_field":"",
-               "year_field":""
-            }
-         }
-      ],
-      "origin":""
-   },
-   "RAW":{  
-      "fields":[  
-         {  
-            "raw_file_path":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            },
-            "uplcresult":{  
-               "type":"value",
-               "field_name":[  
-                  ""
-               ]
-            }
-         }
-      ],
-      "origin":""
-   },
-   "Toughness":{  
+   "Toughness":{ 
       "fields":[  
          {  
             "date":{  
                "type":"date",
-               "day_field":"",
-               "month_field":"",
-               "year_field":""
+               "day_field":false,
+               "month_field":false,
+               "year_field":"year"
             },
             "notes":{  
                "type":"value",
                "field_name":[  
-                  ""
+                  "notes"
                ]
             },
             "plant":{  
-               "local_field_name":"",
-               "reference_model":"",
-               "remote_field_name":"",
+               "local_field_name":"plant_field",
+               "reference_model":"Plant",
+               "remote_field_name":"plant_number",
                "type":"reference"
             },
             "toughness":{  
                "type":"value",
                "field_name":[  
-                  ""
+                  "toughness1"
+               ]
+            }
+         },
+         {  
+            "date":{  
+               "type":"date",
+               "day_field":false,
+               "month_field":false,
+               "year_field":"year"
+            },
+            "notes":{  
+               "type":"value",
+               "field_name":[  
+                  "notes"
                ]
             },
-            "updated":{  
+            "plant":{  
+               "local_field_name":"plant_field",
+               "reference_model":"Plant",
+               "remote_field_name":"plant_number",
+               "type":"reference"
+            },
+            "toughness":{  
+               "type":"value",
+               "field_name":[  
+                  "toughness2"
+               ]
+            }
+         },
+         {  
+            "date":{  
                "type":"date",
-               "day_field":"",
-               "month_field":"",
-               "year_field":""
+               "day_field":false,
+               "month_field":false,
+               "year_field":"year"
+            },
+            "notes":{  
+               "type":"value",
+               "field_name":[  
+                  "notes"
+               ]
+            },
+            "plant":{  
+               "local_field_name":"plant_field",
+               "reference_model":"Plant",
+               "remote_field_name":"plant_number",
+               "type":"reference"
+            },
+            "toughness":{  
+               "type":"value",
+               "field_name":[  
+                  "toughness3"
+               ]
+            }
+         },
+         {  
+            "date":{  
+               "type":"date",
+               "day_field":false,
+               "month_field":false,
+               "year_field":"year"
+            },
+            "notes":{  
+               "type":"value",
+               "field_name":[  
+                  "notes"
+               ]
+            },
+            "plant":{  
+               "local_field_name":"plant_field",
+               "reference_model":"Plant",
+               "remote_field_name":"plant_number",
+               "type":"reference"
+            },
+            "toughness":{  
+               "type":"value",
+               "field_name":[  
+                  "toughness4"
+               ]
+            }
+         },
+         {  
+            "date":{  
+               "type":"date",
+               "day_field":false,
+               "month_field":false,
+               "year_field":"year"
+            },
+            "notes":{  
+               "type":"value",
+               "field_name":[  
+                  "notes"
+               ]
+            },
+            "plant":{  
+               "local_field_name":"plant_field",
+               "reference_model":"Plant",
+               "remote_field_name":"plant_number",
+               "type":"reference"
+            },
+            "toughness":{  
+               "type":"value",
+               "field_name":[  
+                  "toughness5"
+               ]
+            }
+         },
+         {  
+            "date":{  
+               "type":"date",
+               "day_field":false,
+               "month_field":false,
+               "year_field":"year"
+            },
+            "notes":{  
+               "type":"value",
+               "field_name":[  
+                  "notes"
+               ]
+            },
+            "plant":{  
+               "local_field_name":"plant_field",
+               "reference_model":"Plant",
+               "remote_field_name":"plant_number",
+               "type":"reference"
+            },
+            "toughness":{  
+               "type":"value",
+               "field_name":[  
+                  "toughness6"
+               ]
+            }
+         },
+         {  
+            "date":{  
+               "type":"date",
+               "day_field":false,
+               "month_field":false,
+               "year_field":"year"
+            },
+            "notes":{  
+               "type":"value",
+               "field_name":[  
+                  "notes"
+               ]
+            },
+            "plant":{  
+               "local_field_name":"plant_field",
+               "reference_model":"Plant",
+               "remote_field_name":"plant_number",
+               "type":"reference"
+            },
+            "toughness":{  
+               "type":"value",
+               "field_name":[  
+                  "toughness7"
+               ]
             }
          }
       ],
-      "origin":""
+      "origin":"Toughness"
    },
    "UPLCResult":{  
       "fields":[  
