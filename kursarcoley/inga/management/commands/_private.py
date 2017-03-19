@@ -7,6 +7,10 @@ import sys
 
 
 def get_source(field, origin):
+    """
+    Get the data from its indicated source.
+    If it's a reference, fetch the reference object.
+    """
     if field["type"] == "value":
         value = ""
 
@@ -36,7 +40,11 @@ def get_source(field, origin):
         return "multireference-field"
 
     elif field["type"] == "date":
-        return datetime.datetime.utcnow().replace(tzinfo=pytz.utc)
+        day = getattr(origin, field["day"]) if field["day"] else 1
+        month = getattr(origin, field["month"]) if field["month"] else 1
+        year = getattr(origin, field["year"]) if field["year"] else 1
+
+        return build_date(day, month, year)
 
     elif field["type"] == "boolean":
         source_value = getattr(origin, field["field_name"][0]).lower()
@@ -64,24 +72,23 @@ def build(destination_name, mapping):
     for idx, origin in enumerate(origins):
         if idx % 1000 == 0 or idx == len(origins) - 1:
             print(str(idx) + " objects converted")
-        
 
         for instance in mapping["fields"]:
             destination = destination_model()
             multireference_fields = []
 
             for field in instance:
-                source_value = self.get_source(instance[field], origin)
+                source_value = get_source(instance[field], origin)
 
                 if source_value == "multireference-field":
-                    multireference_fields.append(field);
+                    multireference_fields.append(field)
                 else:
                     setattr(destination, field, source_value)
 
             destination.save()
 
             for field in multireference_fields:
-                source_value = self.get_multireference(instance[field], origin)
+                source_value = get_multireference(instance[field], origin)
 
             destination.save()
 
@@ -90,7 +97,49 @@ def build_date(day, month, year):
     """
     Build a date object from a day, month, and year strings
     """
-    return datetime.datetime.utcnow().replace(tzinfo=pytz.utc)
+    year = int(year)
+    day = int(day)
+    month = parse_month(month)
+
+    return datetime.date(year, month, day)
+
+
+def parse_month(month):
+    """
+    Interpret a month string
+    """
+    try:
+        return int(month)
+    except ValueError:
+        if len(month) >= 3:
+            if 'jan' in month.lower():
+                return 1
+            if 'feb' in month.lower():
+                return 2
+            if 'mar' in month.lower():
+                return 3
+            if 'apr' in month.lower():
+                return 4
+            if 'may' in month.lower():
+                return 5
+            if 'jun' in month.lower():
+                return 6
+            if 'jul' in month.lower():
+                return 7
+            if 'aug' in month.lower():
+                return 8
+            if 'sep' in month.lower():
+                return 9
+            if 'oct' in month.lower():
+                return 10
+            if 'nov' in month.lower():
+                return 11
+            if 'dec' in month.lower():
+                return 12
+
+    print("Sorry, but the following month string could not be interpreted: '" + month + "'")
+    interpretation = input("Please enter a value for the month: ")
+    return int(interpretation)
 
 
 def get_multireference(field, origin):
