@@ -13,7 +13,8 @@ class IngaBase(models.Model):
             if isinstance(field, models.ForeignKey):
                 model = field.rel.to
                 fieldstring = field.name + ":"
-                names += tuple((fieldstring + name[0], fieldstring + name[1]) for name in model.names())
+                names += tuple((fieldstring + name[0], fieldstring + name[1])
+                               for name in model.names())
             else:
                 model = self
                 names += ((model.__name__ + "." + field.name, model.__name__ + "." + field.name),)
@@ -139,7 +140,6 @@ class HerbivoreDNA(IngaBase):
     genbank = models.URLField()
     voucher = models.ForeignKey("HerbivoreCollection")
 
-
 class HerbivoreSpecies(IngaBase):
     motu = models.ForeignKey('HerbivoreCollection')
     la_motu = models.TextField()
@@ -153,8 +153,8 @@ class HerbivoreSpecies(IngaBase):
     notes = models.TextField()
     ibol = models.TextField()
 
-
 class HerbivoreCollection(IngaBase):
+    collection_number = models.ForeignKey('HerbivoreCollectionObservation')
     photo = models.FileField()
     analysis = models.CharField(max_length=100)
     motu = models.TextField()
@@ -170,20 +170,20 @@ class Herbivory(IngaBase):
     def save(self):
         if self.total is None:
             self.total = 0
-        
+
         if self.leaves_leaflets is None:
             self.leaves_leaflets = 0
 
-        self.x_herbivory = self.total / self.leaves_leaflets;
+        self.x_herbivory = self.total / self.leaves_leaflets
         super(Herbivory, self).save()
 
 class HPLCResult(IngaBase): 
-    extraction = models.ForeignKey("Extraction") 
-    sample_type = models.CharField(max_length=100) 
-    file_path = models.FileField() 
-    project = models.CharField 
-    date = models.DateField() 
-    method = models.CharField(max_length=100) 
+    extraction = models.ForeignKey("Extraction")
+    sample_type = models.CharField(max_length=100)
+    file_path = models.FileField()
+    project = models.CharField
+    date = models.DateField()
+    method = models.CharField(max_length=100)
     column_used = models.CharField(max_length=100)
     tyrosine = models.IntegerField()
 
@@ -233,7 +233,6 @@ class Plant(IngaBase):
     living_herbarium = models.TextField(blank=True, null=True)
     dna = models.TextField(blank=True, null=True)
     date_dna_sent = models.DateField(blank=True, null=True)
-    vouchers = models.ManyToManyField("Voucher", blank=True)
     herbarium_sample = models.TextField(blank=True, null=True)
     flower_color = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)

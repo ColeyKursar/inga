@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'inga',
     'ingaweb',
     'oldinga',
+    'drf_generators'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -98,17 +99,17 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'inga',
-        'USER': 'root',
-        'PASSWORD': 'tOURNES0l!',
-        'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
+        'USER': 'zach',
+        'PASSWORD': 'ClarkeSQL!2017',
+        'HOST': '192.168.1.117',  # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     },
     'oldinga': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'oldinga',
-        'USER': 'root',
-        'PASSWORD': 'tOURNES0l!',
-        'HOST': 'localhost',  # Or an IP Address that your DB is hosted on
+        'USER': 'zach',
+        'PASSWORD': 'ClarkeSQL!2017',
+        'HOST': '192.168.1.117',  # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
 }
