@@ -79,33 +79,40 @@ def build(destination_name, mapping):
             universal[field] = source_value
 
         for instance in mapping["fields"]:
-            destination = destination_model()
-            multireference_fields = []
+            try:
+                destination = destination_model()
+                multireference_fields = []
 
-            for field in instance:
-                source_value = get_source(instance[field], origin)
+                for field in instance:
+                    source_value = get_source(instance[field], origin)
 
-                if source_value == "multireference-field":
-                    multireference_fields.append(field)
-                else:
-                    if (destination._meta.get_field(field).__class__.__name__ == "IntegerField"
-                        and source_value is not None):
-                        try:
-                            source_value = int(source_value)
-                        except ValueError:
-                            source_value = None
+                    if (len(instance) == 1
+                            and source_value.strip() == ""):
+                        raise ValueError
 
-                    setattr(destination, field, source_value)
+                    if source_value == "multireference-field":
+                        multireference_fields.append(field)
+                    else:
+                        if (destination._meta.get_field(field).__class__.__name__ == "IntegerField"
+                                and source_value is not None):
+                            try:
+                                source_value = int(source_value)
+                            except ValueError:
+                                source_value = None
 
-            for field in universal:
-                setattr(destination, field, universal[field])
+                        setattr(destination, field, source_value)
 
-            destination.save()
+                for field in universal:
+                    setattr(destination, field, universal[field])
 
-            for field in multireference_fields:
-                source_value = get_multireference(instance[field], origin)
+                destination.save()
 
-            destination.save()
+                for field in multireference_fields:
+                    source_value = get_multireference(instance[field], origin)
+
+                destination.save()
+            except ValueError:
+                continue
 
 
 def build_date(day, month, year):
