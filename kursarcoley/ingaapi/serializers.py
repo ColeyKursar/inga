@@ -1,218 +1,218 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import HyperlinkedModelSerializer
 from inga.models import Chemistry, Chlorophyll, Converted, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, HerbivoreCollectionObservation, HerbivoreDNA, HerbivoreSpecies, HerbivoreCollection, Herbivory, HPLCResult, LeafMassArea, Location, Method, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, PC_ID, Tyrosine
 
 
-class ChemistrySerializer(ModelSerializer):
+class ChemistrySerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Chemistry
         fields = '__all__'
 
 
-class ChlorophyllSerializer(ModelSerializer):
+class ChlorophyllSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Chlorophyll
         fields = '__all__'
 
 
-class ConvertedSerializer(ModelSerializer):
+class ConvertedSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Converted
         fields = '__all__'
 
 
-class DNASerializer(ModelSerializer):
+class DNASerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = DNA
         fields = '__all__'
 
 
-class ExtractionSerializer(ModelSerializer):
+class ExtractionSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Extraction
         fields = '__all__'
 
 
-class ExtractionResultWeightSerializer(ModelSerializer):
+class ExtractionResultWeightSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = ExtractionResultWeight
         fields = '__all__'
 
 
-class ExtrafloralNectariesSerializer(ModelSerializer):
+class ExtrafloralNectariesSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = ExtrafloralNectaries
         fields = '__all__'
 
 
-class FeatureTableRawDataSerializer(ModelSerializer):
+class FeatureTableRawDataSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = FeatureTableRawData
         fields = '__all__'
 
 
-class FieldSerializer(ModelSerializer):
+class FieldSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Field
         fields = '__all__'
 
 
-class HairsSerializer(ModelSerializer):
+class HairsSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Hairs
         fields = '__all__'
 
 
-class HerbivoreCollectionObservationSerializer(ModelSerializer):
+class HerbivoreCollectionObservationSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = HerbivoreCollectionObservation
         fields = '__all__'
 
 
-class HerbivoreDNASerializer(ModelSerializer):
+class HerbivoreDNASerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = HerbivoreDNA
         fields = '__all__'
 
 
-class HerbivoreSpeciesSerializer(ModelSerializer):
+class HerbivoreSpeciesSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = HerbivoreSpecies
         fields = '__all__'
 
 
-class HerbivoreCollectionSerializer(ModelSerializer):
+class HerbivoreCollectionSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = HerbivoreCollection
         fields = '__all__'
 
 
-class HerbivorySerializer(ModelSerializer):
+class HerbivorySerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Herbivory
         fields = '__all__'
 
 
-class HPLCResultSerializer(ModelSerializer):
+class HPLCResultSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = HPLCResult
         fields = '__all__'
 
 
-class LeafMassAreaSerializer(ModelSerializer):
+class LeafMassAreaSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = LeafMassArea
         fields = '__all__'
 
 
-class LocationSerializer(ModelSerializer):
+class LocationSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Location
         fields = '__all__'
 
 
-class MethodSerializer(ModelSerializer):
+class MethodSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Method
         fields = '__all__'
 
 
-class NitrogenSerializer(ModelSerializer):
+class NitrogenSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Nitrogen
         fields = '__all__'
 
 
-class PlantSerializer(ModelSerializer):
+class PlantSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Plant
         fields = '__all__'
 
 
-class PlantDNASerializer(ModelSerializer):
+class PlantDNASerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = PlantDNA
         fields = '__all__'
 
 
-class PlantPhotoSerializer(ModelSerializer):
+class PlantPhotoSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = PlantPhoto
         fields = '__all__'
 
 
-class PlantSpeciesSerializer(ModelSerializer):
+class PlantSpeciesSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = PlantSpecies
         fields = '__all__'
 
 
-class PlantVoucherSerializer(ModelSerializer):
+class PlantVoucherSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = PlantVoucher
         fields = '__all__'
 
 
-class RAWSerializer(ModelSerializer):
+class RAWSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = RAW
         fields = '__all__'
 
 
-class SiteSerializer(ModelSerializer):
+class SiteSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Site
         fields = '__all__'
 
 
-class ToughnessSerializer(ModelSerializer):
+class ToughnessSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Toughness
         fields = '__all__'
 
 
-class UPLCResultSerializer(ModelSerializer):
+class UPLCResultSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = UPLCResult
         fields = '__all__'
 
 
-class PC_IDSerializer(ModelSerializer):
+class PC_IDSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = PC_ID
         fields = '__all__'
 
 
-class TyrosineSerializer(ModelSerializer):
+class TyrosineSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Tyrosine
