@@ -79,7 +79,7 @@ def build(destination_name, mapping):
             universal[field] = source_value
 
         for instance in mapping["fields"]:
-            empty = True
+            sources = set()
             try:
                 destination = destination_model()
                 multireference_fields = []
@@ -87,9 +87,7 @@ def build(destination_name, mapping):
                 for field in instance:
                     source_value = get_source(instance[field], origin)
 
-                    if not (source_value is None
-                            or str(source_value).strip() == ""):
-                        empty = False
+                    sources.add(str(source_value) if source_value is not None else None)
 
                     if source_value == "multireference-field":
                         multireference_fields.append(field)
@@ -106,7 +104,7 @@ def build(destination_name, mapping):
                 for field in universal:
                     setattr(destination, field, universal[field])
 
-                if empty:
+                if len(sources.difference(("0", "", None))) == 0:
                     raise ValueError
 
                 destination.save()
