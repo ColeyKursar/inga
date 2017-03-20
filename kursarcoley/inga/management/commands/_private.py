@@ -225,7 +225,8 @@ def wire(model, **kwargs):
     for key, value in kwargs.items():
         inexact_kwargs[key + "__iexact"] = str(value).strip()
         if (inexact_kwargs[key + "__iexact"] == "Null" or
-                inexact_kwargs[key + "__iexact"] == "None"):
+                inexact_kwargs[key + "__iexact"] == "None" or
+                inexact_kwargs[key + "__iexact"] == ""):
             try:
                 generic = model.objects.get(generic=True)
             except model.DoesNotExist:
@@ -234,12 +235,6 @@ def wire(model, **kwargs):
                 generic.save()
 
             return generic
-
-        elif inexact_kwargs[key + "__iexact"] == "":
-            new = model()
-            new.save()
-            return new
-
     try:
         return model.objects.get(**inexact_kwargs)
     except model.MultipleObjectsReturned:
