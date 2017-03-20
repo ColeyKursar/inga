@@ -229,7 +229,7 @@ def wire(model, **kwargs):
             try:
                 generic = model.objects.get(generic=True)
             except model.DoesNotExist:
-                generic = model()
+                generic = model(**kwargs)
                 generic.generic = True
                 generic.save()
 
@@ -238,15 +238,7 @@ def wire(model, **kwargs):
         return model.objects.get(**inexact_kwargs)
     except model.MultipleObjectsReturned:
         return model.objects.filter(**inexact_kwargs)[0]
-
     except model.DoesNotExist:
-        errmsg = "Creating " + model.__name__ + " with the values:\n"
-
-        for arg in kwargs:
-            errmsg += "\t" + arg + ": " + str(kwargs[arg]) + "\n"
-
-        print(errmsg)
-
         new = model(**kwargs)
         new.save()
         return new
