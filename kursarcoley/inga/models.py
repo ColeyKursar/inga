@@ -59,7 +59,7 @@ class Extraction(IngaBase):
     chemistry = models.ForeignKey("Chemistry")
     date = models.DateField(blank=True, null=True)
     method = models.FloatField(blank=True, null=True)
-    chemist = models.CharField(blank=True, null=True, max_length=20)
+    chemist = models.TextField(blank=True, null=True)
     notebook_number = models.IntegerField(blank=True, null=True)
     extraction_notebook_number = models.IntegerField(blank=True, null=True)
     page_number = models.IntegerField(blank=True, null=True)
@@ -84,7 +84,7 @@ class Extraction(IngaBase):
 
 class ExtractionResultWeight(IngaBase):
     extraction = models.ForeignKey("Extraction")
-    trait = models.CharField(max_length=100)
+    trait = models.TextField()
     measurement = models.FloatField(default=0, null=True, blank=True)
 
 
@@ -94,7 +94,7 @@ class ExtrafloralNectaries(IngaBase):
     basal_mm = models.FloatField(blank=True, null=True)
     mid_mm = models.FloatField(blank=True, null=True)
     apical_mm = models.FloatField(blank=True, null=True)
-    color = models.CharField(max_length=25, blank=True, null=True)
+    color = models.TextField(blank=True, null=True)
     shape = models.TextField(blank=True, null=True)
     efn_type = models.TextField(blank=True, null=True)
     xEFN_mm = models.FloatField(blank=True, null=True)
@@ -131,7 +131,7 @@ class HerbivoreCollectionObservation(IngaBase):
     field = models.ForeignKey("Field")
     herbivores_collected = models.IntegerField(blank=True, null=True)
     herbivores_total = models.IntegerField(blank=True, null=True)
-    preliminary_family = models.CharField(max_length=20, blank=True, null=True)
+    preliminary_family = models.TextField(blank=True, null=True)
 
 class HerbivoreDNA(IngaBase):
     marker_gene = models.TextField()
@@ -178,12 +178,12 @@ class Herbivory(IngaBase):
 
 class HPLCResult(IngaBase): 
     extraction = models.ForeignKey("Extraction")
-    sample_type = models.CharField(max_length=100)
+    sample_type = models.TextField()
     file_path = models.FileField()
-    project = models.CharField
+    project = models.TextField()
     date = models.DateField()
-    method = models.CharField(max_length=100)
-    column_used = models.CharField(max_length=100)
+    method = models.TextField()
+    column_used = models.TextField()
     tyrosine = models.IntegerField()
 
 class LeafMassArea(IngaBase):
@@ -257,7 +257,7 @@ class PlantSpecies(IngaBase):
 
 class PlantVoucher(IngaBase):
     plant = models.ForeignKey("Plant")
-    voucher = models.CharField(max_length=10)
+    voucher = models.CharField(max_length=30)
 
 class RAW(IngaBase):
     raw_file_path = models.FileField()
