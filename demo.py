@@ -1,4 +1,4 @@
-from inga import models as inga
+import requests
 import math
 
 def build_unique_value(raw_data):
@@ -6,13 +6,13 @@ def build_unique_value(raw_data):
 
     for datum in raw_data:
         unique_value.append({
-            "pc_id": datum.PC_ID,
-            "rt_min": datum.RT - 0.20,
-            "rt": datum.RT,
-            "rt_max": datum.RT + 0.20,
-            "mz_min": datum.MZ - 0.05,
-            "mz": datum.MZ,
-            "mz_max": datum.MZ + 0.05,
+            "pc_id": datum["PC_ID"],
+            "rt_min": datum["RT"] - 0.20,
+            "rt": datum["RT"],
+            "rt_max": datum["RT"] + 0.20,
+            "mz_min": datum["MZ"] - 0.05,
+            "mz": datum["MZ"],
+            "mz_max": datum["MZ"] + 0.05,
         })
 
     return unique_value
@@ -123,8 +123,8 @@ def build_pc_id(total_temp_div, raw_data):
             if value["pc_id"] == datum.PC_ID:
                 if value["pc_id"] in temp:
                     temp["pc_id"] = {
-                        "sum": datum.TIC / value["total"]
-                        "mz_rt": str(datum.MZ) + "_" + str(datum.RT)
+                        "sum": datum.TIC / value["total"],
+                        "mz_rt": str(datum["MZ"]) + "_" + str(datum["RT"]),
                         "average": value["average"],
                         "total": value["total"]
                     }
@@ -135,12 +135,34 @@ def build_pc_id(total_temp_div, raw_data):
         pc_id.append({
             "pc_id": value,
             "mz_rt": temp[value]["mz_rt"],
-            "percent_tic": temp[value]["sum"] / temp[value]["total"]
+            "percent_tic": temp[value]["sum"] / temp[value]["total"],
             "average_tic": temp[value]["average"]
         })
 
     return pc_id
 
+url = "http://coleykursarlab.chpc.utah.edu/api/featuretablerawdata"
+ftrd = []
+count = 1
 
-def build_identity_1(final_multiple, raw_data):
-    
+
+while True:
+    if count % 10 == 0:
+        print(count, "pages processed")
+
+    resp = requests.get(url)
+    data = resp.json()
+    ftrd.append(data["results"])
+
+    if data["next"] is None or count > 200:
+        print(count, "pages total")
+        break
+    else:
+        url = data["next"]
+
+    count += 1
+
+print(ftrd)
+
+unique_value = build_unique_value(ftrd)
+print(len(unique_value))
