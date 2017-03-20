@@ -263,7 +263,7 @@ class RAW(IngaBase):
     raw_file_path = models.FileField()
 
 class Site(IngaBase):
-    site = models.CharField(max_length=12, blank=True, null=True)
+    site = models.CharField(max_length=30)
     country = models.TextField(blank=True, null=True)
     latitude_degrees = models.TextField(blank=True, null=True)
     latitude_minutes = models.IntegerField(blank=True, null=True)
