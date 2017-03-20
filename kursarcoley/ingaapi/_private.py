@@ -112,3 +112,35 @@ def build_total_temp_div(raw_data):
         })
 
     return total_temp_div
+
+
+def build_pc_id(total_temp_div, raw_data):
+    temp = {}
+    pc_id = []
+
+    for datum in raw_data:
+        for value in total_temp_div:
+            if value["pc_id"] == datum.PC_ID:
+                if value["pc_id"] in temp:
+                    temp["pc_id"] = {
+                        "sum": datum.TIC / value["total"]
+                        "mz_rt": str(datum.MZ) + "_" + str(datum.RT)
+                        "average": value["average"],
+                        "total": value["total"]
+                    }
+                else:
+                    temp["pc_id"]["sum"] += datum.TIC / value["total"]
+
+    for value in temp:
+        pc_id.append({
+            "pc_id": value,
+            "mz_rt": temp[value]["mz_rt"],
+            "percent_tic": temp[value]["sum"] / temp[value]["total"]
+            "average_tic": temp[value]["average"]
+        })
+
+    return pc_id
+
+
+def build_identity_1(final_multiple, raw_data):
+    
