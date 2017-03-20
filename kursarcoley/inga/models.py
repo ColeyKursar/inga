@@ -56,7 +56,7 @@ class DNA(IngaBase):
 
 class Extraction(IngaBase):
     extraction_number = models.IntegerField(blank=True, null=True)
-    chemistry = models.ForeignKey("Chemistry")
+    chemistry = models.ForeignKey("Chemistry", blank=True, null=True)
     date = models.DateField(blank=True, null=True)
     method = models.FloatField(blank=True, null=True)
     chemist = models.TextField(blank=True, null=True)
@@ -284,7 +284,6 @@ class Toughness(IngaBase):
     notes = models.TextField(blank=True, null=True)
 
 class UPLCResult(IngaBase):
-    # Move converted and raw to their own tables
     raw = models.ForeignKey("RAW", blank=True, null=True)
     converted = models.ForeignKey("Converted", blank=True, null=True)
     diva = models.TextField(blank=True, null=True)
