@@ -98,18 +98,18 @@ DATABASES = {
 
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'inga',
-        'USER': 'zach',
-        'PASSWORD': 'ClarkeSQL!2017',
-        'HOST': '192.168.1.117',  # Or an IP Address that your DB is hosted on
+        'NAME': 'newinga',
+        'USER': 'u0948358',
+        'PASSWORD': 'tOURNES0l',
+        'HOST': 'mysql.chpc.utah.edu', 
         'PORT': '3306',
     },
     'oldinga': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'oldinga',
-        'USER': 'zach',
-        'PASSWORD': 'ClarkeSQL!2017',
-        'HOST': '192.168.1.117',  # Or an IP Address that your DB is hosted on
+        'NAME': 'inga_2015_06_01',
+        'USER': 'u0948358',
+        'PASSWORD': 'tOURNES0l',
+        'HOST': 'mysql.chpc.utah.edu', 
         'PORT': '3306',
     }
 }

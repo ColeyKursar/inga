@@ -87,7 +87,8 @@ def build(destination_name, mapping):
                     source_value = get_source(instance[field], origin)
 
                     if (len(instance) == 1
-                            and source_value.strip() == ""):
+                            and (source_value is None
+                            or source_value.strip() == "")):
                         raise ValueError
 
                     if source_value == "multireference-field":
