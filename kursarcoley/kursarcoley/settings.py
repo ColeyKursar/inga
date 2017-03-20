@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'inga',
     'ingaweb',
     'oldinga',
-    'drf_generators'
+    'drf_generators',
+    'rest_framework'
 ]
 
 MIDDLEWARE_CLASSES = [
