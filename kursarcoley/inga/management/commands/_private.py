@@ -87,7 +87,8 @@ def build(destination_name, mapping):
                 for field in instance:
                     source_value = get_source(instance[field], origin)
 
-                    sources.add(str(source_value) if source_value is not None else None)
+                    if instance[field]["type"] == "value":
+                        sources.add(str(source_value) if source_value is not None else None)
 
                     if source_value == "multireference-field":
                         multireference_fields.append(field)
