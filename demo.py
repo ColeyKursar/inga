@@ -41,7 +41,7 @@ def build_multiple_value(unique_value):
 def build_multiple_value_mz(unique_value):
     multiple_value_mz = []
 
-    for index, value_a in unique_value:
+    for index, value_a in enumerate(unique_value):
         for value_b in unique_value:
             if (value_a["pc_id"] == index
                     and value_b["pc_id"] > index
@@ -152,9 +152,9 @@ while True:
 
     resp = requests.get(url)
     data = resp.json()
-    ftrd.append(data["results"])
+    ftrd += data["results"]
 
-    if data["next"] is None or count > 200:
+    if data["next"] is None:
         print(count, "pages total")
         break
     else:
@@ -162,7 +162,8 @@ while True:
 
     count += 1
 
-print(ftrd)
-
 unique_value = build_unique_value(ftrd)
+multiple_value = build_multiple_value(unique_value)
+
 print(len(unique_value))
+print(len(multiple_value))
