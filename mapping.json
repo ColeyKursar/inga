@@ -951,7 +951,7 @@
         "universal": {},
         "fields": [
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "d_herbivore_collection_field"
@@ -959,7 +959,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "e_herbivore_collection_field"
@@ -967,7 +967,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "f_herbivore_collection_field"
@@ -975,7 +975,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "g_herbivore_collection_field"
@@ -983,7 +983,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "h_herbivore_collection_field"
@@ -991,7 +991,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "i_herbivore_collection_field"
@@ -999,7 +999,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "j_herbivore_collection_field"
@@ -1007,7 +1007,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "k_herbivore_collection_field"
@@ -1015,7 +1015,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "l_herbivore_collection_field"
@@ -1023,7 +1023,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "m_herbivore_collection_field"
@@ -1031,7 +1031,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "n_herbivore_collection_field"
@@ -1039,7 +1039,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "o_herbivore_collection_field"
@@ -1047,7 +1047,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "p_herbivore_collection_field"
@@ -1055,7 +1055,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "q_herbivore_collection_field"
@@ -1063,7 +1063,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "r_herbivore_collection_field"
@@ -1071,7 +1071,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "s_herbivore_collection_field"
@@ -1079,7 +1079,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "t_herbivore_collection_field"
@@ -1087,7 +1087,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "u_herbivore_collection_field"
@@ -1095,7 +1095,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "v_herbivore_collection_field"
@@ -1103,7 +1103,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "w_herbivore_collection_field"
@@ -1111,7 +1111,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "x_herbivore_collection_field"
@@ -1119,7 +1119,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "y_herbivore_collection_field"
@@ -1127,7 +1127,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "z_herbivore_collection_field"
@@ -1135,7 +1135,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "aa_herbivore_collection_field"
@@ -1143,7 +1143,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "ab_herbivore_collection_field"
@@ -1151,7 +1151,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "ac_herbivore_collection_field"
@@ -1159,7 +1159,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "ad_herbivore_collection_field"
@@ -1167,7 +1167,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "ae_herbivore_collection_field"
@@ -1175,7 +1175,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "af_herbivor_collection_field"
@@ -1183,7 +1183,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "ag_herbivore_collection_field"
@@ -1191,7 +1191,7 @@
                 }
             },
             {
-                "herbivore_collection_number": {
+                "collection_number": {
                     "type": "value",
                     "field_name": [
                         "ah_herbivore_collection_field"

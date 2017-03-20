@@ -153,7 +153,7 @@ class HerbivoreSpecies(IngaBase):
     ibol = models.TextField(blank=True, null=True)
 
 class HerbivoreCollection(IngaBase):
-    collection_number = models.ForeignKey('HerbivoreCollectionObservation', blank=True, null=True)
+    collection_number = models.TextField(blank=True, null=True)
     photo = models.FileField(blank=True, null=True)
     analysis = models.TextField(blank=True, null=True)
     motu = models.TextField(blank=True, null=True)
