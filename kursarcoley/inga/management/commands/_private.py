@@ -243,7 +243,7 @@ def wire(model, **kwargs):
         for arg in kwargs:
             errmsg += "\t" + arg + ": " + str(kwargs[arg]) + "\n"
 
-        print(errmsg, file=sys.stderr)
+        print(errmsg)
 
         new = model(**kwargs)
         new.save()
