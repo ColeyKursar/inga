@@ -110,29 +110,28 @@ class FeatureTableRawData(IngaBase):
     Date_Update = models.DateField()
 
 class Field(IngaBase):
-    date = models.DateField()
-    plant = models.ForeignKey("Plant")
-    original_id = models.CharField(max_length=20)
-    exp_vs_mat = models.TextField()
-    exp_min = models.TextField()
-    exp_max = models.TextField()
-    efn = models.IntegerField()
-    ants = models.IntegerField()
-    ants_efn = models.FloatField()
-    ant_collection_number = models.TextField()
-    herbivores_present = models.BooleanField()
-    notes = models.TextField()
+    date = models.DateField(blank=True, null=True)
+    plant = models.ForeignKey("Plant", blank=True, null=True)
+    original_id = models.CharField(max_length=20, blank=True, null=True)
+    exp_vs_mat = models.TextField(blank=True, null=True)
+    exp_min = models.TextField(blank=True, null=True)
+    exp_max = models.TextField(blank=True, null=True)
+    efn = models.IntegerField(blank=True, null=True)
+    ants = models.IntegerField(blank=True, null=True)
+    ants_efn = models.FloatField(blank=True, null=True)
+    ant_collection_number = models.TextField(blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
 
 class Hairs(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField()
 
 class HerbivoreCollectionObservation(IngaBase):
-    collection_number = models.ForeignKey("HerbivoreCollection")
+    collection_number = models.ForeignKey("HerbivoreCollection", blank=True, null=True)
     field = models.ForeignKey("Field")
-    herbivores_collected = models.IntegerField()
-    herbivores_total = models.IntegerField()
-    preliminary_family = models.CharField(max_length=20)
+    herbivores_collected = models.IntegerField(blank=True, null=True)
+    herbivores_total = models.IntegerField(blank=True, null=True)
+    preliminary_family = models.CharField(max_length=20, blank=True, null=True)
 
 class HerbivoreDNA(IngaBase):
     marker_gene = models.TextField()
@@ -141,23 +140,23 @@ class HerbivoreDNA(IngaBase):
     voucher = models.ForeignKey("HerbivoreCollection")
 
 class HerbivoreSpecies(IngaBase):
-    motu = models.ForeignKey('HerbivoreCollection')
-    la_motu = models.TextField()
-    consensus_sequence = models.TextField()
-    blasting_family = models.TextField()
-    blasting_subfamily = models.TextField()
-    blasting_genus = models.TextField()
-    percentage_match_on_BOLD = models.IntegerField()
-    bin = models.TextField()
-    notes_on_host = models.TextField()
-    notes = models.TextField()
-    ibol = models.TextField()
+    motu = models.ForeignKey('HerbivoreCollection', blank=True, null=True)
+    la_motu = models.TextField(blank=True, null=True)
+    consensus_sequence = models.TextField(blank=True, null=True)
+    blasting_family = models.TextField(blank=True, null=True)
+    blasting_subfamily = models.TextField(blank=True, null=True)
+    blasting_genus = models.TextField(blank=True, null=True)
+    percentage_match_on_BOLD = models.IntegerField(blank=True, null=True)
+    bin = models.TextField(blank=True, null=True)
+    notes_on_host = models.TextField(blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
+    ibol = models.TextField(blank=True, null=True)
 
 class HerbivoreCollection(IngaBase):
-    collection_number = models.ForeignKey('HerbivoreCollectionObservation')
-    photo = models.FileField()
-    analysis = models.CharField(max_length=100)
-    motu = models.TextField()
+    collection_number = models.ForeignKey('HerbivoreCollectionObservation', blank=True, null=True)
+    photo = models.FileField(blank=True, null=True)
+    analysis = models.TextField(blank=True, null=True)
+    motu = models.TextField(blank=True, null=True)
 
 class Herbivory(IngaBase):
     species = models.ForeignKey("PlantSpecies")

@@ -5,20 +5,23 @@ import json
 
 
 BUILD_ORDER = [
-    "Site",
-    "PlantSpecies",
-    "Plant",
-    "Chemistry",
-    "Nitrogen",
-    "Chlorophyll",
-    "Extraction",
-    "ExtrafloralNectaries",
-    "Hairs",
-    "HerbivoreSpecies",
-    "Herbivory",
-    "LeafMassArea",
-    "Location",
-    "Tyrosine"
+    # "Site",
+    # "PlantSpecies",
+    # "Plant",
+    # "Chemistry",
+    # "Nitrogen",
+    # "Chlorophyll",
+    # "Extraction",
+    # "ExtrafloralNectaries",
+    # "Hairs",
+    # "HerbivoreSpecies",
+    # "Herbivory",
+    # "LeafMassArea",
+    # "Location",
+    # "Tyrosine",
+    # "HerbivoreCollection",
+    # "Field",
+    "HerbivoreCollectionObservation"
 ]
 
 class Command(BaseCommand):

@@ -40,9 +40,9 @@ def get_source(field, origin):
         return "multireference-field"
 
     elif field["type"] == "date":
-        day = getattr(origin, field["day"]) if field["day"] else 1
-        month = getattr(origin, field["month"]) if field["month"] else 1
-        year = getattr(origin, field["year"]) if field["year"] else 1
+        day = getattr(origin, field["day_field"]) if field["day_field"] else 1
+        month = getattr(origin, field["month_field"])if field["month_field"] else 1
+        year = getattr(origin, field["year_field"]) if field["year_field"] else 1
 
         return build_date(day, month, year)
 
@@ -64,6 +64,7 @@ def build(destination_name, mapping):
     destination_model = getattr(inga, destination_name)
 
     destination_model.objects.all().delete()
+    universal = {}
 
     origin_name = mapping["origin"]
     origin_model = getattr(oldinga, origin_name)
@@ -72,6 +73,10 @@ def build(destination_name, mapping):
     for idx, origin in enumerate(origins):
         if idx % 1000 == 0 or idx == len(origins) - 1:
             print(str(idx) + " objects converted")
+
+        for field in mapping["universal"]:
+            source_value = get_source(mapping["universal"][field], origin)
+            universal[field] = source_value
 
         for instance in mapping["fields"]:
             destination = destination_model()
@@ -83,7 +88,17 @@ def build(destination_name, mapping):
                 if source_value == "multireference-field":
                     multireference_fields.append(field)
                 else:
+                    if (destination._meta.get_field(field).__class__.__name__ == "IntegerField"
+                        and source_value is not None):
+                        try:
+                            source_value = int(source_value)
+                        except ValueError:
+                            source_value = None
+
                     setattr(destination, field, source_value)
+
+            for field in universal:
+                setattr(destination, field, universal[field])
 
             destination.save()
 
@@ -97,17 +112,43 @@ def build_date(day, month, year):
     """
     Build a date object from a day, month, and year strings
     """
-    year = int(year)
-    day = int(day)
-    month = parse_month(month)
+    year = int(year) if year is not None else 1
+    day = int(day) if day is not None else 1
+    month = parse_month(month) if month is not None else 1
 
-    return datetime.date(year, month, day)
+    if day < 1:
+        day = 1
+        
+    if month < 1:
+        month = 1
+
+    if year == 0:
+        year = 1
+
+    try: 
+        return datetime.date(year, month, day)
+    except ValueError:
+        try:
+            if month > 1000:
+                return datetime.date(month, year, day)
+            elif month > 12:
+                return datetime.date(year, day, month)
+            elif day == 31:
+                return datetime.date(year, month, 30)
+            else:
+                print(year, month, day)
+        except ValueError:
+            print(year, month, day)
 
 
 def parse_month(month):
     """
     Interpret a month string
     """
+
+    if str(month).strip() == "":
+        return 1
+
     try:
         return int(month)
     except ValueError:
