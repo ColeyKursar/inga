@@ -1,58 +1,114 @@
 from inga import models as inga
 import math
 
-def build_baseline(raw_data):
-    multiple_value_rt = []
+def build_unique_value(raw_data):
+    unique_value = []
+
+    for datum in raw_data:
+        unique_value.append({
+            "pc_id": datum.PC_ID,
+            "rt_min": datum.RT - 0.20,
+            "rt": datum.RT,
+            "rt_max": datum.RT + 0.20,
+            "mz_min": datum.MZ - 0.05,
+            "mz": datum.MZ,
+            "mz_max": datum.MZ + 0.05,
+        })
+
+    return unique_value
+
+
+def build_multiple_value(unique_value):
+    multiple_value = []
+
+    for index, value_a in unique_value:
+        for value_b in unique_value:
+            if (value_a["pc_id"] == index
+                    and value_b["pc_id"] > index
+                    and value_b["rt_min"] <= value_a["rt"]
+                    and value_b["rt_max"] >= value_a["rt"]):
+                multiple_value.append({
+                    "pc_id_a": value_a["pc_id"],
+                    "pc_id_b": value_b["pc_id"],
+                    "rt_min_destination": value_b["rt_min"],
+                    "rt_origin": value_a["rt"],
+                    "rt_max_destination": value_b["rt_max"]
+                })
+
+    return multiple_value
+
+
+def build_multiple_value_mz(unique_value):
     multiple_value_mz = []
-    final = []
 
-    for idx, a in enumerate(raw_data):
-        for b in raw_data:
-            if (b.id > idx and
-                    a.id == idx and
-                    b.rt - 0.2 <= a.rt and
-                    b.rt + 0.2 >= a.rt):
-                multiple_value_rt.append((a.id, b.id, b.rt - 0.2, a.rt, b.rt + 0.2))
+    for index, value_a in unique_value:
+        for value_b in unique_value:
+            if (value_a["pc_id"] == index
+                    and value_b["pc_id"] > index
+                    and value_b["mz_min"] <= value_a["mz"]
+                    and value_b["mz_max"] >= value_a["mz"]):
+                multiple_value_mz.append({
+                    "pc_id_a": value_a["pc_id"],
+                    "pc_id_b": value_b["pc_id"],
+                    "mz_min_destination": value_b["mz_min"],
+                    "mz_origin": value_a["mz"],
+                    "mz_max_destination": value_b["mz_max"]
+                })
 
-            if (b.id > idx and
-                    a.id == idx and
-                    b.mz - 0.5 <= a.mz and
-                    b.mz + 0.5 >= a.mz):
-                multiple_value_mz.append((a.id, b.id, b.mz - 0.5, a.mz, b.mz + 0.5))
-
-
-
-    for value in multiple_value_rt:
-        if value[0] != value[1]:
-            if (round(abs(value[3] - value[2]), 2) <= 0.2 and
-                    round(abs(value[4] - value[3]), 2) <= 0.2):
-                final.append((value[0], value[1]))
-
-            if (round(abs(value[3] - value[2]), 2) <= 0.05 and
-                    round(abs(value[4] - value[3]), 2) <= 0.05):
-                final.append((value[0], value[1]))
+    return multiple_value_mz
 
 
-def build_pc_id(raw_data):
-    initial, pc_id = {}
+def build_multiple(multiple_value):
+    multiple = []
+
+    for value in multiple_value:
+        if (round(abs(value["rt_origin"] - value["rt_min_destination"]), 2) <= 0.2
+                and round(abs(value["rt_max_destination"] - value["rt_origin"]), 2) <= 0.2
+                and value["pc_id_a"] != value["pc_id_b"]):
+            multiple.append({
+                "pc_id_a": value["pc_id_a"],
+                "pc_id_b": value["pc_id_b"]
+            })
+
+    return multiple
+
+
+def build_final_multiple(multiple_value_mz, multiple):
+    final_multiple = []
+
+    for mult in multiple:
+        for mult_mz in multiple_value_mz:
+            if (mult["pc_id_a"] == mult_mz["pc_id_a"]
+                    and mult["pc_id_b"] == mult_mz["pc_id_b"]
+                    and round(abs(mult_mz["mz_origin"] - mult_mz["mz_min_destination"]), 2) <= 0.05
+                    and round(abs(mult_mz["mz_max_destination"] - mult_mz["mz_origin"]), 2) <= 0.05):
+                final_multiple.append({
+                    "id_origin": mult["pc_id_a"],
+                    "id_destination": mult["pc_id_b"]
+                })
+
+    return final_multiple
+
+
+def build_total_temp_div(raw_data):
+    temp = {}
+    total_temp_div = []
 
     for datum in raw_data:
-        if datum.pc_id in initial:
-            initial[datum.pc_id]["count"] += 1
-            initial[datum.pc_id]["total"] += datum.tic
+        if datum.PC_ID in temp:
+            temp[datum.PC_ID]["total"] += datum.TIC
+            temp[datum.PC_ID]["count"] += 1
         else:
-            initial[datum.pc_id] = {
-                "count": 1,
-                "total": datum.tic
+            temp[datum.PC_ID] = {
+                "total": datum.TIC,
+                "count": 1
             }
 
-    for datum in raw_data:
-        if datum.pc_id in initial:
-            initial[datum.pc_id]["count"] += 1
-            initial[datum.pc_id]["total"] += datum.tic
-        else:
-            initial[datum.pc_id] = {
-                "count": 1,
-                "total": datum.tic
-            }
-            
+    for PC_ID in temp:
+        total_temp_div.append({
+            "pc_id": PC_ID,
+            "total": temp[PC_ID]["total"],
+            "average": temp[PC_ID]["total"] / temp[PC_ID]["count"]
+        })
+
+    return total_temp_div
