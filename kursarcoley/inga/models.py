@@ -101,13 +101,13 @@ class ExtrafloralNectaries(IngaBase):
     notes = models.TextField(blank=True, null=True)
 
 class FeatureTableRawData(IngaBase):
-    sample = models.ForeignKey("UPLCResult")
-    species_code_sample = models.CharField(max_length=30)
-    RT = models.FloatField()
-    MZ = models.FloatField()
-    PC_ID = models.CharField(max_length=30)
-    TIC = models.FloatField()
-    Date_Update = models.DateField()
+    sample = models.ForeignKey("UPLCResult", blank=True, null=True)
+    species_code_sample = models.CharField(max_length=30, blank=True, null=True)
+    RT = models.FloatField(blank=True, null=True)
+    MZ = models.FloatField(blank=True, null=True)
+    PC_ID = models.CharField(max_length=30, blank=True, null=True)
+    TIC = models.FloatField(blank=True, null=True)
+    Date_Update = models.DateField(blank=True, null=True)
 
 class Field(IngaBase):
     date = models.DateField(blank=True, null=True)
