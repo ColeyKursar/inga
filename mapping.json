@@ -1,926 +1,407 @@
 {
     "Chemistry": {
-        
-        "universal": {},
-        "fields": [{
-            "box_number": {
-                "type": "value",
-                "field_name": [
-                    "box_field"
-                ]
-            },
-            "chemistry_number": {
-                "type": "value",
-                "field_name": [
-                    "chem_field"
-                ]
-            },
-            "cur_w": {
-                "type": "value",
-                "field_name": [
-                    "cur_w"
-                ]
-            },
-            "date": {
-                "type": "date",
-                "day_field": "day",
-                "month_field": "month",
-                "year_field": "year"
-            },
-            "exp_max": {
-                "type": "value",
-                "field_name": [
-                    "exp_max"
-                ]
-            },
-            "exp_min": {
-                "type": "value",
-                "field_name": [
-                    "exp_min"
-                ]
-            },
-            "exp_vs_mat": {
-                "type": "value",
-                "field_name": [
-                    "age"
-                ]
-            },
-            "extracted": {
-                "type": "boolean",
-                "field_name": [
-                    "extracted"
-                ]
-            },
-            "fwg": {
-                "type": "value",
-                "field_name": [
-                    "fwg"
-                ]
-            },
-            "notes": {
-                "type": "value",
-                "field_name": [
-                    "notes10",
-                    "notes12",
-                    "notes13"
-                ]
-            },
-            "plant": {
-                "type": "reference",
-                "local_field_name": "plant_field",
-                "reference_model": "Plant",
-                "remote_field_name": "plant_number"
-            },
-            "status": {
-                "type": "value",
-                "field_name": [
-                    "status"
-                ]
-            },
-            "use_field": {
-                "type": "value",
-                "field_name": [
-                    "use"
-                ]
-            },
-            "vial_w": {
-                "type": "value",
-                "field_name": [
-                    "vial_w"
-                ]
+        "fields": [
+            {
+                "box_number": {
+                    "field_name": [
+                        "box_field"
+                    ],
+                    "type": "value"
+                },
+                "chemistry_number": {
+                    "field_name": [
+                        "chem_field"
+                    ],
+                    "type": "value"
+                },
+                "cur_w": {
+                    "field_name": [
+                        "cur_w"
+                    ],
+                    "type": "value"
+                },
+                "date": {
+                    "day_field": "day",
+                    "month_field": "month",
+                    "type": "date",
+                    "year_field": "year"
+                },
+                "exp_max": {
+                    "field_name": [
+                        "exp_max"
+                    ],
+                    "type": "value"
+                },
+                "exp_min": {
+                    "field_name": [
+                        "exp_min"
+                    ],
+                    "type": "value"
+                },
+                "exp_vs_mat": {
+                    "field_name": [
+                        "age"
+                    ],
+                    "type": "value"
+                },
+                "extracted": {
+                    "field_name": [
+                        "extracted"
+                    ],
+                    "type": "boolean"
+                },
+                "fwg": {
+                    "field_name": [
+                        "fwg"
+                    ],
+                    "type": "value"
+                },
+                "notes": {
+                    "field_name": [
+                        "notes10",
+                        "notes12",
+                        "notes13"
+                    ],
+                    "type": "value"
+                },
+                "plant": {
+                    "local_field_name": [
+                        "plant_field",
+                        "species_code"
+                    ],
+                    "reference_model": "Plant",
+                    "remote_field_name": [
+                        "plant_number",
+                        "species_code__species_code"
+                    ],
+                    "type": "reference"
+                },
+                "status": {
+                    "field_name": [
+                        "status"
+                    ],
+                    "type": "value"
+                },
+                "use_field": {
+                    "field_name": [
+                        "use"
+                    ],
+                    "type": "value"
+                },
+                "vial_w": {
+                    "field_name": [
+                        "vial_w"
+                    ],
+                    "type": "value"
+                }
             }
-        }],
-        "origin": "Chemistry"
+        ],
+        "origin": "Chemistry",
+        "universal": {}
     },
     "Chlorophyll": {
-        "universal": {},
-        "fields": [{
-            "chl_mg_dm2": {
-                "type": "value",
-                "field_name": [
-                    "chl_mg_dm2"
-                ]
-            },
-            "date": {
-                "type": "date",
-                "day_field": "day",
-                "month_field": "month",
-                "year_field": "year"
-            },
-            "notes": {
-                "type": "value",
-                "field_name": [
-                    "notes"
-                ]
-            },
-            "percent_expansion": {
-                "type": "value",
-                "field_name": [
-                    "percent_expansion"
-                ]
-            },
-            "plant": {
-                "type": "reference",
-                "local_field_name": "plant_field",
-                "reference_model": "Plant",
-                "remote_field_name": "plant_number"
-            },
-            "spadd": {
-                "type": "value",
-                "field_name": [
-                    "spadd"
-                ]
+        "fields": [
+            {
+                "chl_mg_dm2": {
+                    "field_name": [
+                        "chl_mg_dm2"
+                    ],
+                    "type": "value"
+                },
+                "date": {
+                    "day_field": "day",
+                    "month_field": "month",
+                    "type": "date",
+                    "year_field": "year"
+                },
+                "notes": {
+                    "field_name": [
+                        "notes"
+                    ],
+                    "type": "value"
+                },
+                "percent_expansion": {
+                    "field_name": [
+                        "percent_expansion"
+                    ],
+                    "type": "value"
+                },
+                "plant": {
+                    "local_field_name": [
+                        "plant_field",
+                        "species_code"
+                    ],
+                    "reference_model": "Plant",
+                    "remote_field_name": [
+                        "plant_number",
+                        "species_code__species_code"
+                    ],
+                    "type": "reference"
+                },
+                "spadd": {
+                    "field_name": [
+                        "spadd"
+                    ],
+                    "type": "value"
+                }
             }
-        }],
-        "origin": "Chlorophyll"
+        ],
+        "origin": "Chlorophyll",
+        "universal": {}
     },
     "Extraction": {
-        "universal": {},
-        "fields": [{
-            "box": {
-                "type": "value",
-                "field_name": [
-                    "box_number"
-                ]
-            },
-            "chemist": {
-                "type": "value",
-                "field_name": [
-                    "chemist"
-                ]
-            },
-            "chemistry": {
-                "type": "reference",
-                "local_field_name": "chem_field",
-                "reference_model": "Chemistry",
-                "remote_field_name": "chemistry_number"
-            },
-            "comments": {
-                "type": "value",
-                "field_name": [
-                    "comments"
-                ]
-            },
-            "date": {
-                "type": "date",
-                "day_field": "day",
-                "month_field": "month",
-                "year_field": "year"
-            },
-            "extraction_notebook_number": {
-                "type": "value",
-                "field_name": [
-                    "extraction_notebook_number"
-                ]
-            },
-            "extraction_number": {
-                "type": "value",
-                "field_name": [
-                    "extraction_number"
-                ]
-            },
-            "notebook_number": {
-                "type": "value",
-                "field_name": [
-                    "notebook_number"
-                ]
-            },
-            "other_chemistry": {
-                "type": "multireference",
-                "local_field_name": "other_chem_used",
-                "reference_model": "Chemistry",
-                "remote_field_name": "chemistry_number"
-            },
-            "page_number": {
-                "type": "value",
-                "field_name": [
-                    "page_number"
-                ]
+        "fields": [
+            {
+                "box": {
+                    "field_name": [
+                        "box_number"
+                    ],
+                    "type": "value"
+                },
+                "chemist": {
+                    "field_name": [
+                        "chemist"
+                    ],
+                    "type": "value"
+                },
+                "chemistry": {
+                    "local_field_name": [
+                        "chem_field"
+                    ],
+                    "reference_model": "Chemistry",
+                    "remote_field_name": [
+                        "chemistry_number"
+                    ],
+                    "type": "reference"
+                },
+                "comments": {
+                    "field_name": [
+                        "comments"
+                    ],
+                    "type": "value"
+                },
+                "date": {
+                    "day_field": "day",
+                    "month_field": "month",
+                    "type": "date",
+                    "year_field": "year"
+                },
+                "extraction_notebook_number": {
+                    "field_name": [
+                        "extraction_notebook_number"
+                    ],
+                    "type": "value"
+                },
+                "extraction_number": {
+                    "field_name": [
+                        "extraction_number"
+                    ],
+                    "type": "value"
+                },
+                "notebook_number": {
+                    "field_name": [
+                        "notebook_number"
+                    ],
+                    "type": "value"
+                },
+                "other_chemistry": {
+                    "local_field_name": "other_chem_used",
+                    "reference_model": "Chemistry",
+                    "remote_field_name": "chemistry_number",
+                    "type": "multireference"
+                },
+                "page_number": {
+                    "field_name": [
+                        "page_number"
+                    ],
+                    "type": "value"
+                }
             }
-        }],
-        "origin": "Extraction"
+        ],
+        "origin": "Extraction",
+        "universal": {}
     },
     "ExtrafloralNectaries": {
-        "universal": {},
-        "fields": [{
-            "apical_mm": {
-                "type": "value",
-                "field_name": [
-                    "apicalmm"
-                ]
-            },
-            "basal_mm": {
-                "type": "value",
-                "field_name": [
-                    "basalmm"
-                ]
-            },
-            "color": {
-                "type": "value",
-                "field_name": [
-                    "color"
-                ]
-            },
-            "date": {
-                "type": "date",
-                "day_field": false,
-                "month_field": "month",
-                "year_field": "year"
-            },
-            "efn_type": {
-                "type": "value",
-                "field_name": [
-                    "type"
-                ]
-            },
-            "mid_mm": {
-                "type": "value",
-                "field_name": [
-                    "midmm"
-                ]
-            },
-            "notes": {
-                "type": "value",
-                "field_name": [
-                    "notes1",
-                    "notes2"
-                ]
-            },
-            "plant": {
-                "type": "reference",
-                "local_field_name": "plant_field",
-                "reference_model": "Plant",
-                "remote_field_name": "plant_number"
-            },
-            "shape": {
-                "type": "value",
-                "field_name": [
-                    "shape"
-                ]
-            },
-            "xEFN_mm": {
-                "type": "value",
-                "field_name": [
-                    "xefnmm"
-                ]
+        "fields": [
+            {
+                "apical_mm": {
+                    "field_name": [
+                        "apicalmm"
+                    ],
+                    "type": "value"
+                },
+                "basal_mm": {
+                    "field_name": [
+                        "basalmm"
+                    ],
+                    "type": "value"
+                },
+                "color": {
+                    "field_name": [
+                        "color"
+                    ],
+                    "type": "value"
+                },
+                "date": {
+                    "day_field": false,
+                    "month_field": "month",
+                    "type": "date",
+                    "year_field": "year"
+                },
+                "efn_type": {
+                    "field_name": [
+                        "type"
+                    ],
+                    "type": "value"
+                },
+                "mid_mm": {
+                    "field_name": [
+                        "midmm"
+                    ],
+                    "type": "value"
+                },
+                "notes": {
+                    "field_name": [
+                        "notes1",
+                        "notes2"
+                    ],
+                    "type": "value"
+                },
+                "plant": {
+                    "local_field_name": [
+                        "plant_field",
+                        "species_code"
+                    ],
+                    "reference_model": "Plant",
+                    "remote_field_name": [
+                        "plant_number",
+                        "species_code__species_code"
+                    ],
+                    "type": "reference"
+                },
+                "shape": {
+                    "field_name": [
+                        "shape"
+                    ],
+                    "type": "value"
+                },
+                "xEFN_mm": {
+                    "field_name": [
+                        "xefnmm"
+                    ],
+                    "type": "value"
+                }
             }
-        }],
-        "origin": "Efn"
-    },
-    "Hairs": {
-        "universal": {},
-        "fields": [{
-            "date": {
-                "type": "date",
-                "day_field": false,
-                "month_field": "month",
-                "year_field": "year"
-            },
-            "plant": {
-                "type": "reference",
-                "local_field_name": "plant_field",
-                "reference_model": "Plant",
-                "remote_field_name": "plant_number"
-            }
-        }],
-        "origin": "Hairs"
-    },
-    "HerbivoreSpecies": {
-        "universal": {},
-        "fields": [{
-            "bin": {
-                "type": "value",
-                "field_name": [
-                    "bin"
-                ]
-            },
-            "blasting_family": {
-                "type": "value",
-                "field_name": [
-                    "blasting_family"
-                ]
-            },
-            "blasting_genus": {
-                "type": "value",
-                "field_name": [
-                    "blasting_genus"
-                ]
-            },
-            "blasting_subfamily": {
-                "type": "value",
-                "field_name": [
-                    "blasting_subfamily"
-                ]
-            },
-            "consensus_sequence": {
-                "type": "value",
-                "field_name": [
-                    "sequence"
-                ]
-            },
-            "la_motu": {
-                "type": "value",
-                "field_name": [
-                    "la_motu"
-                ]
-            },
-            "motu": {
-                "type": "reference",
-                "local_field_name": "motu",
-                "reference_model": "HerbivoreCollection",
-                "remote_field_name": "motu"
-            },
-            "notes": {
-                "type": "value",
-                "field_name": [
-                    "notes"
-                ]
-            },
-            "notes_on_host": {
-                "type": "value",
-                "field_name": [
-                    "notes_on_host"
-                ]
-            },
-            "percentage_match_on_BOLD": {
-                "type": "value",
-                "field_name": [
-                    "percentage"
-                ]
-            }
-        }],
-        "origin": "Motu"
-    },
-    "Herbivory": {
-        "universal": {},
-        "fields": [{
-            "date": {
-                "type": "date",
-                "day_field": false,
-                "month_field": "month",
-                "year_field": "year"
-            },
-            "leaves_leaflets": {
-                "type": "value",
-                "field_name": [
-                    "leaves_leaflests"
-                ]
-            },
-            "species": {
-                "type": "reference",
-                "local_field_name": "species_code",
-                "reference_model": "PlantSpecies",
-                "remote_field_name": "species_code"
-            },
-            "total": {
-                "type": "value",
-                "field_name": [
-                    "total"
-                ]
-            },
-            "x_herbivory": {
-                "type": "value",
-                "field_name": [
-                    "x_herbivory"
-                ]
-            }
-        }],
-        "origin": "Herbivory"
-    },
-    "LeafMassArea": {
-        "universal": {},
-        "fields": [{
-            "area": {
-                "type": "value",
-                "field_name": [
-                    "area_cm2"
-                ]
-            },
-            "date": {
-                "type": "date",
-                "day_field": "day",
-                "month_field": "month",
-                "year_field": "year"
-            },
-            "drying_method": {
-                "type": "value",
-                "field_name": [
-                    "drying_method"
-                ]
-            },
-            "dw_area_g": {
-                "type": "value",
-                "field_name": [
-                    "dw_area_g_cm2"
-                ]
-            },
-            "dw_g": {
-                "type": "value",
-                "field_name": [
-                    "dw_g"
-                ]
-            },
-            "inches": {
-                "type": "value",
-                "field_name": [
-                    "inches"
-                ]
-            },
-            "plant": {
-                "type": "reference",
-                "local_field_name": "plant_field",
-                "reference_model": "Plant",
-                "remote_field_name": "plant_number"
-            }
-        }],
-        "origin": "Lma"
-    },
-    "Location": {
-        "universal": {},
-        "fields": [{
-            "gps": {
-                "type": "value",
-                "field_name": [
-                    "gps"
-                ]
-            },
-            "measure": {
-                "type": "value",
-                "field_name": [
-                    "measure"
-                ]
-            },
-            "offset": {
-                "type": "value",
-                "field_name": [
-                    "offset"
-                ]
-            },
-            "plant": {
-                "type": "reference",
-                "local_field_name": "plant_field",
-                "reference_model": "Plant",
-                "remote_field_name": "plant_number"
-            },
-            "side": {
-                "type": "value",
-                "field_name": [
-                    "side"
-                ]
-            },
-            "trail": {
-                "type": "value",
-                "field_name": [
-                    "trail"
-                ]
-            }
-        }],
-        "origin": "Location"
-    },
-    "Nitrogen": {
-        "universal": {},
-        "fields": [{
-            "chemistry": {
-                "type": "reference",
-                "local_field_name": "chemistry_field",
-                "reference_model": "Chemistry",
-                "remote_field_name": "chemistry_number"
-            },
-            "exp_vs_mat": {
-                "type": "value",
-                "field_name": [
-                    "age"
-                ]
-            },
-            "notes": {
-                "type": "value",
-                "field_name": [
-                    "notes"
-                ]
-            },
-            "percent_nitrogen": {
-                "type": "value",
-                "field_name": [
-                    "percent_n"
-                ]
-            },
-            "percentage_of_expansion": {
-                "type": "value",
-                "field_name": [
-                    "percentage_of_expansion"
-                ]
-            },
-            "sample_number_for_nitrogen_analysis": {
-                "type": "value",
-                "field_name": [
-                    "sample_number_for_n2_analysis"
-                ]
-            },
-            "subsample_weight": {
-                "type": "value",
-                "field_name": [
-                    "subsample_weight_g"
-                ]
-            },
-            "weight_after_grounding": {
-                "type": "value",
-                "field_name": [
-                    "weight_after_grounding_g"
-                ]
-            },
-            "weight_before_grounding": {
-                "type": "value",
-                "field_name": [
-                    "weight_before_grounding_g"
-                ]
-            }
-        }],
-        "origin": "Nitrogen"
-    },
-    "Plant": {
-        "universal": {},
-        "fields": [{
-            "code": {
-                "type": "value",
-                "field_name": [
-                    "code"
-                ]
-            },
-            "collectors": {
-                "type": "value",
-                "field_name": [
-                    "collectors"
-                ]
-            },
-            "date": {
-                "type": "date",
-                "day_field": "day",
-                "month_field": "month",
-                "year_field": "year"
-            },
-            "date_dna_sent": {
-                "type": "date",
-                "day_field": "day",
-                "month_field": "month",
-                "year_field": "year"
-            },
-            "dbh": {
-                "type": "value",
-                "field_name": [
-                    "dbh"
-                ]
-            },
-            "description": {
-                "type": "value",
-                "field_name": [
-                    "description"
-                ]
-            },
-            "dna": {
-                "type": "value",
-                "field_name": [
-                    "dna"
-                ]
-            },
-            "flower_color": {
-                "type": "value",
-                "field_name": [
-                    "flower_color"
-                ]
-            },
-            "height": {
-                "type": "value",
-                "field_name": [
-                    "height"
-                ]
-            },
-            "herbarium_sample": {
-                "type": "value",
-                "field_name": [
-                    "herbarium_sample"
-                ]
-            },
-            "light": {
-                "type": "value",
-                "field_name": [
-                    "light"
-                ]
-            },
-            "living_herbarium": {
-                "type": "value",
-                "field_name": [
-                    "lh"
-                ]
-            },
-            "location": {
-                "type": "value",
-                "field_name": [
-                    "location"
-                ]
-            },
-            "new_leaves": {
-                "type": "value",
-                "field_name": [
-                    "new_leaves"
-                ]
-            },
-            "plant_number": {
-                "type": "value",
-                "field_name": [
-                    "plant_field"
-                ]
-            },
-            "site": {
-                "type": "reference",
-                "local_field_name": "site",
-                "reference_model": "Site",
-                "remote_field_name": "site"
-            },
-            "size": {
-                "type": "value",
-                "field_name": [
-                    "size"
-                ]
-            },
-            "species_code": {
-                "type": "reference",
-                "local_field_name": "species_code",
-                "reference_model": "PlantSpecies",
-                "remote_field_name": "species_code"
-            }
-        }],
-        "origin": "PlantTable"
-    },
-    "PlantSpecies": {
-        "universal": {},
-        "fields": [{
-            "authority": {
-                "type": "value",
-                "field_name": [
-                    "authority"
-                ]
-            },
-            "comment": {
-                "type": "value",
-                "field_name": [
-                    "comment"
-                ]
-            },
-            "genus": {
-                "type": "value",
-                "field_name": [
-                    "genus"
-                ]
-            },
-            "note_chemistry_analysis": {
-                "type": "value",
-                "field_name": [
-                    "note_chem_anal"
-                ]
-            },
-            "old_species_number": {
-                "type": "value",
-                "field_name": [
-                    "old_species_number"
-                ]
-            },
-            "species_code": {
-                "type": "value",
-                "field_name": [
-                    "species_code"
-                ]
-            },
-            "species_name": {
-                "type": "value",
-                "field_name": [
-                    "species_name"
-                ]
-            }
-        }],
-        "origin": "Species"
-    },
-    "Site": {
-        "universal": {},
-        "fields": [{
-            "altitude": {
-                "type": "value",
-                "field_name": [
-                    "altitude"
-                ]
-            },
-            "annual_rainfall": {
-                "type": "value",
-                "field_name": [
-                    "annual_rainfall"
-                ]
-            },
-            "country": {
-                "type": "value",
-                "field_name": [
-                    "country"
-                ]
-            },
-            "latitude_degrees": {
-                "type": "value",
-                "field_name": [
-                    "latitude_degrees"
-                ]
-            },
-            "latitude_minutes": {
-                "type": "value",
-                "field_name": [
-                    "latitude_minutes"
-                ]
-            },
-            "longitude_degrees": {
-                "type": "value",
-                "field_name": [
-                    "longitude_degrees"
-                ]
-            },
-            "longitude_minutes": {
-                "type": "value",
-                "field_name": [
-                    "longitude_minutes"
-                ]
-            },
-            "rainfall_seasonality": {
-                "type": "value",
-                "field_name": [
-                    "rainfall_seasonality"
-                ]
-            },
-            "rainfall_seasonality_pdfs": {
-                "type": "value",
-                "field_name": [
-                    "rainfall_seasonality_pdfs"
-                ]
-            },
-            "site": {
-                "type": "value",
-                "field_name": [
-                    "site"
-                ]
-            },
-            "soils": {
-                "type": "value",
-                "field_name": [
-                    "soils"
-                ]
-            },
-            "solid_pdfs": {
-                "type": "value",
-                "field_name": [
-                    "soils_pdfs"
-                ]
-            },
-            "temp": {
-                "type": "value",
-                "field_name": [
-                    "temp"
-                ]
-            }
-        }],
-        "origin": "Site"
-    },
-    "Tyrosine": {
-        "universal": {},
-        "fields": [{
-            "calibration": {
-                "type": "value",
-                "field_name": [
-                    "calibration_number"
-                ]
-            },
-            "date": {
-                "type": "date",
-                "day_field": "day",
-                "month_field": "month",
-                "year_field": "year"
-            },
-            "extraction": {
-                "type": "reference",
-                "local_field_name": "extraction_number",
-                "reference_model": "Extraction",
-                "remote_field_name": "extraction_number"
-            },
-            "file": {
-                "type": "value",
-                "field_name": [
-                    "link_to_file"
-                ]
-            },
-            "percent_tyrosine": {
-                "type": "value",
-                "field_name": [
-                    "percent_tyrosine"
-                ]
-            }
-        }],
-        "origin": "Tyrosine"
+        ],
+        "origin": "Efn",
+        "universal": {}
     },
     "FeatureTableRawData": {
-        "universal": {},
-        "fields": [{
-            "Date_Update": {
-                "type": "value",
-                "field_name": [
-                    "date_update"
-                ]
-            },
-            "MZ": {
-                "type": "value",
-                "field_name": [
-                    "mz"
-                ]
-            },
-            "PC_ID": {
-                "type": "value",
-                "field_name": [
-                    "pc_id"
-                ]
-            },
-            "RT": {
-                "type": "value",
-                "field_name": [
-                    "rt"
-                ]
-            },
-            "TIC": {
-                "type": "value",
-                "field_name": [
-                    "tic"
-                ]
-            },
-            "sample": {
-                "local_field_name": "sample",
-                "reference_model": "UPLCResult",
-                "remote_field_name": "diva",
-                "type": "reference"
-            },
-            "species_code_sample": {
-                "type": "value",
-                "field_name": [
-                    "species_code_sample"
-                ]
+        "fields": [
+            {
+                "Date_Update": {
+                    "field_name": [
+                        "date_update"
+                    ],
+                    "type": "value"
+                },
+                "MZ": {
+                    "field_name": [
+                        "mz"
+                    ],
+                    "type": "value"
+                },
+                "PC_ID": {
+                    "field_name": [
+                        "pc_id"
+                    ],
+                    "type": "value"
+                },
+                "RT": {
+                    "field_name": [
+                        "rt"
+                    ],
+                    "type": "value"
+                },
+                "TIC": {
+                    "field_name": [
+                        "tic"
+                    ],
+                    "type": "value"
+                },
+                "sample": {
+                    "local_field_name": [
+                        "sample"
+                    ],
+                    "reference_model": "UPLCResult",
+                    "remote_field_name": [
+                        "diva"
+                    ],
+                    "type": "reference"
+                },
+                "species_code_sample": {
+                    "field_name": [
+                        "species_code_sample"
+                    ],
+                    "type": "value"
+                }
             }
-        }],
-        "origin": "FeatureTableRawData"
+        ],
+        "origin": "FeatureTableRawData",
+        "universal": {}
     },
     "Field": {
-        "universal": {},
         "fields": [
             {
                 "ant_collection_number": {
-                    "type": "value",
                     "field_name": [
                         "ant_collection_field"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "ants": {
-                    "type": "value",
                     "field_name": [
                         "field_ants"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "ants_efn": {
-                    "type": "value",
                     "field_name": [
                         "ants_efn"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "date": {
-                    "type": "date",
                     "day_field": "day",
                     "month_field": "month",
+                    "type": "date",
                     "year_field": "year"
                 },
                 "efn": {
-                    "type": "value",
                     "field_name": [
                         "field_efn"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "exp_max": {
-                    "type": "value",
                     "field_name": [
                         "exp_max"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "exp_min": {
-                    "type": "value",
                     "field_name": [
                         "exp_min"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "exp_vs_mat": {
-                    "type": "value",
                     "field_name": [
                         "evm"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "notes": {
-                    "type": "value",
                     "field_name": [
                         "notes1",
                         "notes2",
@@ -930,1453 +411,2210 @@
                         "notes6",
                         "notes7",
                         "notes8"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "original_id": {
-                    "type": "value",
                     "field_name": [
                         "orig_id"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "plant": {
-                    "local_field_name": "plant_field",
+                    "local_field_name": [
+                        "plant_field",
+                        "species_code"
+                    ],
                     "reference_model": "Plant",
-                    "remote_field_name": "plant_number",
+                    "remote_field_name": [
+                        "plant_number",
+                        "species_code__species_code"
+                    ],
                     "type": "reference"
                 }
             }
         ],
-        "origin": "Field"
+        "origin": "Field",
+        "universal": {}
+    },
+    "Hairs": {
+        "fields": [
+            {
+                "date": {
+                    "day_field": false,
+                    "month_field": "month",
+                    "type": "date",
+                    "year_field": "year"
+                },
+                "plant": {
+                    "local_field_name": [
+                        "plant_field",
+                        "species_code"
+                    ],
+                    "reference_model": "Plant",
+                    "remote_field_name": [
+                        "plant_number",
+                        "species_code__species_code"
+                    ],
+                    "type": "reference"
+                }
+            }
+        ],
+        "origin": "Hairs",
+        "universal": {}
     },
     "HerbivoreCollection": {
-        "universal": {},
         "fields": [
             {
                 "collection_number": {
-                    "type": "value",
-                    "field_name": [
-                        "d_herbivore_collection_field"
-                    ]
-                }
-            },
-            {
-                "collection_number": {
-                    "type": "value",
-                    "field_name": [
-                        "e_herbivore_collection_field"
-                    ]
-                }
-            },
-            {
-                "collection_number": {
-                    "type": "value",
-                    "field_name": [
-                        "f_herbivore_collection_field"
-                    ]
-                }
-            },
-            {
-                "collection_number": {
-                    "type": "value",
-                    "field_name": [
-                        "g_herbivore_collection_field"
-                    ]
-                }
-            },
-            {
-                "collection_number": {
-                    "type": "value",
-                    "field_name": [
-                        "h_herbivore_collection_field"
-                    ]
-                }
-            },
-            {
-                "collection_number": {
-                    "type": "value",
-                    "field_name": [
-                        "i_herbivore_collection_field"
-                    ]
-                }
-            },
-            {
-                "collection_number": {
-                    "type": "value",
-                    "field_name": [
-                        "j_herbivore_collection_field"
-                    ]
-                }
-            },
-            {
-                "collection_number": {
-                    "type": "value",
-                    "field_name": [
-                        "k_herbivore_collection_field"
-                    ]
-                }
-            },
-            {
-                "collection_number": {
-                    "type": "value",
-                    "field_name": [
-                        "l_herbivore_collection_field"
-                    ]
-                }
-            },
-            {
-                "collection_number": {
-                    "type": "value",
-                    "field_name": [
-                        "m_herbivore_collection_field"
-                    ]
-                }
-            },
-            {
-                "collection_number": {
-                    "type": "value",
-                    "field_name": [
-                        "n_herbivore_collection_field"
-                    ]
-                }
-            },
-            {
-                "collection_number": {
-                    "type": "value",
-                    "field_name": [
-                        "o_herbivore_collection_field"
-                    ]
-                }
-            },
-            {
-                "collection_number": {
-                    "type": "value",
-                    "field_name": [
-                        "p_herbivore_collection_field"
-                    ]
-                }
-            },
-            {
-                "collection_number": {
-                    "type": "value",
-                    "field_name": [
-                        "q_herbivore_collection_field"
-                    ]
-                }
-            },
-            {
-                "collection_number": {
-                    "type": "value",
-                    "field_name": [
-                        "r_herbivore_collection_field"
-                    ]
-                }
-            },
-            {
-                "collection_number": {
-                    "type": "value",
                     "field_name": [
                         "s_herbivore_collection_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
                 "collection_number": {
-                    "type": "value",
+                    "field_name": [
+                        "d_herbivore_collection_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "field_name": [
+                        "f_herbivore_collection_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "field_name": [
+                        "g_herbivore_collection_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "field_name": [
+                        "h_herbivore_collection_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "field_name": [
+                        "i_herbivore_collection_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "field_name": [
+                        "j_herbivore_collection_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "field_name": [
+                        "k_herbivore_collection_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "field_name": [
+                        "l_herbivore_collection_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "field_name": [
+                        "m_herbivore_collection_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "field_name": [
+                        "n_herbivore_collection_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "field_name": [
+                        "o_herbivore_collection_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "field_name": [
+                        "p_herbivore_collection_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "field_name": [
+                        "q_herbivore_collection_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "field_name": [
+                        "r_herbivore_collection_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "field_name": [
+                        "e_herbivore_collection_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
                     "field_name": [
                         "t_herbivore_collection_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
                 "collection_number": {
-                    "type": "value",
                     "field_name": [
                         "u_herbivore_collection_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
                 "collection_number": {
-                    "type": "value",
                     "field_name": [
                         "v_herbivore_collection_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
                 "collection_number": {
-                    "type": "value",
                     "field_name": [
                         "w_herbivore_collection_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
                 "collection_number": {
-                    "type": "value",
                     "field_name": [
                         "x_herbivore_collection_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
                 "collection_number": {
-                    "type": "value",
                     "field_name": [
                         "y_herbivore_collection_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
                 "collection_number": {
-                    "type": "value",
                     "field_name": [
                         "z_herbivore_collection_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
                 "collection_number": {
-                    "type": "value",
                     "field_name": [
                         "aa_herbivore_collection_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
                 "collection_number": {
-                    "type": "value",
                     "field_name": [
                         "ab_herbivore_collection_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
                 "collection_number": {
-                    "type": "value",
                     "field_name": [
                         "ac_herbivore_collection_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
                 "collection_number": {
-                    "type": "value",
                     "field_name": [
                         "ad_herbivore_collection_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
                 "collection_number": {
-                    "type": "value",
                     "field_name": [
                         "ae_herbivore_collection_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
                 "collection_number": {
-                    "type": "value",
                     "field_name": [
                         "af_herbivor_collection_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
                 "collection_number": {
-                    "type": "value",
                     "field_name": [
                         "ag_herbivore_collection_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
                 "collection_number": {
-                    "type": "value",
                     "field_name": [
                         "ah_herbivore_collection_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             }
         ],
-        "origin": "Field"
+        "origin": "Field",
+        "universal": {}
     },
     "HerbivoreCollectionObservation": {
-        "universal": {},
         "check": "herbivores_collected",
-        "universal": {
-            "field": {
-                    "local_field_name": "orig_id",
-                    "reference_model": "Field",
-                    "remote_field_name": "original_id",
-                    "type": "reference"
-                }
-        },
         "fields": [
             {
-                
-                "herbivores_collected": {
-                    "type": "value",
-                    "field_name": [
-                        "a_herbivores"
-                    ]
-                },
-                "preliminary_family": {
-                    "type": "value",
-                    "field_name": [
-                        "a_herbivore_species_code"
-                    ]
-                }
-            },
-            {
-                
-                "herbivores_collected": {
-                    "type": "value",
-                    "field_name": [
-                        "b_herbivores"
-                    ]
-                },
-                "preliminary_family": {
-                    "type": "value",
-                    "field_name": [
-                        "b_herbivore_species_code"
-                    ]
-                }
-            },
-            {
-                
-                "herbivores_collected": {
-                    "type": "value",
-                    "field_name": [
-                        "c_herbivores"
-                    ]
-                },
-                "preliminary_family": {
-                    "type": "value",
-                    "field_name": [
-                        "c_herbivore_species_code"
-                    ]
-                }
-            },
-            {
-                
                 "collection_number": {
-                    "local_field_name": "d_herbivore_collection_field",
+                    "local_field_name": [
+                        "r_herbivore_collection_field"
+                    ],
                     "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
                     "type": "reference"
                 },
                 "herbivores_collected": {
-                    "type": "value",
-                    "field_name": [
-                        "d_herbivores"
-                    ]
-                },
-                "herbivores_total": {
-                    "type": "value",
-                    "field_name": [
-                        "d_herbivores_total"
-                    ]
-                },
-                "preliminary_family": {
-                    "type": "value",
-                    "field_name": [
-                        "d_family_field"
-                    ]
-                }
-            },
-            {
-                
-                "collection_number": {
-                    "local_field_name": "e_herbivore_collection_field",
-                    "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
-                    "type": "reference"
-                },
-                "herbivores_collected": {
-                    "type": "value",
-                    "field_name": [
-                        "e_herbivores"
-                    ]
-                },
-                "herbivores_total": {
-                    "type": "value",
-                    "field_name": [
-                        "e_herbivores_total"
-                    ]
-                },
-                "preliminary_family": {
-                    "type": "value",
-                    "field_name": [
-                        "e_family_field"
-                    ]
-                }
-            },
-            {
-                
-                "collection_number": {
-                    "local_field_name": "f_herbivore_collection_field",
-                    "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
-                    "type": "reference"
-                },
-                "herbivores_collected": {
-                    "type": "value",
-                    "field_name": [
-                        "f_herbivores"
-                    ]
-                },
-                "herbivores_total": {
-                    "type": "value",
-                    "field_name": [
-                        "f_herbivores_total"
-                    ]
-                },
-                "preliminary_family": {
-                    "type": "value",
-                    "field_name": [
-                        "f_family_field"
-                    ]
-                }
-            },
-            {
-                
-                "collection_number": {
-                    "local_field_name": "g_herbivore_collection_field",
-                    "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
-                    "type": "reference"
-                },
-                "herbivores_collected": {
-                    "type": "value",
-                    "field_name": [
-                        "g_herbivores"
-                    ]
-                },
-                "herbivores_total": {
-                    "type": "value",
-                    "field_name": [
-                        "g_herbivores_total"
-                    ]
-                },
-                "preliminary_family": {
-                    "type": "value",
-                    "field_name": [
-                        "g_family_field"
-                    ]
-                }
-            },
-            {
-                
-                "collection_number": {
-                    "local_field_name": "h_herbivore_collection_field",
-                    "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
-                    "type": "reference"
-                },
-                "herbivores_collected": {
-                    "type": "value",
-                    "field_name": [
-                        "h_herbivores"
-                    ]
-                },
-                "herbivores_total": {
-                    "type": "value",
-                    "field_name": [
-                        "h_herbivores_total"
-                    ]
-                },
-                "preliminary_family": {
-                    "type": "value",
-                    "field_name": [
-                        "h_family_field"
-                    ]
-                }
-            },
-            {
-                
-                "collection_number": {
-                    "local_field_name": "i_herbivore_collection_field",
-                    "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
-                    "type": "reference"
-                },
-                "herbivores_collected": {
-                    "type": "value",
-                    "field_name": [
-                        "i_herbivores"
-                    ]
-                },
-                "herbivores_total": {
-                    "type": "value",
-                    "field_name": [
-                        "i_herbivores_total"
-                    ]
-                },
-                "preliminary_family": {
-                    "type": "value",
-                    "field_name": [
-                        "i_family_field"
-                    ]
-                }
-            },
-            {
-                
-                "collection_number": {
-                    "local_field_name": "j_herbivore_collection_field",
-                    "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
-                    "type": "reference"
-                },
-                "herbivores_collected": {
-                    "type": "value",
-                    "field_name": [
-                        "j_herbivores"
-                    ]
-                },
-                "herbivores_total": {
-                    "type": "value",
-                    "field_name": [
-                        "j_herbivores_total_observe"
-                    ]
-                },
-                "preliminary_family": {
-                    "type": "value",
-                    "field_name": [
-                        "j_family_field"
-                    ]
-                }
-            },
-            {
-                
-                "collection_number": {
-                    "local_field_name": "k_herbivore_collection_field",
-                    "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
-                    "type": "reference"
-                },
-                "herbivores_collected": {
-                    "type": "value",
-                    "field_name": [
-                        "k_herbivores"
-                    ]
-                },
-                "herbivores_total": {
-                    "type": "value",
-                    "field_name": [
-                        "k_herbivores_total_observe"
-                    ]
-                },
-                "preliminary_family": {
-                    "type": "value",
-                    "field_name": [
-                        "k_family_field"
-                    ]
-                }
-            },
-            {
-                
-                "collection_number": {
-                    "local_field_name": "l_herbivore_collection_field",
-                    "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
-                    "type": "reference"
-                },
-                "herbivores_collected": {
-                    "type": "value",
-                    "field_name": [
-                        "l_herbivores"
-                    ]
-                },
-                "herbivores_total": {
-                    "type": "value",
-                    "field_name": [
-                        "l_herbivores_total_observe"
-                    ]
-                },
-                "preliminary_family": {
-                    "type": "value",
-                    "field_name": [
-                        "l_family_field"
-                    ]
-                }
-            },
-            {
-                
-                "collection_number": {
-                    "local_field_name": "m_herbivore_collection_field",
-                    "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
-                    "type": "reference"
-                },
-                "herbivores_collected": {
-                    "type": "value",
-                    "field_name": [
-                        "m_herbivores"
-                    ]
-                },
-                "herbivores_total": {
-                    "type": "value",
-                    "field_name": [
-                        "m_herbivores_total_observe"
-                    ]
-                },
-                "preliminary_family": {
-                    "type": "value",
-                    "field_name": [
-                        "m_family_field"
-                    ]
-                }
-            },
-            {
-                
-                "collection_number": {
-                    "local_field_name": "n_herbivore_collection_field",
-                    "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
-                    "type": "reference"
-                },
-                "herbivores_collected": {
-                    "type": "value",
-                    "field_name": [
-                        "n_herbivores"
-                    ]
-                },
-                "herbivores_total": {
-                    "type": "value",
-                    "field_name": [
-                        "n_herbivores_total_observe"
-                    ]
-                },
-                "preliminary_family": {
-                    "type": "value",
-                    "field_name": [
-                        "n_family_field"
-                    ]
-                }
-            },
-            {
-                
-                "collection_number": {
-                    "local_field_name": "o_herbivore_collection_field",
-                    "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
-                    "type": "reference"
-                },
-                "herbivores_collected": {
-                    "type": "value",
-                    "field_name": [
-                        "o_herbivores"
-                    ]
-                },
-                "herbivores_total": {
-                    "type": "value",
-                    "field_name": [
-                        "o_herbivores_total_observe"
-                    ]
-                },
-                "preliminary_family": {
-                    "type": "value",
-                    "field_name": [
-                        "o_family_field"
-                    ]
-                }
-            },
-            {
-                
-                "collection_number": {
-                    "local_field_name": "p_herbivore_collection_field",
-                    "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
-                    "type": "reference"
-                },
-                "herbivores_collected": {
-                    "type": "value",
-                    "field_name": [
-                        "p_herbivores"
-                    ]
-                },
-                "herbivores_total": {
-                    "type": "value",
-                    "field_name": [
-                        "p_herbivores_total_observe"
-                    ]
-                },
-                "preliminary_family": {
-                    "type": "value",
-                    "field_name": [
-                        "p_family_field"
-                    ]
-                }
-            },
-            {
-                
-                "collection_number": {
-                    "local_field_name": "q_herbivore_collection_field",
-                    "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
-                    "type": "reference"
-                },
-                "herbivores_collected": {
-                    "type": "value",
-                    "field_name": [
-                        "q_herbivores"
-                    ]
-                },
-                "herbivores_total": {
-                    "type": "value",
-                    "field_name": [
-                        "q_herbivores_total_observe"
-                    ]
-                },
-                "preliminary_family": {
-                    "type": "value",
-                    "field_name": [
-                        "q_family_field"
-                    ]
-                }
-            },
-            {
-                
-                "collection_number": {
-                    "local_field_name": "r_herbivore_collection_field",
-                    "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
-                    "type": "reference"
-                },
-                "herbivores_collected": {
-                    "type": "value",
                     "field_name": [
                         "r_herbivores"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "herbivores_total": {
-                    "type": "value",
                     "field_name": [
                         "r_herbivores_total_observe"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "preliminary_family": {
-                    "type": "value",
                     "field_name": [
                         "r_family_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
-                
+                "herbivores_collected": {
+                    "field_name": [
+                        "a_herbivores"
+                    ],
+                    "type": "value"
+                },
+                "preliminary_family": {
+                    "field_name": [
+                        "a_herbivore_species_code"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "herbivores_collected": {
+                    "field_name": [
+                        "c_herbivores"
+                    ],
+                    "type": "value"
+                },
+                "preliminary_family": {
+                    "field_name": [
+                        "c_herbivore_species_code"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
                 "collection_number": {
-                    "local_field_name": "s_herbivore_collection_field",
+                    "local_field_name": [
+                        "d_herbivore_collection_field"
+                    ],
                     "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
                     "type": "reference"
                 },
                 "herbivores_collected": {
-                    "type": "value",
+                    "field_name": [
+                        "d_herbivores"
+                    ],
+                    "type": "value"
+                },
+                "herbivores_total": {
+                    "field_name": [
+                        "d_herbivores_total"
+                    ],
+                    "type": "value"
+                },
+                "preliminary_family": {
+                    "field_name": [
+                        "d_family_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "local_field_name": [
+                        "e_herbivore_collection_field"
+                    ],
+                    "reference_model": "HerbivoreCollection",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
+                    "type": "reference"
+                },
+                "herbivores_collected": {
+                    "field_name": [
+                        "e_herbivores"
+                    ],
+                    "type": "value"
+                },
+                "herbivores_total": {
+                    "field_name": [
+                        "e_herbivores_total"
+                    ],
+                    "type": "value"
+                },
+                "preliminary_family": {
+                    "field_name": [
+                        "e_family_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "local_field_name": [
+                        "f_herbivore_collection_field"
+                    ],
+                    "reference_model": "HerbivoreCollection",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
+                    "type": "reference"
+                },
+                "herbivores_collected": {
+                    "field_name": [
+                        "f_herbivores"
+                    ],
+                    "type": "value"
+                },
+                "herbivores_total": {
+                    "field_name": [
+                        "f_herbivores_total"
+                    ],
+                    "type": "value"
+                },
+                "preliminary_family": {
+                    "field_name": [
+                        "f_family_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "local_field_name": [
+                        "g_herbivore_collection_field"
+                    ],
+                    "reference_model": "HerbivoreCollection",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
+                    "type": "reference"
+                },
+                "herbivores_collected": {
+                    "field_name": [
+                        "g_herbivores"
+                    ],
+                    "type": "value"
+                },
+                "herbivores_total": {
+                    "field_name": [
+                        "g_herbivores_total"
+                    ],
+                    "type": "value"
+                },
+                "preliminary_family": {
+                    "field_name": [
+                        "g_family_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "local_field_name": [
+                        "h_herbivore_collection_field"
+                    ],
+                    "reference_model": "HerbivoreCollection",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
+                    "type": "reference"
+                },
+                "herbivores_collected": {
+                    "field_name": [
+                        "h_herbivores"
+                    ],
+                    "type": "value"
+                },
+                "herbivores_total": {
+                    "field_name": [
+                        "h_herbivores_total"
+                    ],
+                    "type": "value"
+                },
+                "preliminary_family": {
+                    "field_name": [
+                        "h_family_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "local_field_name": [
+                        "i_herbivore_collection_field"
+                    ],
+                    "reference_model": "HerbivoreCollection",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
+                    "type": "reference"
+                },
+                "herbivores_collected": {
+                    "field_name": [
+                        "i_herbivores"
+                    ],
+                    "type": "value"
+                },
+                "herbivores_total": {
+                    "field_name": [
+                        "i_herbivores_total"
+                    ],
+                    "type": "value"
+                },
+                "preliminary_family": {
+                    "field_name": [
+                        "i_family_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "local_field_name": [
+                        "j_herbivore_collection_field"
+                    ],
+                    "reference_model": "HerbivoreCollection",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
+                    "type": "reference"
+                },
+                "herbivores_collected": {
+                    "field_name": [
+                        "j_herbivores"
+                    ],
+                    "type": "value"
+                },
+                "herbivores_total": {
+                    "field_name": [
+                        "j_herbivores_total_observe"
+                    ],
+                    "type": "value"
+                },
+                "preliminary_family": {
+                    "field_name": [
+                        "j_family_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "local_field_name": [
+                        "k_herbivore_collection_field"
+                    ],
+                    "reference_model": "HerbivoreCollection",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
+                    "type": "reference"
+                },
+                "herbivores_collected": {
+                    "field_name": [
+                        "k_herbivores"
+                    ],
+                    "type": "value"
+                },
+                "herbivores_total": {
+                    "field_name": [
+                        "k_herbivores_total_observe"
+                    ],
+                    "type": "value"
+                },
+                "preliminary_family": {
+                    "field_name": [
+                        "k_family_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "local_field_name": [
+                        "l_herbivore_collection_field"
+                    ],
+                    "reference_model": "HerbivoreCollection",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
+                    "type": "reference"
+                },
+                "herbivores_collected": {
+                    "field_name": [
+                        "l_herbivores"
+                    ],
+                    "type": "value"
+                },
+                "herbivores_total": {
+                    "field_name": [
+                        "l_herbivores_total_observe"
+                    ],
+                    "type": "value"
+                },
+                "preliminary_family": {
+                    "field_name": [
+                        "l_family_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "local_field_name": [
+                        "m_herbivore_collection_field"
+                    ],
+                    "reference_model": "HerbivoreCollection",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
+                    "type": "reference"
+                },
+                "herbivores_collected": {
+                    "field_name": [
+                        "m_herbivores"
+                    ],
+                    "type": "value"
+                },
+                "herbivores_total": {
+                    "field_name": [
+                        "m_herbivores_total_observe"
+                    ],
+                    "type": "value"
+                },
+                "preliminary_family": {
+                    "field_name": [
+                        "m_family_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "local_field_name": [
+                        "n_herbivore_collection_field"
+                    ],
+                    "reference_model": "HerbivoreCollection",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
+                    "type": "reference"
+                },
+                "herbivores_collected": {
+                    "field_name": [
+                        "n_herbivores"
+                    ],
+                    "type": "value"
+                },
+                "herbivores_total": {
+                    "field_name": [
+                        "n_herbivores_total_observe"
+                    ],
+                    "type": "value"
+                },
+                "preliminary_family": {
+                    "field_name": [
+                        "n_family_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "local_field_name": [
+                        "o_herbivore_collection_field"
+                    ],
+                    "reference_model": "HerbivoreCollection",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
+                    "type": "reference"
+                },
+                "herbivores_collected": {
+                    "field_name": [
+                        "o_herbivores"
+                    ],
+                    "type": "value"
+                },
+                "herbivores_total": {
+                    "field_name": [
+                        "o_herbivores_total_observe"
+                    ],
+                    "type": "value"
+                },
+                "preliminary_family": {
+                    "field_name": [
+                        "o_family_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "local_field_name": [
+                        "p_herbivore_collection_field"
+                    ],
+                    "reference_model": "HerbivoreCollection",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
+                    "type": "reference"
+                },
+                "herbivores_collected": {
+                    "field_name": [
+                        "p_herbivores"
+                    ],
+                    "type": "value"
+                },
+                "herbivores_total": {
+                    "field_name": [
+                        "p_herbivores_total_observe"
+                    ],
+                    "type": "value"
+                },
+                "preliminary_family": {
+                    "field_name": [
+                        "p_family_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "local_field_name": [
+                        "q_herbivore_collection_field"
+                    ],
+                    "reference_model": "HerbivoreCollection",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
+                    "type": "reference"
+                },
+                "herbivores_collected": {
+                    "field_name": [
+                        "q_herbivores"
+                    ],
+                    "type": "value"
+                },
+                "herbivores_total": {
+                    "field_name": [
+                        "q_herbivores_total_observe"
+                    ],
+                    "type": "value"
+                },
+                "preliminary_family": {
+                    "field_name": [
+                        "q_family_field"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "herbivores_collected": {
+                    "field_name": [
+                        "b_herbivores"
+                    ],
+                    "type": "value"
+                },
+                "preliminary_family": {
+                    "field_name": [
+                        "b_herbivore_species_code"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "collection_number": {
+                    "local_field_name": [
+                        "s_herbivore_collection_field"
+                    ],
+                    "reference_model": "HerbivoreCollection",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
+                    "type": "reference"
+                },
+                "herbivores_collected": {
                     "field_name": [
                         "s_herbivores"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "herbivores_total": {
-                    "type": "value",
                     "field_name": [
                         "s_herbivores_total_observe"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "preliminary_family": {
-                    "type": "value",
                     "field_name": [
                         "s_family_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
-                
                 "collection_number": {
-                    "local_field_name": "t_herbivore_collection_field",
+                    "local_field_name": [
+                        "t_herbivore_collection_field"
+                    ],
                     "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
                     "type": "reference"
                 },
                 "herbivores_collected": {
-                    "type": "value",
                     "field_name": [
                         "t_herbivores"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "herbivores_total": {
-                    "type": "value",
                     "field_name": [
                         "t_herbivores_total_observe"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "preliminary_family": {
-                    "type": "value",
                     "field_name": [
                         "t_family_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
-                
                 "collection_number": {
-                    "local_field_name": "u_herbivore_collection_field",
+                    "local_field_name": [
+                        "u_herbivore_collection_field"
+                    ],
                     "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
                     "type": "reference"
                 },
                 "herbivores_collected": {
-                    "type": "value",
                     "field_name": [
                         "u_herbivores"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "herbivores_total": {
-                    "type": "value",
                     "field_name": [
                         "u_herbivores_total_observe"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "preliminary_family": {
-                    "type": "value",
                     "field_name": [
                         "u_family_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
-                
                 "collection_number": {
-                    "local_field_name": "v_herbivore_collection_field",
+                    "local_field_name": [
+                        "v_herbivore_collection_field"
+                    ],
                     "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
                     "type": "reference"
                 },
                 "herbivores_collected": {
-                    "type": "value",
                     "field_name": [
                         "v_herbivores"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "herbivores_total": {
-                    "type": "value",
                     "field_name": [
                         "v_herbivores_total_observe"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "preliminary_family": {
-                    "type": "value",
                     "field_name": [
                         "v_family_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
-                
                 "collection_number": {
-                    "local_field_name": "w_herbivore_collection_field",
+                    "local_field_name": [
+                        "w_herbivore_collection_field"
+                    ],
                     "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
                     "type": "reference"
                 },
                 "herbivores_collected": {
-                    "type": "value",
                     "field_name": [
                         "w_herbivores"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "herbivores_total": {
-                    "type": "value",
                     "field_name": [
                         "w_herbivores_total_observe"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "preliminary_family": {
-                    "type": "value",
                     "field_name": [
                         "w_family_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
-                
                 "collection_number": {
-                    "local_field_name": "x_herbivore_collection_field",
+                    "local_field_name": [
+                        "x_herbivore_collection_field"
+                    ],
                     "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
                     "type": "reference"
                 },
                 "herbivores_collected": {
-                    "type": "value",
                     "field_name": [
                         "x_herbivores"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "herbivores_total": {
-                    "type": "value",
                     "field_name": [
                         "x_herbivores_total_observe"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "preliminary_family": {
-                    "type": "value",
                     "field_name": [
                         "x_family_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
-                
                 "collection_number": {
-                    "local_field_name": "y_herbivore_collection_field",
+                    "local_field_name": [
+                        "y_herbivore_collection_field"
+                    ],
                     "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
                     "type": "reference"
                 },
                 "herbivores_collected": {
-                    "type": "value",
                     "field_name": [
                         "y_herbivores"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "herbivores_total": {
-                    "type": "value",
                     "field_name": [
                         "y_herbivores_total_observe"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "preliminary_family": {
-                    "type": "value",
                     "field_name": [
                         "y_family_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
-                
                 "collection_number": {
-                    "local_field_name": "z_herbivore_collection_field",
+                    "local_field_name": [
+                        "z_herbivore_collection_field"
+                    ],
                     "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
                     "type": "reference"
                 },
                 "herbivores_collected": {
-                    "type": "value",
                     "field_name": [
                         "z_herbivores"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "herbivores_total": {
-                    "type": "value",
                     "field_name": [
                         "z_herbivores_total_observe"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "preliminary_family": {
-                    "type": "value",
                     "field_name": [
                         "z_family_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
-                
                 "collection_number": {
-                    "local_field_name": "aa_herbivore_collection_field",
+                    "local_field_name": [
+                        "aa_herbivore_collection_field"
+                    ],
                     "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
                     "type": "reference"
                 },
                 "herbivores_collected": {
-                    "type": "value",
                     "field_name": [
                         "aa_herbivores"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "herbivores_total": {
-                    "type": "value",
                     "field_name": [
                         "aa_herbivores_total_observe"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "preliminary_family": {
-                    "type": "value",
                     "field_name": [
                         "aa_family_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
-                
                 "collection_number": {
-                    "local_field_name": "ab_herbivore_collection_field",
+                    "local_field_name": [
+                        "ab_herbivore_collection_field"
+                    ],
                     "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
                     "type": "reference"
                 },
                 "herbivores_collected": {
-                    "type": "value",
                     "field_name": [
                         "ab_herbivores"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "herbivores_total": {
-                    "type": "value",
                     "field_name": [
                         "ab_herbivores_total_observe"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "preliminary_family": {
-                    "type": "value",
                     "field_name": [
                         "ab_family_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
-                
                 "collection_number": {
-                    "local_field_name": "ac_herbivore_collection_field",
+                    "local_field_name": [
+                        "ac_herbivore_collection_field"
+                    ],
                     "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
                     "type": "reference"
                 },
                 "herbivores_collected": {
-                    "type": "value",
                     "field_name": [
                         "ac_herbivores"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "herbivores_total": {
-                    "type": "value",
                     "field_name": [
                         "ac_herbivores_total_observe"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "preliminary_family": {
-                    "type": "value",
                     "field_name": [
                         "ac_family_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
-                
                 "collection_number": {
-                    "local_field_name": "ad_herbivore_collection_field",
+                    "local_field_name": [
+                        "ad_herbivore_collection_field"
+                    ],
                     "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
                     "type": "reference"
                 },
                 "herbivores_collected": {
-                    "type": "value",
                     "field_name": [
                         "ad_herbivores"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "herbivores_total": {
-                    "type": "value",
                     "field_name": [
                         "ad_herbivores_total_observe"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "preliminary_family": {
-                    "type": "value",
                     "field_name": [
                         "ad_family_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
-                
                 "collection_number": {
-                    "local_field_name": "ae_herbivore_collection_field",
+                    "local_field_name": [
+                        "ae_herbivore_collection_field"
+                    ],
                     "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
                     "type": "reference"
                 },
                 "herbivores_collected": {
-                    "type": "value",
                     "field_name": [
                         "ae_herbivores"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "herbivores_total": {
-                    "type": "value",
                     "field_name": [
                         "ae_herbivores_total_observe"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "preliminary_family": {
-                    "type": "value",
                     "field_name": [
                         "ae_family_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
-                
                 "collection_number": {
-                    "local_field_name": "af_herbivor_collection_field",
+                    "local_field_name": [
+                        "af_herbivor_collection_field"
+                    ],
                     "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
                     "type": "reference"
                 },
                 "herbivores_collected": {
-                    "type": "value",
                     "field_name": [
                         "af_herbivores"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "herbivores_total": {
-                    "type": "value",
                     "field_name": [
                         "af_herbivores_total_observe"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "preliminary_family": {
-                    "type": "value",
                     "field_name": [
                         "af_family_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
-                
                 "collection_number": {
-                    "local_field_name": "ag_herbivore_collection_field",
+                    "local_field_name": [
+                        "ag_herbivore_collection_field"
+                    ],
                     "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
                     "type": "reference"
                 },
                 "herbivores_collected": {
-                    "type": "value",
                     "field_name": [
                         "ag_herbivores"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "herbivores_total": {
-                    "type": "value",
                     "field_name": [
                         "ag_herbivores_total_observe"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "preliminary_family": {
-                    "type": "value",
                     "field_name": [
                         "ag_family_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             },
             {
-                
                 "collection_number": {
-                    "local_field_name": "ah_herbivore_collection_field",
+                    "local_field_name": [
+                        "ah_herbivore_collection_field"
+                    ],
                     "reference_model": "HerbivoreCollection",
-                    "remote_field_name": "collection_number",
+                    "remote_field_name": [
+                        "collection_number"
+                    ],
                     "type": "reference"
                 },
                 "herbivores_collected": {
-                    "type": "value",
                     "field_name": [
                         "ah_herbivores"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "herbivores_total": {
-                    "type": "value",
                     "field_name": [
                         "ah_herbivores_total_observe"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "preliminary_family": {
-                    "type": "value",
                     "field_name": [
                         "ah_family_field"
-                    ]
+                    ],
+                    "type": "value"
                 }
             }
         ],
-        "origin": "Field"
+        "origin": "Field",
+        "universal": {
+            "field": {
+                "local_field_name": "orig_id",
+                "reference_model": "Field",
+                "remote_field_name": "original_id",
+                "type": "reference"
+            }
+        }
     },
-    "Toughness": {
-        "universal": {},
+    "HerbivoreSpecies": {
+        "fields": [
+            {
+                "bin": {
+                    "field_name": [
+                        "bin"
+                    ],
+                    "type": "value"
+                },
+                "blasting_family": {
+                    "field_name": [
+                        "blasting_family"
+                    ],
+                    "type": "value"
+                },
+                "blasting_genus": {
+                    "field_name": [
+                        "blasting_genus"
+                    ],
+                    "type": "value"
+                },
+                "blasting_subfamily": {
+                    "field_name": [
+                        "blasting_subfamily"
+                    ],
+                    "type": "value"
+                },
+                "consensus_sequence": {
+                    "field_name": [
+                        "sequence"
+                    ],
+                    "type": "value"
+                },
+                "la_motu": {
+                    "field_name": [
+                        "la_motu"
+                    ],
+                    "type": "value"
+                },
+                "motu": {
+                    "local_field_name": [
+                        "motu"
+                    ],
+                    "reference_model": "HerbivoreCollection",
+                    "remote_field_name": [
+                        "motu"
+                    ],
+                    "type": "reference"
+                },
+                "notes": {
+                    "field_name": [
+                        "notes"
+                    ],
+                    "type": "value"
+                },
+                "notes_on_host": {
+                    "field_name": [
+                        "notes_on_host"
+                    ],
+                    "type": "value"
+                },
+                "percentage_match_on_BOLD": {
+                    "field_name": [
+                        "percentage"
+                    ],
+                    "type": "value"
+                }
+            }
+        ],
+        "origin": "Motu",
+        "universal": {}
+    },
+    "Herbivory": {
         "fields": [
             {
                 "date": {
-                    "type": "date",
                     "day_field": false,
-                    "month_field": false,
+                    "month_field": "month",
+                    "type": "date",
                     "year_field": "year"
                 },
-                "notes": {
-                    "type": "value",
+                "leaves_leaflets": {
                     "field_name": [
-                        "notes"
-                    ]
+                        "leaves_leaflests"
+                    ],
+                    "type": "value"
                 },
-                "plant": {
-                    "local_field_name": "plant_field",
-                    "reference_model": "Plant",
-                    "remote_field_name": "plant_number",
+                "species": {
+                    "local_field_name": [
+                        "species_code"
+                    ],
+                    "reference_model": "PlantSpecies",
+                    "remote_field_name": [
+                        "species_code"
+                    ],
                     "type": "reference"
                 },
-                "toughness": {
-                    "type": "value",
+                "total": {
                     "field_name": [
-                        "toughness1"
-                    ]
-                }
-            },
-            {
-                "date": {
-                    "type": "date",
-                    "day_field": false,
-                    "month_field": false,
-                    "year_field": "year"
+                        "total"
+                    ],
+                    "type": "value"
                 },
-                "notes": {
-                    "type": "value",
+                "x_herbivory": {
                     "field_name": [
-                        "notes"
-                    ]
-                },
-                "plant": {
-                    "local_field_name": "plant_field",
-                    "reference_model": "Plant",
-                    "remote_field_name": "plant_number",
-                    "type": "reference"
-                },
-                "toughness": {
-                    "type": "value",
-                    "field_name": [
-                        "toughness2"
-                    ]
-                }
-            },
-            {
-                "date": {
-                    "type": "date",
-                    "day_field": false,
-                    "month_field": false,
-                    "year_field": "year"
-                },
-                "notes": {
-                    "type": "value",
-                    "field_name": [
-                        "notes"
-                    ]
-                },
-                "plant": {
-                    "local_field_name": "plant_field",
-                    "reference_model": "Plant",
-                    "remote_field_name": "plant_number",
-                    "type": "reference"
-                },
-                "toughness": {
-                    "type": "value",
-                    "field_name": [
-                        "toughness3"
-                    ]
-                }
-            },
-            {
-                "date": {
-                    "type": "date",
-                    "day_field": false,
-                    "month_field": false,
-                    "year_field": "year"
-                },
-                "notes": {
-                    "type": "value",
-                    "field_name": [
-                        "notes"
-                    ]
-                },
-                "plant": {
-                    "local_field_name": "plant_field",
-                    "reference_model": "Plant",
-                    "remote_field_name": "plant_number",
-                    "type": "reference"
-                },
-                "toughness": {
-                    "type": "value",
-                    "field_name": [
-                        "toughness4"
-                    ]
-                }
-            },
-            {
-                "date": {
-                    "type": "date",
-                    "day_field": false,
-                    "month_field": false,
-                    "year_field": "year"
-                },
-                "notes": {
-                    "type": "value",
-                    "field_name": [
-                        "notes"
-                    ]
-                },
-                "plant": {
-                    "local_field_name": "plant_field",
-                    "reference_model": "Plant",
-                    "remote_field_name": "plant_number",
-                    "type": "reference"
-                },
-                "toughness": {
-                    "type": "value",
-                    "field_name": [
-                        "toughness5"
-                    ]
-                }
-            },
-            {
-                "date": {
-                    "type": "date",
-                    "day_field": false,
-                    "month_field": false,
-                    "year_field": "year"
-                },
-                "notes": {
-                    "type": "value",
-                    "field_name": [
-                        "notes"
-                    ]
-                },
-                "plant": {
-                    "local_field_name": "plant_field",
-                    "reference_model": "Plant",
-                    "remote_field_name": "plant_number",
-                    "type": "reference"
-                },
-                "toughness": {
-                    "type": "value",
-                    "field_name": [
-                        "toughness6"
-                    ]
-                }
-            },
-            {
-                "date": {
-                    "type": "date",
-                    "day_field": false,
-                    "month_field": false,
-                    "year_field": "year"
-                },
-                "notes": {
-                    "type": "value",
-                    "field_name": [
-                        "notes"
-                    ]
-                },
-                "plant": {
-                    "local_field_name": "plant_field",
-                    "reference_model": "Plant",
-                    "remote_field_name": "plant_number",
-                    "type": "reference"
-                },
-                "toughness": {
-                    "type": "value",
-                    "field_name": [
-                        "toughness7"
-                    ]
+                        "x_herbivory"
+                    ],
+                    "type": "value"
                 }
             }
         ],
-        "origin": "Toughness"
+        "origin": "Herbivory",
+        "universal": {}
+    },
+    "LeafMassArea": {
+        "fields": [
+            {
+                "area": {
+                    "field_name": [
+                        "area_cm2"
+                    ],
+                    "type": "value"
+                },
+                "date": {
+                    "day_field": "day",
+                    "month_field": "month",
+                    "type": "date",
+                    "year_field": "year"
+                },
+                "drying_method": {
+                    "field_name": [
+                        "drying_method"
+                    ],
+                    "type": "value"
+                },
+                "dw_area_g": {
+                    "field_name": [
+                        "dw_area_g_cm2"
+                    ],
+                    "type": "value"
+                },
+                "dw_g": {
+                    "field_name": [
+                        "dw_g"
+                    ],
+                    "type": "value"
+                },
+                "inches": {
+                    "field_name": [
+                        "inches"
+                    ],
+                    "type": "value"
+                },
+                "plant": {
+                    "local_field_name": [
+                        "plant_field",
+                        "species_code"
+                    ],
+                    "reference_model": "Plant",
+                    "remote_field_name": [
+                        "plant_number",
+                        "species_code__species_code"
+                    ],
+                    "type": "reference"
+                }
+            }
+        ],
+        "origin": "Lma",
+        "universal": {}
+    },
+    "Location": {
+        "fields": [
+            {
+                "gps": {
+                    "field_name": [
+                        "gps"
+                    ],
+                    "type": "value"
+                },
+                "measure": {
+                    "field_name": [
+                        "measure"
+                    ],
+                    "type": "value"
+                },
+                "offset": {
+                    "field_name": [
+                        "offset"
+                    ],
+                    "type": "value"
+                },
+                "plant": {
+                    "local_field_name": [
+                        "plant_field",
+                        "species_code"
+                    ],
+                    "reference_model": "Plant",
+                    "remote_field_name": [
+                        "plant_number",
+                        "species_code__species_code"
+                    ],
+                    "type": "reference"
+                },
+                "side": {
+                    "field_name": [
+                        "side"
+                    ],
+                    "type": "value"
+                },
+                "trail": {
+                    "field_name": [
+                        "trail"
+                    ],
+                    "type": "value"
+                }
+            }
+        ],
+        "origin": "Location",
+        "universal": {}
+    },
+    "Nitrogen": {
+        "fields": [
+            {
+                "chemistry": {
+                    "local_field_name": [
+                        "chemistry_field"
+                    ],
+                    "reference_model": "Chemistry",
+                    "remote_field_name": [
+                        "chemistry_number"
+                    ],
+                    "type": "reference"
+                },
+                "exp_vs_mat": {
+                    "field_name": [
+                        "age"
+                    ],
+                    "type": "value"
+                },
+                "notes": {
+                    "field_name": [
+                        "notes"
+                    ],
+                    "type": "value"
+                },
+                "percent_nitrogen": {
+                    "field_name": [
+                        "percent_n"
+                    ],
+                    "type": "value"
+                },
+                "percentage_of_expansion": {
+                    "field_name": [
+                        "percentage_of_expansion"
+                    ],
+                    "type": "value"
+                },
+                "sample_number_for_nitrogen_analysis": {
+                    "field_name": [
+                        "sample_number_for_n2_analysis"
+                    ],
+                    "type": "value"
+                },
+                "subsample_weight": {
+                    "field_name": [
+                        "subsample_weight_g"
+                    ],
+                    "type": "value"
+                },
+                "weight_after_grounding": {
+                    "field_name": [
+                        "weight_after_grounding_g"
+                    ],
+                    "type": "value"
+                },
+                "weight_before_grounding": {
+                    "field_name": [
+                        "weight_before_grounding_g"
+                    ],
+                    "type": "value"
+                }
+            }
+        ],
+        "origin": "Nitrogen",
+        "universal": {}
+    },
+    "Plant": {
+        "fields": [
+            {
+                "code": {
+                    "field_name": [
+                        "code"
+                    ],
+                    "type": "value"
+                },
+                "collectors": {
+                    "field_name": [
+                        "collectors"
+                    ],
+                    "type": "value"
+                },
+                "date": {
+                    "day_field": "day",
+                    "month_field": "month",
+                    "type": "date",
+                    "year_field": "year"
+                },
+                "date_dna_sent": {
+                    "day_field": "day",
+                    "month_field": "month",
+                    "type": "date",
+                    "year_field": "year"
+                },
+                "dbh": {
+                    "field_name": [
+                        "dbh"
+                    ],
+                    "type": "value"
+                },
+                "description": {
+                    "field_name": [
+                        "description"
+                    ],
+                    "type": "value"
+                },
+                "dna": {
+                    "field_name": [
+                        "dna"
+                    ],
+                    "type": "value"
+                },
+                "flower_color": {
+                    "field_name": [
+                        "flower_color"
+                    ],
+                    "type": "value"
+                },
+                "height": {
+                    "field_name": [
+                        "height"
+                    ],
+                    "type": "value"
+                },
+                "herbarium_sample": {
+                    "field_name": [
+                        "herbarium_sample"
+                    ],
+                    "type": "value"
+                },
+                "light": {
+                    "field_name": [
+                        "light"
+                    ],
+                    "type": "value"
+                },
+                "living_herbarium": {
+                    "field_name": [
+                        "lh"
+                    ],
+                    "type": "value"
+                },
+                "location": {
+                    "field_name": [
+                        "location"
+                    ],
+                    "type": "value"
+                },
+                "new_leaves": {
+                    "field_name": [
+                        "new_leaves"
+                    ],
+                    "type": "value"
+                },
+                "plant_number": {
+                    "field_name": [
+                        "plant_field"
+                    ],
+                    "type": "value"
+                },
+                "site": {
+                    "local_field_name": [
+                        "site"
+                    ],
+                    "reference_model": "Site",
+                    "remote_field_name": [
+                        "site"
+                    ],
+                    "type": "reference"
+                },
+                "size": {
+                    "field_name": [
+                        "size"
+                    ],
+                    "type": "value"
+                },
+                "species_code": {
+                    "local_field_name": [
+                        "species_code"
+                    ],
+                    "reference_model": "PlantSpecies",
+                    "remote_field_name": [
+                        "species_code"
+                    ],
+                    "type": "reference"
+                }
+            }
+        ],
+        "origin": "PlantTable",
+        "universal": {}
+    },
+    "PlantSpecies": {
+        "fields": [
+            {
+                "authority": {
+                    "field_name": [
+                        "authority"
+                    ],
+                    "type": "value"
+                },
+                "comment": {
+                    "field_name": [
+                        "comment"
+                    ],
+                    "type": "value"
+                },
+                "genus": {
+                    "field_name": [
+                        "genus"
+                    ],
+                    "type": "value"
+                },
+                "note_chemistry_analysis": {
+                    "field_name": [
+                        "note_chem_anal"
+                    ],
+                    "type": "value"
+                },
+                "old_species_number": {
+                    "field_name": [
+                        "old_species_number"
+                    ],
+                    "type": "value"
+                },
+                "species_code": {
+                    "field_name": [
+                        "species_code"
+                    ],
+                    "type": "value"
+                },
+                "species_name": {
+                    "field_name": [
+                        "species_name"
+                    ],
+                    "type": "value"
+                }
+            }
+        ],
+        "origin": "Species",
+        "universal": {}
+    },
+    "Site": {
+        "fields": [
+            {
+                "altitude": {
+                    "field_name": [
+                        "altitude"
+                    ],
+                    "type": "value"
+                },
+                "annual_rainfall": {
+                    "field_name": [
+                        "annual_rainfall"
+                    ],
+                    "type": "value"
+                },
+                "country": {
+                    "field_name": [
+                        "country"
+                    ],
+                    "type": "value"
+                },
+                "latitude_degrees": {
+                    "field_name": [
+                        "latitude_degrees"
+                    ],
+                    "type": "value"
+                },
+                "latitude_minutes": {
+                    "field_name": [
+                        "latitude_minutes"
+                    ],
+                    "type": "value"
+                },
+                "longitude_degrees": {
+                    "field_name": [
+                        "longitude_degrees"
+                    ],
+                    "type": "value"
+                },
+                "longitude_minutes": {
+                    "field_name": [
+                        "longitude_minutes"
+                    ],
+                    "type": "value"
+                },
+                "rainfall_seasonality": {
+                    "field_name": [
+                        "rainfall_seasonality"
+                    ],
+                    "type": "value"
+                },
+                "rainfall_seasonality_pdfs": {
+                    "field_name": [
+                        "rainfall_seasonality_pdfs"
+                    ],
+                    "type": "value"
+                },
+                "site": {
+                    "field_name": [
+                        "site"
+                    ],
+                    "type": "value"
+                },
+                "soils": {
+                    "field_name": [
+                        "soils"
+                    ],
+                    "type": "value"
+                },
+                "solid_pdfs": {
+                    "field_name": [
+                        "soils_pdfs"
+                    ],
+                    "type": "value"
+                },
+                "temp": {
+                    "field_name": [
+                        "temp"
+                    ],
+                    "type": "value"
+                }
+            }
+        ],
+        "origin": "Site",
+        "universal": {}
+    },
+    "Toughness": {
+        "fields": [
+            {
+                "date": {
+                    "day_field": false,
+                    "month_field": false,
+                    "type": "date",
+                    "year_field": "year"
+                },
+                "notes": {
+                    "field_name": [
+                        "notes"
+                    ],
+                    "type": "value"
+                },
+                "plant": {
+                    "local_field_name": [
+                        "plant_field",
+                        "species_code"
+                    ],
+                    "reference_model": "Plant",
+                    "remote_field_name": [
+                        "plant_number",
+                        "species_code__species_code"
+                    ],
+                    "type": "reference"
+                },
+                "toughness": {
+                    "field_name": [
+                        "toughness1"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "date": {
+                    "day_field": false,
+                    "month_field": false,
+                    "type": "date",
+                    "year_field": "year"
+                },
+                "notes": {
+                    "field_name": [
+                        "notes"
+                    ],
+                    "type": "value"
+                },
+                "plant": {
+                    "local_field_name": [
+                        "plant_field",
+                        "species_code"
+                    ],
+                    "reference_model": "Plant",
+                    "remote_field_name": [
+                        "plant_number",
+                        "species_code__species_code"
+                    ],
+                    "type": "reference"
+                },
+                "toughness": {
+                    "field_name": [
+                        "toughness2"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "date": {
+                    "day_field": false,
+                    "month_field": false,
+                    "type": "date",
+                    "year_field": "year"
+                },
+                "notes": {
+                    "field_name": [
+                        "notes"
+                    ],
+                    "type": "value"
+                },
+                "plant": {
+                    "local_field_name": [
+                        "plant_field",
+                        "species_code"
+                    ],
+                    "reference_model": "Plant",
+                    "remote_field_name": [
+                        "plant_number",
+                        "species_code__species_code"
+                    ],
+                    "type": "reference"
+                },
+                "toughness": {
+                    "field_name": [
+                        "toughness3"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "date": {
+                    "day_field": false,
+                    "month_field": false,
+                    "type": "date",
+                    "year_field": "year"
+                },
+                "notes": {
+                    "field_name": [
+                        "notes"
+                    ],
+                    "type": "value"
+                },
+                "plant": {
+                    "local_field_name": [
+                        "plant_field",
+                        "species_code"
+                    ],
+                    "reference_model": "Plant",
+                    "remote_field_name": [
+                        "plant_number",
+                        "species_code__species_code"
+                    ],
+                    "type": "reference"
+                },
+                "toughness": {
+                    "field_name": [
+                        "toughness4"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "date": {
+                    "day_field": false,
+                    "month_field": false,
+                    "type": "date",
+                    "year_field": "year"
+                },
+                "notes": {
+                    "field_name": [
+                        "notes"
+                    ],
+                    "type": "value"
+                },
+                "plant": {
+                    "local_field_name": [
+                        "plant_field",
+                        "species_code"
+                    ],
+                    "reference_model": "Plant",
+                    "remote_field_name": [
+                        "plant_number",
+                        "species_code__species_code"
+                    ],
+                    "type": "reference"
+                },
+                "toughness": {
+                    "field_name": [
+                        "toughness5"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "date": {
+                    "day_field": false,
+                    "month_field": false,
+                    "type": "date",
+                    "year_field": "year"
+                },
+                "notes": {
+                    "field_name": [
+                        "notes"
+                    ],
+                    "type": "value"
+                },
+                "plant": {
+                    "local_field_name": [
+                        "plant_field",
+                        "species_code"
+                    ],
+                    "reference_model": "Plant",
+                    "remote_field_name": [
+                        "plant_number",
+                        "species_code__species_code"
+                    ],
+                    "type": "reference"
+                },
+                "toughness": {
+                    "field_name": [
+                        "toughness6"
+                    ],
+                    "type": "value"
+                }
+            },
+            {
+                "date": {
+                    "day_field": false,
+                    "month_field": false,
+                    "type": "date",
+                    "year_field": "year"
+                },
+                "notes": {
+                    "field_name": [
+                        "notes"
+                    ],
+                    "type": "value"
+                },
+                "plant": {
+                    "local_field_name": [
+                        "plant_field",
+                        "species_code"
+                    ],
+                    "reference_model": "Plant",
+                    "remote_field_name": [
+                        "plant_number",
+                        "species_code__species_code"
+                    ],
+                    "type": "reference"
+                },
+                "toughness": {
+                    "field_name": [
+                        "toughness7"
+                    ],
+                    "type": "value"
+                }
+            }
+        ],
+        "origin": "Toughness",
+        "universal": {}
+    },
+    "Tyrosine": {
+        "fields": [
+            {
+                "calibration": {
+                    "field_name": [
+                        "calibration_number"
+                    ],
+                    "type": "value"
+                },
+                "date": {
+                    "day_field": "day",
+                    "month_field": "month",
+                    "type": "date",
+                    "year_field": "year"
+                },
+                "extraction": {
+                    "local_field_name": [
+                        "extraction_number"
+                    ],
+                    "reference_model": "Extraction",
+                    "remote_field_name": [
+                        "extraction_number"
+                    ],
+                    "type": "reference"
+                },
+                "file": {
+                    "field_name": [
+                        "link_to_file"
+                    ],
+                    "type": "value"
+                },
+                "percent_tyrosine": {
+                    "field_name": [
+                        "percent_tyrosine"
+                    ],
+                    "type": "value"
+                }
+            }
+        ],
+        "origin": "Tyrosine",
+        "universal": {}
     },
     "UPLCResult": {
-        "universal": {},
         "fields": [
             {
                 "all_inga": {
-                    "type": "value",
                     "field_name": [
                         "all_inga"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "chemocoding": {
-                    "type": "value",
                     "field_name": [
                         "chemocoding"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "date": {
-                    "type": "date",
                     "day_field": "day",
                     "month_field": "month",
+                    "type": "date",
                     "year_field": "year"
                 },
                 "diva": {
-                    "type": "value",
                     "field_name": [
                         "diva_field"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "extraction": {
-                    "local_field_name": "en_field",
+                    "local_field_name": [
+                        "en_field"
+                    ],
                     "reference_model": "Extraction",
-                    "remote_field_name": "extraction_number",
+                    "remote_field_name": [
+                        "extraction_number"
+                    ],
                     "type": "reference"
                 },
                 "mode": {
-                    "type": "value",
                     "field_name": [
                         "mode"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "ms_method": {
-                    "type": "value",
                     "field_name": [
                         "ms_method"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "ms_mode": {
-                    "type": "value",
                     "field_name": [
                         "ms_mode"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "notes": {
-                    "type": "value",
                     "field_name": [
                         "notes"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "project_name": {
-                    "type": "value",
                     "field_name": [
                         "project_name"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "sample_id": {
-                    "type": "value",
                     "field_name": [
                         "sample_id"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "sample_type": {
-                    "type": "value",
                     "field_name": [
                         "sample_type"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "tune_page": {
-                    "type": "value",
                     "field_name": [
                         "tune_page"
-                    ]
+                    ],
+                    "type": "value"
                 },
                 "uplc_method": {
-                    "type": "value",
                     "field_name": [
                         "uplc_method"
-                    ]
+                    ],
+                    "type": "value"
                 }
             }
         ],
-        "origin": "UplcResults"
+        "origin": "UplcResults",
+        "universal": {}
     }
 }
