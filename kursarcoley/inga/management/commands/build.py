@@ -23,6 +23,9 @@ BUILD_ORDER = [
     "LeafMassArea",
     "Location",
     "Tyrosine",
+    "UPLCResult",
+    "FeatureTableRawData",
+    "Toughness",
 ]
 
 class Command(BaseCommand):
