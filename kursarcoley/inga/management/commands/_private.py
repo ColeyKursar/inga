@@ -77,7 +77,7 @@ def build(destination_name, mapping):
 
     for idx, origin in enumerate(origins):
         if destination_name == "Site":
-            print(origin.__dict__)
+            print(getattr(origin, "site"))
         if idx % 1 == 0 or idx == len(origins) - 1:
             print(str(idx) + " objects converted")
 
