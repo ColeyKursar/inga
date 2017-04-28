@@ -245,4 +245,4 @@ def wire(model, **kwargs):
     except model.MultipleObjectsReturned:
         print("Multiple objects returned")
     except model.DoesNotExist:
-        print("Model could not be found")
+        print(model.__name__ + " could not be found")
