@@ -228,6 +228,8 @@ def trim_references(kwargs):
         if "__" not in kwargs[key]:
             trimmed[key] = kwargs[key]
 
+    return trimmed
+
 def wire(model, **kwargs):
     """
     Retrieve referenced model and return it.
