@@ -14,7 +14,7 @@ def get_source(field, origin):
     """
     if field["type"] == "value":
         value = ""
-        
+
         for idx, name in enumerate(field["field_name"]):
             value += str(getattr(origin, name))
 
@@ -76,7 +76,7 @@ def build(destination_name, mapping):
     origins = origin_model.objects.all()
 
     for idx, origin in enumerate(origins):
-        if idx % 1000 == 0 or idx == len(origins) - 1:
+        if idx % 1 == 0 or idx == len(origins) - 1:
             print(str(idx) + " objects converted")
 
         for field in mapping["universal"]:
