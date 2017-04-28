@@ -221,6 +221,12 @@ def get_multireference(field, origin):
 
     return values
 
+def trim_references(kwargs):
+    trimmed = {}
+
+    for key in kwargs:
+        if "__" not in kwargs[key]:
+            trimmed[key] = kwargs[key]
 
 def wire(model, **kwargs):
     """
@@ -238,7 +244,8 @@ def wire(model, **kwargs):
             try:
                 generic = model.objects.get(generic=True)
             except model.DoesNotExist:
-                generic = model(**kwargs)
+                generic_args = trim_references(kwargs)
+                generic = model(**generic_args)
                 generic.generic = True
                 generic.save()
 
