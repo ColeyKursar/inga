@@ -266,4 +266,4 @@ def wire(model, **kwargs):
         print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(inexact_kwargs))
     except model.DoesNotExist:
         print(model.__name__ + " could not be found matching " + json.dumps(inexact_kwargs))
-        print("\tSearching with " + queryset.query)
+        print("\tSearching with " + queryset.query.__str__())
