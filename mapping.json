@@ -2100,13 +2100,11 @@
                 },
                 "species_code": {
                     "local_field_name": [
-                        "species_code",
-                        "site"
+                        "species_code"
                     ],
                     "reference_model": "PlantSpecies",
                     "remote_field_name": [
-                        "species_code",
-                        "site__site"
+                        "species_code"
                     ],
                     "type": "reference"
                 }
