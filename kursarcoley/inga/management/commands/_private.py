@@ -18,11 +18,13 @@ def get_source(field, origin):
         for idx, name in enumerate(field["field_name"]):
             temp = getattr(origin, name)
 
-            if temp is not None:
+            if temp is not None and isinstance(temp, basestring):
                 value += str(unicode(getattr(origin, name), 'ascii', 'ignore'))
 
                 if idx < len(field["field_name"]) - 1:
                     value += ", "
+            else:
+                return temp
 
         print(field["field_name"][0] + " " + value)
 
