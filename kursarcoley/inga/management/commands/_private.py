@@ -24,7 +24,11 @@ def get_source(field, origin):
             if idx < len(field["field_name"]) - 1:
                 value += ", "
 
+        print(value)
+
         return value
+
+
 
     elif field["type"] == "reference":
         reference_name = field["reference_model"]
