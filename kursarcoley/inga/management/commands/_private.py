@@ -244,7 +244,6 @@ def wire(model, **kwargs):
 
             return generic
 
-    print(json.dumps(inexact_kwargs))
     try:
         return model.objects.get(**inexact_kwargs)
     except model.MultipleObjectsReturned:
