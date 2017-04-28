@@ -29,12 +29,15 @@ def get_source(field, origin):
         reference_name = field["reference_model"]
         reference_model = getattr(inga, reference_name)
 
-        local_field_name = field["local_field_name"]
-        remote_field_name = field["remote_field_name"]
+        local_field_names = field["local_field_name"]
+        remote_field_names = field["remote_field_name"]
 
-        local_value = getattr(origin, local_field_name)
+        params = {}
 
-        return wire(reference_model, **{remote_field_name: local_value})
+        for i in range(len(local_field_names)):
+            params[remote_field_names[i]] = getattr(origin, local_field_names[i])
+
+        return wire(reference_model, **params)
 
     elif field["type"] == "multireference":
         return "multireference-field"
