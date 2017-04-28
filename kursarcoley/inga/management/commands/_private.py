@@ -76,6 +76,8 @@ def build(destination_name, mapping):
     origins = origin_model.objects.all()
 
     for idx, origin in enumerate(origins):
+        if destination_name == "Site":
+            print(origin.__dict__)
         if idx % 1 == 0 or idx == len(origins) - 1:
             print(str(idx) + " objects converted")
 
