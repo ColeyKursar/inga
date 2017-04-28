@@ -16,7 +16,7 @@ def get_source(field, origin):
         value = ""
 
         if len(field["field_name"]) == 1:
-            return getattr(origin, field["field_name"][0])
+            value = getattr(origin, field["field_name"][0])
 
         for idx, name in enumerate(field["field_name"]):
             value += str(getattr(origin, name))
