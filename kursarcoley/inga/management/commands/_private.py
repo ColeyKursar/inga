@@ -21,7 +21,7 @@ def get_source(field, origin):
             if idx < len(field["field_name"]) - 1:
                 value += ", "
 
-        print(field["field_name"] + " " + value)
+        print(field["field_name"][0] + " " + value)
 
         return value
 
