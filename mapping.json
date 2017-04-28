@@ -2122,6 +2122,32 @@
                     ],
                     "type": "value"
                 },
+                "genus": {
+                    "field_name": [
+                        "genus"
+                    ],
+                    "type": "value"
+                },
+                "species_code": {
+                    "field_name": [
+                        "species_code"
+                    ],
+                    "type": "value"
+                },
+                "species_name": {
+                    "field_name": [
+                        "species_name"
+                    ],
+                    "type": "value"
+                }
+            }
+        ],
+        "origin": "Species",
+        "universal": {}
+    },
+    "PlantSpeciesHistorical": {
+        "fields": [
+            {
                 "comment": {
                     "field_name": [
                         "comment"
@@ -2147,10 +2173,14 @@
                     "type": "value"
                 },
                 "species_code": {
-                    "field_name": [
+                    "local_field_name": [
                         "species_code"
                     ],
-                    "type": "value"
+                    "reference_model": "PlantSpecies",
+                    "remote_field_name": [
+                        "species_code"
+                    ],
+                    "type": "reference"
                 },
                 "species_name": {
                     "field_name": [
