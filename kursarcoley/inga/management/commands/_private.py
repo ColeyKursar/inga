@@ -4,6 +4,7 @@ from oldinga import models as oldinga
 import datetime
 import pytz
 import sys
+import json
 
 
 def get_source(field, origin):
@@ -240,9 +241,11 @@ def wire(model, **kwargs):
                 generic.save()
 
             return generic
+
+    print(json.dumps(inexact_kwargs))
     try:
         return model.objects.get(**inexact_kwargs)
     except model.MultipleObjectsReturned:
-        print("Multiple objects returned")
+        print("Multiple " + model.__name__ + " objects returned")
     except model.DoesNotExist:
         print(model.__name__ + " could not be found")
