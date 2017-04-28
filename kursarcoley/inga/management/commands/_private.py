@@ -134,14 +134,14 @@ def build_date(day, month, year):
 
     if day < 1:
         day = 1
-        
+
     if month < 1:
         month = 1
 
     if year == 0:
         year = 1
 
-    try: 
+    try:
         return datetime.date(year, month, day)
     except ValueError:
         try:
@@ -247,6 +247,6 @@ def wire(model, **kwargs):
     try:
         return model.objects.get(**inexact_kwargs)
     except model.MultipleObjectsReturned:
-        print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(kwargs) )
+        print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(iexact_kwargs))
     except model.DoesNotExist:
-        print(model.__name__ + " could not be found matching " + json.dumps(kwargs))
+        print(model.__name__ + " could not be found matching " + json.dumps(iexact_kwargs))
