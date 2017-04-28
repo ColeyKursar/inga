@@ -225,7 +225,7 @@ def trim_references(kwargs):
     trimmed = {}
 
     for key in kwargs:
-        if "__" not in kwargs[key]:
+        if "__" not in key:
             trimmed[key] = kwargs[key]
 
     return trimmed
