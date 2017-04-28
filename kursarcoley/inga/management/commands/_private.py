@@ -238,8 +238,11 @@ def wire(model, **kwargs):
     """
     inexact_kwargs = {}
 
-    for key, value in kwargs.items():
-        inexact_kwargs[key + "__iexact"] = str(value).strip()
+    for key in kwargs:
+        if key == "chemistry_number" and kwargs[key] is not None and kwargs[key][0] != 'c':
+            kwargs[key] = 'c' + kwargs[key]
+
+        inexact_kwargs[key + "__iexact"] = str(kwargs[key]).strip()
         if (inexact_kwargs[key + "__iexact"] == "Null" or
                 inexact_kwargs[key + "__iexact"] == "None" or
                 inexact_kwargs[key + "__iexact"] == ""):
