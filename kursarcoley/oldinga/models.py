@@ -851,18 +851,30 @@ class SamplePaths(models.Model):
 
 class Species(models.Model):
     site = models.CharField(max_length=12, blank=True, null=True)
-    old_species_number = models.CharField(db_column='Old_Species_Number', max_length=7, blank=True, null=True)  # Field name made lowercase.
     species_code = models.CharField(max_length=11)
     genus = models.CharField(db_column='Genus', max_length=12, blank=True, null=True)  # Field name made lowercase.
     species_name = models.CharField(db_column='Species_name', max_length=25, blank=True, null=True)  # Field name made lowercase.
-    comment = models.CharField(max_length=45, blank=True, null=True)
     authority = models.CharField(max_length=25, blank=True, null=True)
-    note_chem_anal = models.TextField(db_column='Note_Chem_Anal', blank=True, null=True)  # Field name made lowercase.
     updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'Species'
+
+
+class SpeciesHistorical(models.Model):
+    site = models.CharField(max_length=12, blank=True, null=True)
+    old_species_number = models.CharField(db_column='Old_Species_Number', max_length=7, blank=True, null=True)  # Field name made lowercase.
+    species_code = models.CharField(max_length=11)
+    genus = models.CharField(db_column='Genus', max_length=12, blank=True, null=True)  # Field name made lowercase.
+    species_name = models.CharField(db_column='Species_name', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    comment = models.CharField(max_length=45, blank=True, null=True)
+    note_chem_anal = models.TextField(db_column='Note_Chem_Anal', blank=True, null=True)  # Field name made lowercase.
+    updated = models.DateTimeField(db_column='Updated')  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'Species_historical'
 
 
 class TempDbname(models.Model):
