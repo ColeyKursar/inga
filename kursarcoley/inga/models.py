@@ -238,6 +238,9 @@ class Plant(IngaBase):
     new_leaves = models.IntegerField(blank=True, null=True)
     code = models.IntegerField(blank=True, null=True)
 
+    class Meta:
+        unique_together = ('site', 'plant_number', )
+
 class PlantDNA(IngaBase):
     dna = models.TextField()
     plant = models.ForeignKey("Plant")

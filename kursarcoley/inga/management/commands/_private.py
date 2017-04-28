@@ -4,6 +4,7 @@ from oldinga import models as oldinga
 import datetime
 import pytz
 import sys
+import json
 
 
 def get_source(field, origin):
@@ -14,27 +15,34 @@ def get_source(field, origin):
     if field["type"] == "value":
         value = ""
 
-        if len(field["field_name"]) == 1:
-            return getattr(origin, field["field_name"][0])
-
         for idx, name in enumerate(field["field_name"]):
-            value += str(getattr(origin, name))
+            temp = getattr(origin, name)
 
-            if idx < len(field["field_name"]) - 1:
-                value += ", "
+            if temp is not None and isinstance(temp, basestring):
+                value += getattr(origin, name).encode('utf-8', 'ignore')
+
+                if idx < len(field["field_name"]) - 1:
+                    value += ", "
+            else:
+                return temp
 
         return value
+
+
 
     elif field["type"] == "reference":
         reference_name = field["reference_model"]
         reference_model = getattr(inga, reference_name)
 
-        local_field_name = field["local_field_name"]
-        remote_field_name = field["remote_field_name"]
+        local_field_names = field["local_field_name"]
+        remote_field_names = field["remote_field_name"]
 
-        local_value = getattr(origin, local_field_name)
+        params = {}
 
-        return wire(reference_model, **{remote_field_name: local_value})
+        for i in range(len(local_field_names)):
+            params[remote_field_names[i]] = getattr(origin, local_field_names[i])
+
+        return wire(reference_model, **params)
 
     elif field["type"] == "multireference":
         return "multireference-field"
@@ -80,42 +88,40 @@ def build(destination_name, mapping):
 
         for instance in mapping["fields"]:
             sources = set()
-            try:
-                destination = destination_model()
-                multireference_fields = []
 
-                for field in instance:
-                    source_value = get_source(instance[field], origin)
+            destination = destination_model()
+            multireference_fields = []
 
-                    if instance[field]["type"] == "value":
-                        sources.add(str(source_value) if source_value is not None else None)
+            for field in instance:
+                source_value = get_source(instance[field], origin)
 
-                    if source_value == "multireference-field":
-                        multireference_fields.append(field)
-                    else:
-                        if (destination._meta.get_field(field).__class__.__name__ == "IntegerField"
-                                and source_value is not None):
-                            try:
-                                source_value = int(source_value)
-                            except ValueError:
-                                source_value = None
+                if instance[field]["type"] == "value":
+                    sources.add(str(source_value) if source_value is not None else None)
 
-                        setattr(destination, field, source_value)
+                if source_value == "multireference-field":
+                    multireference_fields.append(field)
+                else:
+                    if (destination._meta.get_field(field).__class__.__name__ == "IntegerField"
+                            and source_value is not None):
+                        try:
+                            source_value = int(source_value)
+                        except ValueError:
+                            source_value = None
 
-                for field in universal:
-                    setattr(destination, field, universal[field])
+                    setattr(destination, field, source_value)
 
-                if len(sources.difference(("0", "", None))) == 0:
-                    raise ValueError
+            for field in universal:
+                setattr(destination, field, universal[field])
 
-                destination.save()
+            if len(sources.difference(("0", "", None))) == 0:
+                raise ValueError
 
-                for field in multireference_fields:
-                    source_value = get_multireference(instance[field], origin)
+            destination.save()
 
-                destination.save()
-            except ValueError:
-                continue
+            for field in multireference_fields:
+                source_value = get_multireference(instance[field], origin)
+
+            destination.save()
 
 
 def build_date(day, month, year):
@@ -237,11 +243,10 @@ def wire(model, **kwargs):
                 generic.save()
 
             return generic
+
     try:
         return model.objects.get(**inexact_kwargs)
     except model.MultipleObjectsReturned:
-        return model.objects.filter(**inexact_kwargs)[0]
+        print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(kwargs) )
     except model.DoesNotExist:
-        new = model(**kwargs)
-        new.save()
-        return new
+        print(model.__name__ + " could not be found matching " + json.dumps(kwargs))
