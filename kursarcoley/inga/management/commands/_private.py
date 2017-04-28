@@ -261,9 +261,11 @@ def wire(model, **kwargs):
 
     try:
         queryset = model.objects.filter(**inexact_kwargs)
+        queryset.extra({
+            where=["name LIKE '%%" + name + "%%' COLLATE utf8_general_ci"]
+        })
         return queryset.get()
     except model.MultipleObjectsReturned:
         print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(inexact_kwargs))
     except model.DoesNotExist:
         print(model.__name__ + " could not be found matching " + json.dumps(inexact_kwargs))
-        print("\tSearching with " + queryset.query.__str__())
