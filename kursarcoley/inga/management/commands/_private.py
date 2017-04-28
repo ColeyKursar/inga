@@ -76,8 +76,6 @@ def build(destination_name, mapping):
     origins = origin_model.objects.all()
 
     for idx, origin in enumerate(origins):
-        if destination_name == "Site":
-            print(getattr(origin, "site"))
         if idx % 1 == 0 or idx == len(origins) - 1:
             print(str(idx) + " objects converted")
 
@@ -87,42 +85,40 @@ def build(destination_name, mapping):
 
         for instance in mapping["fields"]:
             sources = set()
-            try:
-                destination = destination_model()
-                multireference_fields = []
 
-                for field in instance:
-                    source_value = get_source(instance[field], origin)
+            destination = destination_model()
+            multireference_fields = []
 
-                    if instance[field]["type"] == "value":
-                        sources.add(str(source_value) if source_value is not None else None)
+            for field in instance:
+                source_value = get_source(instance[field], origin)
 
-                    if source_value == "multireference-field":
-                        multireference_fields.append(field)
-                    else:
-                        if (destination._meta.get_field(field).__class__.__name__ == "IntegerField"
-                                and source_value is not None):
-                            try:
-                                source_value = int(source_value)
-                            except ValueError:
-                                source_value = None
+                if instance[field]["type"] == "value":
+                    sources.add(str(source_value) if source_value is not None else None)
 
-                        setattr(destination, field, source_value)
+                if source_value == "multireference-field":
+                    multireference_fields.append(field)
+                else:
+                    if (destination._meta.get_field(field).__class__.__name__ == "IntegerField"
+                            and source_value is not None):
+                        try:
+                            source_value = int(source_value)
+                        except ValueError:
+                            source_value = None
 
-                for field in universal:
-                    setattr(destination, field, universal[field])
+                    setattr(destination, field, source_value)
 
-                if len(sources.difference(("0", "", None))) == 0:
-                    raise ValueError
+            for field in universal:
+                setattr(destination, field, universal[field])
 
-                destination.save()
+            if len(sources.difference(("0", "", None))) == 0:
+                raise ValueError
 
-                for field in multireference_fields:
-                    source_value = get_multireference(instance[field], origin)
+            destination.save()
 
-                destination.save()
-            except ValueError:
-                continue
+            for field in multireference_fields:
+                source_value = get_multireference(instance[field], origin)
+
+            destination.save()
 
 
 def build_date(day, month, year):
