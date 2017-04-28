@@ -254,7 +254,7 @@ def wire(model, **kwargs):
             return generic
 
         elif key == "chemistry_number" and kwargs[key][0] != 'c':
-            kwargs[key] = 'c' + kwargs[key]
+            inexact_kwargs[key + "__iexact"] = 'c' + inexact_kwargs[key + "__iexact"]
 
     try:
         return model.objects.get(**inexact_kwargs)
