@@ -19,7 +19,7 @@ def get_source(field, origin):
             temp = getattr(origin, name)
 
             if temp is not None and isinstance(temp, basestring):
-                value += str(unicode(getattr(origin, name), 'ascii', 'ignore'))
+                value += str(getattr(origin, name))
 
                 if idx < len(field["field_name"]) - 1:
                     value += ", "
