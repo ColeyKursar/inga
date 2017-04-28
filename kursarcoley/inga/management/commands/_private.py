@@ -21,6 +21,9 @@ def get_source(field, origin):
             if temp is not None and isinstance(temp, basestring):
                 value += getattr(origin, name).encode('utf-8', 'ignore')
 
+                if field["field_name"] == "chemistry_number" and value != "" and value[0] != "c":
+                    value = 'c' + value
+
                 if idx < len(field["field_name"]) - 1:
                     value += ", "
             else:
