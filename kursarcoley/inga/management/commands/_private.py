@@ -26,8 +26,6 @@ def get_source(field, origin):
             else:
                 return temp
 
-        print(field["field_name"][0] + " " + value)
-
         return value
 
 
