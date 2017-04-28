@@ -16,7 +16,7 @@ def get_source(field, origin):
         value = ""
 
         for idx, name in enumerate(field["field_name"]):
-            value += str(getattr(origin, name))
+            value += str(getattr(origin, name), 'utf-8', 'ignore')
 
             if idx < len(field["field_name"]) - 1:
                 value += ", "
