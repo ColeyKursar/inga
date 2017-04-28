@@ -256,6 +256,6 @@ def wire(model, **kwargs):
     try:
         return model.objects.get(**inexact_kwargs)
     except model.MultipleObjectsReturned:
-        print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(iexact_kwargs))
+        print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(inexact_kwargs))
     except model.DoesNotExist:
-        print(model.__name__ + " could not be found matching " + json.dumps(iexact_kwargs))
+        print(model.__name__ + " could not be found matching " + json.dumps(inexact_kwargs))
