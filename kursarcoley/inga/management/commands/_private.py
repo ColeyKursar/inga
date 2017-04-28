@@ -79,7 +79,7 @@ def build(destination_name, mapping):
     origins = origin_model.objects.all()
 
     for idx, origin in enumerate(origins):
-        if idx % 1 == 0 or idx == len(origins) - 1:
+        if idx % 1000 == 0 or idx == len(origins) - 1:
             print(str(idx) + " objects converted")
 
         for field in mapping["universal"]:
