@@ -260,7 +260,7 @@ def wire(model, **kwargs):
             inexact_kwargs[key + "__iexact"] = 'c' + inexact_kwargs[key + "__iexact"]
 
     try:
-        queryset = models.objects.get(**inexact_kwargs)
+        queryset = model.objects.get(**inexact_kwargs)
         return queryset
     except model.MultipleObjectsReturned:
         print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(inexact_kwargs))
