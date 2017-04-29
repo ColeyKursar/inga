@@ -243,8 +243,8 @@ def wire(model, **kwargs):
 
     for key in kwargs:
         inexact_kwargs[key + "__iexact"] = str(kwargs[key]).strip()
-        if (inexact_kwargs[key + "__iexact"].casefold() == "null" or
-                inexact_kwargs[key + "__iexact"].casefold() == "none" or
+        if (inexact_kwargs[key + "__iexact"].lower() == "null" or
+                inexact_kwargs[key + "__iexact"].lower() == "none" or
                 inexact_kwargs[key + "__iexact"] == ""):
             try:
                 generic = model.objects.get(generic=True)
@@ -256,7 +256,7 @@ def wire(model, **kwargs):
 
             return generic
 
-        elif key == "chemistry_number" and kwargs[key].casefold()[0] != 'c':
+        elif key == "chemistry_number" and kwargs[key].lower()[0] != 'c':
             inexact_kwargs[key + "__iexact"] = 'c' + inexact_kwargs[key + "__iexact"]
 
     try:
@@ -266,7 +266,7 @@ def wire(model, **kwargs):
         print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(inexact_kwargs))
     except model.DoesNotExist:
         if "chemistry_number" in kwargs:
-            if kwargs["chemistry_number"].casefold()[0] == "c":
+            if kwargs["chemistry_number"].lower()[0] == "c":
                 inexact_kwargs["chemistry_number__iexact"] = kwargs["chemistry_number"][1:]
             try:
                 return model.objects.get(**inexact_kwargs)
