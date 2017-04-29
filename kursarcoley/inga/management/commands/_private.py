@@ -117,7 +117,7 @@ def build(destination_name, mapping):
                 setattr(destination, field, universal[field])
 
             if len(sources.difference(("0", "", None))) == 0:
-                raise ValueError
+                return
 
             destination.save()
 
