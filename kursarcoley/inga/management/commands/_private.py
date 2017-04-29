@@ -243,8 +243,8 @@ def wire(model, **kwargs):
 
     for key in kwargs:
         inexact_kwargs[key + "__iexact"] = str(kwargs[key]).strip()
-        if (inexact_kwargs[key + "__iexact"] == "Null" or
-                inexact_kwargs[key + "__iexact"] == "None" or
+        if (inexact_kwargs[key + "__iexact"].casefold() == "null" or
+                inexact_kwargs[key + "__iexact"].casefold() == "none" or
                 inexact_kwargs[key + "__iexact"] == ""):
             try:
                 generic = model.objects.get(generic=True)
