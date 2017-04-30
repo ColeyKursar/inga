@@ -130,10 +130,11 @@ def build(destination_name, mapping):
             errors.append(origin.__dict__)
             print(origin.__dict__)
 
+    print(errors)
     if len(errors) > 0:
         with open(origin_name + "2" + destination_name + "-errors.csv", "w+") as csvfile:
             print(origin_model._meta.get_fields())
-            csvwriter = csv.DictWriter(csvfile, fieldnames=origin_model._meta.get_fields(), extrasaction='ignore')
+            csvwriter = csv.DictWriter(csvfile, fieldnames=[origin_model._meta.get_fields()], extrasaction='ignore')
             csvwriter.writerows(errors)
 
 def build_date(day, month, year):
