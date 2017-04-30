@@ -117,8 +117,8 @@ def build(destination_name, mapping):
                 for field in universal:
                     setattr(destination, field, universal[field])
 
-            if len(sources.difference(("0", "", None))) == 0:
-                return
+                if len(sources.difference(("0", "", None))) == 0:
+                    return
 
                 destination.save()
 
