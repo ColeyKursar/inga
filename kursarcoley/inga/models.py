@@ -90,7 +90,7 @@ class ExtractionResultWeight(IngaBase):
 
 class ExtrafloralNectaries(IngaBase):
     date = models.DateField(blank=True, null=True)
-    plant = models.ForeignKey("Plant")
+    plant = models.ForeignKey("Plant", blank=True, null=True)
     basal_mm = models.FloatField(blank=True, null=True)
     mid_mm = models.FloatField(blank=True, null=True)
     apical_mm = models.FloatField(blank=True, null=True)
