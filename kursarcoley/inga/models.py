@@ -121,6 +121,7 @@ class Field(IngaBase):
     ants_efn = models.FloatField(blank=True, null=True)
     ant_collection_number = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
+    old_table_id = models.IntegerField(blank=True, null=True)
 
 class Hairs(IngaBase):
     plant = models.ForeignKey("Plant")

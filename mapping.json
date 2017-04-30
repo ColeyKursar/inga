@@ -414,6 +414,12 @@
                     ],
                     "type": "value"
                 },
+                "old_table_id": {
+                    "field_name": [
+                        "id"
+                    ],
+                    "type": "value"
+                },
                 "original_id": {
                     "field_name": [
                         "orig_id"
@@ -1696,9 +1702,9 @@
         "origin": "Field",
         "universal": {
             "field": {
-                "local_field_name": ["orig_id"],
+                "local_field_name": ["id"],
                 "reference_model": "Field",
-                "remote_field_name": ["original_id"],
+                "remote_field_name": ["old_table_id"],
                 "type": "reference"
             }
         }

@@ -271,11 +271,8 @@ def wire(model, **kwargs):
         queryset = model.objects.filter(**inexact_kwargs)
         return queryset.get()
     except model.MultipleObjectsReturned:
-        if "original_id" in kwargs:
-            return queryset.fetch()[0]
-        else:
-            print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(kwargs))
-            raise ValueError
+        print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(kwargs))
+        raise ValueError
     except model.DoesNotExist:
         if "chemistry_number" in kwargs:
             if kwargs["chemistry_number"].lower()[0] == "c":
