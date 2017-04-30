@@ -1696,9 +1696,9 @@
         "origin": "Field",
         "universal": {
             "field": {
-                "local_field_name": "orig_id",
+                "local_field_name": ["orig_id"],
                 "reference_model": "Field",
-                "remote_field_name": "original_id",
+                "remote_field_name": ["original_id"],
                 "type": "reference"
             }
         }
