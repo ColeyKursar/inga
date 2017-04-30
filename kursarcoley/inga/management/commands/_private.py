@@ -132,6 +132,7 @@ def build(destination_name, mapping):
 
     if len(errors) > 0:
         with open(origin_name + "2" + destination_name + "-errors.csv", "w+") as csvfile:
+            print(origin_model._meta.get_fields())
             csvwriter = csv.DictWriter(csvfile, fieldnames=origin_model._meta.get_fields(), extrasaction='ignore')
             csvwriter.writerows(errors)
 
