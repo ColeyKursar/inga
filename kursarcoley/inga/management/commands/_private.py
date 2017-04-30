@@ -117,13 +117,8 @@ def build(destination_name, mapping):
                 for field in universal:
                     setattr(destination, field, universal[field])
 
-<<<<<<< HEAD
-                if len(sources.difference(("0", "", None))) == 0:
-                    raise ValueError
-=======
             if len(sources.difference(("0", "", None))) == 0:
                 return
->>>>>>> 00e13ff8ea33966ea4287f29c7ad6cad2e110360
 
                 destination.save()
 
@@ -274,14 +269,8 @@ def wire(model, **kwargs):
         queryset = model.objects.filter(**inexact_kwargs)
         return queryset.get()
     except model.MultipleObjectsReturned:
-<<<<<<< HEAD
         print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(kwargs))
         raise ValueError
-    except model.DoesNotExist:
-        print(model.__name__ + " could not be found matching " + json.dumps(kwargs))
-        raise ValueError
-=======
-        print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(inexact_kwargs))
     except model.DoesNotExist:
         if "chemistry_number" in kwargs:
             if kwargs["chemistry_number"].lower()[0] == "c":
@@ -289,7 +278,6 @@ def wire(model, **kwargs):
             try:
                 return model.objects.get(**inexact_kwargs)
             except model.DoesNotExist:
-                pass
+                raise ValueError
 
         print(model.__name__ + " could not be found matching " + json.dumps(inexact_kwargs))
->>>>>>> 00e13ff8ea33966ea4287f29c7ad6cad2e110360
