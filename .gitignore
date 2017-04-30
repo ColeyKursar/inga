@@ -3,3 +3,4 @@ venv/
 *.csv
 *.sqlite3
 .python-version
+inagenv/

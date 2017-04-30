@@ -22,6 +22,9 @@ def get_source(field, origin):
             if temp is not None and isinstance(temp, basestring):
                 value += getattr(origin, name).encode('utf-8', 'ignore')
 
+                if field["field_name"] == "chemistry_number" and value != "" and value[0] != "c":
+                    value = 'c' + value
+
                 if idx < len(field["field_name"]) - 1:
                     value += ", "
             else:
@@ -114,8 +117,13 @@ def build(destination_name, mapping):
                 for field in universal:
                     setattr(destination, field, universal[field])
 
+<<<<<<< HEAD
                 if len(sources.difference(("0", "", None))) == 0:
                     raise ValueError
+=======
+            if len(sources.difference(("0", "", None))) == 0:
+                return
+>>>>>>> 00e13ff8ea33966ea4287f29c7ad6cad2e110360
 
                 destination.save()
 
@@ -140,14 +148,14 @@ def build_date(day, month, year):
 
     if day < 1:
         day = 1
-        
+
     if month < 1:
         month = 1
 
     if year == 0:
         year = 1
 
-    try: 
+    try:
         return datetime.date(year, month, day)
     except ValueError:
         try:
@@ -227,6 +235,14 @@ def get_multireference(field, origin):
 
     return values
 
+def trim_references(kwargs):
+    trimmed = {}
+
+    for key in kwargs:
+        if "__" not in key:
+            trimmed[key] = kwargs[key]
+
+    return trimmed
 
 def wire(model, **kwargs):
     """
@@ -236,25 +252,44 @@ def wire(model, **kwargs):
     """
     inexact_kwargs = {}
 
-    for key, value in kwargs.items():
-        inexact_kwargs[key + "__iexact"] = str(value).strip()
-        if (inexact_kwargs[key + "__iexact"] == "Null" or
-                inexact_kwargs[key + "__iexact"] == "None" or
+    for key in kwargs:
+        inexact_kwargs[key + "__iexact"] = str(kwargs[key]).strip()
+        if (inexact_kwargs[key + "__iexact"].lower() == "null" or
+                inexact_kwargs[key + "__iexact"].lower() == "none" or
                 inexact_kwargs[key + "__iexact"] == ""):
             try:
                 generic = model.objects.get(generic=True)
             except model.DoesNotExist:
-                generic = model(**kwargs)
+                generic_args = trim_references(kwargs)
+                generic = model(**generic_args)
                 generic.generic = True
                 generic.save()
 
             return generic
 
+        elif key == "chemistry_number" and kwargs[key].lower()[0] != 'c':
+            inexact_kwargs[key + "__iexact"] = 'c' + inexact_kwargs[key + "__iexact"]
+
     try:
-        return model.objects.get(**inexact_kwargs)
+        queryset = model.objects.filter(**inexact_kwargs)
+        return queryset.get()
     except model.MultipleObjectsReturned:
+<<<<<<< HEAD
         print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(kwargs))
         raise ValueError
     except model.DoesNotExist:
         print(model.__name__ + " could not be found matching " + json.dumps(kwargs))
         raise ValueError
+=======
+        print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(inexact_kwargs))
+    except model.DoesNotExist:
+        if "chemistry_number" in kwargs:
+            if kwargs["chemistry_number"].lower()[0] == "c":
+                inexact_kwargs["chemistry_number__iexact"] = kwargs["chemistry_number"][1:]
+            try:
+                return model.objects.get(**inexact_kwargs)
+            except model.DoesNotExist:
+                pass
+
+        print(model.__name__ + " could not be found matching " + json.dumps(inexact_kwargs))
+>>>>>>> 00e13ff8ea33966ea4287f29c7ad6cad2e110360

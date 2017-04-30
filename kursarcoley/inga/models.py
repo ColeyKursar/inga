@@ -250,12 +250,17 @@ class PlantPhoto(IngaBase):
     plant = models.ForeignKey("Plant")
 
 class PlantSpecies(IngaBase):
-    old_species_number = models.TextField(blank=True, null=True)
     species_code = models.TextField(blank=True, null=True)
     genus = models.TextField(blank=True, null=True)
     species_name = models.TextField(blank=True, null=True)
-    comment = models.TextField(blank=True, null=True)
     authority = models.TextField(blank=True, null=True)
+
+class PlantSpeciesHistorical(IngaBase):
+    old_species_number = models.TextField(blank=True, null=True)
+    species_code = models.ForeignKey("PlantSpecies")
+    genus = models.TextField(blank=True, null=True)
+    species_name = models.TextField(blank=True, null=True)
+    comment = models.TextField(blank=True, null=True)
     note_chemistry_analysis = models.TextField(blank=True, null=True)
 
 class PlantVoucher(IngaBase):
