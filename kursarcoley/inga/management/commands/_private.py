@@ -1,6 +1,7 @@
 from oldinga import models as old
 from inga import models as inga
 from oldinga import models as oldinga
+import csv
 import datetime
 import pytz
 import sys
@@ -27,8 +28,6 @@ def get_source(field, origin):
                 return temp
 
         return value
-
-
 
     elif field["type"] == "reference":
         reference_name = field["reference_model"]
@@ -73,56 +72,63 @@ def build(destination_name, mapping):
 
     destination_model.objects.all().delete()
     universal = {}
+    errors = []
 
     origin_name = mapping["origin"]
     origin_model = getattr(oldinga, origin_name)
     origins = origin_model.objects.all()
 
     for idx, origin in enumerate(origins):
-        if idx % 1000 == 0 or idx == len(origins) - 1:
-            print(str(idx) + " objects converted")
+        try:
+            if idx % 1000 == 0 or idx == len(origins) - 1:
+                print(str(idx) + " objects converted")
 
-        for field in mapping["universal"]:
-            source_value = get_source(mapping["universal"][field], origin)
-            universal[field] = source_value
+            for field in mapping["universal"]:
+                source_value = get_source(mapping["universal"][field], origin)
+                universal[field] = source_value
 
-        for instance in mapping["fields"]:
-            sources = set()
+            for instance in mapping["fields"]:
+                sources = set()
 
-            destination = destination_model()
-            multireference_fields = []
+                destination = destination_model()
+                multireference_fields = []
 
-            for field in instance:
-                source_value = get_source(instance[field], origin)
+                for field in instance:
+                    source_value = get_source(instance[field], origin)
 
-                if instance[field]["type"] == "value":
-                    sources.add(str(source_value) if source_value is not None else None)
+                    if instance[field]["type"] == "value":
+                        sources.add(str(source_value) if source_value is not None else None)
 
-                if source_value == "multireference-field":
-                    multireference_fields.append(field)
-                else:
-                    if (destination._meta.get_field(field).__class__.__name__ == "IntegerField"
-                            and source_value is not None):
-                        try:
-                            source_value = int(source_value)
-                        except ValueError:
-                            source_value = None
+                    if source_value == "multireference-field":
+                        multireference_fields.append(field)
+                    else:
+                        if (destination._meta.get_field(field).__class__.__name__ == "IntegerField"
+                                and source_value is not None):
+                            try:
+                                source_value = int(source_value)
+                            except ValueError:
+                                source_value = None
 
-                    setattr(destination, field, source_value)
+                        setattr(destination, field, source_value)
 
-            for field in universal:
-                setattr(destination, field, universal[field])
+                for field in universal:
+                    setattr(destination, field, universal[field])
 
-            if len(sources.difference(("0", "", None))) == 0:
-                raise ValueError
+                if len(sources.difference(("0", "", None))) == 0:
+                    raise ValueError
 
-            destination.save()
+                destination.save()
 
-            for field in multireference_fields:
-                source_value = get_multireference(instance[field], origin)
+                for field in multireference_fields:
+                    source_value = get_multireference(instance[field], origin)
 
-            destination.save()
+                destination.save()
+        except ValueError:
+            errors.append(origin.__dict__)
 
+    with open(origin_name + "2" + destination_name + "-errors.csv") as csvfile:
+        csvwriter = csv.DictWriter(csvfile, fieldnames=origin_model._meta.get_fields(), extrasaction='ignore')
+        csvwriter.writerows(errors)
 
 def build_date(day, month, year):
     """
@@ -247,6 +253,8 @@ def wire(model, **kwargs):
     try:
         return model.objects.get(**inexact_kwargs)
     except model.MultipleObjectsReturned:
-        print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(kwargs) )
+        print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(kwargs))
+        raise ValueError
     except model.DoesNotExist:
         print(model.__name__ + " could not be found matching " + json.dumps(kwargs))
+        raise ValueError
