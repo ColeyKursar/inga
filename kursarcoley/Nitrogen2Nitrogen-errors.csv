@@ -1,0 +1,13 @@
+id,site,species_code,species_field,species_name,plant_field,chemistry_field,age,weight_before_grounding_g,percentage_of_expansion,habitat,weight_after_grounding_g,sample_number_for_n2_analysis,subsample_weight_g,percent_n,notes,updated,error message
+2,Los Amigos,LA33,33,,0,LA1580,Young,0.490000,5,Shade,0.175600,N2LA33-1,0.001000,0.00,,2016-01-16 14:22:55+00:00,"Chemistry could not be found matching {""chemistry_number__iexact"": ""cLA1580""}"
+3,Los Amigos,LA33,33,,0,LA1579,Young,0.500000,3,Shade,0.187100,N2LA33-1,0.001000,0.00,,2016-01-16 14:22:55+00:00,"Chemistry could not be found matching {""chemistry_number__iexact"": ""cLA1579""}"
+4,Los Amigos,LA33,33,,0,LA15336,Young,0.280000,5,Shade,0.103300,N2LA33-2,0.001100,0.00,,2016-01-16 14:22:55+00:00,"Chemistry could not be found matching {""chemistry_number__iexact"": ""cLA15336""}"
+21,Los Amigos,LA6,6,,0,LA1443,Young,0.200000,1,Shade,0.101000,N2LA6-2,0.001200,0.00,,2016-01-16 14:22:55+00:00,"Chemistry could not be found matching {""chemistry_number__iexact"": ""cLA1443""}"
+53,Los Amigos,LA10,10,,0,LA1548,Young,0.160000,3,Shade,0.061800,N2LA10-2,0.001000,0.00,,2016-01-16 14:22:55+00:00,"Chemistry could not be found matching {""chemistry_number__iexact"": ""cLA1548""}"
+63,Los Amigos,LA17,17,,0,LA1601,Young,0.280000,5,Shade,0.094300,N2LA17-2,0.001300,0.00,,2016-01-16 14:22:55+00:00,"Chemistry could not be found matching {""chemistry_number__iexact"": ""cLA1601""}"
+81,Los Amigos,LA25,25,,0,LA1572,Young,0.150000,3,Shade,0.052600,N2LA25-2,0.001200,0.00,,2016-01-16 14:22:55+00:00,"Chemistry could not be found matching {""chemistry_number__iexact"": ""cLA1572""}"
+87,Los Amigos,LA28,28,,0,LA1561,Young,0.430000,3,Shade,0.152300,N2LA28-2,0.001500,0.00,,2016-01-16 14:22:55+00:00,"Chemistry could not be found matching {""chemistry_number__iexact"": ""cLA1561""}"
+92,Los Amigos,LA33,33,,0,LA1532,Young,0.280000,3,Shade,0.137200,N2LA33-1,0.001300,0.00,,2016-01-16 14:22:55+00:00,"Chemistry could not be found matching {""chemistry_number__iexact"": ""cLA1532""}"
+94,Los Amigos,LA33,33,,0,LA1535,Young,0.510000,3,Shade,0.239600,N2LA33-2,0.001400,0.00,,2016-01-16 14:22:55+00:00,"Chemistry could not be found matching {""chemistry_number__iexact"": ""cLA1535""}"
+116,Los Amigos,LA48,48,,0,LA58,Young,0.000000,10,Shade,0.512700,N2LA48-2,0.001500,0.00,only some of sample taken from envelope,2016-01-16 14:22:55+00:00,"Chemistry could not be found matching {""chemistry_number__iexact"": ""cLA58""}"
+119,Los Amigos,LA49,49,,0,LA1647,Young,0.280000,3,Shade,0.088500,N2LA49-2,0.001100,0.00,,2016-01-16 14:22:55+00:00,"Chemistry could not be found matching {""chemistry_number__iexact"": ""cLA1647""}"
