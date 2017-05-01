@@ -126,12 +126,16 @@ def build(destination_name, mapping):
                     source_value = get_multireference(instance[field], origin)
 
                 destination.save()
-        except ValueError:
+        except ValueError as e:
+            error = origin.__dict__
+            error["error message"] = e.message
             errors.append(origin.__dict__)
 
     if len(errors) > 0:
         with open(origin_name + "2" + destination_name + "-errors.csv", "w+") as csvfile:
-            csvwriter = csv.DictWriter(csvfile, fieldnames=[field.name for field in origin_model._meta.get_fields()], extrasaction='ignore')
+            fieldnames = [field.name for field in origin_model._meta.get_fields()]
+            fieldnames.append("error message")
+            csvwriter = csv.DictWriter(csvfile, fieldnames=fieldnames, extrasaction='ignore')
             csvwriter.writeheader()
             csvwriter.writerows(errors)
 
@@ -272,7 +276,7 @@ def wire(model, **kwargs):
         return queryset.get()
     except model.MultipleObjectsReturned:
         print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(kwargs))
-        raise ValueError
+        raise ValueError("Multiple " + model.__name__ + " objects returned matching " + json.dumps(kwargs))
     except model.DoesNotExist:
         if "chemistry_number" in kwargs:
             if kwargs["chemistry_number"].lower()[0] == "c":
@@ -283,4 +287,4 @@ def wire(model, **kwargs):
                 pass
 
         print(model.__name__ + " could not be found matching " + json.dumps(inexact_kwargs))
-        raise ValueError
+        raise ValueError(model.__name__ + " could not be found matching " + json.dumps(inexact_kwargs))
