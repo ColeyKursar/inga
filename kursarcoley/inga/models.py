@@ -58,7 +58,7 @@ class Extraction(IngaBase):
     extraction_number = models.IntegerField(blank=True, null=True)
     chemistry = models.ForeignKey("Chemistry", blank=True, null=True)
     date = models.DateField(blank=True, null=True)
-    method = models.FloatField(blank=True, null=True)
+    method = models.IntegerField(blank=True, null=True)
     chemist = models.TextField(blank=True, null=True)
     notebook_number = models.IntegerField(blank=True, null=True)
     extraction_notebook_number = models.IntegerField(blank=True, null=True)
@@ -203,10 +203,6 @@ class Location(IngaBase):
     measure = models.IntegerField()
     offset = models.IntegerField()
     side = models.IntegerField()
-
-class Method(IngaBase):
-    method_number = models.IntegerField()
-    description = models.TextField()
 
 class Nitrogen(IngaBase):
     chemistry = models.ForeignKey("Chemistry", null=True, blank=True)

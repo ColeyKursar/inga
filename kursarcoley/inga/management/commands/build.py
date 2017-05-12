@@ -5,13 +5,13 @@ import json
 
 
 BUILD_ORDER = [
-    "Site",
-    "PlantSpecies",
-    "PlantSpeciesHistorical",
-    "Plant",
-    "Chemistry",
-    "Nitrogen",
-    "Chlorophyll",
+    # "Site",
+    # "PlantSpecies",
+    # "PlantSpeciesHistorical",
+    # "Plant",
+    # "Chemistry",
+    # "Nitrogen",
+    # "Chlorophyll",
     "Extraction",
     "ExtrafloralNectaries",
     "Hairs",

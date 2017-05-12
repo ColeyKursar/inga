@@ -180,6 +180,12 @@
                     ],
                     "type": "value"
                 },
+                "method": {
+                    "field_name": [
+                        "extraction_method"
+                    ],
+                    "type": "value"
+                },
                 "date": {
                     "day_field": "day",
                     "month_field": "month",
