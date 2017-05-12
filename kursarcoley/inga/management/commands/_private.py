@@ -286,5 +286,5 @@ def wire(model, **kwargs):
             except model.DoesNotExist:
                 pass
 
-        print(model.__name__ + " could not be found matching " + json.dumps(inexact_kwargs))
-        raise ValueError(model.__name__ + " could not be found matching " + json.dumps(inexact_kwargs))
+        print(model.__name__ + " could not be found matching " + json.dumps(kwargs))
+        raise ValueError(model.__name__ + " could not be found matching " + json.dumps(kwargs))
