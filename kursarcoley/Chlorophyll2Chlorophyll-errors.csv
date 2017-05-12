@@ -1,2 +1,0 @@
-id,site,species_code,year,month,day,plant_field,percent_expansion,size,light,spadd,chl_mg_dm2,notes,updated,error message
-1462,Tiputini,T62,2013,July,26,516,80,sap,sun,34,1.25000000,,2015-07-23 15:06:52+00:00,"Plant could not be found matching {""species_code__species_code__iexact"": ""T62"", ""plant_number__iexact"": ""516""}"
