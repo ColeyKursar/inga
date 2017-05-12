@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
 from ingaapi.serializers import ChemistrySerializer, ChlorophyllSerializer, ConvertedSerializer, DNASerializer, ExtractionSerializer, ExtractionResultWeightSerializer, ExtrafloralNectariesSerializer, FeatureTableRawDataSerializer, FieldSerializer, HairsSerializer, HerbivoreCollectionObservationSerializer, HerbivoreDNASerializer, HerbivoreSpeciesSerializer, HerbivoreCollectionSerializer, HerbivorySerializer, HPLCResultSerializer, LeafMassAreaSerializer, LocationSerializer, MethodSerializer, NitrogenSerializer, PlantSerializer, PlantDNASerializer, PlantPhotoSerializer, PlantSpeciesSerializer, PlantVoucherSerializer, RAWSerializer, SiteSerializer, ToughnessSerializer, UPLCResultSerializer, PC_IDSerializer, TyrosineSerializer
-from inga.models import Chemistry, Chlorophyll, Converted, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, HerbivoreCollectionObservation, HerbivoreDNA, HerbivoreSpecies, HerbivoreCollection, Herbivory, HPLCResult, LeafMassArea, Location, Method, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, PC_ID, Tyrosine
+from inga.models import Chemistry, Chlorophyll, Converted, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, HerbivoreCollectionObservation, HerbivoreDNA, HerbivoreSpecies, HerbivoreCollection, Herbivory, HPLCResult, LeafMassArea, Location, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, PC_ID, Tyrosine
 
 
 class ChemistryViewSet(ModelViewSet):
@@ -107,12 +107,6 @@ class LeafMassAreaViewSet(ModelViewSet):
 class LocationViewSet(ModelViewSet):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
-    filter_fields = "__all__"
-
-
-class MethodViewSet(ModelViewSet):
-    queryset = Method.objects.all()
-    serializer_class = MethodSerializer
     filter_fields = "__all__"
 
 

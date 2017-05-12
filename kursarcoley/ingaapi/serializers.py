@@ -1,9 +1,8 @@
 from rest_framework.serializers import HyperlinkedModelSerializer
-from inga.models import Chemistry, Chlorophyll, Converted, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, HerbivoreCollectionObservation, HerbivoreDNA, HerbivoreSpecies, HerbivoreCollection, Herbivory, HPLCResult, LeafMassArea, Location, Method, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, PC_ID, Tyrosine
+from inga.models import Chemistry, Chlorophyll, Converted, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, HerbivoreCollectionObservation, HerbivoreDNA, HerbivoreSpecies, HerbivoreCollection, Herbivory, HPLCResult, LeafMassArea, Location, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, PC_ID, Tyrosine
 
 
 class ChemistrySerializer(HyperlinkedModelSerializer):
-
     class Meta:
         model = Chemistry
         fields = '__all__'
@@ -125,13 +124,6 @@ class LocationSerializer(HyperlinkedModelSerializer):
 
     class Meta:
         model = Location
-        fields = '__all__'
-
-
-class MethodSerializer(HyperlinkedModelSerializer):
-
-    class Meta:
-        model = Method
         fields = '__all__'
 
 
