@@ -127,24 +127,17 @@ def build(destination_name, mapping):
 
                 destination.save()
         except ValueError as e:
-            print(
-                "Caught the error!"
-            )
             error = origin.__dict__
             error["error message"] = e.message
             errors.append(origin.__dict__)
 
-    print("testing...")
     if len(errors) > 0:
-        print("There are errors!")
         with open(origin_name + "2" + destination_name + "-errors.csv", "w+") as csvfile:
             fieldnames = [field.name for field in origin_model._meta.get_fields()]
             fieldnames.append("error message")
-            print(fieldnames)
             csvwriter = csv.DictWriter(csvfile, fieldnames=fieldnames, extrasaction='ignore')
             csvwriter.writeheader()
             csvwriter.writerows(errors)
-            print("written!")
 
 def build_date(day, month, year):
     """
