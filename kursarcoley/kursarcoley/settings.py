@@ -157,6 +157,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/var/www/webapps/inga/kursarcoley/static'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/var/www/webapps/inga/kursarcoley/media'
 
 # API settings
 

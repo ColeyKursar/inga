@@ -64,7 +64,6 @@ def BatchExecuteView(request):
 
         file = csv.DictReader(csvfile)
 
-        print(file.fieldnames)
         writer = csv.DictWriter(response, file.fieldnames + ["error"])
         writer.writeheader()
         writer.writerows(errors)
