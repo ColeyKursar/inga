@@ -54,6 +54,45 @@ class Converted(IngaBase):
 class DNA(IngaBase):
     sequence = models.TextField()
 
+class Expansion(IngaBase):
+    collectors = models.CharField(db_column='Collectors', max_length=25, blank=True, null=True)  # Field name made lowercase.
+    date = models.DateField()
+    plant = models.ForeignKey("Plant")  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    lh_field = models.IntegerField(db_column='LH#', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    day1 = models.IntegerField(db_column='Day1', blank=True, null=True)  # Field name made lowercase.
+    hour1 = models.IntegerField(db_column='Hour1', blank=True, null=True)  # Field name made lowercase.
+    area1 = models.IntegerField(db_column='Area1', blank=True, null=True)  # Field name made lowercase.
+    day2 = models.IntegerField(db_column='Day2', blank=True, null=True)  # Field name made lowercase.
+    hour2 = models.IntegerField(db_column='Hour2', blank=True, null=True)  # Field name made lowercase.
+    age2 = models.IntegerField(db_column='Age2', blank=True, null=True)  # Field name made lowercase.
+    area2 = models.IntegerField(db_column='Area2', blank=True, null=True)  # Field name made lowercase.
+    day3 = models.IntegerField(db_column='Day3', blank=True, null=True)  # Field name made lowercase.
+    hour3 = models.IntegerField(db_column='Hour3', blank=True, null=True)  # Field name made lowercase.
+    age3 = models.IntegerField(db_column='Age3', blank=True, null=True)  # Field name made lowercase.
+    area3 = models.IntegerField(db_column='Area3', blank=True, null=True)  # Field name made lowercase.
+    day4 = models.IntegerField(db_column='Day4', blank=True, null=True)  # Field name made lowercase.
+    hour4 = models.IntegerField(db_column='Hour4', blank=True, null=True)  # Field name made lowercase.
+    age4 = models.IntegerField(db_column='Age4', blank=True, null=True)  # Field name made lowercase.
+    area4 = models.IntegerField(db_column='Area4', blank=True, null=True)  # Field name made lowercase.
+    day5 = models.IntegerField(db_column='Day5', blank=True, null=True)  # Field name made lowercase.
+    hour5 = models.IntegerField(db_column='Hour5', blank=True, null=True)  # Field name made lowercase.
+    age5 = models.IntegerField(db_column='Age5', blank=True, null=True)  # Field name made lowercase.
+    area5 = models.IntegerField(db_column='Area5', blank=True, null=True)  # Field name made lowercase.
+    final = models.IntegerField(db_column='Final', blank=True, null=True)  # Field name made lowercase.
+    age1percent = models.IntegerField(db_column='Age1percent', blank=True, null=True)  # Field name made lowercase.
+    dt2 = models.IntegerField(blank=True, null=True)
+    age2percent = models.IntegerField(blank=True, null=True)
+    dt3 = models.IntegerField(db_column='DT3', blank=True, null=True)  # Field name made lowercase.
+    age3percent = models.IntegerField(db_column='Age3percent', blank=True, null=True)  # Field name made lowercase.
+    dt4 = models.IntegerField(db_column='DT4', blank=True, null=True)  # Field name made lowercase.
+    age4percent = models.IntegerField(db_column='Age4percent', blank=True, null=True)  # Field name made lowercase.
+    dt5 = models.IntegerField(db_column='DT5', blank=True, null=True)  # Field name made lowercase.
+    age5percent = models.IntegerField(db_column='Age5percent', blank=True, null=True)  # Field name made lowercase.
+    x_dt_d_field = models.IntegerField(db_column='x-DT(d)', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    x_exp_percent = models.IntegerField(db_column='x-Exp-percent', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    spp = models.IntegerField(blank=True, null=True)
+    notes2 = models.IntegerField(db_column='Notes2', blank=True, null=True)  # Field name made lowercase.
+
 class Extraction(IngaBase):
     extraction_number = models.IntegerField(blank=True, null=True)
     chemistry = models.ForeignKey("Chemistry", blank=True, null=True)

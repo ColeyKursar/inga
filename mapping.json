@@ -149,6 +149,164 @@
         "origin": "Chlorophyll",
         "universal": {}
     },
+    "Expansion": {
+        "origin": "Expansion",
+        "universal": {},
+        "fields": [{
+            "collectors": {
+                "type": "value",
+                "field_name": ["collectors"]
+            },
+            "date": {
+                "type": "date",
+                "year_field": "year",
+                "month_field": "month",
+                "day_field": false
+            },
+            "plant": {
+                "type": "reference",
+                "reference_model": "Plant",
+                "remote_field_name": ["plant_number", "site__site"],
+                "local_field_name": ["plant_field", "site"]
+            },
+            "lh_field": {
+                "type": "value",
+                "field_name": ["lh_field"]
+            },
+            "day1": {
+                "type": "value",
+                "field_name": ["day1"]
+            },
+            "hour1": {
+                "type": "value",
+                "field_name": ["hour1"]
+            },
+            "area1": {
+                "type": "value",
+                "field_name": ["area1"]
+            },
+            "day2": {
+                "type": "value",
+                "field_name": ["day2"]
+            },
+            "hour2": {
+                "type": "value",
+                "field_name": ["hour2"]
+            },
+            "age2": {
+                "type": "value",
+                "field_name": ["age2"]
+            },
+            "area2": {
+                "type": "value",
+                "field_name": ["area2"]
+            },
+            "day3": {
+                "type": "value",
+                "field_name": ["day3"]
+            },
+            "hour3": {
+                "type": "value",
+                "field_name": ["hour3"]
+            },
+            "age3": {
+                "type": "value",
+                "field_name": ["age3"]
+            },
+            "area3": {
+                "type": "value",
+                "field_name": ["area3"]
+            },
+            "day4": {
+                "type": "value",
+                "field_name": ["day4"]
+            },
+            "hour4": {
+                "type": "value",
+                "field_name": ["hour4"]
+            },
+            "age4": {
+                "type": "value",
+                "field_name": ["age4"]
+            },
+            "area4": {
+                "type": "value",
+                "field_name": ["area4"]
+            },
+            "day5": {
+                "type": "value",
+                "field_name": ["day5"]
+            },
+            "hour5": {
+                "type": "value",
+                "field_name": ["hour5"]
+            },
+            "age5": {
+                "type": "value",
+                "field_name": ["age5"]
+            },
+            "area5": {
+                "type": "value",
+                "field_name": ["area5"]
+            },
+            "final": {
+                "type": "value",
+                "field_name": ["final"]
+            },
+            "age1percent": {
+                "type": "value",
+                "field_name": ["age1percent"]
+            },
+            "dt2": {
+                "type": "value",
+                "field_name": ["dt2"]
+            },
+            "age2percent": {
+                "type": "value",
+                "field_name": ["age2percent"]
+            },
+            "dt3": {
+                "type": "value",
+                "field_name": ["dt3"]
+            },
+            "age3percent": {
+                "type": "value",
+                "field_name": ["age3percent"]
+            },
+            "dt4": {
+                "type": "value",
+                "field_name": ["dt4"]
+            },
+            "age4percent": {
+                "type": "value",
+                "field_name": ["age4percent"]
+            },
+            "dt5": {
+                "type": "value",
+                "field_name": ["dt5"]
+            },
+            "age5percent": {
+                "type": "value",
+                "field_name": ["age5percent"]
+            },
+            "x_dt_d_field": {
+                "type": "value",
+                "field_name": ["x_dt_d_field"]
+            },
+            "x_exp_percent": {
+                "type": "value",
+                "field_name": ["x_exp_percent"]
+            },
+            "spp": {
+                "type": "value",
+                "field_name": ["spp"]
+            },
+            "notes2": {
+                "type": "value",
+                "field_name": ["notes2"]
+            }
+        }]
+    },
     "Extraction": {
         "fields": [
             {

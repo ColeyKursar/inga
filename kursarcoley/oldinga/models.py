@@ -363,7 +363,7 @@ class Expansion(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'Expansion'
+        db_table = 'Expansion_old'
 
 
 class Extraction(models.Model):
