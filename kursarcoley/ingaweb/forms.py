@@ -39,7 +39,7 @@ class ExtractionForm(BootstrapForm):
         try: 
             chemistry = Chemistry.objects.get(chemistry_number=chemistry_number)
             plant = chemistry.plant
-            species = plant.species
+            species = plant.species_code
 
             if (plant_number != "" and plant_number != plant.plant_number) and (species_code != "" and species_code != species.species_code):
                 self.add_error(None, "There is an mismatch between the given chemistry number, plant number, and species code.")

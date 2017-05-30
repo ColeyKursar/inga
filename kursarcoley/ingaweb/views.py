@@ -78,6 +78,7 @@ def BatchDefineView(request):
     else:
         model = apps.get_app_config('inga').get_model(request.POST['table'])
         file = request.FILES['input_file']
+
         filewrapper = TextIOWrapper(file.file, encoding=request.encoding)
         csvdata = csv.DictReader(filewrapper)
 

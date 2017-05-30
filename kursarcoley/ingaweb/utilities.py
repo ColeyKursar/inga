@@ -21,7 +21,7 @@ def build_extraction_form(extraction):
     data["extraction_number"] = extraction.extraction_number
     data["chemistry"] = extraction.chemistry.chemistry_number
     data["plant"] = extraction.chemistry.plant.plant_number
-    data["species"] = extraction.chemistry.plant.species.species_code
+    data["species"] = extraction.chemistry.plant.species_code.species_code
     data["date"] = extraction.date
     data["method"] = extraction.method
     data["chemist"] = extraction.chemist
