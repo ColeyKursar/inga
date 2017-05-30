@@ -10,7 +10,7 @@ class IngaBase(models.Model):
         names = ()
 
         for field in self._meta.get_fields():
-            if isinstance(field, models.ForeignKey):
+            if isinstance(field, models.ForeignKey) and field.name != "other_chemistry":
                 model = field.rel.to
                 fieldstring = field.name + ":"
                 names += tuple((fieldstring + name[0], fieldstring + name[1])
