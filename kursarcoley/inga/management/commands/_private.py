@@ -260,6 +260,7 @@ def wire(model, **kwargs):
             try:
                 generic = model.objects.get(generic=True)
                 print("Generic found")
+                print(generic.__dict__)
             except model.DoesNotExist:
                 print("Creating generic")
                 generic_args = trim_references(kwargs)
