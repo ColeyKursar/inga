@@ -72,7 +72,7 @@
                     "reference_model": "Plant",
                     "remote_field_name": [
                         "plant_number",
-                        "species_code__historical__old_species_number"
+                        "species_code__species_code"
                     ],
                     "type": "reference"
                 },
