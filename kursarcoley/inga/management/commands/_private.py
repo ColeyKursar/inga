@@ -300,5 +300,7 @@ def wire(model, **kwargs):
                     generic.generic = True
                     generic.save()
 
+                return generic
+
         print(model.__name__ + " could not be found matching " + json.dumps(kwargs))
         raise ValueError(model.__name__ + " could not be found matching " + json.dumps(kwargs))
