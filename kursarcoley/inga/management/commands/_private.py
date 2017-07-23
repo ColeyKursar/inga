@@ -254,28 +254,15 @@ def wire(model, **kwargs):
     inexact_kwargs = {}
 
     for key in kwargs:
-        inexact_kwargs[key + "__iexact"] = str(kwargs[key]).strip()
+        iexact_key = iexact_key
+        inexact_kwargs[iexact_key] = str(kwargs[key]).strip()
         if inexact_kwargs[key + '__iexact'].lower() in ["null", "none"]:
-            print("Null/None going to generic")     
-            try:
-                generic = model.objects.get(generic=True)
-                print("Generic found")
-            except model.DoesNotExist:
-                print("Creating generic")
-                generic_args = trim_references(kwargs)
-                print(generic_args)
-                generic = model(**generic_args)
-                generic.generic = True
-                generic.save()
-
-            print(generic.__dict__)
-            return generic
-        elif inexact_kwargs[key + '__iexact'].lower == "":
-            print("Empty")
-
+            del inexact_kwargs[iexact_key]
         if key == "chemistry_number" and kwargs[key].lower()[0] != 'c':
-            inexact_kwargs[key + "__iexact"] = 'c' + inexact_kwargs[key + "__iexact"]
+            inexact_kwargs[iexact_key] = 'c' + inexact_kwargs[iexact_key]
 
+    if len(inexact_kwargs) == 0:
+        raise ValueError
     try:
         queryset = model.objects.filter(generic=False, **inexact_kwargs)
         return queryset.get()
@@ -289,20 +276,17 @@ def wire(model, **kwargs):
             try:
                 return model.objects.get(**inexact_kwargs)
             except model.DoesNotExist:
-                print("Wiring to generic")     
-                try:
-                    generic = model.objects.get(generic=True)
-                    print("Generic found")
-                except model.DoesNotExist:
-                    print("Creating generic")
-                    generic_args = trim_references(kwargs)
-                    print(generic_args)
-                    generic = model(**generic_args)
-                    generic.generic = True
-                    generic.save()
+                pass   
+        try:
+            generic = model.objects.get(generic=True)
+            print("Generic found")
+        except model.DoesNotExist:
+            print("Creating generic")
+            generic_args = trim_references(kwargs)
+            print(generic_args)
+            generic = model(**generic_args)
+            generic.generic = True
+            generic.save()
 
-                print(generic.__dict__)
-                return generic
-
-        print(model.__name__ + " could not be found matching " + json.dumps(kwargs))
-        raise ValueError(model.__name__ + " could not be found matching " + json.dumps(kwargs))
+        print(generic.__dict__)
+        return generic
