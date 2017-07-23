@@ -265,6 +265,7 @@ def wire(model, **kwargs):
         print("nothing???")
         print(kwargs)
         print(model)
+        return None
     try:
         queryset = model.objects.filter(generic=False, **inexact_kwargs)
         return queryset.get()
