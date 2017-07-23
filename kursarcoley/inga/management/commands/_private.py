@@ -264,7 +264,7 @@ def wire(model, **kwargs):
             if key == "chemistry_number" and kwargs[key].lower()[0] != 'c':
                 inexact_kwargs[iexact_key] = 'c' + inexact_kwargs[iexact_key]
         else:
-            inexact_kwargs[key] = kwargs[keys]
+            inexact_kwargs[key] = kwargs[key]
 
     if len(inexact_kwargs) == 0:
         return None
