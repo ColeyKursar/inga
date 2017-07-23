@@ -256,7 +256,16 @@ def wire(model, **kwargs):
     for key in kwargs:
         inexact_kwargs[key + "__iexact"] = str(kwargs[key]).strip()
         if inexact_kwargs[key + '__iexact'].lower() in ["null", "none"]:
-            print("Null/None")
+            print("Null/None going to generic")     
+            try:
+                generic = model.objects.get(generic=True)
+                print("Generic found")
+            except model.DoesNotExist:
+                print("Creating generic")
+                generic_args = trim_references(kwargs)
+                generic = model(**generic_args)
+                generic.generic = True
+                generic.save()
         elif inexact_kwargs[key + '__iexact'].lower == "":
             print("Empty")
 
