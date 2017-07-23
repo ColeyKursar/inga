@@ -266,6 +266,8 @@ def wire(model, **kwargs):
                 generic = model(**generic_args)
                 generic.generic = True
                 generic.save()
+
+            return generic
         elif inexact_kwargs[key + '__iexact'].lower == "":
             print("Empty")
 
