@@ -278,7 +278,7 @@ def wire(model, **kwargs):
             except model.DoesNotExist:
                 pass   
         try:
-            generic = model.objects.get(generic=True)
+            generic = model.objects.get(**inexact_kwargs, generic=True)
             print("Generic found")
         except model.DoesNotExist:
             print("Creating generic")
