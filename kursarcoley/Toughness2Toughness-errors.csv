@@ -1,5 +1,0 @@
-id,site,year,plant_field,species_code,toughness1,toughness2,toughness3,toughness4,toughness5,toughness6,toughness7,toughness,notes,max_toughness,updated,error message
-889,BCI,2014,4989,IngC,290,305,240,210,0,0,0,261.0000,,0,2015-07-23 15:31:29+00:00,"Plant could not be found matching {""species_code__species_code__iexact"": ""IngC"", ""plant_number__iexact"": ""4989""}"
-1042,Tiputini,2014,1238,T22,480,350,450,430,0,0,0,428.0000,,0,2015-07-23 15:31:29+00:00,"Plant could not be found matching {""species_code__species_code__iexact"": ""T22"", ""plant_number__iexact"": ""1238""}"
-1098,Tiputini,2014,1021,T33,500,560,330,460,0,0,0,463.0000,,0,2015-07-23 15:31:29+00:00,"Plant could not be found matching {""species_code__species_code__iexact"": ""T33"", ""plant_number__iexact"": ""1021""}"
-1102,Tiputini,2014,1265,T33,250,310,260,330,0,0,0,288.0000,,0,2015-07-23 15:31:29+00:00,"Plant could not be found matching {""species_code__species_code__iexact"": ""T33"", ""plant_number__iexact"": ""1265""}"

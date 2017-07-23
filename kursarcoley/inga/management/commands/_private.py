@@ -259,8 +259,11 @@ def wire(model, **kwargs):
                 inexact_kwargs[key + "__iexact"].lower() == "none" or
                 inexact_kwargs[key + "__iexact"] == ""):
             try:
+                print("Trying generic")
                 generic = model.objects.get(generic=True)
+                print("Generic found")
             except model.DoesNotExist:
+                print("No generic found, creating")
                 generic_args = trim_references(kwargs)
                 generic = model(**generic_args)
                 generic.generic = True
@@ -284,7 +287,16 @@ def wire(model, **kwargs):
             try:
                 return model.objects.get(**inexact_kwargs)
             except model.DoesNotExist:
-                pass
+                print("Wiring to generic")     
+                try:
+                    generic = model.objects.get(generic=True)
+                    print("Generic found")
+                except model.DoesNotExist:
+                    print("Creating generic")
+                    generic_args = trim_references(kwargs)
+                    generic = model(**generic_args)
+                    generic.generic = True
+                    generic.save()
 
         print(model.__name__ + " could not be found matching " + json.dumps(kwargs))
         raise ValueError(model.__name__ + " could not be found matching " + json.dumps(kwargs))
