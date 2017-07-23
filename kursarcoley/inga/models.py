@@ -293,7 +293,7 @@ class PlantSpecies(IngaBase):
 
 class PlantSpeciesHistorical(IngaBase):
     old_species_number = models.TextField(blank=True, null=True)
-    species_code = models.ForeignKey("PlantSpecies")
+    species_code = models.ForeignKey("PlantSpecies", related_name="historical")
     genus = models.TextField(blank=True, null=True)
     species_name = models.TextField(blank=True, null=True)
     comment = models.TextField(blank=True, null=True)
