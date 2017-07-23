@@ -264,7 +264,9 @@ def wire(model, **kwargs):
 
     if len(inexact_kwargs) == 0:
         return None
+
     try:
+        print("searching fir " + inexact_kwargs)
         queryset = model.objects.filter(generic=False, **inexact_kwargs)
         return queryset.get()
     except model.MultipleObjectsReturned:
