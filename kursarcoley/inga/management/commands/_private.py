@@ -263,6 +263,7 @@ def wire(model, **kwargs):
             except model.DoesNotExist:
                 print("Creating generic")
                 generic_args = trim_references(kwargs)
+                print(generic_args)
                 generic = model(**generic_args)
                 generic.generic = True
                 generic.save()
@@ -294,6 +295,7 @@ def wire(model, **kwargs):
                 except model.DoesNotExist:
                     print("Creating generic")
                     generic_args = trim_references(kwargs)
+                    print(generic_args)
                     generic = model(**generic_args)
                     generic.generic = True
                     generic.save()
