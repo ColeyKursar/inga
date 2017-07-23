@@ -254,7 +254,7 @@ def wire(model, **kwargs):
     inexact_kwargs = {}
 
     for key in kwargs:
-        if kwargs[key] is None or kwargs[key].lower().strip() == "none" or kwargs[key].strip == "":
+        if kwargs[key] is None or str(kwargs[key]).lower().strip() == "none" or kwargs[key].strip == "":
             continue
 
         iexact_key = key + '__iexact'
