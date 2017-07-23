@@ -267,7 +267,7 @@ def wire(model, **kwargs):
             inexact_kwargs[key] = kwargs[key]
 
     if len(inexact_kwargs) == 0:
-        return None
+        raise ValueError
 
     try:
         print("searching fir " + str(inexact_kwargs))
@@ -284,12 +284,16 @@ def wire(model, **kwargs):
                 return model.objects.get(**inexact_kwargs)
             except model.DoesNotExist:
                 pass   
+        generic_args = trim_references(kwargs)
+
+        if generic_args != kwargs:
+            print("remote references not resolvable")
+            raise ValueError
         try:
             generic = model.objects.get(generic=True, **inexact_kwargs)
             print("Generic found")
         except model.DoesNotExist:
             print("Creating generic")
-            generic_args = trim_references(kwargs)
             print(generic_args)
             generic = model(**generic_args)
             generic.generic = True
