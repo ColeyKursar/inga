@@ -254,9 +254,9 @@ def wire(model, **kwargs):
     inexact_kwargs = {}
 
     for key in kwargs:
-        iexact_key = iexact_key
+        iexact_key = key + '__iexact'
         inexact_kwargs[iexact_key] = str(kwargs[key]).strip()
-        if inexact_kwargs[key + '__iexact'].lower() in ["null", "none"]:
+        if inexact_kwargs[iexact_key].lower() in ["null", "none"]:
             del inexact_kwargs[iexact_key]
         if key == "chemistry_number" and kwargs[key].lower()[0] != 'c':
             inexact_kwargs[iexact_key] = 'c' + inexact_kwargs[iexact_key]
