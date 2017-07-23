@@ -262,7 +262,7 @@ def wire(model, **kwargs):
             inexact_kwargs[iexact_key] = 'c' + inexact_kwargs[iexact_key]
 
     if len(inexact_kwargs) == 0:
-        raise ValueError
+        print("nothing???")
     try:
         queryset = model.objects.filter(generic=False, **inexact_kwargs)
         return queryset.get()
