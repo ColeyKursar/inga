@@ -255,27 +255,16 @@ def wire(model, **kwargs):
 
     for key in kwargs:
         inexact_kwargs[key + "__iexact"] = str(kwargs[key]).strip()
-        if (inexact_kwargs[key + "__iexact"].lower() == "null" or
-                inexact_kwargs[key + "__iexact"].lower() == "none" or
-                inexact_kwargs[key + "__iexact"] == ""):
-            try:
-                print("Trying generic")
-                generic = model.objects.get(generic=True)
-                print("Generic found")
-            except model.DoesNotExist:
-                print("No generic found, creating")
-                generic_args = trim_references(kwargs)
-                generic = model(**generic_args)
-                generic.generic = True
-                generic.save()
+        if inexact_kwargs[key + '__iexact'].lower() in ["null", "none"]:
+            print("Null/None")
+        elif inexact_kwargs[key + '__iexact'].lower == "":
+            print("Empty")
 
-            return generic
-
-        elif key == "chemistry_number" and kwargs[key].lower()[0] != 'c':
+        if key == "chemistry_number" and kwargs[key].lower()[0] != 'c':
             inexact_kwargs[key + "__iexact"] = 'c' + inexact_kwargs[key + "__iexact"]
 
     try:
-        queryset = model.objects.filter(**inexact_kwargs)
+        queryset = model.objects.filter(generic=False, **inexact_kwargs)
         return queryset.get()
     except model.MultipleObjectsReturned:
         print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(kwargs))
