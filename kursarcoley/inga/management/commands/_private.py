@@ -299,6 +299,14 @@ def wire(model, **kwargs):
     """
     inexact_kwargs = kwargs_to_filter(**kwargs)
 
+    if model.__name__ == "Plant": 
+        if 'plant_number' in kwargs and kwargs['plant_number'] is None and 'species_code__species_code' in kwargs and kwargs['species_code__species_code'] is not None:
+            try:
+                return model.objects.get(generic=True, **inexact_kwargs)
+            except model.DoesNotExist:
+                generic_args = trim_locals(kwargs)
+                return create_generic(model, **generic_args)
+
     if len(inexact_kwargs) == 0:
         raise ValueError("No search terms -- all referenced fields null or empty")
 
@@ -306,18 +314,9 @@ def wire(model, **kwargs):
         # The simplest solution: we find exactly what we're looking for
         return model.objects.get(generic=False, **inexact_kwargs)
     except model.MultipleObjectsReturned:
-        # We shouldn't get more than one. This is automatically an error case.
-        print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(kwargs))
-        raise ValueError("Multiple " + model.__name__ + " objects returned matching " + json.dumps(kwargs))
+        # We shouldn't get more than one.
+        print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(inexact_kwargs))
+        raise ValueError("Multiple " + model.__name__ + " objects returned matching " + json.dumps(inexact_kwargs))
     except model.DoesNotExist:
-        generic_args = trim_locals(kwargs)
-        
-        if generic_args == kwargs:
-            # We should only try and find a generic if it would be different than what we already looked for
-            print("Could not find" + model.__name__ + " matching " + json.dumps(kwargs))
-            raise ValueError("Could not find " + model.__name__ + " matching " + json.dumps(kwargs))
-
-        try:
-            return model.objects.get(generic=True, **inexact_kwargs)
-        except model.DoesNotExist:
-            return create_generic(model, **generic_args)
+        print("Could not find" + model.__name__ + " matching " + json.dumps(kwargs))
+        raise ValueError("Could not find " + model.__name__ + " matching " + json.dumps(kwargs))
