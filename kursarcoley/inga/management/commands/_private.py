@@ -265,6 +265,7 @@ def kwargs_to_filter(**kwargs):
     return filter_kwargs
 
 def create_generic(model, **properties):
+    print("Creating generic!")
     property_tree = {}
     generic = model()
 
@@ -299,8 +300,10 @@ def wire(model, **kwargs):
     """
     inexact_kwargs = kwargs_to_filter(**kwargs)
 
-    if model.__name__ == "Plant": 
+    if model.__name__ == "Plant":
+        print("Looking for plant") 
         if 'plant_number' in kwargs and kwargs['plant_number'] is None and 'species_code__species_code' in kwargs and kwargs['species_code__species_code'] is not None:
+            print("Connecting to a generic")
             try:
                 return model.objects.get(generic=True, **inexact_kwargs)
             except model.DoesNotExist:
@@ -318,5 +321,5 @@ def wire(model, **kwargs):
         print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(inexact_kwargs))
         raise ValueError("Multiple " + model.__name__ + " objects returned matching " + json.dumps(inexact_kwargs))
     except model.DoesNotExist:
-        print("Could not find" + model.__name__ + " matching " + json.dumps(kwargs))
+        print("Could not find " + model.__name__ + " matching " + json.dumps(kwargs))
         raise ValueError("Could not find " + model.__name__ + " matching " + json.dumps(kwargs))
