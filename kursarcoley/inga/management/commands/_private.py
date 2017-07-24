@@ -281,6 +281,8 @@ def create_generic(model, **properties):
         else:
             property_tree[local_name] = {foreign_name: foreign_value}
     
+    print(property_tree)
+
     for remote in property_tree:
         remote_model = model._meta.get_field(remote).rel.to
         remote_instance = wire(remote_model, **property_tree[remote])
@@ -301,9 +303,7 @@ def wire(model, **kwargs):
     inexact_kwargs = kwargs_to_filter(**kwargs)
 
     if model.__name__ == "Plant":
-        print("Looking for plant") 
         if 'plant_number' in kwargs and kwargs['plant_number'] is None and 'species_code__species_code' in kwargs and kwargs['species_code__species_code'] is not None:
-            print("Connecting to a generic")
             try:
                 return model.objects.get(generic=True, **inexact_kwargs)
             except model.DoesNotExist:
