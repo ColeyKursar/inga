@@ -169,7 +169,7 @@ def build_date(day, month, year):
             else:
                 print(year, month, day)
         except ValueError:
-            print(year, month, day)
+            raise ValueError("Could not build proper date from year: " + str(year) + ", month: " + str(month) + ", day: " + str(day))
 
 
 def parse_month(month):
@@ -236,22 +236,17 @@ def get_multireference(field, origin):
 
     return values
 
-def trim_references(kwargs):
+def trim_locals(kwargs):
     trimmed = {}
 
     for key in kwargs:
-        if "__" not in key:
+        if "__" in key:
             trimmed[key] = kwargs[key]
 
     return trimmed
 
-def wire(model, **kwargs):
-    """
-    Retrieve referenced model and return it.
-    If the referenced model cannot be found, it will create a generic model and return that
-    If a generic model has been previously created, it will return that.
-    """
-    inexact_kwargs = {}
+def kwargs_to_filter(**kwargs):
+    filter_kwargs = {}
 
     for key in kwargs:
         if kwargs[key] is None or str(kwargs[key]).lower().strip() == "none" or str(kwargs[key]).strip() == "":
@@ -259,42 +254,39 @@ def wire(model, **kwargs):
 
         if isinstance(kwargs[key], basestring):
             iexact_key = key + '__iexact'
-            inexact_kwargs[iexact_key] = kwargs[key].strip()
+            filter_kwargs[iexact_key] = kwargs[key].strip()
 
             if key == "chemistry_number" and kwargs[key].lower()[0] != 'c':
-                inexact_kwargs[iexact_key] = 'c' + inexact_kwargs[iexact_key]
+                filter_kwargs[iexact_key + "__in"] = ['c' + filter_kwargs[iexact_key], filter_kwargs[iexact_key]]
+                del filter_kwargs[iexact_key]
         else:
-            inexact_kwargs[key] = kwargs[key]
+            filter_kwargs[key] = kwargs[key]
+
+    return filter_kwargs
+    
+
+def wire(model, **kwargs):
+    """
+    Retrieve referenced model and return it.
+    If the referenced model cannot be found, it will create a generic model and return that
+    If a generic model has been previously created, it will return that.
+    """
+    inexact_kwargs = kwargs_to_filter(**kwargs)
 
     if len(inexact_kwargs) == 0:
-        raise ValueError
+        raise ValueError("No search terms -- all referenced fields null or empty")
 
     try:
-        print("searching fir " + str(inexact_kwargs))
-        queryset = model.objects.filter(generic=False, **inexact_kwargs)
-        return queryset.get()
+        # The simplest solution: we find exactly what we're looking for
+        return model.objects.get(generic=False, **inexact_kwargs)
     except model.MultipleObjectsReturned:
         print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(kwargs))
         raise ValueError("Multiple " + model.__name__ + " objects returned matching " + json.dumps(kwargs))
     except model.DoesNotExist:
-        if "chemistry_number" in kwargs:
-            if kwargs["chemistry_number"].lower()[0] == "c":
-                inexact_kwargs["chemistry_number__iexact"] = kwargs["chemistry_number"][1:]
-            try:
-                return model.objects.get(**inexact_kwargs)
-            except model.DoesNotExist:
-                pass   
-        generic_args = trim_references(kwargs)
-
-        if generic_args != kwargs:
-            print("remote references not resolvable")
-            raise ValueError
         try:
-            generic = model.objects.get(generic=True, **inexact_kwargs)
-            print("Generic found")
+            generic_args = trim_locals(kwargs)
+            return model.objects.get(generic=True, **inexact_kwargs)
         except model.DoesNotExist:
-            print("Creating generic")
-            print(generic_args)
             generic = model(**generic_args)
             generic.generic = True
             generic.save()
