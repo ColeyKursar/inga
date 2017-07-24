@@ -263,7 +263,34 @@ def kwargs_to_filter(**kwargs):
             filter_kwargs[key] = kwargs[key]
 
     return filter_kwargs
+
+def create_generic(model, **properties):
+    property_tree = {}
+    generic = model()
+
+    for property in properties:
+        parts = property.split('__', 1)
+        
+        local_name = parts[0]
+        foreign_name = parts[1]
+        foreign_value = properties[property]
+
+        if local_name in property_tree:
+            property_tree[local_name][foreign_name] = foreign_value
+        else:
+            property_tree[local_name] = {foreign_name: foreign_value}
     
+    for remote in property_tree: 
+        local_field = getattr(model, remote)
+        remote_model = local_field.remote_model
+        remote_instance = wire(remote_model, **property_tree[remote])
+        setattr(generic, remote, remote_instance)
+
+    generic.generic = True
+    generic.save()
+
+    return generic
+
 
 def wire(model, **kwargs):
     """
@@ -280,15 +307,18 @@ def wire(model, **kwargs):
         # The simplest solution: we find exactly what we're looking for
         return model.objects.get(generic=False, **inexact_kwargs)
     except model.MultipleObjectsReturned:
+        # We shouldn't get more than one. This is automatically an error case.
         print("Multiple " + model.__name__ + " objects returned matching " + json.dumps(kwargs))
         raise ValueError("Multiple " + model.__name__ + " objects returned matching " + json.dumps(kwargs))
     except model.DoesNotExist:
+        generic_args = trim_locals(kwargs)
+        
+        if generic_args == kwargs:
+            # We should only try and find a generic if it would be different than what we already looked for
+            print("Could not find" + model.__name__ + " matching " + json.dumps(kwargs))
+            raise ValueError("Could not find " + model.__name__ + " matching " + json.dumps(kwargs))
+
         try:
-            generic_args = trim_locals(kwargs)
             return model.objects.get(generic=True, **inexact_kwargs)
         except model.DoesNotExist:
-            generic = model(**generic_args)
-            generic.generic = True
-            generic.save()
-
-        return generic
+            return create_generic(model, **generic_args)
