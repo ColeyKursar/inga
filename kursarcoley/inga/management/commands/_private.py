@@ -120,6 +120,7 @@ def build(destination_name, mapping):
                 if len(sources.difference(("0", "", None))) == 0:
                     continue
 
+                print(destination.__dict__)
                 destination.save()
 
                 for field in multireference_fields:
