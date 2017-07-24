@@ -282,7 +282,7 @@ def create_generic(model, **properties):
     
     for remote in property_tree: 
         local_field = getattr(model, remote)
-        remote_model = local_field.remote_model
+        remote_model = model._meta.get_field(local_field).rel.to
         remote_instance = wire(remote_model, **property_tree[remote])
         setattr(generic, remote, remote_instance)
 
