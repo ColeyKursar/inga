@@ -121,7 +121,6 @@ def build(destination_name, mapping):
                 if len(sources.difference(("0", "", None))) == 0:
                     continue
 
-                print(destination.__dict__)
                 destination.save()
 
                 for field in multireference_fields:
@@ -271,7 +270,6 @@ def kwargs_to_filter(**kwargs):
     return filter_kwargs
 
 def create_generic(model, **properties):
-    print("Creating generic!")
     property_tree = {}
     generic = model()
 
@@ -286,8 +284,6 @@ def create_generic(model, **properties):
             property_tree[local_name][foreign_name] = foreign_value
         else:
             property_tree[local_name] = {foreign_name: foreign_value}
-    
-    print(property_tree)
 
     for remote in property_tree:
         remote_model = model._meta.get_field(remote).rel.to
