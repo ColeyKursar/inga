@@ -262,7 +262,10 @@ def kwargs_to_filter(**kwargs):
             filter_kwargs[iexact_key] = kwargs[key].strip()
 
             if key == "chemistry_number" and kwargs[key].lower()[0] != 'c':
-                filter_kwargs[iexact_key + "__in"] = ['c' + filter_kwargs[iexact_key], filter_kwargs[iexact_key]]
+                filter_kwargs[key + "__in"] = ['c' + filter_kwargs[iexact_key].upper(), 
+                                               filter_kwargs[iexact_key].upper(), 
+                                               'c' + filter_kwargs[iexact_key].lower(), 
+                                               filter_kwargs[iexact_key].lower()]
                 del filter_kwargs[iexact_key]
         else:
             filter_kwargs[key] = kwargs[key]
