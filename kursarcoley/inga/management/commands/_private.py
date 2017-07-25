@@ -1,5 +1,6 @@
-from oldinga import models as old
+from django.db.utils import IntegrityError
 from inga import models as inga
+from oldinga import models as old
 from oldinga import models as oldinga
 import csv
 import datetime
@@ -128,6 +129,10 @@ def build(destination_name, mapping):
 
                 destination.save()
         except ValueError as e:
+            error = origin.__dict__
+            error["error message"] = e.message
+            errors.append(origin.__dict__)
+        except IntegrityError as e:
             error = origin.__dict__
             error["error message"] = e.message
             errors.append(origin.__dict__)
