@@ -316,7 +316,7 @@ def wire(model, **kwargs):
                 return create_generic(model, **generic_args)
 
     if len(inexact_kwargs) == 0:
-        raise ValueError("No search terms -- all referenced fields null or empty")
+        return None
 
     try:
         # The simplest solution: we find exactly what we're looking for
