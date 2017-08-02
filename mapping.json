@@ -499,7 +499,7 @@
                     ],
                     "reference_model": "UPLCResult",
                     "remote_field_name": [
-                        "diva"
+                        "file_name"
                     ],
                     "type": "reference"
                 },
@@ -2742,9 +2742,9 @@
                     "type": "date",
                     "year_field": "year"
                 },
-                "diva": {
+                "file_name": {
                     "field_name": [
-                        "diva_field"
+                        "file_name"
                     ],
                     "type": "value"
                 },

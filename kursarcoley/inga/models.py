@@ -330,7 +330,7 @@ class Toughness(IngaBase):
 class UPLCResult(IngaBase):
     raw = models.ForeignKey("RAW", blank=True, null=True)
     converted = models.ForeignKey("Converted", blank=True, null=True)
-    diva = models.TextField(blank=True, null=True)
+    file_name = models.TextField(blank=True, null=True)
     date = models.DateField(blank=True, null=True)
     mode = models.TextField(blank=True, null=True)
     sample_type = models.TextField(blank=True, null=True)
