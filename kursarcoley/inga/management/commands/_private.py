@@ -314,7 +314,7 @@ def wire(model, **kwargs):
             except model.DoesNotExist:
                 generic_args = trim_locals(kwargs)
                 return create_generic(model, **generic_args)
-        elif (('plant_number' in kwargs and kwargs['plant_number'] is None) or ('plant_number' not in kwargs) and 'site__site' in kwargs and kwargs['site__site'] is not None:
+        elif (('plant_number' in kwargs and kwargs['plant_number'] is None) or ('plant_number' not in kwargs)) and 'site__site' in kwargs and kwargs['site__site'] is not None:
             try:
                 return model.objects.get(generic=True, **inexact_kwargs)
             except model.DoesNotExist:
