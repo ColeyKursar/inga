@@ -2,5 +2,5 @@
 venv/
 *.sqlite3
 .python-version
-inagenv/
+ingaenv/
 .vscode/*
