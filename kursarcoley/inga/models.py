@@ -6,15 +6,16 @@ class IngaBase(models.Model):
     generic = models.BooleanField(default=False)
 
     @classmethod
-    def names(self):
+    def names(self, visited=set()):
         names = ()
 
         for field in self._meta.get_fields():
-            if isinstance(field, models.ForeignKey) and field.name != "other_chemistry":
+            if isinstance(field, models.ForeignKey) and field.rel.to.__name__ not in visited:
                 model = field.rel.to
+                visited.add(field.rel.to.__name__)
                 fieldstring = field.name + ":"
                 names += tuple((fieldstring + name[0], fieldstring + name[1])
-                               for name in model.names())
+                               for name in model.names(visited))
             else:
                 model = self
                 names += ((model.__name__ + "." + field.name, model.__name__ + "." + field.name),)

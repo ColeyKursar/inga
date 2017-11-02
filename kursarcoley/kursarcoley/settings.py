@@ -25,7 +25,7 @@ SECRET_KEY = 'kuvj)elt^wdmj##izv(v1x_r5e)5p4o#ulznwsadz$44u(ad-q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [u'coleykursarlab.chpc.utah.edu']
 
 
 # Application definition
