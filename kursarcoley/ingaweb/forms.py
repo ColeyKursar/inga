@@ -59,4 +59,4 @@ class BatchDefineForm(BootstrapForm):
         choices = (("", ""), ) + model_fields
 
         for header in csv_headers:
-            self.fields[header] = forms.CharField(widget=forms.Select(attrs=BOOTSTRAP_CSS, choices=choices))
+            self.fields[header] = forms.CharField(widget=forms.Select(attrs=BOOTSTRAP_CSS, choices=choices), required=False)

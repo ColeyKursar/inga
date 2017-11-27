@@ -8,17 +8,20 @@ class IngaBase(models.Model):
     @classmethod
     def names(self, visited=set()):
         names = ()
-
+        
         for field in self._meta.get_fields():
-            if isinstance(field, models.ForeignKey) and field.rel.to.__name__ not in visited:
+            if field.is_relation and not field.concrete:
+                continue
+            elif isinstance(field, models.ForeignKey) and field.rel.to.__name__ not in visited:
                 model = field.rel.to
                 visited.add(field.rel.to.__name__)
                 fieldstring = field.name + ":"
                 names += tuple((fieldstring + name[0], fieldstring + name[1])
                                for name in model.names(visited))
             else:
-                model = self
-                names += ((model.__name__ + "." + field.name, model.__name__ + "." + field.name),)
+                model_name = self.__name__
+                names += ((model_name + "." + field.name, model_name + "." + field.name),)
+
 
         return tuple(sorted(names, key=lambda tup: tup[1]))
 
