@@ -160,4 +160,4 @@ APPEND_SLASH = False
 try:
     from .local_settings import *
 except ImportError:
-print("Not importing local settings")
+    print("Not importing local settings")
