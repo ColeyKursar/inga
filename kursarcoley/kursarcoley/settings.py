@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'ingaweb',
     'oldinga',
     'drf_generators',
-    'rest_framework'
+    'rest_framework',
+    'django_filters'
 ]
 
 MIDDLEWARE_CLASSES = [
