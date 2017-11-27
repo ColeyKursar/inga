@@ -81,21 +81,6 @@ WSGI_APPLICATION = 'kursarcoley.wsgi.application'
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
 DATABASES = {
-    # 'default' : {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'newinga',
-    #     'USER': 'root',
-    #     'PASSWORD': '1187277',
-    #     'HOST': 'localhost'
-    # },
-
-    # 'oldinga': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'oldinga',
-    #     'USER': 'root',
-    #     'PASSWORD': '1187277',
-    #     'HOST': 'localhost'
-    # },
 
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -171,3 +156,8 @@ REST_FRAMEWORK = {
 }
 
 APPEND_SLASH = False
+
+try:
+    from .local_settings import *
+except ImportError:
+print("Not importing local settings")
