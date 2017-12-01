@@ -6,7 +6,8 @@ class IngaBase(models.Model):
     generic = models.BooleanField(default=False)
 
     @classmethod
-    def names(self, visited=set()):
+    def names(self, visited=[]):
+        visited = set(visited)
         names = ()
         
         for field in self._meta.get_fields():
