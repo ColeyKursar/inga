@@ -52,7 +52,7 @@ class Batch(models.Model):
                             else:
                                 references[local] = {
                                     "table": table,
-                                    "lookup": {}
+                                    "params": {}
                                 }
 
                         if local in references:
