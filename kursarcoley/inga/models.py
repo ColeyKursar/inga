@@ -349,6 +349,8 @@ class UPLCResult(IngaBase):
     notes = models.TextField(blank=True, null=True)
     all_inga = models.TextField(blank=True, null=True)
     chemocoding = models.TextField(blank=True, null=True)
+    blank = models.TextField(blank=True, null=True)
+    rti = models.TextField(blank=True, null=True)
 
 class PC_ID(IngaBase):
     PC_ID = models.ForeignKey("FeatureTableRawData")
@@ -363,3 +365,4 @@ class Tyrosine(IngaBase):
     file = models.TextField()
     calibration = models.IntegerField()
     date = models.DateField(null=True, blank=True)
+    notes = models.TextField(null=True, blank=True)
