@@ -166,8 +166,8 @@
             "plant": {
                 "type": "reference",
                 "reference_model": "Plant",
-                "remote_field_name": ["plant_number", "site__site"],
-                "local_field_name": ["plant_field", "site"]
+                "remote_field_name": ["plant_number", "site__site", "species_code__species_code"],
+                "local_field_name": ["plant_field", "site", "Species_code"]
             },
             "lh_field": {
                 "type": "value",
