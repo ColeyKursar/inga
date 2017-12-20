@@ -27,23 +27,51 @@ class Batch(models.Model):
             if idx % 100 == 0: print(idx)
             new = model()
             try:
+                references = {}
                 for column, value in mapping.items():
                     table, field = value.split('.')
+
+                    # If the table is ourself, just set the value
                     if table == self.table:
                         if row[column] != "NULL":
                             setattr(new, field, row[column])
                     else:
-                        local, table = table.rsplit(':', 1)
-                        external = getattr(inga, table)
-                        params = {field: row[column]}
-                        try:
-                            external = external.objects.get(**params)
-                        except external.DoesNotExist:
-                            problem = row
-                            problem["error"] = external.__name__ + " does not exist matching query " + json.dumps(params)
-                            errors.append(problem)
-                            continue
-                        setattr(new, local, external)
+                        # Otherwise, we need to add it to our lookup values
+                        path, table = table.rsplit(':', 1)
+                        path = path.split(":")
+                        local = path[0]
+                        path = path[1:]
+                        path.append(field)                        
+
+                        reference_field = "__".join(path)
+                        reference_value = row[column]
+
+                        if reference_field == "":
+                            if local in references:
+                                references[local]["table"] = table
+                            else:
+                                references[local] = {
+                                    "table": table,
+                                    "lookup": {}
+                                }
+
+                        if local in references:
+                            references[local]["params"][reference_field] = reference_value
+                        else:
+                            references[local] = {
+                                "params": {
+                                    reference_field: reference_value
+                                }
+                            }
+
+                for local in references:
+                    table = references[local]["table"]
+                    params = references[local]["params"]
+                    print(local, table, params)
+                    external = getattr(inga, table)
+                    reference = external.objects.get(**params)
+                    setattr(new, local, reference)
+
                 new.save()
             except Exception as e:
                 message = e.__class__.__name__ + ": " + str(e)
