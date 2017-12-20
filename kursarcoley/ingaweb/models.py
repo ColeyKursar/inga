@@ -33,14 +33,19 @@ class Batch(models.Model):
                         if row[column] != "NULL":
                             setattr(new, field, row[column])
                     else:
-                        local, table = table.split(':', maxsplit=1)
+                        local, table = table.rsplit(':', 1)
                         external = getattr(inga, table)
                         params = {field: row[column]}
-                        external = external.objects.get(**params)
+                        try:
+                            external = external.objects.get(**params)
+                        except external.DoesNotExist:
+                            problem = row
+                            problem["error"] = external.__name__ + " does not exist matching query " + json.dumps(params)
+                            errors.append(problem)
+                            continue
                         setattr(new, local, external)
                 new.save()
             except Exception as e:
-                print(traceback.print_tb(e.__traceback__))
                 message = e.__class__.__name__ + ": " + str(e)
                 problem = row
                 problem["error"] = message
