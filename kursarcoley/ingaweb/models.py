@@ -46,7 +46,7 @@ class Batch(models.Model):
                         reference_field = "__".join(path)
                         reference_value = row[column]
 
-                        if reference_field == "":
+                        if "__" not in reference_field:
                             if local in references:
                                 references[local]["table"] = table
                             else:
