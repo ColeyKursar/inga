@@ -170,6 +170,7 @@ class Field(IngaBase):
 class Hairs(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField()
+    notes = models.TextField(blank=True, null=True)
 
 class HairMeasurement(IngaBase):
     hairs = models.ForeignKey("Hairs")
