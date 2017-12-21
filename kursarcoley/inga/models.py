@@ -171,6 +171,11 @@ class Hairs(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField()
 
+class HairMeasurement(IngaBase):
+    hairs = models.ForeignKey("Hairs")
+    measurement_name = models.TextField()
+    value = models.FloatField()
+
 class HerbivoreCollectionObservation(IngaBase):
     collection_number = models.ForeignKey("HerbivoreCollection", blank=True, null=True)
     field = models.ForeignKey("Field")
