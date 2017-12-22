@@ -63,7 +63,7 @@ class Expansion(IngaBase):
     collectors = models.CharField(db_column='Collectors', max_length=25, blank=True, null=True)  # Field name made lowercase.
     date = models.DateField()
     plant = models.ForeignKey("Plant")  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    lh_field = models.IntegerField(db_column='LH#', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
+    lh_field = models.TextField(db_column='LH#', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
     day1 = models.IntegerField(db_column='Day1', blank=True, null=True)  # Field name made lowercase.
     hour1 = models.IntegerField(db_column='Hour1', blank=True, null=True)  # Field name made lowercase.
     area1 = models.IntegerField(db_column='Area1', blank=True, null=True)  # Field name made lowercase.
@@ -96,7 +96,7 @@ class Expansion(IngaBase):
     x_dt_d_field = models.IntegerField(db_column='x-DT(d)', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
     x_exp_percent = models.IntegerField(db_column='x-Exp-percent', blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
     spp = models.IntegerField(blank=True, null=True)
-    notes2 = models.IntegerField(db_column='Notes2', blank=True, null=True)  # Field name made lowercase.
+    notes2 = models.TextField(db_column='Notes2', blank=True, null=True)  # Field name made lowercase.
 
 class Extraction(IngaBase):
     extraction_number = models.IntegerField(blank=True, null=True)
@@ -144,6 +144,11 @@ class ExtrafloralNectaries(IngaBase):
     xEFN_mm = models.FloatField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
 
+    def save(self):
+        if self.basal_mm and self.mid_mm and self.apical_mm:
+            self.xEFN_mm = (self.basal_mm + self.mid_mm + self.apical_mm) / 3
+        super(ExtrafloralNectaries, self).save()
+
 class FeatureTableRawData(IngaBase):
     sample = models.ForeignKey("UPLCResult", blank=True, null=True)
     species_code_sample = models.CharField(max_length=30, blank=True, null=True)
@@ -166,6 +171,11 @@ class Field(IngaBase):
     ant_collection_number = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
     old_table_id = models.IntegerField(blank=True, null=True)
+
+    def save(self):
+        if self.ants and self.efn:
+            self.ants_efn = self.ants / self.efn
+        super(Field, self).save()
 
 class Hairs(IngaBase):
     plant = models.ForeignKey("Plant")
@@ -241,10 +251,15 @@ class LeafMassArea(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField(default=datetime.datetime.now)
     inches = models.FloatField(null=True, blank=True)
-    area = models.FloatField(null=True, blank=True)
+    area_cm2 = models.FloatField(null=True, blank=True)
     dw_g = models.FloatField(null=True, blank=True)
-    dw_area_g = models.FloatField(null=True, blank=True)
+    dw_area_g_cm2 = models.FloatField(null=True, blank=True)
     drying_method = models.TextField(null=True, blank=True)
+
+    def save(self):
+        if self.dw_g and self.area_cm2:
+            self.dw_area_g_cm2 = self.dw_g / self.area_cm2
+        super(LeafMassArea, self).save()
 
 class Location(IngaBase):
     plant = models.ForeignKey("Plant", related_name="the_plant")
