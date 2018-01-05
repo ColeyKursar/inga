@@ -44,12 +44,12 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='expansion',
             name='lh_field',
-            field=models.TextField(blank=True, db_column=b'LH#', null=True),
+            field=models.TextField(blank=True, db_column='LH#', null=True),
         ),
         migrations.AlterField(
             model_name='expansion',
             name='notes2',
-            field=models.TextField(blank=True, db_column=b'Notes2', null=True),
+            field=models.TextField(blank=True, db_column='Notes2', null=True),
         ),
         migrations.AddField(
             model_name='hairmeasurement',
