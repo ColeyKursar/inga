@@ -2008,7 +2008,7 @@
                     ],
                     "type": "value"
                 },
-                "dw_area_g_cm_2": {
+                "dw_area_g_cm2": {
                     "field_name": [
                         "dw_area_g_cm2"
                     ],
