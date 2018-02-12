@@ -1,3 +1,4 @@
+from __future__ import print_function
 from django.db.utils import IntegrityError
 from inga import models as inga
 from oldinga import models as old
@@ -129,12 +130,12 @@ def build(destination_name, mapping):
                 destination.save()
         except ValueError as e:
             error = origin.__dict__
-            error["error message"] = e.message
-            errors.append(origin.__dict__)
+            error["error message"] = repr(e) 
+            errors.append(error)
         except IntegrityError as e:
             error = origin.__dict__
-            error["error message"] = e.message
-            errors.append(origin.__dict__)
+            error["error message"] = repr(e) 
+            errors.append(error)
 
     if len(errors) > 0:
         with open(origin_name + "2" + destination_name + "-errors.csv", "w+") as csvfile:
