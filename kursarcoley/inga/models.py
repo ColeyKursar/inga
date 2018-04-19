@@ -28,7 +28,7 @@ class IngaBase(models.Model):
         return tuple(sorted(names, key=lambda tup: tup[1]))
 
 
-            def save(self, **kwargs):
+    def save(self, **kwargs):
         try:
             day = self.__class__._meta.get_field("day")
             month = self.__class__._meta.get_field("month")
