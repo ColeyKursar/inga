@@ -151,12 +151,13 @@ class Extraction(IngaBase):
     box = models.TextField(null=True, blank=True)
     comments = models.TextField(null=True, blank=True)
 
-    def save(self):
+
+    def save(self, **kwargs):
         if self.final_weight and self.empty_vial_weight and self.dry_weight:
             self.dry_marc_weight = self.final_weight - self.empty_vial_weight
             self.mass_extracted = self.dry_weight - self.dry_marc_weight
             self.percent_extracted = (self.mass_extracted / self.dry_weight) * 100
-        super(Extraction, self).save()
+        super(Extraction, self).save(**kwargs)
 
 class ExtractionResultWeight(IngaBase):
     extraction = models.ForeignKey("Extraction")
