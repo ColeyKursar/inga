@@ -365,10 +365,11 @@ class UPLCResult(IngaBase):
     project_name = models.TextField(blank=True, null=True)
     ms_method = models.TextField(blank=True, null=True)
     uplc_method = models.TextField(blank=True, null=True)
-    ms_mode = models.IntegerField(blank=True, null=True)
+    ms_mode = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
     all_inga = models.TextField(blank=True, null=True)
     chemocoding = models.TextField(blank=True, null=True)
+    mzxml = models.TextField(blank=True, null=True)
     blank = models.TextField(blank=True, null=True)
     rti = models.TextField(blank=True, null=True)
 
