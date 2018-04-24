@@ -3,6 +3,7 @@ venv/
 *.sqlite3
 .python-version
 ingaenv/
+inga/
 .vscode/*
 kursarcoley/kursarcoley/local_settings.py
 kursarcoley/kursarcoley/local_settings.py

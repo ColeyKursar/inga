@@ -1,3 +1,4 @@
+from __future__ import print_function
 from django.db.utils import IntegrityError
 from inga import models as inga
 from oldinga import models as old
@@ -26,6 +27,9 @@ def get_source(field, origin):
                 if field["field_name"] == "chemistry_number" and value != "" and value[0] != "c":
                     value = 'c' + value
 
+                if field["field_name"] == "motu":
+                    value = value.replace("_", "-")
+
                 if idx < len(field["field_name"]) - 1:
                     value += ", "
             else:
@@ -43,7 +47,12 @@ def get_source(field, origin):
         params = {}
 
         for i in range(len(local_field_names)):
-            params[remote_field_names[i]] = getattr(origin, local_field_names[i])
+            value = getattr(origin, local_field_names[i])
+
+            if isinstance(value, str) and local_field_names[i] == "motu":
+                value = value.replace("_", "-")
+
+            params[remote_field_names[i]] = value 
 
         return wire(reference_model, **params)
 
@@ -98,22 +107,27 @@ def build(destination_name, mapping):
                 multireference_fields = []
 
                 for field in instance:
-                    source_value = get_source(instance[field], origin)
+                    try:
+                        source_value = get_source(instance[field], origin)
 
-                    if instance[field]["type"] == "value":
-                        sources.add(str(source_value) if source_value is not None else None)
+                        if instance[field]["type"] == "value":
+                            sources.add(str(source_value) if source_value is not None else None)
 
-                    if source_value == "multireference-field":
-                        multireference_fields.append(field)
-                    else:
-                        if (destination._meta.get_field(field).__class__.__name__ == "IntegerField"
-                                and source_value is not None):
-                            try:
-                                source_value = int(source_value)
-                            except ValueError:
-                                source_value = None
+                        if source_value == "multireference-field":
+                            multireference_fields.append(field)
+                        else:
+                            if (destination._meta.get_field(field).__class__.__name__ == "IntegerField"
+                                    and source_value is not None):
+                                try:
+                                    source_value = int(source_value)
+                                except ValueError:
+                                    source_value = None
 
-                        setattr(destination, field, source_value)
+                            setattr(destination, field, source_value)
+                    except IntegrityError as e:
+                        error = origin.__dict__
+                        error["error message"] = repr(e) 
+                        errors.append(error)
 
                 for field in universal:
                     setattr(destination, field, universal[field])
@@ -129,12 +143,12 @@ def build(destination_name, mapping):
                 destination.save()
         except ValueError as e:
             error = origin.__dict__
-            error["error message"] = e.message
-            errors.append(origin.__dict__)
+            error["error message"] = repr(e) 
+            errors.append(error)
         except IntegrityError as e:
             error = origin.__dict__
-            error["error message"] = e.message
-            errors.append(origin.__dict__)
+            error["error message"] = repr(e) 
+            errors.append(error)
 
     if len(errors) > 0:
         with open(origin_name + "2" + destination_name + "-errors.csv", "w+") as csvfile:

@@ -2,5 +2,5 @@ from django.conf.urls import url
 from update.views import UpdateView
 
 urlpatterns = [
-    url(r'^models/', UpdateView),
+    url(r'^update/', UpdateView),
 ]

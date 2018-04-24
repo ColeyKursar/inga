@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 import datetime
 
@@ -26,6 +27,25 @@ class IngaBase(models.Model):
 
         return tuple(sorted(names, key=lambda tup: tup[1]))
 
+
+    def save(self, **kwargs):
+        try:
+            day = self.__class__._meta.get_field("day")
+            month = self.__class__._meta.get_field("month")
+            year = self.__class__._meta.get_field("year")
+            date = self.__class__._meta.get_field("date")
+
+            if self.day is not None and self.month is not None and self.year is not None:
+                self.date = datetime.date(self.year, self.month, self.day)
+            elif self.date is not None:
+                self.day = self.date.day
+                self.month = self.date.month
+                self.year = self.date.year
+        except:
+            pass
+
+        super(IngaBase, self).save(**kwargs)
+
     class Meta:
         abstract = True
 
@@ -33,6 +53,9 @@ class Chemistry(IngaBase):
     chemistry_number = models.CharField(max_length=100)
     plant = models.ForeignKey("Plant", blank=True, null=True)
     date = models.DateField(blank=True, null=True)
+    month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+    day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     exp_min = models.TextField(blank=True, null=True)
     exp_max = models.TextField(blank=True, null=True)
     fwg = models.TextField(blank=True, null=True)
@@ -48,6 +71,9 @@ class Chemistry(IngaBase):
 class Chlorophyll(IngaBase):
     plant = models.ForeignKey("Plant", blank=True, null=True)
     date = models.DateField(blank=True, null=True)
+    month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+    day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     percent_expansion = models.IntegerField(blank=True, null=True)
     spadd = models.IntegerField(blank=True, null=True)
     chl_mg_dm2 = models.FloatField(blank=True, null=True)
@@ -62,6 +88,9 @@ class DNA(IngaBase):
 class Expansion(IngaBase):
     collectors = models.CharField(max_length=25, blank=True, null=True)  # Field name made lowercase.
     date = models.DateField()
+    month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+    day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     plant = models.ForeignKey("Plant")  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
     lh_field = models.TextField(blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
     day1 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
@@ -102,6 +131,9 @@ class Extraction(IngaBase):
     extraction_number = models.IntegerField(blank=True, null=True)
     chemistry = models.ForeignKey("Chemistry", blank=True, null=True)
     date = models.DateField(blank=True, null=True)
+    month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+    day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     method = models.IntegerField(blank=True, null=True)
     chemist = models.TextField(blank=True, null=True)
     notebook_number = models.IntegerField(blank=True, null=True)
@@ -119,12 +151,13 @@ class Extraction(IngaBase):
     box = models.TextField(null=True, blank=True)
     comments = models.TextField(null=True, blank=True)
 
-    def save(self):
+
+    def save(self, **kwargs):
         if self.final_weight and self.empty_vial_weight and self.dry_weight:
             self.dry_marc_weight = self.final_weight - self.empty_vial_weight
             self.mass_extracted = self.dry_weight - self.dry_marc_weight
             self.percent_extracted = (self.mass_extracted / self.dry_weight) * 100
-        super(Extraction, self).save()
+        super(Extraction, self).save(**kwargs)
 
 class ExtractionResultWeight(IngaBase):
     extraction = models.ForeignKey("Extraction")
@@ -134,6 +167,9 @@ class ExtractionResultWeight(IngaBase):
 
 class ExtrafloralNectaries(IngaBase):
     date = models.DateField(blank=True, null=True)
+    month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+    day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     plant = models.ForeignKey("Plant", blank=True, null=True)
     basal_mm = models.FloatField(blank=True, null=True)
     mid_mm = models.FloatField(blank=True, null=True)
@@ -160,6 +196,9 @@ class FeatureTableRawData(IngaBase):
 
 class Field(IngaBase):
     date = models.DateField(blank=True, null=True)
+    month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+    day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     plant = models.ForeignKey("Plant", blank=True, null=True)
     original_id = models.CharField(max_length=20, blank=True, null=True)
     exp_vs_mat = models.TextField(blank=True, null=True)
@@ -180,6 +219,9 @@ class Field(IngaBase):
 class Hairs(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField()
+    month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+    day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     notes = models.TextField(blank=True, null=True)
 
 class HairMeasurement(IngaBase):
@@ -222,6 +264,9 @@ class HerbivoreCollection(IngaBase):
 class Herbivory(IngaBase):
     species = models.ForeignKey("PlantSpecies")
     date = models.DateField()
+    month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+    day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     leaves_leaflets = models.IntegerField()
     total = models.IntegerField()
     x_herbivory = models.FloatField()
@@ -242,6 +287,9 @@ class HPLCResult(IngaBase):
     file_path = models.FileField()
     project = models.TextField()
     date = models.DateField()
+    month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+    day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     method = models.TextField()
     column_used = models.TextField()
     tyrosine = models.IntegerField()
@@ -249,6 +297,9 @@ class HPLCResult(IngaBase):
 class LeafMassArea(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField(default=datetime.datetime.now)
+    month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+    day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     inches = models.FloatField(null=True, blank=True)
     area_cm2 = models.FloatField(null=True, blank=True)
     dw_g = models.FloatField(null=True, blank=True)
@@ -284,6 +335,9 @@ class Plant(IngaBase):
     collectors = models.TextField(blank=True, null=True)
     site = models.ForeignKey("Site", blank=True, null=True)
     date = models.DateField(blank=True, null=True)
+    month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+    day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     species_code = models.ForeignKey("PlantSpecies", blank=True, null=True)
     location = models.TextField(blank=True, null=True)
     size = models.TextField(blank=True, null=True)
@@ -349,6 +403,9 @@ class Site(IngaBase):
 class Toughness(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField()
+    month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+    day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     toughness = models.FloatField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
 
@@ -357,6 +414,9 @@ class UPLCResult(IngaBase):
     converted = models.ForeignKey("Converted", blank=True, null=True)
     file_name = models.TextField(blank=True, null=True)
     date = models.DateField(blank=True, null=True)
+    month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+    day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     mode = models.TextField(blank=True, null=True)
     sample_type = models.TextField(blank=True, null=True)
     sample_id = models.TextField(blank=True, null=True)
@@ -386,4 +446,7 @@ class Tyrosine(IngaBase):
     file = models.TextField()
     calibration = models.IntegerField()
     date = models.DateField(null=True, blank=True)
+    month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+    day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     notes = models.TextField(null=True, blank=True)
