@@ -267,6 +267,7 @@ class Herbivory(IngaBase):
     month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
     day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
     year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
+    location = models.ForeignKey("Location", blank=True, null=True)
     leaves_leaflets = models.IntegerField()
     total = models.IntegerField()
     x_herbivory = models.FloatField()
