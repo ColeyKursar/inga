@@ -432,7 +432,6 @@ class UPLCResult(IngaBase):
     mzxml = models.TextField(blank=True, null=True)
     blank = models.TextField(blank=True, null=True)
     rti = models.TextField(blank=True, null=True)
-    test_fake_column = models.TextField(blank=True, null=True)
 
 class PC_ID(IngaBase):
     PC_ID = models.ForeignKey("FeatureTableRawData")
