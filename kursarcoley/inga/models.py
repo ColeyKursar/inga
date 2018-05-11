@@ -450,3 +450,4 @@ class Tyrosine(IngaBase):
     day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
     year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     notes = models.TextField(null=True, blank=True)
+    keep_or_drop = models.TextField(null=True, blank=True)
