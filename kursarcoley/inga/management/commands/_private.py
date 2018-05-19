@@ -37,6 +37,9 @@ def get_source(field, origin):
 
         return value
 
+    elif field["type"] == "literal":
+        return field["value"]
+
     elif field["type"] == "reference":
         reference_name = field["reference_model"]
         reference_model = getattr(inga, reference_name)
@@ -54,7 +57,9 @@ def get_source(field, origin):
 
             params[remote_field_names[i]] = value 
 
-        return wire(reference_model, **params)
+        value = wire(reference_model, **params)
+
+        return value 
 
     elif field["type"] == "multireference":
         return "multireference-field"
@@ -125,6 +130,7 @@ def build(destination_name, mapping):
 
                             setattr(destination, field, source_value)
                     except IntegrityError as e:
+                        print("ERROR")
                         error = origin.__dict__
                         error["error message"] = repr(e) 
                         errors.append(error)
@@ -132,8 +138,6 @@ def build(destination_name, mapping):
                 for field in universal:
                     setattr(destination, field, universal[field])
 
-                if len(sources.difference(("0", "", None))) == 0:
-                    continue
 
                 destination.save()
 
@@ -326,7 +330,7 @@ def wire(model, **kwargs):
             try:
                 return model.objects.get(generic=True, **inexact_kwargs)
             except model.DoesNotExist:
-                generic_args = trim_locals(kwargs)
+                print("Creating generic")
                 return create_generic(model, **generic_args)
         elif (('plant_number' in kwargs and kwargs['plant_number'] is None) or ('plant_number' not in kwargs)) and 'site__site' in kwargs and kwargs['site__site'] is not None:
             try:
