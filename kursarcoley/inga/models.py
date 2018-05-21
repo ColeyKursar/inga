@@ -443,7 +443,7 @@ class PC_ID(IngaBase):
 
 class Tyrosine(IngaBase):
     extraction = models.ForeignKey("Extraction")
-    percent_tyrosine = models.TextField()
+    percent_tyrosine = models.FloatField(blank=True, null=True)
     file = models.TextField()
     calibration = models.IntegerField()
     date = models.DateField(null=True, blank=True)
@@ -451,3 +451,4 @@ class Tyrosine(IngaBase):
     day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
     year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     notes = models.TextField(null=True, blank=True)
+    keep_or_drop = models.TextField(null=True, blank=True)
