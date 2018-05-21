@@ -219,6 +219,7 @@ class Field(IngaBase):
 class Hairs(IngaBase):
     plant = models.ForeignKey("Plant")
     date = models.DateField()
+    old_id = models.IntegerField(default=0)
     month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
     day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
     year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
