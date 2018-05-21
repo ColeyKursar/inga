@@ -403,7 +403,7 @@ class Site(IngaBase):
 
 class Toughness(IngaBase):
     plant = models.ForeignKey("Plant")
-    date = models.DateField()
+    date = models.DateField(blank=True, null=True)
     month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
     day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
     year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
