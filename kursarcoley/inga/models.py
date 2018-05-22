@@ -211,18 +211,18 @@ class Field(IngaBase):
     notes = models.TextField(blank=True, null=True)
     old_table_id = models.IntegerField(blank=True, null=True)
 
-    def save(self):
+    def save(self, **kwargs):
         try:
             ants = self.__class__._meta.get_field("ants")
             efn = self.__class__._meta.get_field("efn")
             ants_efn = self.__class__._meta.get_field("ants_efn")
 
             if self.ants is not None and self.efn is not None:
-                float(self.ants_efn) = float(self.ants / self.efn)
+                self.ants_efn = float(self.ants) / float(self.efn)
         except:
             pass
 
-        super(Field, self).save()
+        super(Field, self).save(**kwargs)
 
 class Hairs(IngaBase):
     plant = models.ForeignKey("Plant")
