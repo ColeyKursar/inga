@@ -212,15 +212,8 @@ class Field(IngaBase):
     old_table_id = models.IntegerField(blank=True, null=True)
 
     def save(self, **kwargs):
-        try:
-            ants = self.__class__._meta.get_field("ants")
-            efn = self.__class__._meta.get_field("efn")
-            ants_efn = self.__class__._meta.get_field("ants_efn")
-
-            if self.ants is not None and self.efn is not None:
-                self.ants_efn = float(self.ants) / float(self.efn)
-        except:
-            pass
+        if self.ants is not None and self.efn is not None:
+            self.ants_efn = float(self.ants) / float(self.efn)
 
         super(Field, self).save(**kwargs)
 
