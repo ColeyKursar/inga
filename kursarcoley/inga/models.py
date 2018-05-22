@@ -211,11 +211,11 @@ class Field(IngaBase):
     notes = models.TextField(blank=True, null=True)
     old_table_id = models.IntegerField(blank=True, null=True)
 
-    def save(self):
+    def save(self, *args, **kwargs):
         if self.ants is not None and self.efn is not None:
             self.ants_efn = float(self.ants) / float(self.efn)
 
-        super(Field, self).save()
+        super(Field, self).save(*args, **kwargs)
 
 class Hairs(IngaBase):
     plant = models.ForeignKey("Plant")
