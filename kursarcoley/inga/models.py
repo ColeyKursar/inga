@@ -212,7 +212,7 @@ class Field(IngaBase):
     old_table_id = models.IntegerField(blank=True, null=True)
 
     def save(self):
-        if self.ants and self.efn:
+        if self.ants is not None and self.efn is not None:
             self.ants_efn = self.ants / self.efn
         super(Field, self).save()
 
