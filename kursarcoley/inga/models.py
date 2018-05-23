@@ -87,7 +87,7 @@ class DNA(IngaBase):
 
 class Expansion(IngaBase):
     collectors = models.CharField(max_length=25, blank=True, null=True)  # Field name made lowercase.
-    date = models.DateField()
+    date = models.DateField(blank=True, null=True)
     month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
     day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
     year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
@@ -219,7 +219,7 @@ class Field(IngaBase):
 
 class Hairs(IngaBase):
     plant = models.ForeignKey("Plant")
-    date = models.DateField()
+    date = models.DateField(blank=True, null=True)
     old_id = models.IntegerField(default=0)
     month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
     day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
@@ -265,7 +265,7 @@ class HerbivoreCollection(IngaBase):
 
 class Herbivory(IngaBase):
     species = models.ForeignKey("PlantSpecies")
-    date = models.DateField()
+    date = models.DateField(blank=True, null=True)
     month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
     day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
     year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
@@ -288,7 +288,7 @@ class HPLCResult(IngaBase):
     sample_type = models.TextField()
     file_path = models.FileField()
     project = models.TextField()
-    date = models.DateField()
+    date = models.DateField(blank=True, null=True)
     month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
     day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
     year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
@@ -298,7 +298,7 @@ class HPLCResult(IngaBase):
 
 class LeafMassArea(IngaBase):
     plant = models.ForeignKey("Plant")
-    date = models.DateField(default=datetime.datetime.now)
+    date = models.DateField(blank=True, null=True)
     month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
     day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
     year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
