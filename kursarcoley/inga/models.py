@@ -154,9 +154,9 @@ class Extraction(IngaBase):
 
     def save(self, **kwargs):
         if self.final_weight and self.empty_vial_weight and self.dry_weight:
-            self.dry_marc_weight = self.final_weight - self.empty_vial_weight
-            self.mass_extracted = self.dry_weight - self.dry_marc_weight
-            self.percent_extracted = (self.mass_extracted / self.dry_weight) * 100
+            self.dry_marc_weight = float(self.final_weight) - float(self.empty_vial_weight)
+            self.mass_extracted = float(self.dry_weight) - float(self.dry_marc_weight)
+            self.percent_extracted = (self.mass_extracted / float(self.dry_weight)) * 100
         super(Extraction, self).save(**kwargs)
 
 class ExtractionResultWeight(IngaBase):
@@ -211,11 +211,11 @@ class Field(IngaBase):
     notes = models.TextField(blank=True, null=True)
     old_table_id = models.IntegerField(blank=True, null=True)
 
-    def save(self, *args, **kwargs):
-        if self.ants is not None and self.efn is not None:
-            self.ants_efn = float(self.ants) / float(self.efn)
-
-        super(Field, self).save(*args, **kwargs)
+#    def save(self, *args, **kwargs):
+#        if self.ants is not None and self.efn is not None:
+#            self.ants_efn = float(self.ants) / float(self.efn)
+#
+#        super(Field, self).save(*args, **kwargs)
 
 class Hairs(IngaBase):
     plant = models.ForeignKey("Plant")
