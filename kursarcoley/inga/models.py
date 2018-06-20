@@ -385,6 +385,7 @@ class PlantVoucher(IngaBase):
     voucher = models.CharField(max_length=30)
 
 class RAW(IngaBase):
+    UPLC_result = models.ForeignKey("UPLCResult", blank=True, null=True)
     raw_file_path = models.FileField()
 
 class Site(IngaBase):
@@ -412,7 +413,6 @@ class Toughness(IngaBase):
     notes = models.TextField(blank=True, null=True)
 
 class UPLCResult(IngaBase):
-    raw = models.ForeignKey("RAW", blank=True, null=True)
     converted = models.ForeignKey("Converted", blank=True, null=True)
     file_name = models.TextField(blank=True, null=True)
     date = models.DateField(blank=True, null=True)
