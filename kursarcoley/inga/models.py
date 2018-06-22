@@ -431,6 +431,7 @@ class UPLCResult(IngaBase):
     notes = models.TextField(blank=True, null=True)
     all_inga = models.TextField(blank=True, null=True)
     chemocoding = models.TextField(blank=True, null=True)
+    raw = models.ForeignKey("RAW", blank=True, null=True)
     mzxml = models.TextField(blank=True, null=True)
     blank = models.TextField(blank=True, null=True)
     rti = models.TextField(blank=True, null=True)
