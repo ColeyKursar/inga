@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from inga.models import Chemistry, Chlorophyll, Converted, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, HerbivoreCollectionObservation, HerbivoreDNA, HerbivoreSpecies, HerbivoreCollection, Herbivory, HPLCResult, LeafMassArea, Location, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, PC_ID, Tyrosine
+from inga.models import Chemistry, Chlorophyll, Converted, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, HerbivoreCollectionObservation, HerbivoreDNA, HerbivoreSpecies, HerbivoreCollection, Herbivory, HPLCResult, LeafMassArea, Location, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, PC_ID, Tyrosine, HairMeasurement, Expansion, PlantSpeciesHistorical
 
 
 class ChemistrySerializer(ModelSerializer):
@@ -208,4 +208,25 @@ class TyrosineSerializer(ModelSerializer):
 
     class Meta:
         model = Tyrosine
+        fields = '__all__'
+
+
+class ExpansionSerializer(ModelSerializer):
+
+    class Meta:
+        model = Expansion
+        fields = '__all__'
+
+
+class HairMeasurementSerializer(ModelSerializer):
+
+    class Meta:
+        model = HairMeasurement 
+        fields = '__all__'
+
+
+class PlantSpeciesHistoricalSerializer(ModelSerializer):
+
+    class Meta:
+        model = PlantSpeciesHistorical 
         fields = '__all__'
