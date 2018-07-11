@@ -446,7 +446,7 @@ class Tyrosine(IngaBase):
     extraction = models.ForeignKey("Extraction")
     percent_tyrosine = models.FloatField(blank=True, null=True)
     file = models.TextField()
-    calibration = models.IntegerField()
+    calibration = models.IntegerField(null=True, blank=True)
     date = models.DateField(null=True, blank=True)
     month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
     day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
