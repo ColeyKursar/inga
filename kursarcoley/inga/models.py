@@ -180,10 +180,12 @@ class ExtrafloralNectaries(IngaBase):
     xEFN_mm = models.FloatField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
 
-    def save(self):
-        if self.basal_mm and self.mid_mm and self.apical_mm:
-            self.xEFN_mm = (self.basal_mm + self.mid_mm + self.apical_mm) / 3
-        super(ExtrafloralNectaries, self).save()
+    def save(self, **kwargs):
+        efn_measurements = [pd.to_numeric(x, errors='coerce') for x in [self.basal_mm, self.mid_mm, self.apical_mm]]
+        efn_measurements_2 = [x for x in efn_measurements if str(x) != 'nan']
+        if len(efn_measurements_2) > 0:
+            self.xEFN_mm = sum(efn_measurements) / float(len(efn_measurements))
+        super(ExtrafloralNectaries, self).save(**kwargs)
 
 class FeatureTableRawData(IngaBase):
     sample = models.ForeignKey("UPLCResult", blank=True, null=True)
