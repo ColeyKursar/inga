@@ -228,7 +228,7 @@ class Field(IngaBase):
         try:
             ants = float(self.ants)
             efn = float(self.efn)
-            self.ants_efn = ants/ efn
+            self.ants_efn = ants / efn
         except:
             pass
         super(Field, self).save(**kwargs)
