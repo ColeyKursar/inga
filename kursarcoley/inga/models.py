@@ -153,14 +153,17 @@ class Extraction(IngaBase):
 
 
     def save(self, **kwargs):
-        for value in [self.final_weight, self.empty_vial_weight, self.dry_weight]:
-            try:
-                float(value)
-            except:
-                return
-        self.dry_marc_weight = float(self.final_weight) - float(self.empty_vial_weight)
-        self.mass_extracted = float(self.dry_weight) - float(self.dry_marc_weight)
-        self.percent_extracted = (self.mass_extracted / float(self.dry_weight)) * 100
+        try:
+            final_weight = float(self.final_weight)
+            empty_weight = float(self.empty_vial_weight)
+            dry_weight = float(self.empty_vial_weight)
+
+            self.dry_marc_weight = final_weight - empty_weight
+            self.mass_extracted = dry_weight - self.dry_marc_weight
+            self.percent_extracted = (self.mass_extracted / dry_weight) * 100
+        except:
+            pass
+
         super(Extraction, self).save(**kwargs)
 
 class ExtractionResultWeight(IngaBase):
@@ -222,12 +225,12 @@ class Field(IngaBase):
     old_table_id = models.IntegerField(blank=True, null=True)
 
     def save(self, **kwargs):
-        for value in [self.ants, self.efn]:
-            try:
-                float(value)
-            except:
-                return
-        self.ants_efn = float(self.ants) / float(self.efn)
+        try:
+            ants = float(self.ants)
+            efn = float(self.efn)
+            self.ants_efn = ants/ efn
+        except:
+            pass
         super(Field, self).save(**kwargs)
 
 class Hairs(IngaBase):
@@ -287,12 +290,12 @@ class Herbivory(IngaBase):
     x_herbivory = models.FloatField()
 
     def save(self, **kwargs):
-        for value in [self.total, self.leaves_leaflets]:
-            try:
-                float(value)
-            except:
-                return
-        self.x_herbivory = float(self.total) / float(self.leaves_leaflets)
+        try:
+            total = float(self.total)
+            leaves = float(self.leaves_leaflets)
+            self.x_herbivory = total / leaves
+        except:
+            pass
         super(Herbivory, self).save(**kwargs)
 
 class HPLCResult(IngaBase): 
@@ -321,12 +324,12 @@ class LeafMassArea(IngaBase):
     drying_method = models.TextField(null=True, blank=True)
 
     def save(self, **kwargs):
-        for value in [self.dw_g, self.area_cm2]:
-            try:
-                float(value)
-            except:
-                return
-        self.dw_area_g_cm2 = float(self.dw_g) / float(self.area_cm2)
+        try:
+            dw_g = float(self.dw_g)
+            area_cm2 = float(self.area_cm2)
+            self.dw_area_g_cm2 = dw_g / area_cm2
+        except:
+            pass
         super(LeafMassArea, self).save(**kwargs)
 
 class Location(IngaBase):
