@@ -212,11 +212,11 @@ class Field(IngaBase):
     notes = models.TextField(blank=True, null=True)
     old_table_id = models.IntegerField(blank=True, null=True)
 
-#    def save(self, *args, **kwargs):
-#        if self.ants is not None and self.efn is not None:
-#            self.ants_efn = float(self.ants) / float(self.efn)
-#
-#        super(Field, self).save(*args, **kwargs)
+    def save(self, **kwargs):
+        if self.ants not in [None, ''] and self.efn not in [None, '']:
+            self.ants_efn = float(self.ants) / float(self.efn)
+
+        super(Field, self).save(**kwargs)
 
 class Hairs(IngaBase):
     plant = models.ForeignKey("Plant")
@@ -275,13 +275,8 @@ class Herbivory(IngaBase):
     x_herbivory = models.FloatField()
 
     def save(self):
-        if self.total is None:
-            self.total = 0
-
-        if self.leaves_leaflets is None:
-            self.leaves_leaflets = 0
-
-        self.x_herbivory = self.total / self.leaves_leaflets
+        if self.total not in [None, ''] and self.leaves_leaflets not in [None, '']:
+            self.x_herbivory = float(self.total) / float(self.leaves_leaflets)
         super(Herbivory, self).save()
 
 class HPLCResult(IngaBase): 
@@ -310,8 +305,8 @@ class LeafMassArea(IngaBase):
     drying_method = models.TextField(null=True, blank=True)
 
     def save(self):
-        if self.dw_g and self.area_cm2:
-            self.dw_area_g_cm2 = self.dw_g / self.area_cm2
+        if self.dw_g not in [None, ''] and self.area_cm2 not in [None, '']:
+            self.dw_area_g_cm2 = float(self.dw_g) / float(self.area_cm2)
         super(LeafMassArea, self).save()
 
 class Location(IngaBase):
