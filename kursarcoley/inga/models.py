@@ -1,7 +1,6 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 import datetime
-import pandas as pd
 
 class IngaBase(models.Model):
     updated = models.DateField(auto_now=True)
@@ -182,8 +181,7 @@ class ExtrafloralNectaries(IngaBase):
     notes = models.TextField(blank=True, null=True)
 
     def save(self, **kwargs):
-        efn_measurements = [pd.to_numeric(x, errors='coerce') for x in [self.basal_mm, self.mid_mm, self.apical_mm]]
-        efn_measurements_2 = [x for x in efn_measurements if str(x) != 'nan']
+        efn_measurements = [float(x) for x in [self.basal_mm, self.mid_mm, self.apical_mm] if x not in ['', None]]
         if len(efn_measurements_2) > 0:
             self.xEFN_mm = sum(efn_measurements) / float(len(efn_measurements))
         super(ExtrafloralNectaries, self).save(**kwargs)
