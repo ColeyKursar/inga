@@ -1,6 +1,7 @@
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 import datetime
+import pandas as pd
 
 class IngaBase(models.Model):
     updated = models.DateField(auto_now=True)
