@@ -274,10 +274,10 @@ class Herbivory(IngaBase):
     total = models.IntegerField()
     x_herbivory = models.FloatField()
 
-    def save(self):
+    def save(self, **kwargs):
         if self.total not in [None, ''] and self.leaves_leaflets not in [None, '']:
             self.x_herbivory = float(self.total) / float(self.leaves_leaflets)
-        super(Herbivory, self).save()
+        super(Herbivory, self).save(**kwargs)
 
 class HPLCResult(IngaBase): 
     extraction = models.ForeignKey("Extraction")
@@ -304,10 +304,10 @@ class LeafMassArea(IngaBase):
     dw_area_g_cm2 = models.FloatField(null=True, blank=True)
     drying_method = models.TextField(null=True, blank=True)
 
-    def save(self):
+    def save(self, **kwargs):
         if self.dw_g not in [None, ''] and self.area_cm2 not in [None, '']:
             self.dw_area_g_cm2 = float(self.dw_g) / float(self.area_cm2)
-        super(LeafMassArea, self).save()
+        super(LeafMassArea, self).save(**kwargs)
 
 class Location(IngaBase):
     plant = models.ForeignKey("Plant", related_name="the_plant")
