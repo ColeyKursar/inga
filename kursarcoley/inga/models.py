@@ -182,7 +182,7 @@ class ExtrafloralNectaries(IngaBase):
 
     def save(self, **kwargs):
         efn_measurements = [float(x) for x in [self.basal_mm, self.mid_mm, self.apical_mm] if x not in ['', None]]
-        if len(efn_measurements_2) > 0:
+        if len(efn_measurements) > 0:
             self.xEFN_mm = sum(efn_measurements) / float(len(efn_measurements))
         super(ExtrafloralNectaries, self).save(**kwargs)
 
