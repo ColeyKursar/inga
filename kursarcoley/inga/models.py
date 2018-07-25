@@ -275,7 +275,7 @@ class HerbivoreSpecies(IngaBase):
 
 class HerbivoreCollection(IngaBase):
     collection_number = models.TextField(blank=True, null=True)
-    photo = models.FileField(blank=True, null=True)
+    photo = models.TextField(blank=True, null=True)
     analysis = models.TextField(blank=True, null=True)
     motu = models.TextField(blank=True, null=True)
 
