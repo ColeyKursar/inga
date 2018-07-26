@@ -109,6 +109,10 @@ class LocationViewSet(ModelViewSet):
     serializer_class = LocationSerializer
     filter_fields = "__all__"
 
+class MethodsViewSet(ModelViewSet):
+    queryset = Methods.objects.all()
+    serializer_class = MethodsSerializer
+    filter_fields = "__all__"
 
 class NitrogenViewSet(ModelViewSet):
     queryset = Nitrogen.objects.all()

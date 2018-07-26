@@ -37,5 +37,6 @@ router.register(r'tyrosine', views.TyrosineViewSet)
 router.register(r'plantspecieshistorical', views.PlantSpeciesHistoricalViewSet)
 router.register(r'expansion', views.ExpansionViewSet)
 router.register(r'hairmeasurement', views.HairMeasurementViewSet)
+router.register(r'methods', views.MethodsViewSet)
 
 urlpatterns = router.urls
