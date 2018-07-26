@@ -340,6 +340,10 @@ class Location(IngaBase):
     offset = models.IntegerField()
     side = models.IntegerField()
 
+class Methods(IngaBase):
+    method_number = models.IntegerField()
+    description = models.TextField(null=True, blank=True)
+
 class Nitrogen(IngaBase):
     chemistry = models.ForeignKey("Chemistry", null=True, blank=True)
     exp_vs_mat = models.TextField(null=True, blank=True)
