@@ -343,6 +343,7 @@ class Location(IngaBase):
 class Methods(IngaBase):
     method_number = models.IntegerField()
     description = models.TextField(null=True, blank=True)
+    location_on_K_drive = models.TextField(null=True, blank=True)
 
 class Nitrogen(IngaBase):
     chemistry = models.ForeignKey("Chemistry", null=True, blank=True)
