@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
-from ingaapi.serializers import MethodsSerializer, ChemistrySerializer, ChlorophyllSerializer, ConvertedSerializer, DNASerializer, ExtractionSerializer, ExtractionResultWeightSerializer, ExtrafloralNectariesSerializer, FeatureTableRawDataSerializer, FieldSerializer, HairsSerializer, HerbivoreCollectionObservationSerializer, HerbivoreDNASerializer, HerbivoreSpeciesSerializer, HerbivoreCollectionSerializer, HerbivorySerializer, HPLCResultSerializer, LeafMassAreaSerializer, LocationSerializer, NitrogenSerializer, PlantSerializer, PlantDNASerializer, PlantPhotoSerializer, PlantSpeciesSerializer, PlantVoucherSerializer, RAWSerializer, SiteSerializer, ToughnessSerializer, UPLCResultSerializer, PC_IDSerializer, TyrosineSerializer, ExpansionSerializer, PlantSpeciesHistoricalSerializer, HairMeasurementSerializer 
-from inga.models import Methods, Chemistry, Chlorophyll, Converted, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, HerbivoreCollectionObservation, HerbivoreDNA, HerbivoreSpecies, HerbivoreCollection, Herbivory, HPLCResult, LeafMassArea, Location, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, PC_ID, Tyrosine, PlantSpeciesHistorical, Expansion, HairMeasurement
+from ingaapi.serializers import MethodsSerializer, ChemistrySerializer, ChlorophyllSerializer, ConvertedSerializer, DNASerializer, ExtractionSerializer, ExtractionResultWeightSerializer, ExtrafloralNectariesSerializer, FeatureTableRawDataSerializer, FieldSerializer, HairsSerializer, HerbivoreCollectionObservationSerializer, HerbivoreDNASerializer, HerbivoreSpeciesSerializer, HerbivoreCollectionSerializer, HerbivorySerializer, HPLCResultSerializer, LeafMassAreaSerializer, LocationSerializer, NitrogenSerializer, PlantSerializer, PlantDNASerializer, PlantPhotoSerializer, PlantSpeciesSerializer, PlantVoucherSerializer, RAWSerializer, SiteSerializer, ToughnessSerializer, UPLCResultSerializer, PC_IDSerializer, TyrosineSerializer, ExpansionSerializer, PlantSpeciesHistoricalSerializer, HairMeasurementSerializer, HerbivoreSerializer
+from inga.models import Methods, Chemistry, Chlorophyll, Converted, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, HerbivoreCollectionObservation, HerbivoreDNA, HerbivoreSpecies, HerbivoreCollection, Herbivory, HPLCResult, LeafMassArea, Location, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, PC_ID, Tyrosine, PlantSpeciesHistorical, Expansion, HairMeasurement, Herbivore
 
 
 class ChemistryViewSet(ModelViewSet):
@@ -61,6 +61,10 @@ class HairsViewSet(ModelViewSet):
     serializer_class = HairsSerializer
     filter_fields = "__all__"
 
+class HerbivoreViewSet(ModelViewSet):
+    queryset = Herbivore.objects.all()
+    serializer_class = HerbivoreSerializer
+    filter_fields = "__all__"
 
 class HerbivoreCollectionObservationViewSet(ModelViewSet):
     queryset = HerbivoreCollectionObservation.objects.all()
