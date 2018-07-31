@@ -247,18 +247,42 @@ class HairMeasurement(IngaBase):
     measurement_name = models.TextField()
     value = models.FloatField()
 
+class Herbivore(IngaBase):
+    field = models.ForeignKey("Field")
+    collection_number = models.TextField(blank=True, null=True)
+    herbivores_collected = models.IntegerField(blank=True, null=True)
+    herbivores_total = models.IntegerField(blank=True, null=True)
+    preliminary_family = models.TextField(blank=True, null=True)
+    notes_on_host = models.TextField(blank=True, null=True)
+    #coi_sequence = models.TextField(blank=True, null=True)
+    #percentage_match_on_BOLD = models.IntegerField(blank=True, null=True)
+    #bin = models.TextField(blank=True, null=True)
+    all_inga_trimmed_21bp = models.TextField(blank=True, null=True)
+    la_motu = models.TextField(blank=True, null=True)
+    #ef1a_sequence = models.TextField(blank=True, null=True)
+    #wingless_sequence = models.TextField(blank=True, null=True)
+    #its2_sequence = models.TextField(blank=True, null=True)
+    #pgd_sequence = models.TextField(blank=True, null=True)
+    #blasting_family = models.TextField(blank=True, null=True)
+    #blasting_subfamily = models.TextField(blank=True, null=True)
+    #blasting_genus = models.TextField(blank=True, null=True)
+
+class HerbivoreDNA(IngaBase):
+    collection_number = models.ForeignKey("Herbivore")
+    marker_gene = models.TextField(blank=True, null=True)
+    sequence_file = models.TextField(blank=True, null=True)
+    percentage_match_on_BOLD = models.IntegerField(blank=True, null=True)
+    bin = models.TextField(blank=True, null=True)
+    blasting_family = models.TextField(blank=True, null=True)
+    blasting_subfamily = models.TextField(blank=True, null=True)
+    blasting_genus = models.TextField(blank=True, null=True)
+
 class HerbivoreCollectionObservation(IngaBase):
     collection_number = models.ForeignKey("HerbivoreCollection", blank=True, null=True)
     field = models.ForeignKey("Field")
     herbivores_collected = models.IntegerField(blank=True, null=True)
     herbivores_total = models.IntegerField(blank=True, null=True)
     preliminary_family = models.TextField(blank=True, null=True)
-
-class HerbivoreDNA(IngaBase):
-    marker_gene = models.TextField()
-    fasta = models.FileField()
-    genbank = models.URLField()
-    voucher = models.ForeignKey("HerbivoreCollection")
 
 class HerbivoreSpecies(IngaBase):
     motu = models.ForeignKey('HerbivoreCollection', blank=True, null=True)
