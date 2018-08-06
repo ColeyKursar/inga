@@ -86,46 +86,46 @@ class DNA(IngaBase):
     sequence = models.TextField()
 
 class Expansion(IngaBase):
-    collectors = models.CharField(max_length=25, blank=True, null=True)  # Field name made lowercase.
+    collectors = models.CharField(max_length=25, blank=True, null=True)
     date = models.DateField(blank=True, null=True)
     month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
     day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
     year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
-    plant = models.ForeignKey("Plant")  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    lh_field = models.TextField(blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    day1 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    hour1 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    area1 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    day2 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    hour2 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    age2 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    area2 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    day3 = models.IntegerField( blank=True, null=True)  # Field name made lowercase.
-    hour3 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    age3 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    area3 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    day4 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    hour4 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    age4 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    area4 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    day5 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    hour5 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    age5 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    area5 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    final = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    age1percent = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
+    plant = models.ForeignKey("Plant")
+    lh_field = models.TextField(blank=True, null=True)
+    day1 = models.IntegerField(blank=True, null=True)
+    hour1 = models.IntegerField(blank=True, null=True)
+    area1 = models.IntegerField(blank=True, null=True)
+    day2 = models.IntegerField(blank=True, null=True)
+    hour2 = models.IntegerField(blank=True, null=True)
+    age2 = models.IntegerField(blank=True, null=True)
+    area2 = models.IntegerField(blank=True, null=True)
+    day3 = models.IntegerField( blank=True, null=True)
+    hour3 = models.IntegerField(blank=True, null=True)
+    age3 = models.IntegerField(blank=True, null=True)
+    area3 = models.IntegerField(blank=True, null=True)
+    day4 = models.IntegerField(blank=True, null=True)
+    hour4 = models.IntegerField(blank=True, null=True)
+    age4 = models.IntegerField(blank=True, null=True)
+    area4 = models.IntegerField(blank=True, null=True)
+    day5 = models.IntegerField(blank=True, null=True)
+    hour5 = models.IntegerField(blank=True, null=True)
+    age5 = models.IntegerField(blank=True, null=True)
+    area5 = models.IntegerField(blank=True, null=True)
+    final = models.IntegerField(blank=True, null=True)
+    age1percent = models.IntegerField(blank=True, null=True)
     dt2 = models.IntegerField(blank=True, null=True)
     age2percent = models.IntegerField(blank=True, null=True)
-    dt3 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    age3percent = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    dt4 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    age4percent = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    dt5 = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    age5percent = models.IntegerField(blank=True, null=True)  # Field name made lowercase.
-    x_dt_d_field = models.IntegerField(blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters. Field renamed because it ended with '_'.
-    x_exp_percent = models.IntegerField(blank=True, null=True)  # Field name made lowercase. Field renamed to remove unsuitable characters.
+    dt3 = models.IntegerField(blank=True, null=True)
+    age3percent = models.IntegerField(blank=True, null=True)
+    dt4 = models.IntegerField(blank=True, null=True)
+    age4percent = models.IntegerField(blank=True, null=True)
+    dt5 = models.IntegerField(blank=True, null=True)
+    age5percent = models.IntegerField(blank=True, null=True)
+    x_dt_d_field = models.IntegerField(blank=True, null=True)
+    x_exp_percent = models.IntegerField(blank=True, null=True)
     spp = models.IntegerField(blank=True, null=True)
-    notes2 = models.TextField(blank=True, null=True)  # Field name made lowercase.
+    notes2 = models.TextField(blank=True, null=True)
 
 class Extraction(IngaBase):
     extraction_number = models.IntegerField(blank=True, null=True)
@@ -261,6 +261,7 @@ class Herbivore(IngaBase):
     bin = models.TextField(blank=True, null=True)
     all_inga_trimmed_21bp = models.TextField(blank=True, null=True)
     la_motu = models.TextField(blank=True, null=True)
+    NEW_MOTU = models.TextField(blank=True, null=True)
     ef1a_sequence = models.TextField(blank=True, null=True)
     wingless_sequence = models.TextField(blank=True, null=True)
     its2_sequence = models.TextField(blank=True, null=True)
@@ -268,6 +269,7 @@ class Herbivore(IngaBase):
     blasting_family = models.TextField(blank=True, null=True)
     blasting_subfamily = models.TextField(blank=True, null=True)
     blasting_genus = models.TextField(blank=True, null=True)
+    blasting_species = models.TextField(blank=True, null=True)
 
 class HerbivoreDNA(IngaBase):
     collection_number = models.ForeignKey("Herbivore", blank=True, null=True)
@@ -311,9 +313,9 @@ class Herbivory(IngaBase):
     month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
     day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
     year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
-    leaves_leaflets = models.IntegerField()
-    total = models.IntegerField()
-    x_herbivory = models.FloatField()
+    leaves_leaflets = models.IntegerField(blank=True, null=True)
+    total = models.IntegerField(blank=True, null=True)
+    x_herbivory = models.FloatField(blank=True, null=True)
 
     def save(self, **kwargs):
         try:
