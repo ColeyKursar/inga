@@ -257,7 +257,7 @@ class Herbivore(IngaBase):
     preliminary_family = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
     photo = models.TextField(blank=True, null=True)
-    coi_sequence = models.TextField(blank=True, null=True)
+    co1_sequence = models.TextField(blank=True, null=True)
     percentage_match_on_BOLD = models.IntegerField(blank=True, null=True)
     bin = models.TextField(blank=True, null=True)
     blasting_family = models.TextField(blank=True, null=True)

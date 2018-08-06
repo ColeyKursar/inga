@@ -33,7 +33,7 @@ class Batch(models.Model):
 
                     # If the table is ourself, just set the value
                     if table == self.table:
-                        if row[column] != "NULL":
+                        if row[column] not in ["NULL", ""]:
                             setattr(new, field, row[column])
                     else:
                         # Otherwise, we need to add it to our lookup values
