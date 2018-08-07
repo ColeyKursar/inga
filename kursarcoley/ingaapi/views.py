@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
-from ingaapi.serializers import MethodsSerializer, ChemistrySerializer, ChlorophyllSerializer, ConvertedSerializer, DNASerializer, ExtractionSerializer, ExtractionResultWeightSerializer, ExtrafloralNectariesSerializer, FeatureTableRawDataSerializer, FieldSerializer, HairsSerializer, HerbivoreCollectionObservationSerializer, HerbivoreDNASerializer, HerbivoreSpeciesSerializer, HerbivoreCollectionSerializer, HerbivorySerializer, HPLCResultSerializer, LeafMassAreaSerializer, LocationSerializer, NitrogenSerializer, PlantSerializer, PlantDNASerializer, PlantPhotoSerializer, PlantSpeciesSerializer, PlantVoucherSerializer, RAWSerializer, SiteSerializer, ToughnessSerializer, UPLCResultSerializer, PC_IDSerializer, TyrosineSerializer, ExpansionSerializer, PlantSpeciesHistoricalSerializer, HairMeasurementSerializer, HerbivoreSerializer
-from inga.models import Methods, Chemistry, Chlorophyll, Converted, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, HerbivoreCollectionObservation, HerbivoreDNA, HerbivoreSpecies, HerbivoreCollection, Herbivory, HPLCResult, LeafMassArea, Location, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, PC_ID, Tyrosine, PlantSpeciesHistorical, Expansion, HairMeasurement, Herbivore
+from ingaapi.serializers import MethodsSerializer, ChemistrySerializer, ChlorophyllSerializer, ConvertedSerializer, DNASerializer, ExtractionSerializer, ExtractionResultWeightSerializer, ExtrafloralNectariesSerializer, FeatureTableRawDataSerializer, FieldSerializer, HairsSerializer, HerbivorySerializer, HPLCResultSerializer, LeafMassAreaSerializer, LocationSerializer, NitrogenSerializer, PlantSerializer, PlantDNASerializer, PlantPhotoSerializer, PlantSpeciesSerializer, PlantVoucherSerializer, RAWSerializer, SiteSerializer, ToughnessSerializer, UPLCResultSerializer, PC_IDSerializer, TyrosineSerializer, ExpansionSerializer, PlantSpeciesHistoricalSerializer, HairMeasurementSerializer, HerbivoreSerializer
+from inga.models import Methods, Chemistry, Chlorophyll, Converted, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, Herbivory, HPLCResult, LeafMassArea, Location, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, PC_ID, Tyrosine, PlantSpeciesHistorical, Expansion, HairMeasurement, Herbivore
 
 
 class ChemistryViewSet(ModelViewSet):
@@ -66,28 +66,28 @@ class HerbivoreViewSet(ModelViewSet):
     serializer_class = HerbivoreSerializer
     filter_fields = "__all__"
 
-class HerbivoreCollectionObservationViewSet(ModelViewSet):
-    queryset = HerbivoreCollectionObservation.objects.all()
-    serializer_class = HerbivoreCollectionObservationSerializer
-    filter_fields = "__all__"
-
-
-class HerbivoreDNAViewSet(ModelViewSet):
-    queryset = HerbivoreDNA.objects.all()
-    serializer_class = HerbivoreDNASerializer
-    filter_fields = "__all__"
-
-
-class HerbivoreSpeciesViewSet(ModelViewSet):
-    queryset = HerbivoreSpecies.objects.all()
-    serializer_class = HerbivoreSpeciesSerializer
-    filter_fields = "__all__"
-
-
-class HerbivoreCollectionViewSet(ModelViewSet):
-    queryset = HerbivoreCollection.objects.all()
-    serializer_class = HerbivoreCollectionSerializer
-    filter_fields = "__all__"
+#class HerbivoreCollectionObservationViewSet(ModelViewSet):
+#    queryset = HerbivoreCollectionObservation.objects.all()
+#    serializer_class = HerbivoreCollectionObservationSerializer
+#    filter_fields = "__all__"
+#
+#
+#class HerbivoreDNAViewSet(ModelViewSet):
+#    queryset = HerbivoreDNA.objects.all()
+#    serializer_class = HerbivoreDNASerializer
+#    filter_fields = "__all__"
+#
+#
+#class HerbivoreSpeciesViewSet(ModelViewSet):
+#    queryset = HerbivoreSpecies.objects.all()
+#    serializer_class = HerbivoreSpeciesSerializer
+#    filter_fields = "__all__"
+#
+#
+#class HerbivoreCollectionViewSet(ModelViewSet):
+#    queryset = HerbivoreCollection.objects.all()
+#    serializer_class = HerbivoreCollectionSerializer
+#    filter_fields = "__all__"
 
 
 class HerbivoryViewSet(ModelViewSet):

@@ -272,41 +272,41 @@ class Herbivore(IngaBase):
     its2_sequence = models.TextField(blank=True, null=True)
     pgd_sequence = models.TextField(blank=True, null=True)
 
-class HerbivoreDNA(IngaBase):
-    collection_number = models.ForeignKey("Herbivore", blank=True, null=True)
-    marker_gene = models.TextField(blank=True, null=True)
-    sequence_file = models.TextField(blank=True, null=True)
-    percentage_match_on_BOLD = models.IntegerField(blank=True, null=True)
-    bin = models.TextField(blank=True, null=True)
-    blasting_family = models.TextField(blank=True, null=True)
-    blasting_subfamily = models.TextField(blank=True, null=True)
-    blasting_genus = models.TextField(blank=True, null=True)
-
-class HerbivoreCollectionObservation(IngaBase):
-    collection_number = models.ForeignKey("HerbivoreCollection", blank=True, null=True)
-    field = models.ForeignKey("Field")
-    herbivores_collected = models.IntegerField(blank=True, null=True)
-    herbivores_total = models.IntegerField(blank=True, null=True)
-    preliminary_family = models.TextField(blank=True, null=True)
-
-class HerbivoreSpecies(IngaBase):
-    motu = models.ForeignKey('HerbivoreCollection', blank=True, null=True)
-    la_motu = models.TextField(blank=True, null=True)
-    consensus_sequence = models.TextField(blank=True, null=True)
-    blasting_family = models.TextField(blank=True, null=True)
-    blasting_subfamily = models.TextField(blank=True, null=True)
-    blasting_genus = models.TextField(blank=True, null=True)
-    percentage_match_on_BOLD = models.IntegerField(blank=True, null=True)
-    bin = models.TextField(blank=True, null=True)
-    notes_on_host = models.TextField(blank=True, null=True)
-    notes = models.TextField(blank=True, null=True)
-    ibol = models.TextField(blank=True, null=True)
-
-class HerbivoreCollection(IngaBase):
-    collection_number = models.TextField(blank=True, null=True)
-    photo = models.TextField(blank=True, null=True)
-    analysis = models.TextField(blank=True, null=True)
-    motu = models.TextField(blank=True, null=True)
+#class HerbivoreDNA(IngaBase):
+#    collection_number = models.ForeignKey("Herbivore", blank=True, null=True)
+#    marker_gene = models.TextField(blank=True, null=True)
+#    sequence_file = models.TextField(blank=True, null=True)
+#    percentage_match_on_BOLD = models.IntegerField(blank=True, null=True)
+#    bin = models.TextField(blank=True, null=True)
+#    blasting_family = models.TextField(blank=True, null=True)
+#    blasting_subfamily = models.TextField(blank=True, null=True)
+#    blasting_genus = models.TextField(blank=True, null=True)
+#
+#class HerbivoreCollectionObservation(IngaBase):
+#    collection_number = models.ForeignKey("HerbivoreCollection", blank=True, null=True)
+#    field = models.ForeignKey("Field")
+#    herbivores_collected = models.IntegerField(blank=True, null=True)
+#    herbivores_total = models.IntegerField(blank=True, null=True)
+#    preliminary_family = models.TextField(blank=True, null=True)
+#
+#class HerbivoreSpecies(IngaBase):
+#    motu = models.ForeignKey('HerbivoreCollection', blank=True, null=True)
+#    la_motu = models.TextField(blank=True, null=True)
+#    consensus_sequence = models.TextField(blank=True, null=True)
+#    blasting_family = models.TextField(blank=True, null=True)
+#    blasting_subfamily = models.TextField(blank=True, null=True)
+#    blasting_genus = models.TextField(blank=True, null=True)
+#    percentage_match_on_BOLD = models.IntegerField(blank=True, null=True)
+#    bin = models.TextField(blank=True, null=True)
+#    notes_on_host = models.TextField(blank=True, null=True)
+#    notes = models.TextField(blank=True, null=True)
+#    ibol = models.TextField(blank=True, null=True)
+#
+#class HerbivoreCollection(IngaBase):
+#    collection_number = models.TextField(blank=True, null=True)
+#    photo = models.TextField(blank=True, null=True)
+#    analysis = models.TextField(blank=True, null=True)
+#    motu = models.TextField(blank=True, null=True)
 
 class Herbivory(IngaBase):
     plant = models.ForeignKey("Plant", blank=True, null=True)

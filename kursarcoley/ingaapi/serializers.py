@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from inga.models import Methods, Chemistry, Chlorophyll, Converted, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, HerbivoreCollectionObservation, HerbivoreDNA, HerbivoreSpecies, HerbivoreCollection, Herbivory, HPLCResult, LeafMassArea, Location, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, PC_ID, Tyrosine, HairMeasurement, Expansion, PlantSpeciesHistorical, Herbivore
+from inga.models import Methods, Chemistry, Chlorophyll, Converted, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, Herbivory, HPLCResult, LeafMassArea, Location, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, PC_ID, Tyrosine, HairMeasurement, Expansion, PlantSpeciesHistorical, Herbivore
 
 
 class ChemistrySerializer(ModelSerializer):
@@ -80,32 +80,32 @@ class HerbivoreSerializer(ModelSerializer):
         model = Herbivore
         fields = '__all__'
 
-class HerbivoreCollectionObservationSerializer(ModelSerializer):
-
-    class Meta:
-        model = HerbivoreCollectionObservation
-        fields = '__all__'
-
-
-class HerbivoreDNASerializer(ModelSerializer):
-
-    class Meta:
-        model = HerbivoreDNA
-        fields = '__all__'
-
-
-class HerbivoreSpeciesSerializer(ModelSerializer):
-
-    class Meta:
-        model = HerbivoreSpecies
-        fields = '__all__'
-
-
-class HerbivoreCollectionSerializer(ModelSerializer):
-
-    class Meta:
-        model = HerbivoreCollection
-        fields = '__all__'
+#class HerbivoreCollectionObservationSerializer(ModelSerializer):
+#
+#    class Meta:
+#        model = HerbivoreCollectionObservation
+#        fields = '__all__'
+#
+#
+#class HerbivoreDNASerializer(ModelSerializer):
+#
+#    class Meta:
+#        model = HerbivoreDNA
+#        fields = '__all__'
+#
+#
+#class HerbivoreSpeciesSerializer(ModelSerializer):
+#
+#    class Meta:
+#        model = HerbivoreSpecies
+#        fields = '__all__'
+#
+#
+#class HerbivoreCollectionSerializer(ModelSerializer):
+#
+#    class Meta:
+#        model = HerbivoreCollection
+#        fields = '__all__'
 
 
 class HerbivorySerializer(ModelSerializer):
