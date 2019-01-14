@@ -221,6 +221,9 @@ class Field(IngaBase):
     ants = models.IntegerField(blank=True, null=True)
     ants_efn = models.FloatField(blank=True, null=True)
     ant_collection_number = models.TextField(blank=True, null=True)
+    num_leaves = models.IntegerField(blank=True, null=True)
+    herbivore_damage = models.TextField(blank=True, null=True)
+    nalambre = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
     old_table_id = models.IntegerField(blank=True, null=True)
 
@@ -253,6 +256,7 @@ class Herbivore(IngaBase):
     collection_number = models.TextField(blank=True, null=True)
     herbivores_collected = models.IntegerField(blank=True, null=True)
     herbivores_total = models.IntegerField(blank=True, null=True)
+    leaf_expansion = models.TextField(blank=True, null=True)
     order = models.TextField(blank=True, null=True)
     preliminary_family = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
