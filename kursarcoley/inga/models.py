@@ -79,6 +79,25 @@ class Chlorophyll(IngaBase):
     chl_mg_dm2 = models.FloatField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
 
+class ClayCats(IngaBase):
+    n_hoja = models.IntegerField(blank=True, null=True)
+    plant = models.ForeignKey("Plant", blank=True, null=True)
+    expanding_leaves = models.TextField(blank=True, null=True)
+    month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+    day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
+    day_start = models.IntegerField(blank=True, null=True)
+    hour_start = models.IntegerField(blank=True, null=True)
+    minute_start = models.IntegerField(blank=True, null=True)
+    day_end = models.IntegerField(blank=True, null=True)
+    hour_end = models.IntegerField(blank=True, null=True)
+    minute_end =models.IntegerField(blank=True, null=True)
+    attack = models.TextField(blank=True, null=True)
+    fallen = models.TextField(blank=True, null=True)
+    lost = models.TextField(blank=True, null=True)
+    type = models.TextField(blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
+
 class Converted(IngaBase):
     converted_file = models.FileField()
 
@@ -342,7 +361,7 @@ class HPLCResult(IngaBase):
     year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     method = models.TextField()
     column_used = models.TextField()
-    tyrosine = models.IntegerField()
+    tyrosine = models.IntegerField() 
 
 class LeafMassArea(IngaBase):
     plant = models.ForeignKey("Plant")
@@ -367,11 +386,18 @@ class LeafMassArea(IngaBase):
 
 class Location(IngaBase):
     plant = models.ForeignKey("Plant", related_name="the_plant")
-    gps = models.IntegerField()
-    trail = models.IntegerField()
+    species_code = models.ForeignKey("PlantSpecies", blank=True, null=True)
+    gx = models.FloatField(blank=True, null=True)
+    gy = models.FloatField(blank=True, null=True)
+    good_data = models.TextField(blank=True, null=True)
+    column = models.FloatField(blank=True, null=True)
+    row = models.FloatField(blank=True, null=True)
+    gps = models.TextField(blank=True, null=True)
+    trail = models.TextField(blank=True, null=True)
+    census_order = models.IntegerField(blank=True, null=True)
     measure = models.IntegerField()
     offset = models.IntegerField()
-    side = models.IntegerField()
+    side = models.TextField(blank=True, null=True)
 
 class Methods(IngaBase):
     method_number = models.IntegerField()
@@ -411,9 +437,11 @@ class Plant(IngaBase):
     description = models.TextField(blank=True, null=True)
     new_leaves = models.IntegerField(blank=True, null=True)
     code = models.IntegerField(blank=True, null=True)
+    percent_flush = models.IntegerField(blank=True, null=True)
+    observation_type = models.TextField(blank=True, null=True)
 
-    class Meta:
-        unique_together = ('site', 'plant_number', )
+class Meta:
+    unique_together = ('site', 'plant_number', )
 
 class PlantDNA(IngaBase):
     dna = models.TextField()
