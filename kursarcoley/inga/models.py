@@ -88,7 +88,7 @@ class ClayCats(IngaBase):
     day_start = models.IntegerField(blank=True, null=True)
     hour_start = models.IntegerField(blank=True, null=True)
     minute_start = models.IntegerField(blank=True, null=True)
-    date_start = model.DateTimeField()
+    date_start = models.IntegerField(blank=True, null=True)
     day_end = models.IntegerField(blank=True, null=True)
     hour_end = models.IntegerField(blank=True, null=True)
     minute_end = models.IntegerField(blank=True, null=True)
