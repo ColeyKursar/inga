@@ -1,5 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
-from ingaapi.serializers import MethodsSerializer, ChemistrySerializer, ChlorophyllSerializer, ConvertedSerializer, DNASerializer, ExtractionSerializer, ExtractionResultWeightSerializer, ExtrafloralNectariesSerializer, FeatureTableRawDataSerializer, FieldSerializer, HairsSerializer, HerbivorySerializer, HPLCResultSerializer, LeafMassAreaSerializer, LocationSerializer, NitrogenSerializer, PlantSerializer, PlantDNASerializer, PlantPhotoSerializer, PlantSpeciesSerializer, PlantVoucherSerializer, RAWSerializer, SiteSerializer, ToughnessSerializer, UPLCResultSerializer, PC_IDSerializer, TyrosineSerializer, ExpansionSerializer, PlantSpeciesHistoricalSerializer, HairMeasurementSerializer, HerbivoreSerializer
+from ingaapi.serializers import MethodsSerializer, ChemistrySerializer, ChlorophyllSerializer, ClayCatsSerializer, ConvertedSerializer, DNASerializer, ExtractionSerializer, ExtractionResultWeightSerializer, ExtrafloralNectariesSerializer, FeatureTableRawDataSerializer, FieldSerializer, HairsSerializer, HerbivorySerializer, HPLCResultSerializer, LeafMassAreaSerializer, LocationSerializer, NitrogenSerializer, PlantSerializer, PlantDNASerializer, PlantPhotoSerializer, PlantSpeciesSerializer, PlantVoucherSerializer, RAWSerializer, SiteSerializer, ToughnessSerializer, UPLCResultSerializer, PC_IDSerializer, TyrosineSerializer, ExpansionSerializer, PlantSpeciesHistoricalSerializer, HairMeasurementSerializer, HerbivoreSerializer
 from inga.models import Methods, Chemistry, Chlorophyll, Converted, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, Herbivory, HPLCResult, LeafMassArea, Location, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, PC_ID, Tyrosine, PlantSpeciesHistorical, Expansion, HairMeasurement, Herbivore
 
 
@@ -14,6 +14,10 @@ class ChlorophyllViewSet(ModelViewSet):
     serializer_class = ChlorophyllSerializer
     filter_fields = "__all__"
 
+class ClayCatsViewSet(ModelViewSet):
+    queryset = ClayCats.objects.all()
+    serializer_class = ClayCatsSerializer
+    filter_fields = "__all__"
 
 class ConvertedViewSet(ModelViewSet):
     queryset = Converted.objects.all()
