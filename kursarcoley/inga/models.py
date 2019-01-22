@@ -85,19 +85,35 @@ class ClayCats(IngaBase):
     expanding_leaves = models.TextField(blank=True, null=True)
     month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
     year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
-    day_start = models.IntegerField(blank=True, null=True)
-    hour_start = models.IntegerField(blank=True, null=True)
-    minute_start = models.IntegerField(blank=True, null=True)
-    date_start = models.IntegerField(blank=True, null=True)
-    day_end = models.IntegerField(blank=True, null=True)
-    hour_end = models.IntegerField(blank=True, null=True)
-    minute_end = models.IntegerField(blank=True, null=True)
-    date_end = models.IntegerField(blank=True, null=True)
+    day_start = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    hour_start = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(0), MaxValueValidator(23)])
+    minute_start = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(0), MaxValueValidator(59)])
+    start_timestamp = models.IntegerField(blank=True, null=True)
+    day_end = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    hour_end = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(0), MaxValueValidator(23)])
+    minute_end = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(0), MaxValueValidator(59)])
+    end_timestamp = models.IntegerField(blank=True, null=True)
     attack = models.TextField(blank=True, null=True)
     fallen = models.TextField(blank=True, null=True)
     lost = models.TextField(blank=True, null=True)
     type = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        year = self.year if self.year is not None else "2000"
+        month = self.month if self.month is not None else "1"
+        day_start = self.day_start if self.day_start is not None else "1"
+        hour_start = self.hour_start if self.hour_start is not None else "0"
+        minute_start = self.minute_start if self.minute_start is not None else "0"
+        day_end = self.day_end if self.day_end is not None else "1"
+        hour_end = self.hour_end if self.hour_end is not None else "0"
+        minute_end = self.minute_end if self.minute_end is not None else "0"
+
+        self.start_timestamp = datetime.datetime(year, month, day=day_start, hour=hour_start, minute=minute_start)
+        self.end_timestamp = datetime.datetime(year, month, day=day_end, hour=hour_end, minute=minute_end)
+
+        super(ClayCats, self).save(*args, **kwargs)
+
 
 class Converted(IngaBase):
     converted_file = models.FileField()
