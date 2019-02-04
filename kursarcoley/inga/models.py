@@ -483,6 +483,10 @@ class PlantSpecies(IngaBase):
     genus = models.TextField(blank=True, null=True)
     species_name = models.TextField(blank=True, null=True)
     authority = models.TextField(blank=True, null=True)
+    chem = models.TextField(blank=True, null=True)
+    chem_notes = models.TextField(blank=True,null=True)
+    DNA = models.TextField(blank=True, null=True)
+    DNA_notes = models.TextField(blank=True, null=True)
 
 class PlantSpeciesHistorical(IngaBase):
     old_species_number = models.TextField(blank=True, null=True)
