@@ -473,7 +473,6 @@ class Meta:
 class PlantDNA(IngaBase):
     dna = models.TextField()
     plant = models.ForeignKey("Plant")
-    species_code = models.ForeignKey("PlantSpecies", blank=True, null=True)
 
 class PlantPhoto(IngaBase):
     photo = models.FileField()
