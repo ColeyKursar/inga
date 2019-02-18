@@ -26,10 +26,12 @@ class Batch(models.Model):
         for idx, row in enumerate(file):
             if idx % 100 == 0: print(idx)
             new = model()
+            fields = set()
             try:
                 references = {}
                 for column, value in mapping.items():
                     table, field = value.split('.')
+                    fields.add(row[column])
 
                     # If the table is ourself, just set the value
                     if table == self.table:
@@ -63,11 +65,13 @@ class Batch(models.Model):
                                     reference_field: reference_value
                                 }
                             }
+                print(fields)
+                if len(fields) == 1 and "" in fields:
+                    continue
 
                 for local in references:
                     table = references[local]["table"]
                     params = references[local]["params"]
-                    print(local, table, params)
                     external = getattr(inga, table)
                     reference = external.objects.get(**params)
                     setattr(new, local, reference)
