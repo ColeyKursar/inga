@@ -500,6 +500,28 @@ class PlantVoucher(IngaBase):
     plant = models.ForeignKey("Plant")
     voucher = models.CharField(max_length=30)
 
+class RTIQC(IngaBase):
+    RTI = models.TextField(blank=True, null=True)
+    batch = models.TextField(blank=True, null=True)
+    injection = models.TextField(blank=True,null=True)
+    standard = models.TextField(blank=True, null=True)
+    ion_type = models.TextField(blank=True, null=True)
+    mz = models.FloatField(blank=True, null=True)
+    ppm_abs = models.FloatField(blank=True, null=True)
+    ppm = models.DecimalField(blank=True, null=True)
+    mda_abs = models.FloatField(blank=True, null=True)
+    mda = models.DecimalField(blank=True, null=True)
+    rt_in_min = models.FloatField(blank=True, null= True)
+    rerror_abs = models.FloatField(blank=True, null= True)
+    rerror = models.FloatField(blank=True, null= True)
+    TIC_into = models.FloatField(blank=True, null= True)
+    TIC_intb = models.FloatField(blank=True, null= True)
+    TIC_maxo = models.FloatField(blank=True, null= True)
+    sn = models.IntegerField(blank=True, null=True)
+    pkwidth = models.FloatField(blank=True, null=True)
+    file = models.TextField(blank=True, null=True)
+
+
 class RAW(IngaBase):
     raw_file_path = models.FileField()
 
