@@ -163,6 +163,10 @@ class RAWViewSet(ModelViewSet):
     serializer_class = RAWSerializer
     filter_fields = "__all__"
 
+class RTIQCViewSet(ModelViewSet):
+    queryset = RTIQC.objects.all()
+    serializer_class = RTIQCSerializer
+    filter_fields = "__all__"
 
 class SiteViewSet(ModelViewSet):
     queryset = Site.objects.all()

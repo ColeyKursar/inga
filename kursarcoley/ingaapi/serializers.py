@@ -7,11 +7,6 @@ class ChemistrySerializer(ModelSerializer):
         model = Chemistry
         fields = '__all__'
 
-class MethodsSerializer(ModelSerializer):
-    class Meta:
-        model = Methods
-        fields = '__all__'
-
 class ChlorophyllSerializer(ModelSerializer):
 
     class Meta:
@@ -142,6 +137,11 @@ class LocationSerializer(ModelSerializer):
         fields = '__all__'
 
 
+class MethodsSerializer(ModelSerializer):
+    class Meta:
+        model = Methods
+        fields = '__all__'
+
 class NitrogenSerializer(ModelSerializer):
 
     class Meta:
@@ -188,6 +188,12 @@ class RAWSerializer(ModelSerializer):
 
     class Meta:
         model = RAW
+        fields = '__all__'
+
+class RTIQCSerializer(ModelSerializer):
+
+    class Meta:
+        model = RTIQC
         fields = '__all__'
 
 
