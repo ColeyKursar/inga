@@ -251,3 +251,9 @@ class PlantSpeciesHistoricalSerializer(ModelSerializer):
     class Meta:
         model = PlantSpeciesHistorical 
         fields = '__all__'
+
+class WeatherSerializer(ModelSerializer):
+    
+    class Meta:
+        model = Weather
+        fields = '__all__'

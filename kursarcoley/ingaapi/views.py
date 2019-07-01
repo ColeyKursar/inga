@@ -185,6 +185,11 @@ class UPLCResultViewSet(ModelViewSet):
     serializer_class = UPLCResultSerializer
     filter_fields = "__all__"
 
+class WeatherViewSet(ModelViewSet):
+    queryset = Weather.objects.all()
+    serializer_class = WeatherSerializer
+    filter_fields = "__all__"
+
 
 class PC_IDViewSet(ModelViewSet):
     queryset = PC_ID.objects.all()
