@@ -257,7 +257,10 @@ class Field(IngaBase):
     ants = models.IntegerField(blank=True, null=True)
     ants_efn = models.FloatField(blank=True, null=True)
     ant_collection_number = models.TextField(blank=True, null=True)
-    num_leaves = models.IntegerField(blank=True, null=True)
+    num_leaves_still_exp = models.IntegerField(blank=True, null=True)
+    num_exp_leaves_new = models.IntegerField(blank=True, null= True)
+    num_buds_still_exp = models.IntegerField(blank=True, null= True)
+    num_new_buds = models.IntegerField(blank=True, null= True)
     herbivore_damage = models.TextField(blank=True, null=True)
     herbivore_collectors = models.TextField(blank=True, null=True)
     nalambre = models.TextField(blank=True, null=True)
@@ -268,6 +271,9 @@ class Field(IngaBase):
     observation_type = models.TextField(blank=True, null=True)
     damage_notes = models.TextField(blank=True, null=True)
     observed_dead = models.TextField(blank=True, null=True)
+    lost_not_found = models.TextField(blank=True, null=True)
+    trial = models.TextField(blank=True, null=True)
+    order_all = models.IntegerField(blank=True, null=True)
 
     def save(self, **kwargs):
         try:
