@@ -250,6 +250,7 @@ class Field(IngaBase):
     year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     plant = models.ForeignKey("Plant", blank=True, null=True)
     original_id = models.CharField(max_length=20, blank=True, null=True)
+    census_month = models.IntegerField(blank=True, null=True)
     exp_vs_mat = models.TextField(blank=True, null=True)
     exp_min = models.TextField(blank=True, null=True)
     exp_max = models.TextField(blank=True, null=True)
@@ -261,7 +262,6 @@ class Field(IngaBase):
     num_exp_leaves_new = models.IntegerField(blank=True, null= True)
     num_buds_still_exp = models.IntegerField(blank=True, null= True)
     num_new_buds = models.IntegerField(blank=True, null= True)
-    herbivore_damage = models.TextField(blank=True, null=True)
     herbivore_collectors = models.TextField(blank=True, null=True)
     nalambre = models.TextField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
@@ -269,11 +269,9 @@ class Field(IngaBase):
     percent_flush_min = models.IntegerField(blank=True, null=True)
     percent_flush_max = models.IntegerField(blank=True, null=True)
     observation_type = models.TextField(blank=True, null=True)
-    damage_notes = models.TextField(blank=True, null=True)
     observed_dead = models.TextField(blank=True, null=True)
     lost_not_found = models.TextField(blank=True, null=True)
-    trial = models.TextField(blank=True, null=True)
-    order_all = models.IntegerField(blank=True, null=True)
+    
 
     def save(self, **kwargs):
         try:
@@ -446,7 +444,7 @@ class Nitrogen(IngaBase):
     notes = models.TextField(null=True, blank=True)
 
 class Plant(IngaBase):
-    plant_number = models.IntegerField(blank=True, null=True)
+    plant_number = models.TextField(blank=True, null=True)
     collectors = models.TextField(blank=True, null=True)
     site = models.ForeignKey("Site", blank=True, null=True)
     date = models.DateField(blank=True, null=True)
@@ -466,12 +464,14 @@ class Plant(IngaBase):
     flower_color = models.TextField(blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     new_leaves = models.IntegerField(blank=True, null=True)
-    total_leaves = models.IntegerField(blank=True, null=True)
+    nleaves_survey = models.IntegerField(blank=True, null=True)
+    nleaves_total = models.IntegerField(blank=True, null=True)
     code = models.IntegerField(blank=True, null=True)
     name_based_on_tag = models.TextField(blank=True, null=True)
     plot_tag = models.IntegerField(blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
-    census_notes = models.TextField(blank=True, null=True)
+    census_status = models.TextField(blank=True, null=True)
+    observation_type = models.TextField(blank=True, null=True)
 
 class Meta:
     unique_together = ('site', 'plant_number', )
