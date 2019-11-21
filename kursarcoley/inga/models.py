@@ -205,7 +205,7 @@ class Extraction(IngaBase):
         try:
             final_weight = float(self.final_weight)
             empty_weight = float(self.empty_vial_weight)
-            dry_weight = float(self.empty_vial_weight)
+            dry_weight = float(self.dry_weight)
 
             self.dry_marc_weight = final_weight - empty_weight
             self.mass_extracted = dry_weight - self.dry_marc_weight
