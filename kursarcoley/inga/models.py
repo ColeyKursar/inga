@@ -177,7 +177,7 @@ class Expansion(IngaBase):
     notes2 = models.TextField(blank=True, null=True)
 
 class Extraction(IngaBase):
-    extraction_number = models.IntegerField(blank=True, null=True)
+    extraction_number = models.TextField(blank=True, null=True)
     chemistry = models.ForeignKey("Chemistry", blank=True, null=True)
     date = models.DateField(blank=True, null=True)
     month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
