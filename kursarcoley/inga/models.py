@@ -118,18 +118,18 @@ class ClayCats(IngaBase):
 class Converted(IngaBase):
     converted_file = models.FileField()
 
-class Dale_Herbivory(IngaBase):
-    field = models.ForeignKey("Field", blank=True, null=True)
-    date = models.DateField(blank=True, null=True)
-    month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
-    day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
-    year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
-    measurement_type = models.TextField(blank=True, null=True)
-    year_start = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
-    month_start = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
-    year_end = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
-    month_end = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
-    herbivore_damage = models.IntegerField(blank=True, null=True)
+#class Dale_Herbivory(IngaBase):
+#    field = models.ForeignKey("Field", blank=True, null=True)
+#    date = models.DateField(blank=True, null=True)
+#    month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+#    day = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+#    year = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
+#    measurement_type = models.TextField(blank=True, null=True)
+#    year_start = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
+#    month_start = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+#    year_end = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
+#    month_end = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
+#    herbivore_damage = models.IntegerField(blank=True, null=True)
 
 class DNA(IngaBase):
     sequence = models.TextField()
