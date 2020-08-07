@@ -118,7 +118,7 @@ class ClayCats(IngaBase):
 class Converted(IngaBase):
     converted_file = models.FileField()
 
-class DaleHerbivory(IngaBase):
+class Dale_Herbivory(IngaBase):
     field = models.ForeignKey("Field", blank=True, null=True)
     date = models.DateField(blank=True, null=True)
     month = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
