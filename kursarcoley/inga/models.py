@@ -506,6 +506,7 @@ class PlantSpecies(IngaBase):
     chem_notes = models.TextField(blank=True, null=True)
     DNA = models.TextField(blank=True, null=True)
     DNA_notes = models.TextField(blank=True, null=True)
+    chemotype = models.TextField(blank=True,null=True)
     
 class PlantSpeciesHistorical(IngaBase):
     old_species_number = models.TextField(blank=True, null=True)
