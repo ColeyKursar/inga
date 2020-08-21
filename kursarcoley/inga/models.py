@@ -36,7 +36,7 @@ class IngaBase(models.Model):
             date = self.__class__._meta.get_field("date")
 
             if self.day is not None and self.month is not None and self.year is not None:
-                self.date = datetime.date(self.year, self.month, self.day)
+                self.date = datetime.date(year=self.year, month=self.month, day=self.day)
             elif self.date is not None:
                 self.day = self.date.day
                 self.month = self.date.month
