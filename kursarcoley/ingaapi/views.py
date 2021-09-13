@@ -194,9 +194,9 @@ class WeatherViewSet(ModelViewSet):
     serializer_class = WeatherSerializer
     filter_fields = "__all__"
     
-class Weather_Daily_AverageViewSet(ModelViewSet):
-    queryset = Weather_Daily_Average.objects.all()
-    serializer_class = Weather_Daily_AverageSerializer
+class WeatherDailyAverageViewSet(ModelViewSet):
+    queryset = WeatherDailyAverage.objects.all()
+    serializer_class = WeatherDailyAverageSerializer
     filter_fields = "__all__"
 
 

@@ -640,7 +640,7 @@ class Weather(IngaBase):
     Editing_notes = models.TextField(blank=True, null=True)
     Original_notes = models.TextField(blank=True, null=True)
     
-class Weather_Daily_Average(IngaBase):
+class WeatherDailyAverage(IngaBase):
     YR = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     MN = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
     DY = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])

@@ -264,8 +264,8 @@ class WeatherSerializer(ModelSerializer):
         model = Weather
         fields = '__all__'
         
-class Weather_Daily_AverageSerializer(ModelSerializer):
+class WeatherDailyAverageSerializer(ModelSerializer):
     
     class Meta:
-        model = Weather_Daily_Average
+        model = WeatherDailyAverage
         fields = '__all__'
