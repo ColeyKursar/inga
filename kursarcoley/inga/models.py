@@ -618,7 +618,7 @@ class Weather(IngaBase):
     MN = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
     DY = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
     HR = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(0), MaxValueValidator(24)])
-    MN = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(0), MaxValueValidator(60)])
+    MIN = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(0), MaxValueValidator(60)])
     DateValue = models.IntegerField(blank=True, null=True)
     record = models.IntegerField(blank=True, null=True)
     batt_volt_min = models.FloatField(blank=True, null=True)
