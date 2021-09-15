@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
-from ingaapi.serializers import MethodsSerializer, ChemistrySerializer, ChlorophyllSerializer, ClayCatsSerializer, ConvertedSerializer, Dale_HerbivorySerializer, DNASerializer, ExtractionSerializer, ExtractionResultWeightSerializer, ExtrafloralNectariesSerializer, FeatureTableRawDataSerializer, FieldSerializer, HairsSerializer, HerbivorySerializer, HPLCResultSerializer, LeafMassAreaSerializer, LocationSerializer, NitrogenSerializer, PlantSerializer, PlantDNASerializer, PlantPhotoSerializer, PlantSpeciesSerializer, PlantVoucherSerializer, RAWSerializer, SiteSerializer, ToughnessSerializer, UPLCResultSerializer, PC_IDSerializer, TyrosineSerializer, ExpansionSerializer, PlantSpeciesHistoricalSerializer, HairMeasurementSerializer, HerbivoreSerializer, WeatherDailyAverageSerializer,RTIQCSerializer #, WeatherSerializer
-from inga.models import Methods, Chemistry, Chlorophyll, ClayCats, Converted, Dale_Herbivory, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, Herbivory, HPLCResult, LeafMassArea, Location, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, PC_ID, Tyrosine, PlantSpeciesHistorical, Expansion, HairMeasurement, Herbivore, RTIQC, WeatherDailyAverage #,Weather
+from ingaapi.serializers import MethodsSerializer, ChemistrySerializer, ChlorophyllSerializer, ClayCatsSerializer, ConvertedSerializer, Dale_HerbivorySerializer, DNASerializer, ExtractionSerializer, ExtractionResultWeightSerializer, ExtrafloralNectariesSerializer, FeatureTableRawDataSerializer, FieldSerializer, HairsSerializer, HerbivorySerializer, HPLCResultSerializer, LeafMassAreaSerializer, LocationSerializer, NitrogenSerializer, PlantSerializer, PlantDNASerializer, PlantPhotoSerializer, PlantSpeciesSerializer, PlantVoucherSerializer, RAWSerializer, SiteSerializer, ToughnessSerializer, UPLCResultSerializer, PC_IDSerializer, TyrosineSerializer, ExpansionSerializer, PlantSpeciesHistoricalSerializer, HairMeasurementSerializer, HerbivoreSerializer, WeatherDailyAverageSerializer,RTIQCSerializer, WeatherSerializer
+from inga.models import Methods, Chemistry, Chlorophyll, ClayCats, Converted, Dale_Herbivory, DNA, Extraction, ExtractionResultWeight, ExtrafloralNectaries, FeatureTableRawData, Field, Hairs, Herbivory, HPLCResult, LeafMassArea, Location, Nitrogen, Plant, PlantDNA, PlantPhoto, PlantSpecies, PlantVoucher, RAW, Site, Toughness, UPLCResult, PC_ID, Tyrosine, PlantSpeciesHistorical, Expansion, HairMeasurement, Herbivore, RTIQC, WeatherDailyAverage, Weather
 
 
 class ChemistryViewSet(ModelViewSet):
@@ -189,10 +189,10 @@ class UPLCResultViewSet(ModelViewSet):
     serializer_class = UPLCResultSerializer
     filter_fields = "__all__"
 
-#class WeatherViewSet(ModelViewSet):
-#    queryset = Weather.objects.all()
-#    serializer_class = WeatherSerializer
-#    filter_fields = "__all__"
+class WeatherViewSet(ModelViewSet):
+    queryset = Weather.objects.all()
+    serializer_class = WeatherSerializer
+    filter_fields = "__all__"
     
 class WeatherDailyAverageViewSet(ModelViewSet):
     queryset = WeatherDailyAverage.objects.all()
