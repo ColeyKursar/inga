@@ -613,10 +613,12 @@ class Tyrosine(IngaBase):
     keep_or_drop = models.TextField(null=True, blank=True)
 
 class Weather(IngaBase):
-    timestamp = models.DateTimeField(null=True, blank=True)
+    timestamp = models.DateTimeField(null=True, blank=True, DATETIME_FORMAT= "%m/%d/%y %H:%M")
     YR = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1900)])
     MN = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(12)])
     DY = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(1), MaxValueValidator(31)])
+    HR = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(0), MaxValueValidator(24)])
+    MN = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(0), MaxValueValidator(60)])
     DateValue = models.IntegerField(blank=True, null=True)
     record = models.IntegerField(blank=True, null=True)
     batt_volt_min = models.FloatField(blank=True, null=True)
